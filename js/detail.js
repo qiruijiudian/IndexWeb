@@ -14,7 +14,7 @@ try {
     var id = params.pop();
     $.ajax(
         {
-            url: 'http://127.0.0.1:8000/api/common/',
+            url: 'http://cdqrmi.com:8000/api/common/',
             type: "POST",
             data: {
                 "key": "project",
