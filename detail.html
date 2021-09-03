@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
+    <meta property="og:site_name" content="" /> <!-- website name -->
+    <meta property="og:site" content="" /> <!-- website link -->
+    <meta property="og:title" content=""/> <!-- title shown in the actual shared post -->
+    <meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
+    <meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
+    <meta property="og:url" content="" /> <!-- where do you want your post to link to -->
+    <meta property="og:type" content="article" />
+
+    <!-- Website Title -->
+    <title>项目详情</title>
+
+    <!-- Styles -->
+    <link href="css/css1.css" rel="stylesheet">
+    <link href="css/css2.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/fontawesome-all.css" rel="stylesheet">
+    <link href="css/swiper.css" rel="stylesheet">
+    <link href="css/magnific-popup.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!-- Favicon  -->
+    <link rel="icon" href="images/favicon.ico">
+</head>
+<body data-spy="scroll" data-target=".fixed-top">
+
+<!-- Preloader -->
+<div class="spinner-wrapper">
+    <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+</div>
+<!-- end of preloader -->
+
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-dark navbar-custom fixed-top">
+
+    <!-- Image Logo -->
+    <a class="navbar-brand logo-image" href="http://cdqrmi.com/"><img src="images/logo.png" alt="alternative">
+        <!--        <span></span>-->
+    </a>
+
+    <!-- Mobile Menu Toggle Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-awesome fas fa-bars"></span>
+        <span class="navbar-toggler-awesome fas fa-times"></span>
+    </button>
+    <!-- end of mobile menu toggle button -->
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link page-scroll" href="http://cdqrmi.com#header">主页 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link page-scroll" href="http://cdqrmi.com#intro">公司概况</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link page-scroll" href="http://cdqrmi.com#services">公司业务</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link page-scroll" href="http://cdqrmi.com#callMe">工程设计咨询</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link page-scroll" href="http://cdqrmi.com#projects">项目</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link page-scroll" href="http://cdqrmi.com:8000">工程运行数据分析报告</a>
+            </li>
+
+            <!-- Dropdown Menu -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle page-scroll" href="index.html#about" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">关于我们</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="http://cdqrmi.com/terms-conditions.html"><span class="item-text">条款条件</span></a>
+                    <div class="dropdown-items-divide-hr"></div>
+                    <a class="dropdown-item" href="http://cdqrmi.com/privacy-policy.html"><span class="item-text">隐私政策</span></a>
+                </div>
+            </li>
+            <!-- end of dropdown menu -->
+
+            <li class="nav-item">
+                <a class="nav-link page-scroll" href="http://cdqrmi.com#contact">联系</a>
+            </li>
+        </ul>
+    </div>
+</nav> <!-- end of navbar -->
+<!-- end of navbar -->
+
+
+<!-- Header -->
+<header id="header" class="ex-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="detail_title">Loading...</h1>
+            </div> <!-- end of col -->
+        </div> <!-- end of row -->
+    </div> <!-- end of container -->
+</header> <!-- end of ex-header -->
+<!-- end of header -->
+
+
+<!-- Breadcrumbs -->
+<div class="ex-basic-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumbs">
+                    <a href="http://cdqrmi.com/">主页</a><i class="fa fa-angle-double-right"></i><span class="detail_title"></span>
+                </div> <!-- end of breadcrumbs -->
+            </div> <!-- end of col -->
+        </div> <!-- end of row -->
+    </div> <!-- end of container -->
+</div> <!-- end of ex-basic-1 -->
+<!-- end of breadcrumbs -->
+
+
+<!-- Privacy Content -->
+<div class="ex-basic-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="text-container">
+                    <h3>项目概述</h3>
+                    <p id="detail_spec">{{spec}}</p>
+                </div> <!-- end of text-container-->
+
+                <div class="text-container">
+                    <h3>项目规模</h3>
+                    <p id="detail_size">{{size}}</p>
+                </div> <!-- end of text-container -->
+
+
+                <div class="text-container">
+                    <h3>系统形式</h3>
+                    <p class="mb-5" id="detail_type">{{type}}</p>
+                </div> <!-- end of text-container -->
+
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+
+                    <div class="carousel-inner" id="img_div">
+
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <a class="btn-outline-reg back" href="http://cdqrmi.com/">返回主页</a>
+            </div> <!-- end of col-->
+        </div> <!-- end of row -->
+    </div> <!-- end of container -->
+</div> <!-- end of ex-basic-2 -->
+<!-- end of privacy content -->
+
+
+
+
+<!-- Footer -->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="text-container about">
+                    <h4>关于我们</h4>
+                    <p class="white">成都栖睿机电设备有限公司成立于2008年，是一家集产、学、研为一体的高科技专业公司。公司长期致力于清洁能源供暖、市政智能供水、供氧、建筑与工业节能等专业领域，涉及到的行业包括机电、弱电、水利水电、电子与能源设备等</p>
+                </div> <!-- end of text-container -->
+            </div> <!-- end of col -->
+            <div class="col-md-2">
+                <div class="text-container">
+                    <h4>条款政策</h4>
+                    <ul class="list-unstyled li-space-lg white">
+                        <li>
+                            <a class="white" href="#your-link">cdqrmi.com</a>
+                        </li>
+                        <li>
+                            <a class="white" href="terms-conditions.html">条款及细则</a>
+                        </li>
+                        <li>
+                            <a class="white" href="privacy-policy.html">隐私政策</a>
+                        </li>
+                    </ul>
+                </div> <!-- end of text-container -->
+            </div> <!-- end of col -->
+            <div class="col-md-2">
+                <div class="text-container">
+                    <h4>服务导航</h4>
+                    <ul class="list-unstyled li-space-lg">
+                        <li>
+                            <a class="white page-scroll" href="#intro">公司概述</a>
+                        </li>
+                        <li>
+                            <a class="white page-scroll" href="#services">服务模块</a>
+                        </li>
+                        <li class="media">
+                            <a class="white page-scroll" href="#projects">项目案例</a>
+                        </li>
+                    </ul>
+                </div> <!-- end of text-container -->
+            </div> <!-- end of col -->
+        </div> <!-- end of row -->
+    </div> <!-- end of container -->
+</div><!-- end of footer -->
+<!-- end of footer -->
+
+
+<!-- Scripts -->
+<script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+<script src="js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+<script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
+<script src="js/detail.js"></script>
+<script src="js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
+<script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+<script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+<script src="js/morphext.min.js"></script> <!-- Morphtext rotating text in the header -->
+<script src="js/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
+<script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
+<script src="js/scripts.js"></script> <!-- Custom scripts -->
+</body>
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>栖睿数据</title>
+    <link href="../assets/css/css1.css" rel="stylesheet">
+    <link rel="shortcut icon" href="#"/>
+    <link rel="stylesheet" href="../assets/materialize/css/materialize.min.css" media="screen,projection"/>
+    <!-- Bootstrap Styles-->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet"/>
+    <!-- FontAwesome Styles-->
+    <link href="../assets/css/font-awesome.css" rel="stylesheet"/>
+    <!-- Morris Chart Styles-->
+    <link href="../assets/js/morris/morris-0.4.3.min.css" rel="stylesheet"/>
+    <!-- Custom Styles-->
+    <link href="../assets/css/custom-styles.css" rel="stylesheet"/>
+    <!-- Google Fonts-->
+    <link href="../assets/css/css3.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../assets/js/Lightweight-Chart/cssCharts.css">
+
+</head>
+
+<body>
+<div id="wrapper">
+    <nav class="navbar navbar-default top-navbar" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle waves-effect waves-dark" data-toggle="collapse"
+                    data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand waves-effect waves-dark" href="http://cdqrmi.com"><i class="large material-icons">track_changes</i>
+                <strong>栖睿机电</strong></a>
+
+            <div id="sideNav" href=""><i class="material-icons dp48">toc</i></div>
+        </div>
+
+        <ul class="nav navbar-top-links navbar-right">
+            <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown4"><i
+                    class="fa fa-envelope fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown3"><i
+                    class="fa fa-tasks fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown2"><i
+                    class="fa fa-bell fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i
+                    class="fa fa-user fa-fw"></i> <b>测试用户</b> <i class="material-icons right">arrow_drop_down</i></a>
+            </li>
+        </ul>
+    </nav>
+    <!-- Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="#"><i class="fa fa-user fa-fw"></i> 用户中心 </a></li>
+        <li><a href="#"><i class="fa fa-gear fa-fw"></i> 设置 </a></li>
+        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> 登出 </a></li>
+    </ul>
+
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+
+                <li>
+                    <a class="active-menu waves-effect waves-dark" name="cona.html" href="javascript:;" onclick="cli(this)"><i class="fa fa-dashboard"></i>
+                        主页</a>
+                </li>
+
+                <li>
+                    <!--						<a href="chart.html" class="waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i> Charts</a>-->
+                    <a href="#" class="waves-effect waves-dark">
+                        <i class="fa fa-bar-chart-o"></i> 数据面板<span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="#">机房能效COP<span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li>
+                                    <a name="cona/comprehensive_cop.html" href="javascript:;" onclick="cli(this)">综合能效</a>
+                                </li>
+                                <li>
+                                    <a name="cona/water_heat_pump.html" href="javascript:;" onclick="cli(this)">水源热泵能效</a>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li>
+                            <a href="#">地热井出水温度<span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li>
+                                    <a name="cona/geothermal_well_temperature.html?high" href="javascript:;" onclick="cli(this)">高温地热井出水温度</a>
+                                </li>
+                                <li>
+                                    <a name="cona/geothermal_well_temperature.html?low" href="javascript:;" onclick="cli(this)">低温地热井出水温度</a>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li>
+                            <a name="cona/heat_supply_with_temperature.html" href="javascript:;" onclick="cli(this)">供热量与气温关系</a>
+                        </li>
+                        <li>
+                            <a name="cona/room_network_water_supply_temperature.html" href="javascript:;" onclick="cli(this)">供水温度与气温关系</a>
+                        </li>
+                        <li>
+                            <a name="cona/geothermal_wells_heat_provide.html" href="javascript:;" onclick="cli(this)">地热井可提供(高/低温)热量</a>
+                        </li>
+                        <li>
+                            <a name="cona/cost_saving.html" href="javascript:;" onclick="cli(this)">节省供暖费用</a>
+                        </li>
+                        <li>
+                            <a name="cona/last_week_data.html" href="javascript:;" onclick="cli(this)">上周数据一览</a>
+                        </li>
+                        <li>
+                            <a name="cona/core_data.html" href="javascript:;" onclick="cli(this)">核心数据</a>
+                        </li>
+                        <li>
+                            <a href="#">其他数据</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-table"></i>表格数据<span class="fa arrow"></span></a>
+                    <ul class="nav nav-third-level">
+
+                        <li>
+                            <a href="#">地热井出水温度[错那]<span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li>
+                                    <a name="cona/geothermal_well_temperature.html?high" href="javascript:;" onclick="cli(this)">高温地热井出水温度</a>
+                                </li>
+                                <li>
+                                    <a name="cona/geothermal_well_temperature.html?low" href="javascript:;" onclick="cli(this)">低温地热井出水温度</a>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li>
+                            <a name="kamba/pool_temperature.html" href="javascript:;" onclick="cli(this)">水池温度[岗巴]</a>
+                        </li>
+
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#" class="waves-effect waves-dark">
+                        <i class="fa fa-qrcode"></i> 平台切换<span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-third-level">
+                        <li>
+                            <a name="cona.html" href="javascript:;" onclick="cli(this)">错那</a>
+                        </li>
+                        <li>
+                            <a name="kamba.html" href="javascript:;" onclick="cli(this)">岗巴</a>
+                        </li>
+
+
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a href="#" class="waves-effect waves-dark"><i class="fa fa-edit"></i> 其他 </a>
+                </li>
+
+
+            </ul>
+
+        </div>
+
+    </nav>
+    <!-- /. NAV SIDE  -->
+
+    <div id="page-wrapper">
+        <div class="header">
+            <h1 class="page-header">
+                核心数据一览
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Dashboard</a></li>
+                <li class="active">CORE DATA</li>
+            </ol>
+        </div>
+        <div id="page-inner">
+            <div class="dashboard-cards">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+
+                        <div class="card horizontal cardIcon waves-effect waves-dark">
+                            <div class="card-image red">
+                                <i class="material-icons dp48">equalizer</i>
+                            </div>
+                            <div class="card-stacked red">
+                                <div class="card-content">
+                                    <h3 id="max_load">Loading...</h3>
+                                </div>
+                                <div class="card-action">
+                                    <strong>上周最大负荷</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+
+                        <div class="card horizontal cardIcon waves-effect waves-dark">
+                            <div class="card-image orange">
+                                <i class="material-icons dp48">equalizerkWh</i>
+                            </div>
+                            <div class="card-stacked orange">
+                                <div class="card-content">
+                                    <h3 id="min_load">Loading...</h3>
+                                </div>
+                                <div class="card-action">
+                                    <strong>上周最小负荷</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+
+                        <div class="card horizontal cardIcon waves-effect waves-dark">
+                            <div class="card-image green">
+                                <i class="material-icons dp48">equalizer</i>
+                            </div>
+                            <div class="card-stacked green">
+                                <div class="card-content">
+                                    <h3 id="cost_saving_sum">Loading...</h3>
+                                </div>
+                                <div class="card-action">
+                                    <strong>上月节省供暖总费用</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="card">
+                        <div class="card-image">
+                            <div id="load_data_chart" style="width:100%;height:400px"></div>
+                        </div>
+                        <div class="card-action">
+                            <b>过去一周负荷值</b>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- /. ROW-->
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-7">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="card">
+                                <div class="card-image donutpad">
+                                    <div id="geothermal_wells_heat_provide" style="width:100%;height:300px"></div>
+                                </div>
+                                <div class="card-action">
+                                    <b>地热井可提供（高/低温）热量</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.row-->
+                <div class="col-xs-12 col-sm-12 col-md-5">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="card">
+                                <div class="card-image donutpad">
+                                    <div id="load_pie" style="width:100%;height:300px"></div>
+                                </div>
+                                <div class="card-action">
+                                    <b>负荷量对比（kW）</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.row-->
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-4">
+                    <div class="card">
+                        <div class="card-image">
+                            <div id="com_cop_pie" style="width:100%;height:300px"></div>
+                        </div>
+                        <div class="card-action">
+                            <b>系统综合COP</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-8">
+                    <div class="card">
+                        <div class="card-image">
+                            <div id="com_cop_chart" style="width:100%;height:300px"></div>
+                        </div>
+                        <div class="card-action">
+                            <b>系统综合能效比</b>
+                        </div>
+                    </div>
+                </div><!--/.row-->
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="card">
+                        <div class="card-image">
+                            <div id="water_replenishment" style="width:100%;height:400px"></div>
+                        </div>
+                        <div class="card-action">
+                            <b>过去一周内补水量及补水量限值</b>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="card-action" id="charge_sum">
+                            Loading...
+                        </div>
+                        <div class="card-content">
+                            <div id="cost_saving" style="height: 400px;width:100%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="card-action">
+                            当月节省高低温供暖总费用对比
+                        </div>
+                        <div class="card-content">
+                            <div id="cost_saving_high_low_pie" style="height: 400px;width:100%"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="card">
+                        <div class="card-image">
+                            <div id="supply_return_water_temp" style="width:100%;height:400px"></div>
+                        </div>
+                        <div class="card-action">
+                            <b>供回水温度温差</b>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
+
+                </div>
+            </div>
+            <!-- /. ROW  -->
+        </div>
+        <!-- /. PAGE INNER  -->
+    </div>
+    <!-- /. PAGE WRAPPER  -->
+</div>
+<!-- /. WRAPPER  -->
+
+<script src="../assets/js/jquery-1.10.2.js"></script>
+<script src="../assets/js/others.js"></script>
+<script src="../assets/js/echarts.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/materialize/js/materialize.min.js"></script>
+<script src="../assets/js/jquery.metisMenu.js"></script>
+<script src="../assets/js/easypiechart.js"></script>
+<script src="../assets/js/easypiechart-data.js"></script>
+<script src="../assets/js/Lightweight-Chart/jquery.chart.js"></script>
+<script src="../assets/js/custom-scripts.js"></script>
+<script src="../assets/js/cona/core_data.js"></script>
+</body>
+
+</html>

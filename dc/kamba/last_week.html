@@ -1,0 +1,221 @@
+{% extends 'manager/manager_base.html' %}
+{% load static %}
+{% block script_extends_head %}
+<script src="{% static 'assets/js/echarts.min.js' %}"></script>
+<script>
+    var last_week_solar_collector_time = {{ last_week_solar_collector_time|safe }};
+    var last_week_solar_collector = {{ last_week_solar_collector|safe }};
+    var water_replishment_time = {{ water_replishment_time|safe }};
+    var heat_water_replenishment = {{ heat_water_replenishment|safe }};
+    var heat_water_replenishment_limit = {{ heat_water_replenishment_limit|safe }};
+    var heat_storage_tank_replenishment = {{ heat_storage_tank_replenishment|safe }};
+    var solar_side_replenishment = {{ solar_side_replenishment|safe }};
+    var solar_matrix_replenishment_limit = {{ solar_matrix_replenishment_limit|safe }};
+    var last_week_solar_collector_by_days_time = {{ last_week_solar_collector_by_days_time|safe }};
+    var last_week_solar_collector_by_days_available_solar = {{ last_week_solar_collector_by_days_available_solar|safe }};
+    var last_week_solar_collector_by_days_solar_collector_heat = {{ last_week_solar_collector_by_days_solar_collector_heat|safe }};
+    var last_week_solar_collector_by_days_solar_collector_efficiency = {{ last_week_solar_collector_by_days_solar_collector_efficiency|safe }};
+    var last_week_solar_collector_by_days_solar_heating_guarantee_rate = {{ last_week_solar_collector_by_days_solar_heating_guarantee_rate|safe }};
+    var load_by_days_time = {{ load_by_days_time|safe }};
+    var max_load_by_days = {{ max_load_by_days|safe }};
+    var min_load_by_days = {{ min_load_by_days|safe }};
+    var avg_load_by_days = {{ avg_load_by_days|safe }};
+    var calories_time_data = {{ calories_time_data|safe }};
+    var high_temperature_plate_exchange_heat = {{ high_temperature_plate_exchange_heat|safe }};
+    var wshp_heat = {{ wshp_heat|safe }};
+    var rate_time = {{ rate_time|safe }};
+    var high_temperature_plate_exchange_heat_rate = {{ high_temperature_plate_exchange_heat_rate|safe }};
+</script>
+
+{% endblock %}
+{% block title_header %}
+<div class="header">
+    <h1 class="page-header">
+        上周数据一览
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Dashboard</a></li>
+        <li class="active">LAST WEEK DATA</li>
+    </ol>
+</div>
+{% endblock %}
+{% block content %}
+<div class="dashboard-cards">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+
+            <div class="card horizontal cardIcon waves-effect waves-dark">
+                <div class="card-image red">
+                    <i class="material-icons dp48">equalizer</i>
+                </div>
+                <div class="card-stacked red">
+                    <div class="card-content">
+                        <h3>{{max_load}} kW</h3>
+                    </div>
+                    <div class="card-action">
+                        <strong>上周最大负荷</strong>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+
+            <div class="card horizontal cardIcon waves-effect waves-dark">
+                <div class="card-image orange">
+                    <i class="material-icons dp48">equalizerkWh</i>
+                </div>
+                <div class="card-stacked orange">
+                    <div class="card-content">
+                        <h3>{{min_load}} kW</h3>
+                    </div>
+                    <div class="card-action">
+                        <strong>上周最小负荷</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+
+            <div class="card horizontal cardIcon waves-effect waves-dark">
+                <div class="card-image green">
+                    <i class="material-icons dp48">equalizer</i>
+                </div>
+                <div class="card-stacked green">
+                    <div class="card-content">
+                        <h3>{{avg_load}} kW</h3>
+                    </div>
+                    <div class="card-action">
+                        <strong>上周平均负荷</strong>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="card">
+            <div class="card-image">
+                <div id="load_by_days" style="width:100%;height:400px"></div>
+            </div>
+            <div class="card-action">
+                <b>过去一周负荷值</b>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="cirStats">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="card">
+                        <div class="card-image donutpad">
+                            <div id="last_week_solar_collector" style="width: 100%;height:300px"></div>
+                        </div>
+<!--                        <div class="card-action">-->
+<!--                            <b>Donut Chart Example</b>-->
+<!--                        </div>-->
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="card">
+                        <div class="card-image donutpad">
+                            <div id="last_week_heat_storage_replenishment" style="width: 100%;height:300px"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div><!--/.row-->
+</div>
+
+<div class="row">
+
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="cirStats">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="card">
+                        <div class="card-image donutpad">
+                            <div id="last_week_heat_water_replenishment" style="width: 100%;height:300px"></div>
+                        </div>
+<!--                        <div class="card-action">-->
+<!--                            <b>Donut Chart Example</b>-->
+<!--                        </div>-->
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="card">
+                        <div class="card-image donutpad">
+                            <div id="last_week_solar_side_replenishment" style="width: 100%;height:300px"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div><!--/.row-->
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="card">
+            <div class="card-image">
+                <div id="last_week_solar_collector_by_days" style="width:100%;height:400px"></div>
+            </div>
+            <div class="card-action">
+                <b>过去一周太阳能集热分析</b>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6">
+        <div class="card">
+            <div class="card-image">
+                <div id="calories_by_days" style="width:100%;height:300px"></div>
+            </div>
+            <div class="card-action">
+                <b>制热量情况</b>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-6">
+        <div class="card">
+            <div class="card-image">
+                <div id="power_rate" style="width:100%;height:300px"></div>
+            </div>
+            <div class="card-action">
+                <b>高温板换制热功率</b>
+            </div>
+        </div>
+    </div><!--/.row-->
+</div>
+
+
+<!-- /. ROW--><!-- /. ROW-->
+
+
+
+{% endblock %}
+
+{% block script_extends_tail %}
+<script src="{% static 'assets/js/kamba/last_week.js' %}"></script>
+
+{% endblock %}
+
+
