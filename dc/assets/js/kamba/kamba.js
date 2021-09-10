@@ -604,7 +604,7 @@ try {
             success: function (data) {
                 kamba_wshp_cop_chart.hideLoading();
                 kamba_wshp_cop_chart.setOption(
-                    get_cop_pie_options(data['kamba_system_cop'][data['kamba_system_cop'].length-1])
+                    get_cop_pie_options(data['kamba_wshp_cop'][data['kamba_wshp_cop'].length-1])
                 );
 
                 kamba_wshp_cop_chart_chart.hideLoading();
@@ -1339,7 +1339,7 @@ try {
 
                 return_water_temp_with_temp_chart.hideLoading();
                 return_water_temp_with_temp_chart.setOption(
-                    get_water_provider_options(data['return_water_temp_with_temp'], '末端回水温差')
+                    get_water_provider_options(data['return_water_temp_with_temp'], '末端回水温度')
                 );
 
                 end_supply_and_return_water_temp_chart.hideLoading();
