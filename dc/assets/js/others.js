@@ -51,7 +51,7 @@ if (document.location.href.indexOf('.html')){
                     "db": db
                 },
                 async: false,
-                cache: true,
+                cache: false,
                 success: function (data) {
                     start = data["start"];
                     end = data["end"];
