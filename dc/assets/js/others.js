@@ -6,10 +6,19 @@ var last_month_date = "";
 var end = "";
 var db = "";
 
+
+
 function cli(obj) {
-    window.open(
-        'http://' + document.location.host + '/dc/' + obj.name, '_blank'
-    );
+    if (document.location.href.indexOf('cdqrmi') < 0){
+        window.open(
+            'http://' + document.location.host + '/webs/dc/' + obj.name, '_blank'
+        );
+    }else {
+        window.open(
+            'http://' + document.location.host + '/dc/' + obj.name, '_blank'
+        );
+    }
+
 }
 
 function loading_all(charts) {
@@ -25,6 +34,8 @@ function resize_chart(charts) {
         }
     };
 }
+
+
 
 $("#sideNav").click(function(){
     setTimeout(function(){
@@ -42,6 +53,14 @@ if (document.location.href.indexOf('.html')){
         } else {
             db = 'cona';
         }
+
+        if (document.location.href.indexOf('cdqrmi') < 0){
+            url = "http://127.0.0.1:8000/api/cona/";
+            kamba_url = "http://127.0.0.1:8000/api/kamba/";
+            common_url = "http://127.0.0.1:8000/api/common/";
+        }
+        console.log(url, common_url);
+
         $.ajax(
             {
                 url: common_url,
