@@ -2,31 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb20b6d7-fe1d-4e0f-ba76-1ced7a29ec7c" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/dc/assets/css/login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dc/assets/img/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dc/assets/js/login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dc/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/assets/js/kamba/kamba_cop.js" beforeDir="false" afterPath="$PROJECT_DIR$/dc/assets/js/kamba/kamba_cop.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dc/assets/js/others.js" beforeDir="false" afterPath="$PROJECT_DIR$/dc/assets/js/others.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/cona.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/cona.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/cona/comprehensive_cop.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/cona/comprehensive_cop.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/cona/core_data.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/cona/core_data.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/cona/cost_saving.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/cona/cost_saving.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/cona/geothermal_well_temperature.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/cona/geothermal_well_temperature.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/cona/geothermal_wells_heat_provide.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/cona/geothermal_wells_heat_provide.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/cona/heat_supply_with_temperature.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/cona/heat_supply_with_temperature.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/cona/last_week_data.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/cona/last_week_data.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/cona/room_network_water_supply_temperature.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/cona/room_network_water_supply_temperature.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/cona/water_heat_pump.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/cona/water_heat_pump.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/kamba.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/kamba.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/kamba/cost_saving.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/kamba/cost_saving.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/kamba/heat_total_and_supply_days.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/kamba/heat_total_and_supply_days.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/kamba/kamba_cop.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/kamba/kamba_cop.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/kamba/last_week.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/kamba/last_week.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/kamba/last_week_bak.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/kamba/pool_temperature.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/kamba/pool_temperature.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/kamba/supply_return_water_temp_diff.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/kamba/supply_return_water_temp_diff.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -52,11 +28,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cost_saving.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cost_saving.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dc/cona/cost_saving.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="800">
-              <caret line="76" column="32" lean-forward="true" selection-start-line="76" selection-start-column="32" selection-end-line="76" selection-end-column="32" />
+            <state relative-caret-position="460">
+              <caret line="59" column="45" lean-forward="true" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="others.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dc/assets/js/others.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="21" column="63" lean-forward="true" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
+              <folding>
+                <element signature="n#!!block;n#cli#0" />
+                <element signature="n#!!block;n#loading_all#0" />
+                <element signature="n#!!block;n#resize_chart#0" />
+                <element signature="n#!!block;n#getCookie#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -253,15 +244,16 @@
       <workItem from="1632446221783" duration="5979000" />
       <workItem from="1632822776126" duration="480000" />
       <workItem from="1632878121204" duration="1856000" />
-      <workItem from="1632964890254" duration="6272000" />
+      <workItem from="1632964890254" duration="6613000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40199000" />
+    <option name="totallyTimeSpent" value="40540000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18020834" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -740,19 +732,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dc/assets/js/others.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="86" column="26" lean-forward="true" selection-start-line="86" selection-start-column="26" selection-end-line="86" selection-end-column="26" />
-          <folding>
-            <element signature="n#!!block;n#cli#0" />
-            <element signature="n#!!block;n#loading_all#0" />
-            <element signature="n#!!block;n#resize_chart#0" />
-            <element signature="n#!!block;n#getCookie#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dc/assets/js/login.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="520">
@@ -768,8 +747,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dc/cona/cost_saving.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="800">
-          <caret line="76" column="32" lean-forward="true" selection-start-line="76" selection-start-column="32" selection-end-line="76" selection-end-column="32" />
+        <state relative-caret-position="460">
+          <caret line="59" column="45" lean-forward="true" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dc/assets/js/others.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="21" column="63" lean-forward="true" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
+          <folding>
+            <element signature="n#!!block;n#cli#0" />
+            <element signature="n#!!block;n#loading_all#0" />
+            <element signature="n#!!block;n#resize_chart#0" />
+            <element signature="n#!!block;n#getCookie#0" />
+          </folding>
         </state>
       </provider>
     </entry>
