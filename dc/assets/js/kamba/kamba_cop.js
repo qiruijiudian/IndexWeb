@@ -268,7 +268,7 @@ try {
             success: function (data) {
                 kamba_wshp_cop_chart.hideLoading();
                 kamba_wshp_cop_chart.setOption(
-                    get_cop_pie_options(data['kamba_system_cop'][data['kamba_system_cop'].length-1])
+                    get_cop_pie_options(data['kamba_wshp_cop'][data['kamba_wshp_cop'].length-1])
                 );
 
                 kamba_wshp_cop_chart_chart.hideLoading();
