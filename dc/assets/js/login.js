@@ -1,3 +1,4 @@
+
 function removeDialog() {
     setInterval(() => {
         if ($(".dialog").length > 0) {
@@ -60,7 +61,7 @@ $("#login").click(
 
         $.ajax(
             {
-                url: 'http://127.0.0.1:8000/api/common/',
+                url: common_url,
                 type: "POST",
                 data: {
                     "key": "login",
