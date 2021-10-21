@@ -1,3 +1,15 @@
+function cli(obj) {
+    if (document.location.href.indexOf('cdqrmi') < 0){
+        window.open(
+            'http://' + document.location.host + '/webs/dc/' + obj.name, '_blank'
+        );
+    }else {
+        window.open(
+            'http://' + document.location.host + '/dc/' + obj.name, '_blank'
+        );
+    }
+
+}
 
 function loading_all(charts) {
     for (var i=0;i<charts.length;i++){
@@ -14,25 +26,12 @@ function resize_chart(charts) {
 }
 
 function delete_cookie() {
-    // console.log('删除前', document.cookie);
-    var cookie_date = new Date();
-    cookie_date.setDate(cookie_date.getDate() - 30);
-    document.cookie = `auth=;expires=${cookie_date.toUTCString()}`;
-    // console.log('删除后', document.cookie);
-
-
+    console.log('删除前', document.cookie);
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    document.cookie = `auth=;expires=Thu, 01 Jan 1970 00:00:00 UTC`;
+    console.log('删除后', document.cookie);
 }
-
-function getCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
-        var c = ca[i].trim();
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-    }
-    return null;
-}
-
 
 $("#sideNav").click(function(){
     setTimeout(function(){
@@ -74,11 +73,10 @@ if (document.location.href.indexOf('.html')){
 $("#logout").click(
     function () {
         delete_cookie();
-        now_href = document.location.href;
-        if (now_href.includes('cona.html') || now_href.includes('kamba.html')){
-            window.location.href = 'login.html?permission_error'
+        if (document.location.href.indexOf('cdqrmi') > -1){
+            window.location.href = 'http://' + document.location.host + '/dc/login.html?permission_error'
         }else {
-            window.location.href = '../login.html?permission_error'
+            window.location.href = 'http://' + document.location.host + '/webs/dc/' + 'login.html?permission_error'
         }
     }
 );

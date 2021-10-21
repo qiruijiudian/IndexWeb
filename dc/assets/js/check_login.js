@@ -11,7 +11,13 @@ if (document.location.href.indexOf('cdqrmi') < 0){
     url = "http://127.0.0.1:8000/api/cona/";
     kamba_url = "http://127.0.0.1:8000/api/kamba/";
     common_url = "http://127.0.0.1:8000/api/common/";
-    login_url = 'http://' + document.location.host + "/webs/dc/login.html";
+    now_href = document.location.href;
+    if (now_href.includes('cona.html') || now_href.includes('kamba.html')){
+        login_url = 'login.html?permission_error'
+    }else {
+        login_url = '../login.html?permission_error'
+    }
+
 }
 
 function getCookie(name) {
@@ -27,7 +33,7 @@ function getCookie(name) {
 function check_login() {
     var token = getCookie('auth');
     if (token == null || token.length < 1){
-        window.location.href = login_url + '?permission_error';
+        window.location.href = login_url;
     }else {
         $.ajax(
             {
