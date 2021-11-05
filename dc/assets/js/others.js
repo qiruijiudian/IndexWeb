@@ -23,6 +23,17 @@ function delete_cookie() {
 
 }
 
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i=0;i<vars.length;i++) {
+        var pair = vars[i].split("=");
+        if(pair[0] == variable){return pair[1];}
+    }
+    return(false);
+}
+
+
 function getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
@@ -33,6 +44,26 @@ function getCookie(name) {
     return null;
 }
 
+function is_large_range(){
+    var link = document.location.search;
+    try {
+        if (link.includes('start_time') && link.includes('end_time')){
+            var time_range = Date.parse(getQueryVariable("end_time").replace("%20", " ").replace("+", " ")) - Date.parse(getQueryVariable("start_time").replace("%20", " ").replace("+", " "));
+            if (time_range > 1000 * 60 * 60 * 24 * 7){
+                return true;
+            } else {
+                return false;
+            }
+        }else {
+            return false;
+        }
+    }catch (e) {
+        return false
+    }
+
+}
+
+var is_large = is_large_range();
 
 $("#sideNav").click(function(){
     setTimeout(function(){
@@ -43,32 +74,72 @@ $("#sideNav").click(function(){
 });
 
 if (document.location.href.indexOf('.html')){
-    try {
-        //latest_time
 
-        $.ajax(
-            {
-                url: common_url,
-                type: "POST",
-                data: {
-                    "key": "latest_time",
-                    "db": db
-                },
-                async: false,
-                cache: false,
-                success: function (data) {
-                    start = data["start"];
-                    end = data["end"];
-                    last_month_date = data["last_month_date"];
-                },
-                error: function (xhr) {
-                    console.log("post latest_time error：", xhr);
+    if (window.location.href.includes("start_time") && window.location.href.includes("end_time")){
+        start = getQueryVariable("start_time").replace("%20", " ").replace("+", " ");
+        end = getQueryVariable("end_time").replace("%20", " ").replace("+", " ");
+        last_month_date = start;
+        console.log(start, end);
+        try {
+            //latest_time
+            $.ajax(
+                {
+                    url: common_url,
+                    type: "POST",
+                    data: {
+                        "key": "relative_time",
+                        "db": db,
+                        "end": end
+                    },
+                    async: false,
+                    cache: false,
+                    success: function (data) {
+                        last_month_date = data["last_month_date"];
+                        start_limit = data["start_limit"];
+                        end_limit = data["end_limit"];
+                    },
+                    error: function (xhr) {
+                        console.log("post latest_time error：", xhr);
+                        window.location.href = "http://cdqrmi.com";
+                    }
                 }
-            }
-        )
-    }catch (e) {
-        console.log("ajax latest_time error：", e);
+            )
+        }catch (e) {
+            console.log("ajax latest_time error：", e);
+            window.location.href = "http://cdqrmi.com";
+        }
+
+    }else {
+        try {
+            //latest_time
+            $.ajax(
+                {
+                    url: common_url,
+                    type: "POST",
+                    data: {
+                        "key": "latest_time",
+                        "db": db
+                    },
+                    async: false,
+                    cache: false,
+                    success: function (data) {
+                        start = data["start"];
+                        end = data["end"];
+                        last_month_date = data["last_month_date"];
+                        start_limit = data["start_limit"];
+                        end_limit = data["end_limit"];
+                    },
+                    error: function (xhr) {
+                        console.log("post latest_time error：", xhr);
+                    }
+                }
+            )
+        }catch (e) {
+            console.log("ajax latest_time error：", e);
+            window.location.href = "http://cdqrmi.com";
+        }
     }
+
 }
 
 $("#logout").click(

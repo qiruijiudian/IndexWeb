@@ -165,7 +165,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="waves-effect waves-dark show-modal" data-toggle="modal" data-target="#myModal"><i class="fa fa-calendar"></i> 日期选择 </a>
+                    <a class="waves-effect waves-dark show-modal" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-calendar"></i> 日期选择 </a>
                 </li>
 
 
@@ -449,7 +449,7 @@
                 </div><!--/.row-->
             </div>
 
-            <div class="row">
+            <div class="row" id="water_temp_heat">
                 <div class="col-xs-12 col-sm-12 col-md-6">
                     <div class="card">
 
@@ -610,28 +610,33 @@
                 </div>
 
             </div>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="my_modal">
                         <div class="modal-dialog modal-l">
                             <div class="card modal-content">
                                 <div class="card-action">
-                                    Basic Form Elements
+                                    日期范围选择
                                 </div>
                                 <div class="card-content">
                                     <form class="col s12">
-                                        <div class="row">
+                                        <div class="form-group c-datepicker-date-editor J-datepicker-range" id="date_editor">
                                             <div class="input-field col s12">
-                                                <i class="material-icons prefix">account_circle</i>
-                                                <input id="icon_prefix" type="text" class="validate">
-                                                <label for="icon_prefix" class="">First Name</label>
+                                                <i class="material-icons prefix">date_range</i>
+                                                <input id="start_time" type="text" class="validate form-control c-datepicker-data-input">
+                                                <label for="start_time" class="">开始时间</label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <i class="material-icons prefix">phone</i>
-                                                <input id="icon_telephone" type="tel" class="validate">
-                                                <label for="icon_telephone" class="">Telephone</label>
+                                                <i class="material-icons prefix">date_range</i>
+                                                <input id="end_time" type="text" class="validate form-control c-datepicker-data-input">
+                                                <label for="end_time" class="">结束时间</label>
                                             </div>
+
+                                        </div>
+                                        <div class="input-field card-content" id="date_button">
+                                            <a id="cancel_date" class="waves-light btn" data-dismiss="modal" aria-hidden="true">取消</a>
+                                            <a id="confirm_date" class="waves-light btn">确认</a>
                                         </div>
                                     </form>
                                     <div class="clearBoth"></div>
@@ -643,120 +648,6 @@
                 </div>
 
             </div>
-
-
-
-            <!--<div class="row">-->
-                <!--<div class="col-xs-12">-->
-                    <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>-->
-
-                    <!--<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">-->
-                        <!--<div class="modal-dialog modal-lg">-->
-                            <!--<div class="modal-content">-->
-
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-            <!--</div>-->
-
-
-
-
-            <!--<div class="row">-->
-                <!--<div class="col-lg-6">-->
-                    <!--<div class="card">-->
-                        <!--<div class="card-action">-->
-                            <!--Basic Form Elements-->
-                        <!--</div>-->
-                        <!--<div class="card-content">-->
-                            <!--<form class="col s12">-->
-                                <!--<div class="row">-->
-                                    <!--<div class="input-field col s6">-->
-                                        <!--<i class="material-icons prefix">account_circle</i>-->
-                                        <!--<input id="icon_prefix" type="text" class="validate">-->
-                                        <!--<label for="icon_prefix" class="">First Name</label>-->
-                                    <!--</div>-->
-                                    <!--<div class="input-field col s6">-->
-                                        <!--<i class="material-icons prefix">phone</i>-->
-                                        <!--<input id="icon_telephone" type="tel" class="validate">-->
-                                        <!--<label for="icon_telephone" class="">Telephone</label>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</form>-->
-
-                            <!--<form class="col s12">-->
-                                <!--<div class="row">-->
-                                    <!--<div class="input-field col s12">-->
-                                        <!--<input id="email" type="email" class="validate">-->
-                                        <!--<label for="email" data-error="wrong" data-success="right" class="">Email</label>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</form>-->
-
-                            <!--<form class="col s12">-->
-                                <!--<div class="row">-->
-                                    <!--<div class="input-field col s12">-->
-                                        <!--<textarea id="textarea1" class="materialize-textarea"></textarea>-->
-                                        <!--<label for="textarea1">Textarea</label>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</form>-->
-
-
-                            <!--&lt;!&ndash; Switch &ndash;&gt;-->
-                            <!--<div class="switch">-->
-                                <!--<label>-->
-                                    <!--Off-->
-                                    <!--<input type="checkbox">-->
-                                    <!--<span class="lever"></span>-->
-                                    <!--On-->
-                                <!--</label>-->
-                            <!--</div>-->
-
-                            <!--&lt;!&ndash; Disabled Switch &ndash;&gt;-->
-                            <!--<div class="switch">-->
-                                <!--<label>-->
-                                    <!--Off-->
-                                    <!--<input disabled="" type="checkbox">-->
-                                    <!--<span class="lever"></span>-->
-                                    <!--On-->
-                                <!--</label>-->
-                            <!--</div>-->
-                            <!--<div class="clearBoth"></div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-                <!--&lt;!&ndash; /.panel-body &ndash;&gt;-->
-            <!--</div>-->
-
-            <!--<div class="row">-->
-                <!--<div class="col-md-12">-->
-                    <!--<div id="modal-box">-->
-                        <!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">-->
-                            <!--<div class="modal-dialog" role="document">-->
-                                <!--<div class="modal-content">-->
-                                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>-->
-                                    <!--<div class="modal-body">-->
-                                        <!--<h3 class="title">日期选择</h3>-->
-                                        <!--<div class="form-group c-datepicker-date-editor J-datepicker-range" id="input_outer">-->
-                                            <!--<input placeholder="开始日期" name="" class="form-control c-datepicker-data-input" value="2018-01-01 04:00:00" style="margin-top: 15px">-->
-                                            <!--<input placeholder="结束日期" name="" class="form-control c-datepicker-data-input" value="2018-03-01 04:00:00" style="margin-top: 15px">-->
-                                        <!--</div>-->
-                                        <!--<button class="subscribe">确认提交</button>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-
-
-
-
         </div>
         <!-- /. PAGE INNER  -->
     </div>

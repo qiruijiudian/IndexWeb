@@ -14,6 +14,17 @@ var load_pie_dom = document.getElementById("load_pie");
 var supply_return_water_temp_dom = document.getElementById("supply_return_water_temp");
 var water_replenishment_dom = document.getElementById("water_replenishment");
 
+
+
+if (is_large){
+    $("#max_load_title").text("最大负荷");
+    $("#min_load_title").text("最小负荷");
+    $("#cost_saving_title").text("节省供暖总费用");
+    $("#temp_diff_title").text("供回水温度温差数据");
+    $("#load_title").text("负荷值");
+    $("#water_replenishment_title").text("补水量及补水量限值");
+}
+
 //***************初始化图表***********************************
 var com_cop_chart_chart = echarts.init(com_cop_chart_dom);
 var com_cop_pie_chart = echarts.init(com_cop_pie_dom);
@@ -348,85 +359,175 @@ try {
             cache: true,
             success: function (data) {
                 geothermal_wells_heat_provide_chart.hideLoading();
-                geothermal_wells_heat_provide_chart.setOption(
-                    {
-                        grid: {
-                            x: 110,
-                            x2: 80,
-                        },
-                        tooltip: {
-                            trigger: 'axis',
-                            axisPointer: {
-                                type: 'cross',
-                                crossStyle: {
-                                    color: '#999'
-                                }
-                            }
-                        },
-                        toolbox: {
-                            feature: {
-                                dataView: {show: true, readOnly: false},
-                                magicType: {show: true, type: ['line', 'bar']},
-                                restore: {show: true},
-                                saveAsImage: {show: true}
-                            }
-                        },
-                        legend: {
-                            data: ['高温板换制热量', '水源热泵制热量', '地热井可提供高温热量', '地热井可提供低温热量']
-                        },
-                        xAxis: [
-                            {
-                                type: 'category',
-                                name: '日期',
-                                data: data['time_data'],
+                if (is_large){
+                    geothermal_wells_heat_provide_chart.setOption(
+                        {
+                            grid: {
+                                x: 110,
+                                x2: 80,
+                            },
+                            tooltip: {
+                                trigger: 'axis',
                                 axisPointer: {
-                                    type: 'shadow'
+                                    type: 'cross',
+                                    crossStyle: {
+                                        color: '#999'
+                                    }
                                 },
-                                axisLabel: {
-                                    interval:0,
-                                    rotate:40
+
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataView: {show: true, readOnly: false},
+                                    magicType: {show: true, type: ['line', 'bar']},
+                                    restore: {show: true},
+                                    saveAsImage: {show: true},
+                                    dataZoom: {
+                                        yAxisIndex: 'none'
+                                    }
                                 }
-                            }
-                        ],
-                        yAxis: [
-                            {
-                                type: 'value',
-                                name: '热量(kWh)',
-                                min: 0,
-                                max: 150000,
-                                axisLabel: {
-                                    formatter: '{value}' + ' kWh'
+                            },
+                            dataZoom: [
+                                {
+                                    show: true,
+                                    realtime: true,
+                                    start: 30,
+                                    end: 70,
+                                    xAxisIndex: [0, 1]
                                 }
-                            }
-                        ],
-                        series: [
-                            {
-                                name: '高温板换制热量',
-                                type: 'bar',
-                                stack: '制热量',
-                                data: data['high_temp_plate_exchange_heat_production']
+                            ],
+                            legend: {
+                                data: ['高温板换制热量', '水源热泵制热量', '地热井可提供高温热量', '地热井可提供低温热量']
                             },
-                            {
-                                name: '水源热泵制热量',
-                                type: 'bar',
-                                stack: '制热量',
-                                data: data['water_heat_pump_heat_production']
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    name: '日期',
+                                    data: data['time_data'],
+                                    axisPointer: {
+                                        type: 'shadow'
+                                    }
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    type: 'value',
+                                    name: '热量(kWh)',
+                                    min: 0,
+                                    // max: 150000,
+                                    axisLabel: {
+                                        formatter: '{value}' + ' kWh'
+                                    }
+                                }
+                            ],
+                            series: [
+                                {
+                                    name: '高温板换制热量',
+                                    type: 'bar',
+                                    stack: '制热量',
+                                    data: data['high_temp_plate_exchange_heat_production']
+                                },
+                                {
+                                    name: '水源热泵制热量',
+                                    type: 'bar',
+                                    stack: '制热量',
+                                    data: data['water_heat_pump_heat_production']
+                                },
+                                {
+                                    name: '地热井可提供高温热量',
+                                    type: 'line',
+                                    data: data['geothermal_wells_high_heat_provide']
+                                },
+                                {
+                                    name: '地热井可提供低温热量',
+                                    type: 'line',
+                                    data: data['geothermal_wells_low_heat_provide']
+                                }
+                            ]
+                        }
+                    );
+                }else {
+                    geothermal_wells_heat_provide_chart.setOption(
+                        {
+                            grid: {
+                                x: 110,
+                                x2: 80,
                             },
-                            {
-                                name: '地热井可提供高温热量',
-                                type: 'line',
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    type: 'cross',
+                                    crossStyle: {
+                                        color: '#999'
+                                    }
+                                }
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataView: {show: true, readOnly: false},
+                                    magicType: {show: true, type: ['line', 'bar']},
+                                    restore: {show: true},
+                                    saveAsImage: {show: true}
+                                }
+                            },
+                            legend: {
+                                data: ['高温板换制热量', '水源热泵制热量', '地热井可提供高温热量', '地热井可提供低温热量']
+                            },
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    name: '日期',
+                                    data: data['time_data'],
+                                    axisPointer: {
+                                        type: 'shadow'
+                                    },
+                                    axisLabel: {
+                                        interval:0,
+                                        rotate:40
+                                    }
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    type: 'value',
+                                    name: '热量(kWh)',
+                                    min: 0,
+                                    // max: 150000,
+                                    axisLabel: {
+                                        formatter: '{value}' + ' kWh'
+                                    }
+                                }
+                            ],
+                            series: [
+                                {
+                                    name: '高温板换制热量',
+                                    type: 'bar',
+                                    stack: '制热量',
+                                    data: data['high_temp_plate_exchange_heat_production']
+                                },
+                                {
+                                    name: '水源热泵制热量',
+                                    type: 'bar',
+                                    stack: '制热量',
+                                    data: data['water_heat_pump_heat_production']
+                                },
+                                {
+                                    name: '地热井可提供高温热量',
+                                    type: 'line',
 //            yAxisIndex: 1,
-                                data: data['geothermal_wells_high_heat_provide']
-                            },
-                            {
-                                name: '地热井可提供低温热量',
-                                type: 'line',
+                                    data: data['geothermal_wells_high_heat_provide']
+                                },
+                                {
+                                    name: '地热井可提供低温热量',
+                                    type: 'line',
 //            yAxisIndex: 1,
-                                data: data['geothermal_wells_low_heat_provide']
-                            }
-                        ]
-                    }
-                );
+                                    data: data['geothermal_wells_low_heat_provide']
+                                }
+                            ]
+                        }
+                    );
+                }
+
             },
             error: function (xhr) {
                 console.log("post geothermal_wells_heat_provide error：", xhr);
@@ -452,6 +553,8 @@ try {
             cache: true,
             success: function (data) {
                 com_cop_chart_chart.hideLoading();
+                if (!data["status"].includes("正常")) $("#com_cop_title").text(`系统综合COP（${data["status"]}）`);
+
                 com_cop_chart_chart.setOption(
                     get_com_cop_chart_options(data)
                 );
@@ -619,110 +722,219 @@ try {
             },
             cache: true,
             success: function (data) {
-                $('#cost_saving_sum').text(data['charge_sum'] + '元');
+                $('#cost_saving_sum').text(data['charge_sum'] + '万元');
                 cost_saving_chart.hideLoading();
-                cost_saving_chart.setOption(
-                    {
-                        title:  {
-                            show: true,
-                            text: '上月节省供暖费用',
-                            left: 'center'
-                        },
-                        tooltip: {
-                            trigger: 'axis',
-                            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-                                type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-                            }
-                        },
-                        toolbox: {
-                            feature: {
-                                dataZoom: {yAxisIndex: 'none'},
-                                dataView: {show: true, readOnly: false},
-                                magicType: {show: true, type: ['line', 'bar']},
-                                restore: {show: true},
-                                saveAsImage: {show: true}
-                            }
-                        },
-                        dataZoom: [
-                            {
-                                show: true,
-                                realtime: true,
-                                type: 'slider',
-                                start: 10,
-                                end: 40
-                            }
-                        ],
-                        grid: {
-                            left: '5%',
-                            right: '10%',
-                            bottom: '12%',
-                            containLabel: true
-                        },
-                        xAxis: [
-                            {
-                                type: 'category',
-                                name: '日期',
-                                data: data['time_data'],
-                                axisTick: {
-                                    alignWithLabel: true
-                                },
-                                axisLabel: {
-                                    interval:0,
-                                    rotate:40
-                                }
-                            }
-                        ],
-                        yAxis: [
-                            {
-                                type: 'value',
-                                name: '节省供暖费用（元）'
-                            }
-                        ],
-
-                        series: [
-                            {
-                                name: '当日节省供暖费用/元',
-                                type: 'bar',
-                                barWidth: '40%',
-                                data: data['cost_saving']
-                            }
-                        ]
-                    }
-                );
-
                 cost_saving_high_low_pie_chart.hideLoading();
-                cost_saving_high_low_pie_chart.setOption(
-                    {
-                        title: {
-                            text: '上月节省供暖费用对比',
-                            x: 'left',
-                            y: 'top'
-                        },
-                        tooltip: {
-                            trigger: 'item'
-                        },
-                        legend: {
-                            orient: 'vertical',
-                            left: 'right',
-                        },
-                        series: [
-                            {
-                                name: '高低温节省供暖费用对比',
-                                type: 'pie',
-                                radius: '50%',
-                                data: data['cost_saving_high_low'],
+                if (is_large){
 
-                                emphasis: {
-                                    itemStyle: {
-                                        shadowBlur: 10,
-                                        shadowOffsetX: 0,
-                                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    cost_saving_chart.setOption(
+                        {
+                            title:  {
+                                show: true,
+                                text: '节省供暖费用',
+                                left: 'center'
+                            },
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                                }
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataZoom: {yAxisIndex: 'none'},
+                                    dataView: {show: true, readOnly: false},
+                                    magicType: {show: true, type: ['line', 'bar']},
+                                    restore: {show: true},
+                                    saveAsImage: {show: true}
+                                }
+                            },
+                            dataZoom: [
+                                {
+                                    show: true,
+                                    realtime: true,
+                                    type: 'slider',
+                                    start: 10,
+                                    end: 40
+                                }
+                            ],
+                            grid: {
+                                left: '5%',
+                                right: '10%',
+                                bottom: '12%',
+                                containLabel: true
+                            },
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    name: '日期',
+                                    data: data['time_data'],
+                                    axisTick: {
+                                        alignWithLabel: true
+                                    },
+                                    axisLabel: {
+                                        interval:0,
+                                        rotate:40
                                     }
                                 }
-                            }
-                        ]
-                    }
-                );
+                            ],
+                            yAxis: [
+                                {
+                                    type: 'value',
+                                    name: '节省供暖费用（元）'
+                                }
+                            ],
+
+                            series: [
+                                {
+                                    name: '当日节省供暖费用/元',
+                                    type: 'bar',
+                                    barWidth: '40%',
+                                    data: data['cost_saving']
+                                }
+                            ]
+                        }
+                    );
+
+
+                    cost_saving_high_low_pie_chart.setOption(
+                        {
+                            title: {
+                                text: '节省供暖费用对比',
+                                x: 'left',
+                                y: 'top'
+                            },
+                            tooltip: {
+                                trigger: 'item'
+                            },
+                            legend: {
+                                orient: 'vertical',
+                                left: 'right',
+                            },
+                            series: [
+                                {
+                                    name: '高低温节省供暖费用对比',
+                                    type: 'pie',
+                                    radius: '50%',
+                                    data: data['cost_saving_high_low'],
+
+                                    emphasis: {
+                                        itemStyle: {
+                                            shadowBlur: 10,
+                                            shadowOffsetX: 0,
+                                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    );
+                }else {
+                    cost_saving_chart.setOption(
+                        {
+                            title:  {
+                                show: true,
+                                text: '上月节省供暖费用',
+                                left: 'center'
+                            },
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                                }
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataZoom: {yAxisIndex: 'none'},
+                                    dataView: {show: true, readOnly: false},
+                                    magicType: {show: true, type: ['line', 'bar']},
+                                    restore: {show: true},
+                                    saveAsImage: {show: true}
+                                }
+                            },
+                            dataZoom: [
+                                {
+                                    show: true,
+                                    realtime: true,
+                                    type: 'slider',
+                                    start: 10,
+                                    end: 40
+                                }
+                            ],
+                            grid: {
+                                left: '5%',
+                                right: '10%',
+                                bottom: '12%',
+                                containLabel: true
+                            },
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    name: '日期',
+                                    data: data['time_data'],
+                                    axisTick: {
+                                        alignWithLabel: true
+                                    },
+                                    axisLabel: {
+                                        interval:0,
+                                        rotate:40
+                                    }
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    type: 'value',
+                                    name: '节省供暖费用（元）'
+                                }
+                            ],
+
+                            series: [
+                                {
+                                    name: '当日节省供暖费用/元',
+                                    type: 'bar',
+                                    barWidth: '40%',
+                                    data: data['cost_saving']
+                                }
+                            ]
+                        }
+                    );
+
+
+                    cost_saving_high_low_pie_chart.setOption(
+                        {
+                            title: {
+                                text: '上月节省供暖费用对比',
+                                x: 'left',
+                                y: 'top'
+                            },
+                            tooltip: {
+                                trigger: 'item'
+                            },
+                            legend: {
+                                orient: 'vertical',
+                                left: 'right',
+                            },
+                            series: [
+                                {
+                                    name: '高低温节省供暖费用对比',
+                                    type: 'pie',
+                                    radius: '50%',
+                                    data: data['cost_saving_high_low'],
+
+                                    emphasis: {
+                                        itemStyle: {
+                                            shadowBlur: 10,
+                                            shadowOffsetX: 0,
+                                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    );
+                }
+
+
             },
             error: function (xhr) {
                 console.log("post cost_saving error：", xhr);
@@ -791,123 +1003,241 @@ try {
             },
             cache: true,
             success: function (data) {
-                for (var i=0;i<data['supply_return_water_temp_table_data'].length;i++){
-                    if (data['supply_return_water_temp_table_data'][i][0] > 0){
-                        var tr_html = '<tr class="info">' + '<td>{0}</td>' + '<td>{1}</td>' + '<td>{2}</td>' + '<td>{3}</td>' + '</tr>';
-                        tr_html = tr_html.format(
-                            data['supply_return_water_temp_table_data'][i][1],
-                            data['supply_return_water_temp_table_data'][i][2],
-                            data['supply_return_water_temp_table_data'][i][3],
-                            data['supply_return_water_temp_table_data'][i][4],
-                        );
-
-                    } else {
-                        var tr_html = '<tr class="success">' + '<td>{0}</td>' + '<td>{1}</td>' + '<td>{2}</td>' + '<td>{3}</td>' + '</tr>';
-                        tr_html = tr_html.format(
-                            data['supply_return_water_temp_table_data'][i][1],
-                            data['supply_return_water_temp_table_data'][i][2],
-                            data['supply_return_water_temp_table_data'][i][3],
-                            data['supply_return_water_temp_table_data'][i][4],
-                        );
-                    }
-                    $("#supply_return_water_temp_table_data").append(tr_html);
-                }
-
                 supply_return_water_temp_chart.hideLoading();
-                supply_return_water_temp_chart.setOption(
-                    {
-                        tooltip: {
-                            trigger: 'axis',
+                if (is_large){
+                    $("#water_temp_heat").remove();
+
+                    supply_return_water_temp_chart.setOption(
+                        {
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    animation: false
+                                }
+                            },
+                            legend: {
+                                data: ['平均供水温度', '平均回水温度', '平均供回水温差'],
+                                left: 10
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataView: {show: true, readOnly: false},
+                                    magicType: {show: true, type: ['line', 'bar']},
+                                    restore: {show: true},
+                                    saveAsImage: {show: true},
+                                    dataZoom: {
+                                        yAxisIndex: 'none'
+                                    }
+                                }
+                            },
+
                             axisPointer: {
-                                animation: false
-                            }
-                        },
-                        legend: {
-                            data: ['平均供水温度', '平均回水温度', '平均供回水温差'],
-                            left: 10
-                        },
-                        toolbox: {
-                            feature: {
-                                dataView: {show: true, readOnly: false},
-                                magicType: {show: true, type: ['line', 'bar']},
-                                restore: {show: true},
-                                saveAsImage: {show: true}
-                            }
-                        },
+                                link: {xAxisIndex: 'all'}
+                            },
 
-                        axisPointer: {
-                            link: {xAxisIndex: 'all'}
-                        },
+                            grid: [{
+                                left: 70,
+                                right: 70,
+                                height: '25%'
+                            }, {
+                                left: 70,
+                                right: 70,
+                                top: '60%',
+                                height: '25%'
+                            }],
+                            dataZoom: [
+                                {
+                                    show: true,
+                                    realtime: true,
+                                    start: 30,
+                                    end: 70,
+                                    xAxisIndex: [0, 1]
+                                },
+                                {
+                                    type: 'inside',
+                                    realtime: true,
+                                    start: 30,
+                                    end: 70,
+                                    xAxisIndex: [0, 1]
+                                }
+                            ],
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    name: '日期',
+                                    boundaryGap: false,
+                                    axisLine: {onZero: true},
+                                    data: data['time_data']
+                                },
+                                {
+                                    gridIndex: 1,
+                                    type: 'category',
+                                    boundaryGap: false,
+                                    axisLine: {onZero: true},
+                                    data: data['time_data'],
+                                    position: 'top'
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    name: '温度(℃)',
+                                    type: 'value',
+                                    // max: 50,
+                                    // min: 20
+                                },
+                                {
+                                    gridIndex: 1,
+                                    name: '温差(℃)',
+                                    type: 'value',
+                                    max: 8,
+                                    inverse: true
+                                }
+                            ],
+                            series: [
+                                {
+                                    name: '平均供水温度',
+                                    type: 'line',
+                                    symbolSize: 8,
+                                    hoverAnimation: false,
+                                    data: data['water_supply_temperature']
+                                },
+                                {
+                                    name: '平均回水温度',
+                                    type: 'line',
+                                    symbolSize: 8,
+                                    hoverAnimation: false,
+                                    data: data['return_water_temperature']
+                                },
+                                {
+                                    name: '平均供回水温差',
+                                    type: 'line',
+                                    xAxisIndex: 1,
+                                    yAxisIndex: 1,
+                                    symbolSize: 8,
+                                    hoverAnimation: false,
+                                    data: data['supply_return_water_temp_diff']
+                                }
+                            ]
+                        }
+                    );
+                }else {
+                    for (var i=0;i<data['supply_return_water_temp_table_data'].length;i++){
+                        if (data['supply_return_water_temp_table_data'][i][0] > 0){
+                            var tr_html = '<tr class="info">' + '<td>{0}</td>' + '<td>{1}</td>' + '<td>{2}</td>' + '<td>{3}</td>' + '</tr>';
+                            tr_html = tr_html.format(
+                                data['supply_return_water_temp_table_data'][i][1],
+                                data['supply_return_water_temp_table_data'][i][2],
+                                data['supply_return_water_temp_table_data'][i][3],
+                                data['supply_return_water_temp_table_data'][i][4],
+                            );
 
-                        grid: [{
-                            left: 70,
-                            right: 70,
-                            height: '30%'
-                        }, {
-                            left: 70,
-                            right: 70,
-                            top: '60%',
-                            height: '30%'
-                        }],
-                        xAxis: [
-                            {
-                                type: 'category',
-                                name: '日期',
-                                boundaryGap: false,
-                                axisLine: {onZero: true},
-                                data: data['time_data']
-                            },
-                            {
-                                gridIndex: 1,
-                                type: 'category',
-                                boundaryGap: false,
-                                axisLine: {onZero: true},
-                                data: data['time_data'],
-                                position: 'top'
-                            }
-                        ],
-                        yAxis: [
-                            {
-                                name: '温度(℃)',
-                                type: 'value',
-                                max: 50,
-                                min: 20
-                            },
-                            {
-                                gridIndex: 1,
-                                name: '温差(℃)',
-                                type: 'value',
-                                max: 5,
-                                inverse: true
-                            }
-                        ],
-                        series: [
-                            {
-                                name: '平均供水温度',
-                                type: 'line',
-                                symbolSize: 8,
-                                hoverAnimation: false,
-                                data: data['water_supply_temperature']
-                            },
-                            {
-                                name: '平均回水温度',
-                                type: 'line',
-                                symbolSize: 8,
-                                hoverAnimation: false,
-                                data: data['return_water_temperature']
-                            },
-                            {
-                                name: '平均供回水温差',
-                                type: 'line',
-                                xAxisIndex: 1,
-                                yAxisIndex: 1,
-                                symbolSize: 8,
-                                hoverAnimation: false,
-                                data: data['supply_return_water_temp_diff']
-                            }
-                        ]
+                        } else {
+                            var tr_html = '<tr class="success">' + '<td>{0}</td>' + '<td>{1}</td>' + '<td>{2}</td>' + '<td>{3}</td>' + '</tr>';
+                            tr_html = tr_html.format(
+                                data['supply_return_water_temp_table_data'][i][1],
+                                data['supply_return_water_temp_table_data'][i][2],
+                                data['supply_return_water_temp_table_data'][i][3],
+                                data['supply_return_water_temp_table_data'][i][4],
+                            );
+                        }
+                        $("#supply_return_water_temp_table_data").append(tr_html);
                     }
-                );
+
+                    supply_return_water_temp_chart.setOption(
+                        {
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    animation: false
+                                }
+                            },
+                            legend: {
+                                data: ['平均供水温度', '平均回水温度', '平均供回水温差'],
+                                left: 10
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataView: {show: true, readOnly: false},
+                                    magicType: {show: true, type: ['line', 'bar']},
+                                    restore: {show: true},
+                                    saveAsImage: {show: true}
+                                }
+                            },
+
+                            axisPointer: {
+                                link: {xAxisIndex: 'all'}
+                            },
+
+                            grid: [{
+                                left: 70,
+                                right: 70,
+                                height: '30%'
+                            }, {
+                                left: 70,
+                                right: 70,
+                                top: '60%',
+                                height: '30%'
+                            }],
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    name: '日期',
+                                    boundaryGap: false,
+                                    axisLine: {onZero: true},
+                                    data: data['time_data']
+                                },
+                                {
+                                    gridIndex: 1,
+                                    type: 'category',
+                                    boundaryGap: false,
+                                    axisLine: {onZero: true},
+                                    data: data['time_data'],
+                                    position: 'top'
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    name: '温度(℃)',
+                                    type: 'value',
+                                    // max: 50,
+                                    // min: 20
+                                },
+                                {
+                                    gridIndex: 1,
+                                    name: '温差(℃)',
+                                    type: 'value',
+                                    max: 5,
+                                    inverse: true
+                                }
+                            ],
+                            series: [
+                                {
+                                    name: '平均供水温度',
+                                    type: 'line',
+                                    symbolSize: 8,
+                                    hoverAnimation: false,
+                                    data: data['water_supply_temperature']
+                                },
+                                {
+                                    name: '平均回水温度',
+                                    type: 'line',
+                                    symbolSize: 8,
+                                    hoverAnimation: false,
+                                    data: data['return_water_temperature']
+                                },
+                                {
+                                    name: '平均供回水温差',
+                                    type: 'line',
+                                    xAxisIndex: 1,
+                                    yAxisIndex: 1,
+                                    symbolSize: 8,
+                                    hoverAnimation: false,
+                                    data: data['supply_return_water_temp_diff']
+                                }
+                            ]
+                        }
+                    );
+                }
             },
             error: function (xhr) {
                 console.log("post water_supply_return_temperature error：", xhr);
@@ -984,74 +1314,158 @@ try {
                 $('#max_load').text(data['max_load'] + 'KW');
                 $('#min_load').text(data['min_load'] + 'KW');
                 load_data_chart.hideLoading();
-                load_data_chart.setOption(
-                    {
-                        grid: {
-                            left: 100,
-                            right: 80
-                        },
-                        tooltip: {
-                            trigger: 'axis',
-                            axisPointer: {
-                                type: 'cross',
-                                crossStyle: {
-                                    color: '#999'
-                                }
-                            }
-                        },
-                        toolbox: {
-                            feature: {
-                                dataView: {show: true, readOnly: false},
-                                magicType: {show: true, type: ['line', 'bar']},
-                                restore: {show: true},
-                                saveAsImage: {show: true}
-                            }
-                        },
-                        legend: {
-                            data: ['最小负荷', '平均负荷', '最大负荷']
-                        },
-                        xAxis: [
-                            {
-                                type: 'category',
-                                name: '日期',
-                                data: data['time_data'],
-                                axisPointer: {
-                                    type: 'shadow'
-                                }
-                            }
-                        ],
-                        yAxis: [
-                            {
-                                type: 'value',
-                                name: '负荷量（kWh）',
-                                min: 0,
-                                max: 7000,
-                                axisLabel: {
-                                    formatter: '{value} kW'
-                                }
-                            }
-                        ],
-                        series: [
-                            {
-                                name: '最小负荷',
-                                type: 'bar',
-                                data: data['min_loads']
-                            },
-                            {
-                                name: '平均负荷',
-                                type: 'bar',
-                                data: data['avg_loads']
-                            },
-                            {
-                                name: '最大负荷',
-                                type: 'line',
-                                yAxisIndex: 0,
-                                data: data['max_loads']
-                            }
-                        ]
-                    }
-                );
                 load_pie_chart.hideLoading();
+                if (is_large){
+
+                    load_data_chart.setOption(
+                        {
+                            grid: {
+                                left: 100,
+                                right: 80
+                            },
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    type: 'cross',
+                                    crossStyle: {
+                                        color: '#999'
+                                    }
+                                }
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataView: {show: true, readOnly: false},
+                                    magicType: {show: true, type: ['line', 'bar']},
+                                    restore: {show: true},
+                                    saveAsImage: {show: true},
+                                    dataZoom: {
+                                        yAxisIndex: 'none'
+                                    }
+                                }
+                            },
+                            legend: {
+                                data: ['最小负荷', '平均负荷', '最大负荷']
+                            },
+                            dataZoom: [
+                                {
+                                    show: true,
+                                    realtime: true,
+                                    start: 30,
+                                    end: 70,
+                                    xAxisIndex: [0, 1]
+                                }
+                            ],
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    name: '日期',
+                                    data: data['time_data'],
+                                    axisPointer: {
+                                        type: 'shadow'
+                                    }
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    type: 'value',
+                                    name: '负荷量（kWh）',
+                                    min: 0,
+                                    // max: 7000,
+                                    axisLabel: {
+                                        formatter: '{value} kW'
+                                    }
+                                }
+                            ],
+                            series: [
+                                {
+                                    name: '最小负荷',
+                                    type: 'bar',
+                                    data: data['min_loads']
+                                },
+                                {
+                                    name: '平均负荷',
+                                    type: 'bar',
+                                    data: data['avg_loads']
+                                },
+                                {
+                                    name: '最大负荷',
+                                    type: 'line',
+                                    yAxisIndex: 0,
+                                    data: data['max_loads']
+                                }
+                            ]
+                        }
+                    );
+
+                }else {
+                    load_data_chart.setOption(
+                        {
+                            grid: {
+                                left: 100,
+                                right: 80
+                            },
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    type: 'cross',
+                                    crossStyle: {
+                                        color: '#999'
+                                    }
+                                }
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataView: {show: true, readOnly: false},
+                                    magicType: {show: true, type: ['line', 'bar']},
+                                    restore: {show: true},
+                                    saveAsImage: {show: true}
+                                }
+                            },
+                            legend: {
+                                data: ['最小负荷', '平均负荷', '最大负荷']
+                            },
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    name: '日期',
+                                    data: data['time_data'],
+                                    axisPointer: {
+                                        type: 'shadow'
+                                    }
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    type: 'value',
+                                    name: '负荷量（kWh）',
+                                    min: 0,
+                                    // max: 7000,
+                                    axisLabel: {
+                                        formatter: '{value} kW'
+                                    }
+                                }
+                            ],
+                            series: [
+                                {
+                                    name: '最小负荷',
+                                    type: 'bar',
+                                    data: data['min_loads']
+                                },
+                                {
+                                    name: '平均负荷',
+                                    type: 'bar',
+                                    data: data['avg_loads']
+                                },
+                                {
+                                    name: '最大负荷',
+                                    type: 'line',
+                                    yAxisIndex: 0,
+                                    data: data['max_loads']
+                                }
+                            ]
+                        }
+                    );
+                }
                 load_pie_chart.setOption(
                     {
                         tooltip: {
@@ -1079,6 +1493,7 @@ try {
                     }
                 );
 
+
             },
             error: function (xhr) {
                 console.log("post load error：", xhr);
@@ -1103,6 +1518,7 @@ try {
             },
             cache: true,
             success: function (data) {
+
                 water_replenishment_chart.hideLoading();
                 water_replenishment_chart.setOption(
                     {
@@ -1160,7 +1576,7 @@ try {
                             {
                                 name: '补水量(m³)',
                                 type: 'value',
-                                max: 12
+                                // max: 12
                             }
                         ],
                         series: [
