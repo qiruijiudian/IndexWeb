@@ -78,8 +78,11 @@ if (document.location.href.indexOf('.html')){
     if (window.location.href.includes("start_time") && window.location.href.includes("end_time")){
         start = getQueryVariable("start_time").replace("%20", " ").replace("+", " ");
         end = getQueryVariable("end_time").replace("%20", " ").replace("+", " ");
+        console.log("设定上月");
+        console.log(last_month_date);
         last_month_date = start;
-        console.log(start, end);
+        console.log(last_month_date);
+        // console.log(start, end);
         try {
             //latest_time
             $.ajax(
@@ -94,7 +97,7 @@ if (document.location.href.indexOf('.html')){
                     async: false,
                     cache: false,
                     success: function (data) {
-                        last_month_date = data["last_month_date"];
+                        // last_month_date = data["last_month_date"];
                         start_limit = data["start_limit"];
                         end_limit = data["end_limit"];
                     },

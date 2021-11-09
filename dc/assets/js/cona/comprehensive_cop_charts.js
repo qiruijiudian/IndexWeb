@@ -7,7 +7,7 @@ var f4_cop_dom = document.getElementById("f4_cop_chart");
 var f4_cop_pie_dom = document.getElementById("f4_cop_pie");
 var f5_cop_dom = document.getElementById("f5_cop_chart");
 var f5_cop_pie_dom = document.getElementById("f5_cop_pie");
-
+var com_cops = ["com_cop_2", "com_cop_3", "com_cop_4", "com_cop_5"];
 //***************初始化图表***********************************
 
 var f2_cop_chart = echarts.init(f2_cop_dom);
@@ -101,6 +101,12 @@ try {
             },
             cache: true,
             success: function (data) {
+                for (var i=0;i<data["status"].length;i++){
+                    if (!data["status"][i].includes("正常")){
+                        var now_text = $(`#${com_cops[i]}`).text().trim();
+                        $(`#${com_cops[i]}`).text(`${now_text}` + `（${data["status"][i]}）`);
+                    }
+                }
                 f2_cop_pie.hideLoading();
                 f2_cop_pie.setOption(
                     get_cop_pie_options(data["f2_cop"][data["f2_cop"].length-1])

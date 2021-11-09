@@ -11,6 +11,7 @@ loading_all([cost_saving_chart, cost_saving_high_low_pie_chart]);
 
 //*************定义数据************************************
 try {
+    console.log("xxx", start, end, last_month_date, start_limit, end_limit);
     //sub_cost_saving
     $.ajax(
         {
@@ -24,15 +25,27 @@ try {
             },
             cache: true,
             success: function (data) {
-                $('#cost_saving_sum').text(data['charge_sum'] + '元');
+                var charge_sum_now = $("#charge_sum_title").text().trim();
+
+                $("#charge_sum_title").text(`${charge_sum_now}（${data["charge_sum"]}万元）`);
+
                 cost_saving_chart.hideLoading();
                 cost_saving_chart.setOption(
                     {
                         tooltip: {
-                            dataZoom: {yAxisIndex: 'none'},
                             trigger: 'axis',
                             axisPointer: {            // 坐标轴指示器，坐标轴触发有效
                                 type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                            }
+
+                        },
+                        toolbox: {
+                            feature: {
+                                dataZoom: {yAxisIndex: 'none'},
+                                dataView: {show: true, readOnly: false},
+                                magicType: {show: true, type: ['line', 'bar']},
+                                restore: {show: true},
+                                saveAsImage: {show: true}
                             }
                         },
                         dataZoom: [

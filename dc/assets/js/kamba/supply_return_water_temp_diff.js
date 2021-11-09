@@ -66,6 +66,7 @@ try {
             cache: true,
             success: function (data) {
                 solar_matrix_supply_and_return_water_temp_chart.hideLoading();
+                if (is_large) $("#solar_matrix_title").text("太阳能矩阵供回水温度");
                 solar_matrix_supply_and_return_water_temp_chart.setOption(
                     {
                         tooltip: {
@@ -184,105 +185,227 @@ try {
                 );
 
                 end_supply_and_return_water_temp_chart.hideLoading();
-                end_supply_and_return_water_temp_chart.setOption(
-                    {
-                        tooltip: {
-                            trigger: 'axis',
-                            axisPointer: {
-                                animation: false
-                            }
-                        },
-                        legend: {
-                            data: ['平均供水温度', '平均回水温度', '平均供回水温差'],
-                            left: 10
-                        },
-                        toolbox: {
-                            feature: {
-                                dataView: {show: true, readOnly: false},
-                                magicType: {show: true, type: ['line', 'bar']},
-                                restore: {show: true},
-                                saveAsImage: {show: true}
-                            }
-                        },
-
-                        axisPointer: {
-                            link: {xAxisIndex: 'all'}
-                        },
-
-                        grid: [{
-                            left: 70,
-                            right: 70,
-                            height: '30%'
-                        }, {
-                            left: 70,
-                            right: 70,
-                            top: '60%',
-                            height: '30%'
-                        }],
-                        xAxis: [
-                            {
-                                type: 'category',
-                                name: '日期',
-                                boundaryGap: false,
-                                axisLine: {onZero: true},
-                                data: data['time_data']
+                if (is_large){
+                    end_supply_and_return_water_temp_chart.setOption(
+                        {
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    animation: false
+                                }
                             },
-                            {
-                                gridIndex: 1,
-                                type: 'category',
-                                boundaryGap: false,
-                                axisLine: {onZero: true},
-                                data: data['time_data'],
-                                position: 'top'
-                            }
-                        ],
-                        yAxis: [
-                            {
-                                name: '温度(℃)',
-                                type: 'value'
-//            min: 20
+                            legend: {
+                                data: ['平均供水温度', '平均回水温度', '平均供回水温差'],
+                                left: 10
                             },
-                            {
-                                gridIndex: 1,
-                                name: '温差(℃)',
-                                type: 'value',
-                                inverse: true
-                            }
-                        ],
-                        series: [
-                            {
-                                name: '平均供水温度',
-                                type: 'line',
-                                symbolSize: 8,
-                                hoverAnimation: false,
-                                data: data['end_supply_water_temp']
-                            },
-                            {
-                                name: '平均回水温度',
-                                type: 'line',
-                                symbolSize: 8,
-                                hoverAnimation: false,
-                                data: data['end_return_water_temp'],
-                                itemStyle : {
-                                    normal : {
-                                        lineStyle:{
-                                            color:'#556B2F'
-                                        }
+                            toolbox: {
+                                feature: {
+                                    dataView: {show: true, readOnly: false},
+                                    magicType: {show: true, type: ['line', 'bar']},
+                                    restore: {show: true},
+                                    saveAsImage: {show: true},
+                                    dataZoom: {
+                                        yAxisIndex: 'none'
                                     }
                                 }
                             },
-                            {
-                                name: '平均供回水温差',
-                                type: 'line',
-                                xAxisIndex: 1,
-                                yAxisIndex: 1,
-                                symbolSize: 8,
-                                hoverAnimation: false,
-                                data: data['end_supply_and_return_water_temp_diff']
-                            }
-                        ]
-                    }
-                );
+
+                            axisPointer: {
+                                link: {xAxisIndex: 'all'}
+                            },
+
+                            grid: [{
+                                left: 70,
+                                right: 70,
+                                height: '25%'
+                            }, {
+                                left: 70,
+                                right: 70,
+                                top: '60%',
+                                height: '25%'
+                            }],
+                            dataZoom: [
+                                {
+                                    show: true,
+                                    realtime: true,
+                                    start: 30,
+                                    end: 70,
+                                    xAxisIndex: [0, 1]
+                                },
+                                {
+                                    type: 'inside',
+                                    realtime: true,
+                                    start: 30,
+                                    end: 70,
+                                    xAxisIndex: [0, 1]
+                                }
+                            ],
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    name: '日期',
+                                    boundaryGap: false,
+                                    axisLine: {onZero: true},
+                                    data: data['time_data']
+                                },
+                                {
+                                    gridIndex: 1,
+                                    type: 'category',
+                                    boundaryGap: false,
+                                    axisLine: {onZero: true},
+                                    data: data['time_data'],
+                                    position: 'top'
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    name: '温度(℃)',
+                                    type: 'value'
+//            min: 20
+                                },
+                                {
+                                    gridIndex: 1,
+                                    name: '温差(℃)',
+                                    type: 'value',
+                                    inverse: true
+                                }
+                            ],
+                            series: [
+                                {
+                                    name: '平均供水温度',
+                                    type: 'line',
+                                    symbolSize: 8,
+                                    hoverAnimation: false,
+                                    data: data['end_supply_water_temp']
+                                },
+                                {
+                                    name: '平均回水温度',
+                                    type: 'line',
+                                    symbolSize: 8,
+                                    hoverAnimation: false,
+                                    data: data['end_return_water_temp'],
+                                    itemStyle : {
+                                        normal : {
+                                            lineStyle:{
+                                                color:'#556B2F'
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    name: '平均供回水温差',
+                                    type: 'line',
+                                    xAxisIndex: 1,
+                                    yAxisIndex: 1,
+                                    symbolSize: 8,
+                                    hoverAnimation: false,
+                                    data: data['end_supply_and_return_water_temp_diff']
+                                }
+                            ]
+                        }
+                    );
+                }else {
+                    end_supply_and_return_water_temp_chart.setOption(
+                        {
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    animation: false
+                                }
+                            },
+                            legend: {
+                                data: ['平均供水温度', '平均回水温度', '平均供回水温差'],
+                                left: 10
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataView: {show: true, readOnly: false},
+                                    magicType: {show: true, type: ['line', 'bar']},
+                                    restore: {show: true},
+                                    saveAsImage: {show: true}
+                                }
+                            },
+
+                            axisPointer: {
+                                link: {xAxisIndex: 'all'}
+                            },
+
+                            grid: [{
+                                left: 70,
+                                right: 70,
+                                height: '30%'
+                            }, {
+                                left: 70,
+                                right: 70,
+                                top: '60%',
+                                height: '30%'
+                            }],
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    name: '日期',
+                                    boundaryGap: false,
+                                    axisLine: {onZero: true},
+                                    data: data['time_data']
+                                },
+                                {
+                                    gridIndex: 1,
+                                    type: 'category',
+                                    boundaryGap: false,
+                                    axisLine: {onZero: true},
+                                    data: data['time_data'],
+                                    position: 'top'
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    name: '温度(℃)',
+                                    type: 'value'
+//            min: 20
+                                },
+                                {
+                                    gridIndex: 1,
+                                    name: '温差(℃)',
+                                    type: 'value',
+                                    inverse: true
+                                }
+                            ],
+                            series: [
+                                {
+                                    name: '平均供水温度',
+                                    type: 'line',
+                                    symbolSize: 8,
+                                    hoverAnimation: false,
+                                    data: data['end_supply_water_temp']
+                                },
+                                {
+                                    name: '平均回水温度',
+                                    type: 'line',
+                                    symbolSize: 8,
+                                    hoverAnimation: false,
+                                    data: data['end_return_water_temp'],
+                                    itemStyle : {
+                                        normal : {
+                                            lineStyle:{
+                                                color:'#556B2F'
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    name: '平均供回水温差',
+                                    type: 'line',
+                                    xAxisIndex: 1,
+                                    yAxisIndex: 1,
+                                    symbolSize: 8,
+                                    hoverAnimation: false,
+                                    data: data['end_supply_and_return_water_temp_diff']
+                                }
+                            ]
+                        }
+                    );
+                }
+
 
             },
             error: function (xhr) {

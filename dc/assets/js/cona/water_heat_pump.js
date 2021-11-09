@@ -7,6 +7,7 @@ var f4_cop_dom = document.getElementById("f4_whp_cop_chart");
 var f4_cop_pie_dom = document.getElementById("f4_whp_cop_pie");
 var f5_cop_dom = document.getElementById("f5_whp_cop_chart");
 var f5_cop_pie_dom = document.getElementById("f5_whp_cop_pie");
+var wshp_cops = ["wshp_cop_2", "wshp_cop_3", "wshp_cop_4", "wshp_cop_5"];
 
 
 //***************初始化图表***********************************
@@ -111,6 +112,12 @@ try {
             },
             cache: true,
             success: function (data) {
+                for (var i=0;i<data["status"].length;i++){
+                    if (!data["status"][i].includes("正常")){
+                        var now_text = $(`#${wshp_cops[i]}`).text().trim();
+                        $(`#${wshp_cops[i]}`).text(`${now_text}` + `（${data["status"][i]}）`);
+                    }
+                }
                 f2_cop_pie.hideLoading();
                 f2_cop_pie.setOption(
                     get_cop_pie_options(data["f2_whp_cop"][data["f2_whp_cop"].length-1])

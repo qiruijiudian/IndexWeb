@@ -28,7 +28,6 @@ function initDateFormat(timestamp){
 
 
 $(function(){
-    console.log(start_limit, start, end, end_limit);
     //十分秒年月日范围，包含最大最小值
     $('.J-datepicker-range').datePicker({
         hasShortcut: true,

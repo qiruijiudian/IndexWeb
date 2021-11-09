@@ -23,79 +23,163 @@ try {
             cache: true,
             success: function (data) {
                 geothermal_wells_heat_provide_chart.hideLoading();
-                geothermal_wells_heat_provide_chart.setOption(
-                    {
-                        tooltip: {
-                            trigger: 'axis',
-                            axisPointer: {
-                                type: 'cross',
-                                crossStyle: {
-                                    color: '#999'
-                                }
-                            }
-                        },
-                        toolbox: {
-                            feature: {
-                                dataView: {show: true, readOnly: false},
-                                magicType: {show: true, type: ['line', 'bar']},
-                                restore: {show: true},
-                                saveAsImage: {show: true}
-                            }
-                        },
-                        legend: {
-                            data: ['高温板换制热量', '水源热泵制热量', '地热井可提供高温热量', '地热井可提供低温热量']
-                        },
-                        xAxis: [
-                            {
-                                type: 'category',
-                                name: '日期',
-                                data: data['time_data'],
+                if (is_large){
+                    geothermal_wells_heat_provide_chart.setOption(
+                        {
+                            tooltip: {
+                                trigger: 'axis',
                                 axisPointer: {
-                                    type: 'shadow'
+                                    type: 'cross',
+                                    crossStyle: {
+                                        color: '#999'
+                                    }
+                                }
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataView: {show: true, readOnly: false},
+                                    magicType: {show: true, type: ['line', 'bar']},
+                                    restore: {show: true},
+                                    saveAsImage: {show: true},
+                                    dataZoom: {yAxisIndex: 'none'},
+                                }
+                            },
+                            legend: {
+                                data: ['高温板换制热量', '水源热泵制热量', '地热井可提供高温热量', '地热井可提供低温热量']
+                            },
+                            dataZoom: [
+                                {
+                                    show: true,
+                                    realtime: true,
+                                    type: 'slider',
+                                    start: 10,
+                                    end: 40
+                                }
+                            ],
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    name: '日期',
+                                    data: data['time_data'],
+                                    axisPointer: {
+                                        type: 'shadow'
+                                    }
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    type: 'value',
+                                    name: '热量(kWh)',
+                                    min: 0,
+                                    max: 150000,
+                                    axisLabel: {
+                                        formatter: '{value} kWh'
+                                    }
+                                }
+                            ],
+                            series: [
+                                {
+                                    name: '高温板换制热量',
+                                    type: 'bar',
+                                    stack: '制热量',
+                                    data: data['high_temp_plate_exchange_heat_production']
                                 },
-                                axisLabel: {
-                                    interval:0,
-                                    rotate:40
+                                {
+                                    name: '水源热泵制热量',
+                                    type: 'bar',
+                                    stack: '制热量',
+                                    data: data['water_heat_pump_heat_production']
+                                },
+                                {
+                                    name: '地热井可提供高温热量',
+                                    type: 'line',
+                                    data: data['geothermal_wells_high_heat_provide']
+                                },
+                                {
+                                    name: '地热井可提供低温热量',
+                                    type: 'line',
+                                    data: data['geothermal_wells_low_heat_provide']
                                 }
-                            }
-                        ],
-                        yAxis: [
-                            {
-                                type: 'value',
-                                name: '热量(kWh)',
-                                min: 0,
-                                max: 150000,
-                                axisLabel: {
-                                    formatter: '{value} kWh'
+                            ]
+                        }
+                    );
+
+                }else {
+                    geothermal_wells_heat_provide_chart.setOption(
+                        {
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    type: 'cross',
+                                    crossStyle: {
+                                        color: '#999'
+                                    }
                                 }
-                            }
-                        ],
-                        series: [
-                            {
-                                name: '高温板换制热量',
-                                type: 'bar',
-                                stack: '制热量',
-                                data: data['high_temp_plate_exchange_heat_production']
                             },
-                            {
-                                name: '水源热泵制热量',
-                                type: 'bar',
-                                stack: '制热量',
-                                data: data['water_heat_pump_heat_production']
+                            toolbox: {
+                                feature: {
+                                    dataView: {show: true, readOnly: false},
+                                    magicType: {show: true, type: ['line', 'bar']},
+                                    restore: {show: true},
+                                    saveAsImage: {show: true}
+                                }
                             },
-                            {
-                                name: '地热井可提供高温热量',
-                                type: 'line',
-                                data: data['geothermal_wells_high_heat_provide']
+                            legend: {
+                                data: ['高温板换制热量', '水源热泵制热量', '地热井可提供高温热量', '地热井可提供低温热量']
                             },
-                            {
-                                name: '地热井可提供低温热量',
-                                type: 'line',
-                                data: data['geothermal_wells_low_heat_provide']
-                            }
-                        ]
-                    }
-                );
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    name: '日期',
+                                    data: data['time_data'],
+                                    axisPointer: {
+                                        type: 'shadow'
+                                    },
+                                    axisLabel: {
+                                        interval:0,
+                                        rotate:40
+                                    }
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    type: 'value',
+                                    name: '热量(kWh)',
+                                    min: 0,
+                                    max: 150000,
+                                    axisLabel: {
+                                        formatter: '{value} kWh'
+                                    }
+                                }
+                            ],
+                            series: [
+                                {
+                                    name: '高温板换制热量',
+                                    type: 'bar',
+                                    stack: '制热量',
+                                    data: data['high_temp_plate_exchange_heat_production']
+                                },
+                                {
+                                    name: '水源热泵制热量',
+                                    type: 'bar',
+                                    stack: '制热量',
+                                    data: data['water_heat_pump_heat_production']
+                                },
+                                {
+                                    name: '地热井可提供高温热量',
+                                    type: 'line',
+                                    data: data['geothermal_wells_high_heat_provide']
+                                },
+                                {
+                                    name: '地热井可提供低温热量',
+                                    type: 'line',
+                                    data: data['geothermal_wells_low_heat_provide']
+                                }
+                            ]
+                        }
+                    );
+                }
+
             },
             error: function (xhr) {
                 console.log("post sub_geothermal_wells_heat_provide error：", xhr);

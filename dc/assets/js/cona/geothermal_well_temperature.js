@@ -23,7 +23,6 @@ try {
             window.location.href = 'http://' + document.location.host + '/dc/cona.html';
         }
     }else {
-        console.log('起飞');
         window.location.href = 'http://' + document.location.host + '/dc/cona.html';
     }
     console.log('dasdcas', level);

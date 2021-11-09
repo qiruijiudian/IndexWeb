@@ -18,8 +18,12 @@ try {
             },
             cache: true,
             success: function (data) {
+                if (is_large){
+                    $('#cost_saving_sum').text('节省供暖费用（总计：' + data['cost_saving_total'] + '万元）');
+                }else {
+                    $('#cost_saving_sum').text('上月节省供暖费用（总计：' + data['cost_saving_total'] + '万元）');
+                }
 
-                $('#cost_saving_sum').text('上月节省供暖费用（总计：' + data['cost_saving_total'] + '元）');
                 cost_saving_chart.hideLoading();
                 cost_saving_chart.setOption(
                     {

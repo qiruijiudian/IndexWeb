@@ -13,13 +13,12 @@
     <link href="../assets/css/bootstrap.css" rel="stylesheet"/>
     <!-- FontAwesome Styles-->
     <link href="../assets/css/font-awesome.css" rel="stylesheet"/>
-    <!-- Morris Chart Styles-->
-    <link href="../assets/js/morris/morris-0.4.3.min.css" rel="stylesheet"/>
+    <!-- datepicker Styles-->
+    <link rel="stylesheet" href="../assets/css/datepicker.css">
     <!-- Custom Styles-->
     <link href="../assets/css/custom-styles.css" rel="stylesheet"/>
     <!-- Google Fonts-->
     <link href="../assets/css/css3.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="../assets/js/Lightweight-Chart/cssCharts.css">
 
 </head>
 
@@ -163,6 +162,10 @@
                     </ul>
                 </li>
 
+                <li>
+                    <a class="waves-effect waves-dark show-modal" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-calendar"></i> 日期选择 </a>
+                </li>
+
 
                 <li>
                     <a href="#" class="waves-effect waves-dark"><i class="fa fa-edit"></i> 其他 </a>
@@ -201,7 +204,7 @@
                                     <h3 id="max_load">Loading...</h3>
                                 </div>
                                 <div class="card-action">
-                                    <strong>上周最大负荷</strong>
+                                    <strong id="core_max_load">上周最大负荷</strong>
                                 </div>
                             </div>
                         </div>
@@ -218,7 +221,7 @@
                                     <h3 id="min_load">Loading...</h3>
                                 </div>
                                 <div class="card-action">
-                                    <strong>上周最小负荷</strong>
+                                    <strong id="core_min_load">上周最小负荷</strong>
                                 </div>
                             </div>
                         </div>
@@ -234,7 +237,7 @@
                                     <h3 id="cost_saving_sum">Loading...</h3>
                                 </div>
                                 <div class="card-action">
-                                    <strong>上月节省供暖总费用</strong>
+                                    <strong id="core_cost_saving">上月节省供暖总费用</strong>
                                 </div>
                             </div>
                         </div>
@@ -250,7 +253,7 @@
                             <div id="load_data_chart" style="width:100%;height:400px"></div>
                         </div>
                         <div class="card-action">
-                            <b>过去一周负荷值</b>
+                            <b id="core_load_title">过去一周负荷值</b>
                         </div>
                     </div>
                 </div>
@@ -296,7 +299,7 @@
                             <div id="com_cop_pie" style="width:100%;height:300px"></div>
                         </div>
                         <div class="card-action">
-                            <b>系统综合COP</b>
+                            <b id="core_cop_title">系统综合COP</b>
                         </div>
                     </div>
                 </div>
@@ -320,7 +323,7 @@
                             <div id="water_replenishment" style="width:100%;height:400px"></div>
                         </div>
                         <div class="card-action">
-                            <b>过去一周内补水量及补水量限值</b>
+                            <b id="core_water_replenishment_title">过去一周内补水量及补水量限值</b>
                         </div>
                     </div>
                 </div>
@@ -330,7 +333,7 @@
             <div class="row">
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="card-action" id="charge_sum">
+                        <div class="card-action" id="core_charge_sum_title">
                             Loading...
                         </div>
                         <div class="card-content">
@@ -340,7 +343,7 @@
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="card-action">
+                        <div class="card-action" id="core_cost_saving_pie_title">
                             当月节省高低温供暖总费用对比
                         </div>
                         <div class="card-content">
@@ -368,9 +371,41 @@
 
 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-xs-12">
+                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="my_modal">
+                        <div class="modal-dialog modal-l">
+                            <div class="card modal-content">
+                                <div class="card-action">
+                                    日期范围选择
+                                </div>
+                                <div class="card-content">
+                                    <form class="col s12">
+                                        <div class="form-group c-datepicker-date-editor J-datepicker-range" id="date_editor">
+                                            <div class="input-field col s12">
+                                                <i class="material-icons prefix">date_range</i>
+                                                <input id="start_time" type="text" class="validate form-control c-datepicker-data-input">
+                                                <label for="start_time" class="">开始时间</label>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <i class="material-icons prefix">date_range</i>
+                                                <input id="end_time" type="text" class="validate form-control c-datepicker-data-input">
+                                                <label for="end_time" class="">结束时间</label>
+                                            </div>
 
+                                        </div>
+                                        <div class="input-field card-content" id="date_button">
+                                            <a id="cancel_date" class="waves-light btn" data-dismiss="modal" aria-hidden="true">取消</a>
+                                            <a id="confirm_date" class="waves-light btn">确认</a>
+                                        </div>
+                                    </form>
+                                    <div class="clearBoth"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
+
             </div>
             <!-- /. ROW  -->
         </div>
@@ -386,10 +421,10 @@
 <script src="../assets/js/bootstrap.min.js"></script>
 <script src="../assets/materialize/js/materialize.min.js"></script>
 <script src="../assets/js/jquery.metisMenu.js"></script>
-<script src="../assets/js/easypiechart.js"></script>
-<script src="../assets/js/easypiechart-data.js"></script>
-<script src="../assets/js/Lightweight-Chart/jquery.chart.js"></script>
 <script src="../assets/js/custom-scripts.js"></script>
+<script src="../assets/js/moment.min.js"></script>
+<script src="../assets/js/datepicker.all.js"></script>
+<script src="../assets/js/date_choose.js"></script>
 <script src="../assets/js/cona/core_data.js"></script>
 </body>
 

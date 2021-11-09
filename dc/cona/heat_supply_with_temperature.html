@@ -13,13 +13,12 @@
     <link href="../assets/css/bootstrap.css" rel="stylesheet"/>
     <!-- FontAwesome Styles-->
     <link href="../assets/css/font-awesome.css" rel="stylesheet"/>
-    <!-- Morris Chart Styles-->
-    <link href="../assets/js/morris/morris-0.4.3.min.css" rel="stylesheet"/>
+    <!-- datepicker Styles-->
+    <link rel="stylesheet" href="../assets/css/datepicker.css">
     <!-- Custom Styles-->
     <link href="../assets/css/custom-styles.css" rel="stylesheet"/>
     <!-- Google Fonts-->
     <link href="../assets/css/css3.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="../assets/js/Lightweight-Chart/cssCharts.css">
 </head>
 
 <body>
@@ -162,6 +161,10 @@
                     </ul>
                 </li>
 
+                <li>
+                    <a class="waves-effect waves-dark show-modal" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-calendar"></i> 日期选择 </a>
+                </li>
+
 
                 <li>
                     <a href="#" class="waves-effect waves-dark"><i class="fa fa-edit"></i> 其他 </a>
@@ -188,51 +191,89 @@
         </div>
         <div id="page-inner">
             <!-- /. ROW  -->
-    <div class="row">
+            <div class="row">
 
-        <div class="col-md-6 col-sm-12 col-xs-12">
-            <div class="card">
-                <div class="card-action">
-                    日热力井供热与气温关系
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="card-action">
+                            日热力井供热与气温关系
+                        </div>
+                        <div class="card-content">
+                            <div id="days_heat_well_heating" style="height: 400px;width:100%"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <div id="days_heat_well_heating" style="height: 400px;width:100%"></div>
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="card-action">
+                            日热力管网供热与气温关系
+                        </div>
+                        <div class="card-content">
+                            <div id="days_heat_pipe_network_heating" style="height: 400px;width:100%"></div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-12 col-xs-12">
-            <div class="card">
-                <div class="card-action">
-                    日热力管网供热与气温关系
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="card-action">
+                            日水源热泵制热量与气温关系
+                        </div>
+                        <div class="card-content">
+                            <div id="days_water_heat_pump_heat_production" style="height: 400px;width:100%"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <div id="days_heat_pipe_network_heating" style="height: 400px;width:100%"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-12 col-xs-12">
-            <div class="card">
-                <div class="card-action">
-                    日水源热泵制热量与气温关系
-                </div>
-                <div class="card-content">
-                    <div id="days_water_heat_pump_heat_production" style="height: 400px;width:100%"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-12 col-xs-12">
-            <div class="card">
-                <div class="card-action">
-                    日高温板换制热量与气温关系
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="card-action">
+                            日高温板换制热量与气温关系
 
-                </div>
-                <div class="card-content">
-                    <div id="high_temp_plate_exchange_heat_production" style="height: 400px;width:100%"></div>
+                        </div>
+                        <div class="card-content">
+                            <div id="high_temp_plate_exchange_heat_production" style="height: 400px;width:100%"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- /. ROW  -->
+            <!-- /. ROW  -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="my_modal">
+                        <div class="modal-dialog modal-l">
+                            <div class="card modal-content">
+                                <div class="card-action">
+                                    日期范围选择
+                                </div>
+                                <div class="card-content">
+                                    <form class="col s12">
+                                        <div class="form-group c-datepicker-date-editor J-datepicker-range" id="date_editor">
+                                            <div class="input-field col s12">
+                                                <i class="material-icons prefix">date_range</i>
+                                                <input id="start_time" type="text" class="validate form-control c-datepicker-data-input">
+                                                <label for="start_time" class="">开始时间</label>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <i class="material-icons prefix">date_range</i>
+                                                <input id="end_time" type="text" class="validate form-control c-datepicker-data-input">
+                                                <label for="end_time" class="">结束时间</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="input-field card-content" id="date_button">
+                                            <a id="cancel_date" class="waves-light btn" data-dismiss="modal" aria-hidden="true">取消</a>
+                                            <a id="confirm_date" class="waves-light btn">确认</a>
+                                        </div>
+                                    </form>
+                                    <div class="clearBoth"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
         </div>
         <!-- /. PAGE INNER  -->
     </div>
@@ -245,10 +286,11 @@
 <script src="../assets/js/bootstrap.min.js"></script>
 <script src="../assets/materialize/js/materialize.min.js"></script>
 <script src="../assets/js/jquery.metisMenu.js"></script>
-<script src="../assets/js/easypiechart.js"></script>
-<script src="../assets/js/easypiechart-data.js"></script>
-<script src="../assets/js/Lightweight-Chart/jquery.chart.js"></script>
+
 <script src="../assets/js/custom-scripts.js"></script>
+<script src="../assets/js/moment.min.js"></script>
+<script src="../assets/js/datepicker.all.js"></script>
+<script src="../assets/js/date_choose.js"></script>
 <script src="../assets/js/cona/heat_supply_with_temperature.js"></script>
 </body>
 

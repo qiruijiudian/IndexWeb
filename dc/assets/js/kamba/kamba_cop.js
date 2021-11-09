@@ -104,13 +104,16 @@ try {
             },
             cache: true,
             success: function (data) {
+                if (!data["status"].includes("正常")) $("#com_cop_title").text(`系统综合COP（${data["status"]}）`);
+
 
                 kamba_system_cop_chart.hideLoading();
+                kamba_system_cop_chart_chart.hideLoading();
                 kamba_system_cop_chart.setOption(
                     get_cop_pie_options(data['kamba_system_cop'][data['kamba_system_cop'].length-1])
                 );
 
-                kamba_system_cop_chart_chart.hideLoading();
+
                 kamba_system_cop_chart_chart.setOption(
                     {
                         color: ['#32CD32', '#0000FF', '#FF0000'],
@@ -266,12 +269,13 @@ try {
             },
             cache: true,
             success: function (data) {
+                if (!data["status"].includes("正常")) $("#wshp_cop_title").text(`系统综合COP（${data["status"]}）`);
                 kamba_wshp_cop_chart.hideLoading();
+                kamba_wshp_cop_chart_chart.hideLoading();
                 kamba_wshp_cop_chart.setOption(
                     get_cop_pie_options(data['kamba_wshp_cop'][data['kamba_wshp_cop'].length-1])
                 );
 
-                kamba_wshp_cop_chart_chart.hideLoading();
                 kamba_wshp_cop_chart_chart.setOption(
                     {
                         color: ['#32CD32', '#0000FF', '#FF0000'],
