@@ -89,6 +89,12 @@ loading_all(
     ]
 );
 
+if (is_large){
+    $("#max_load_title").text("最大负荷");
+    $("#min_load_title").text("最小负荷");
+    $("#kamba_cost_saving_title").text("节省供暖总费用");
+}
+
 //*************绑定数据************************************
 function get_cop_pie_options(value){
     var options = {
@@ -154,7 +160,7 @@ function get_cop_pie_options(value){
         }]
     };
     return options
-}; //cop数据通用函数
+} //cop数据通用函数
 
 function get_water_provider_options(data, hint){
     var options = {
@@ -181,7 +187,7 @@ function get_water_provider_options(data, hint){
         }]
     };
     return options
-};
+}
 
 String.prototype.format = function () {
     var str = this;
@@ -826,7 +832,7 @@ try {
                             ],
                             series: [
                                 {
-                                    name: '过去一周太阳能集热量',
+                                    name: '太阳能集热量',
                                     type: 'line',
                                     symbolSize: 5,
                                     hoverAnimation: false,
@@ -1012,7 +1018,7 @@ try {
                             ],
                             series: [
                                 {
-                                    name: '过去一周蓄热水池补水量',
+                                    name: '蓄热水池补水量',
                                     type: 'line',
                                     symbolSize: 5,
                                     hoverAnimation: false,
@@ -1091,7 +1097,7 @@ try {
                             ],
                             series: [
                                 {
-                                    name: '过去一周供热端补水量',
+                                    name: '供热端补水量',
                                     type: 'bar',
                                     data: data['heat_water_replenishment']
                                 },
@@ -1168,7 +1174,7 @@ try {
                             ],
                             series: [
                                 {
-                                    name: '过去一周太阳能侧补水量',
+                                    name: '太阳能侧补水量',
                                     type: 'bar',
                                     data: data['solar_side_replenishment']
                                 },

@@ -47,8 +47,14 @@ function check_login() {
                 },
                 cache: true,
                 success: function (data) {
-                    console.log(data);
-                    $("#u_name").text(data['user']);
+                    if (data["status"].includes("illegal")){
+                        window.location.href = login_url + '?permission_error';
+                    }else {
+                        console.log(data);
+                        $("#u_name").text(data['user']);
+
+                    }
+
                     // window.location.href = 'index3.html';
                 },
                 error: function (xhr) {

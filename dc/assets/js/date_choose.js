@@ -26,6 +26,44 @@ function initDateFormat(timestamp){
 
 }
 
+function getdateGap(latest_date){
+    var _today = new Date();
+    var today_str = _today.getFullYear() + "-"+ add0(_today.getMonth()+1) + "-" +add0(_today.getDate()) + "  00:00:00";
+    var latest_str = latest_date.split(" ")[0] + " 00:00:00";
+    var date_gap = (Date.parse(today_str) - Date.parse(latest_str)) / (1000*60*60*24);
+    return date_gap;
+}
+
+function getTimeOption(){
+    var gap = getdateGap(end);
+    return [
+        {
+            name: '最近一周',
+            day: `${-gap-7},${-gap}`,
+            time:'00:00:00,23:59:59'
+        },
+        {
+            name: '最近一个月',
+            day: `${-gap-30},${-gap}`,
+            time: '00:00:00,23:59:59'
+        },
+        {
+            name: '最近三个月',
+            day: `${-gap-90},${-gap}`,
+            time: '00:00:00,23:59:59'
+        },
+        {
+            name: '最近六个月',
+            day: `${-gap-180},${-gap}`,
+            time: '00:00:00,23:59:59'
+        },
+        {
+            name: '最近一年',
+            day: `${-gap-365},${-gap}`,
+            time: '00:00:00,23:59:59'
+        }
+    ];
+}
 
 $(function(){
     //十分秒年月日范围，包含最大最小值
@@ -34,38 +72,39 @@ $(function(){
         min: start_limit,
         max: end_limit,
         isRange: true,
-        shortcutOptions: [
-            {
-                name: '昨天',
-                day: '-1,-1',
-                time: '00:00:00,23:59:59'
-            },
-            {
-                name: '最近一周',
-                day: '-9,-2',
-                time:'00:00:00,23:59:59'
-            },
-            {
-                name: '最近一个月',
-                day: '-32,-2',
-                time: '00:00:00,23:59:59'
-            },
-            {
-                name: '最近三个月',
-                day: '-92, -2',
-                time: '00:00:00,23:59:59'
-            },
-            {
-                name: '最近六个月',
-                day: '-182, -2',
-                time: '00:00:00,23:59:59'
-            },
-            {
-                name: '最近一年',
-                day: '-367, -2',
-                time: '00:00:00,23:59:59'
-            }
-        ]
+        shortcutOptions: getTimeOption()
+        // shortcutOptions: [
+        //     {
+        //         name: '昨天',
+        //         day: '-1,-1',
+        //         time: '00:00:00,23:59:59'
+        //     },
+        //     {
+        //         name: '最近一周',
+        //         day: '-9,-2',
+        //         time:'00:00:00,23:59:59'
+        //     },
+        //     {
+        //         name: '最近一个月',
+        //         day: '-32,-2',
+        //         time: '00:00:00,23:59:59'
+        //     },
+        //     {
+        //         name: '最近三个月',
+        //         day: '-92, -2',
+        //         time: '00:00:00,23:59:59'
+        //     },
+        //     {
+        //         name: '最近六个月',
+        //         day: '-182, -2',
+        //         time: '00:00:00,23:59:59'
+        //     },
+        //     {
+        //         name: '最近一年',
+        //         day: '-367, -2',
+        //         time: '00:00:00,23:59:59'
+        //     }
+        // ]
     });
 
 
