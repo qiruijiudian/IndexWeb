@@ -760,3 +760,7 @@ padding: 0 15px 0px 15px;
 #date_button > a{
     margin-left: 50px;
 }
+
+.chart_title{
+    border-bottom: 1px solid rgba(160,160,160,0.2);
+}

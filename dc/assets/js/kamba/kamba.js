@@ -5,6 +5,7 @@ var kamba_system_cop_dom = document.getElementById("kamba_system_cop_pie");
 var kamba_system_cop_chart_dom = document.getElementById("kamba_system_cop_chart");
 var kamba_wshp_cop_dom = document.getElementById("kamba_wshp_cop_pie");
 var kamba_wshp_cop_chart_dom = document.getElementById("kamba_wshp_cop_chart");
+var pool_temp_dom = document.getElementById("heat_map_of_temp");
 var last_week_solar_collector_dom = document.getElementById("last_week_solar_collector");
 var last_week_heat_storage_replenishment_dom = document.getElementById("last_week_heat_storage_replenishment");
 
@@ -26,6 +27,7 @@ var end_supply_and_return_water_temp_dom = document.getElementById("end_supply_a
 var last_year_supply_return_water_temp_dom = document.getElementById("last_year_supply_return_water_temp");
 
 var calories_by_days_dom = document.getElementById("calories_by_days");
+var heat_supply_analysis_dom = document.getElementById("heat_supply_analysis");
 var power_rate_dom = document.getElementById("power_rate");
 
 var cost_saving_dom = document.getElementById("cost_saving");
@@ -38,6 +40,8 @@ var kamba_system_cop_chart = echarts.init(kamba_system_cop_dom);
 var kamba_system_cop_chart_chart = echarts.init(kamba_system_cop_chart_dom);
 var kamba_wshp_cop_chart = echarts.init(kamba_wshp_cop_dom);
 var kamba_wshp_cop_chart_chart = echarts.init(kamba_wshp_cop_chart_dom);
+
+var pool_temp_chart = echarts.init(pool_temp_dom);
 var last_week_solar_collector_chart = echarts.init(last_week_solar_collector_dom);
 var last_week_heat_storage_replenishment_chart = echarts.init(last_week_heat_storage_replenishment_dom);
 
@@ -59,6 +63,7 @@ var end_supply_and_return_water_temp_chart = echarts.init(end_supply_and_return_
 var last_year_supply_return_water_temp_chart = echarts.init(last_year_supply_return_water_temp_dom);
 
 var calories_by_days_chart = echarts.init(calories_by_days_dom);
+var heat_supply_analysis_chart = echarts.init(heat_supply_analysis_dom);
 var power_rate_chart = echarts.init(power_rate_dom);
 
 var cost_saving_chart = echarts.init(cost_saving_dom);
@@ -162,11 +167,26 @@ function get_cop_pie_options(value){
     return options
 } //cop数据通用函数
 
-function get_water_provider_options(data, hint){
+function get_water_provider_options(data, hint, delta_hint){
+    var common = "";
+    if (hint.includes("供回水")){
+        common = "温差"
+    }else if (hint.includes("供水")){
+        common = "供水温度";
+    }else {
+        common = "回水温度";
+    }
+
     var options = {
+        color: ["green", "red"],
         grid: {
             left: 80,
             right: 80
+        },
+        legend: {
+            right: 50,
+            top: 18,
+            data: [common, delta_hint + common]
         },
         xAxis: {
             name: '温度（℃）'
@@ -177,17 +197,28 @@ function get_water_provider_options(data, hint){
         tooltip: {
             formatter: function(param) {
                 var value = param.value;
-                return '温度：' + value[0] + '℃' + '<br/>' + hint + '：' + value[1] + '℃';
+                return '温度：' + value[0] + '℃' + '<br/>' + common + '：' + value[1] + '℃' + '<br/>' + delta_hint + common + '：' + value[1] + '℃';
             }
         },
-        series: [{
-            symbolSize: 15,
-            data: data,
-            type: 'scatter'
-        }]
+        series: [
+            {
+                name: common,
+                symbolSize: 11,
+                data: data[0],
+                type: 'scatter'
+            },
+            {
+                name: delta_hint + common,
+                symbolSize: 11,
+                data: data[1],
+                type: 'scatter'
+            }
+        ]
     };
     return options
 }
+
+
 
 String.prototype.format = function () {
     var str = this;
@@ -198,6 +229,364 @@ String.prototype.format = function () {
 };
 
 try {
+    // heat_storage_heat
+    $.ajax(
+        {
+            url: kamba_url,
+            type: "POST",
+            data: {
+                "key": "api_heat_storage_heat",
+                "start": start,
+                "end": end,
+                "by": 'd'
+            },
+            cache: true,
+            success: function (data) {
+                // $('#pool_available_heat_heat_date').text('蓄热水池可用热量  [' +  start.split(" ")[0] + '   ——  ' + end.split(" ")[0] + ']');
+                set_time_range("pool_available_heat_heat_date", start, end);
+                pool_available_heat_chart.hideLoading();
+                if (is_large){
+                    pool_available_heat_chart.setOption(
+                        {
+                            grid: {
+                                left: 110,
+                                right: 80
+                            },
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    type: 'cross',
+                                    crossStyle: {
+                                        color: '#999'
+                                    }
+                                }
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataView: {show: true, readOnly: false},
+                                    magicType: {show: true, type: ['line', 'bar']},
+                                    restore: {show: true},
+                                    saveAsImage: {show: true},
+                                    dataZoom: {
+                                        yAxisIndex: 'none'
+                                    }
+                                }
+                            },
+                            dataZoom: [
+                                {
+                                    show: true,
+                                    realtime: true,
+                                    start: 30,
+                                    end: 70,
+                                    xAxisIndex: [0, 1]
+                                }
+                            ],
+                            legend: {
+                                data: ['低温热量', '高温热量']
+                            },
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    name: '时间段',
+                                    data: data['time_data'],
+                                    axisPointer: {
+                                        type: 'shadow'
+                                    }
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    type: 'value',
+                                    name: '热量(kWh)',
+                                    min: 0
+                                    // max: 5000000
+                                }
+                            ],
+                            series: [
+                                {
+                                    name: '低温热量',
+                                    type: 'bar',
+                                    stack: '可用热量',
+                                    data: data['low_heat_total']
+                                },
+                                {
+                                    name: '高温热量',
+                                    type: 'bar',
+                                    stack: '可用热量',
+                                    data: data['high_heat_total']
+                                }
+                            ]
+                        }
+                    );
+                }else {
+                    pool_available_heat_chart.setOption(
+                        {
+                            grid: {
+                                left: 110,
+                                right: 80
+                            },
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    type: 'cross',
+                                    crossStyle: {
+                                        color: '#999'
+                                    }
+                                }
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataView: {show: true, readOnly: false},
+                                    magicType: {show: true, type: ['line', 'bar']},
+                                    restore: {show: true},
+                                    saveAsImage: {show: true}
+                                }
+                            },
+                            legend: {
+                                data: ['低温热量', '高温热量']
+                            },
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    name: '时间段',
+                                    data: data['time_data'],
+                                    axisPointer: {
+                                        type: 'shadow'
+                                    },
+                                    axisLabel: {
+                                        interval:0,
+                                        rotate:40
+                                    }
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    type: 'value',
+                                    name: '热量(kWh)',
+                                    min: 0
+                                    // max: 5000000
+                                }
+                            ],
+                            series: [
+                                {
+                                    name: '低温热量',
+                                    type: 'bar',
+                                    stack: '可用热量',
+                                    data: data['low_heat_total']
+                                },
+                                {
+                                    name: '高温热量',
+                                    type: 'bar',
+                                    stack: '可用热量',
+                                    data: data['high_heat_total']
+                                }
+                            ]
+                        }
+                    );
+                }
+
+
+                // $('#high_heat_equal_supply_days_heat_date').text('蓄热水池可用高温热量及电锅炉替换供热天数  [' +  start.split(" ")[0] + '   ——  ' + end.split(" ")[0] + ']');
+                set_time_range("high_heat_equal_supply_days_heat_date", start, end);
+                high_heat_equal_supply_days_chart.hideLoading();
+                if (is_large){
+                    high_heat_equal_supply_days_chart.setOption(
+                        {
+                            grid: {
+                                right: 110,
+                                left: 80
+                            },
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    type: 'cross'
+                                }
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataView: {show: true, readOnly: false},
+                                    restore: {show: true},
+                                    saveAsImage: {show: true},
+                                    dataZoom: {
+                                        yAxisIndex: 'none'
+                                    }
+                                }
+                            },
+                            dataZoom: [
+                                {
+                                    show: true,
+                                    realtime: true,
+                                    start: 30,
+                                    end: 70,
+                                    xAxisIndex: [0, 1]
+                                }
+                            ],
+                            legend: {
+                                data: ['2000kW电锅炉供热天数', '高温热量']
+                            },
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    name: '时间段',
+                                    data: data['time_data'],
+                                    axisTick: {
+                                        alignWithLabel: true
+                                    },
+                                    axisPointer: {
+                                        type: 'shadow'
+                                    },
+
+                                    axisLabel: {
+                                        interval:0,
+                                        rotate:40
+                                    }
+
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    type: 'value',
+                                    name: '供热天数（天）',
+                                    min: 0,
+                                    position: 'left',
+                                    axisLine: {
+                                        show: true
+
+                                    },
+                                    axisLabel: {
+                                        formatter: '{value} '
+                                    }
+                                },
+                                {
+                                    type: 'value',
+                                    name: '高温热量（kWh）',
+                                    min: 0,
+                                    position: 'right',
+                                    axisLine: {
+                                        show: true
+                                    },
+                                    axisLabel: {
+                                        formatter: '{value} '
+                                    }
+                                }
+
+                            ],
+                            series: [
+                                {
+                                    name: '2000kW电锅炉供热天数',
+                                    type: 'bar',
+                                    data: data['heat_supply_days']
+                                },
+                                {
+                                    name: '高温热量',
+                                    type: 'line',
+                                    yAxisIndex: 1,
+                                    data: data['high_heat_total']
+                                }
+                            ]
+                        }
+                    );
+                }else {
+                    high_heat_equal_supply_days_chart.setOption(
+                        {
+                            grid: {
+                                right: 110,
+                                left: 80
+                            },
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    type: 'cross'
+                                }
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataView: {show: true, readOnly: false},
+                                    restore: {show: true},
+                                    saveAsImage: {show: true}
+                                }
+                            },
+                            legend: {
+                                data: ['2000kW电锅炉供热天数', '高温热量']
+                            },
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    name: '时间段',
+                                    data: data['time_data'],
+                                    axisTick: {
+                                        alignWithLabel: true
+                                    },
+                                    axisPointer: {
+                                        type: 'shadow'
+                                    },
+
+                                    axisLabel: {
+                                        interval:0,
+                                        rotate:40
+                                    }
+
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    type: 'value',
+                                    name: '供热天数（天）',
+                                    min: 0,
+                                    // max: 100,
+                                    position: 'left',
+                                    axisLine: {
+                                        show: true
+
+                                    },
+                                    axisLabel: {
+                                        formatter: '{value} '
+                                    }
+                                },
+                                {
+                                    type: 'value',
+                                    name: '高温热量（kWh）',
+                                    min: 0,
+                                    position: 'right',
+                                    axisLine: {
+                                        show: true
+                                    },
+                                    axisLabel: {
+                                        formatter: '{value} '
+                                    }
+                                }
+
+                            ],
+                            series: [
+                                {
+                                    name: '2000kW电锅炉供热天数',
+                                    type: 'bar',
+                                    data: data['heat_supply_days']
+                                },
+                                {
+                                    name: '高温热量',
+                                    type: 'line',
+                                    yAxisIndex: 1,
+                                    data: data['high_heat_total']
+                                }
+                            ]
+                        }
+                    );
+                }
+
+
+            },
+            error: function (xhr) {
+                console.log("post pool_temperature error：", xhr);
+            }
+        }
+    );
+}catch (e) {
+    console.log("ajax pool_temperature error：", e);
+}
+
+
+try {
     // pool_temperature
     $.ajax(
         {
@@ -205,81 +594,12 @@ try {
             type: "POST",
             data: {
                 "key": "api_pool_temperature",
-                "start": start,
                 "end": end,
                 "by": 'h'
             },
             cache: true,
             success: function (data) {
-                $('#pool_available_heat_heat_date').text('蓄热水池分时可用低温/高温热量 （' +  data['heat_date'] + '）');
-                pool_available_heat_chart.hideLoading();
-                pool_available_heat_chart.setOption(
-                    {
-                        grid: {
-                            left: 110,
-                            right: 80
-                        },
-                        tooltip: {
-                            trigger: 'axis',
-                            axisPointer: {
-                                type: 'cross',
-                                crossStyle: {
-                                    color: '#999'
-                                }
-                            }
-                        },
-                        toolbox: {
-                            feature: {
-                                dataView: {show: true, readOnly: false},
-                                magicType: {show: true, type: ['line', 'bar']},
-                                restore: {show: true},
-                                saveAsImage: {show: true}
-                            }
-                        },
-                        legend: {
-                            data: ['低温热量', '高温热量']
-                        },
-                        xAxis: [
-                            {
-                                type: 'category',
-                                name: '时间段',
-                                data: data['heat_time_period'],
-                                axisPointer: {
-                                    type: 'shadow'
-                                },
-                                axisLabel: {
-                                    interval:0,
-                                    rotate:40
-                                }
-                            }
-                        ],
-                        yAxis: [
-                            {
-                                type: 'value',
-                                name: '热量(kWh)',
-                                min: 0,
-                                max: 5000000
-                            }
-                        ],
-                        series: [
-                            {
-                                name: '低温热量',
-                                type: 'bar',
-                                stack: '可用热量',
-                                data: data['low_heat_total']
-                            },
-                            {
-                                name: '高温热量',
-                                type: 'bar',
-                                stack: '可用热量',
-                                data: data['high_heat_total']
-                            }
-                        ]
-                    }
-                );
-
-
-                $('#pool_temp_status').text('水池温度情况（' + data['heat_date'] + '）');
+                set_time_range("pool_temp_status", null, end);
                 for (var i=0;i<data['pool_temperature'].length;i++){
 
                     if (i % 2 == 0){
@@ -333,90 +653,81 @@ try {
                     $("#tbody_pool").append(tr_html);
                 }
 
-                $('#high_heat_equal_supply_days_heat_date').text('\n' +
-                    '蓄热水池可用高温热量及电锅炉替换供热天数 （' +  data['heat_date'] + '）');
-                high_heat_equal_supply_days_chart.hideLoading();
-                high_heat_equal_supply_days_chart.setOption(
+            },
+            error: function (xhr) {
+                console.log("post pool_temperature error：", xhr);
+            }
+        }
+    );
+}catch (e) {
+    console.log("ajax pool_temperature error：", e);
+}
+
+
+try {
+    // heat_map
+    $.ajax(
+        {
+            url: kamba_url,
+            type: "POST",
+            data: {
+                "key": "api_pool_temperature",
+                "start": start,
+                "end": end,
+                "by": 'h',
+                "heat_map": true
+            },
+            cache: true,
+            success: function (data) {
+                set_time_range("heat_map_title_of_temp", null, end);
+                pool_temp_chart.hideLoading();
+                pool_temp_chart.setOption(
                     {
-                        grid: {
-                            right: 110,
-                            left: 80
-                        },
                         tooltip: {
-                            trigger: 'axis',
-                            axisPointer: {
-                                type: 'cross'
+                            position: 'top'
+                        },
+                        grid: {
+                            height: '60%',
+                            top: '10%',
+                            left: "10%",
+                            right: "10%"
+                        },
+                        xAxis: {
+                            type: 'category',
+                            data: data["sizes"],
+                            splitArea: {
+                                show: true
                             }
                         },
-                        toolbox: {
-                            feature: {
-                                dataView: {show: true, readOnly: false},
-                                restore: {show: true},
-                                saveAsImage: {show: true}
+                        yAxis: {
+                            type: 'category',
+                            data: data["heat_time_period"],
+                            splitArea: {
+                                show: true
                             }
                         },
-                        legend: {
-                            data: ['2000kW电锅炉供热天数', '高温热量']
+                        visualMap: {
+                            min: data["min"],
+                            max: data["max"],
+                            calculable: true,
+                            orient: 'horizontal',
+                            left: 'center',
+                            bottom: '10%'
                         },
-                        xAxis: [
-                            {
-                                type: 'category',
-                                name: '时间段',
-                                data: data['heat_time_period'],
-                                axisTick: {
-                                    alignWithLabel: true
-                                },
-                                axisPointer: {
-                                    type: 'shadow'
-                                },
-
-                                axisLabel: {
-                                    interval:0,
-                                    rotate:40
-                                }
-
-                            }
-                        ],
-                        yAxis: [
-                            {
-                                type: 'value',
-                                name: '供热天数（天）',
-                                min: 0,
-                                max: 100,
-                                position: 'left',
-                                axisLine: {
-                                    show: true
-
-                                },
-                                axisLabel: {
-                                    formatter: '{value} '
-                                }
-                            },
-                            {
-                                type: 'value',
-                                name: '高温热量（kWh）',
-                                min: 0,
-                                position: 'right',
-                                axisLine: {
-                                    show: true
-                                },
-                                axisLabel: {
-                                    formatter: '{value} '
-                                }
-                            }
-
-                        ],
                         series: [
                             {
-                                name: '2000kW电锅炉供热天数',
-                                type: 'bar',
-                                data: data['heat_supply_days']
-                            },
-                            {
-                                name: '高温热量',
-                                type: 'line',
-                                yAxisIndex: 1,
-                                data: data['high_heat_total']
+                                name: 'Punch Card',
+                                type: 'heatmap',
+                                data: data["values"],
+                                label: {
+                                    show: true
+                                },
+                                emphasis: {
+                                    itemStyle: {
+                                        shadowBlur: 10,
+                                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                    }
+                                }
                             }
                         ]
                     }
@@ -452,6 +763,7 @@ try {
                     get_cop_pie_options(data['kamba_system_cop'][data['kamba_system_cop'].length-1])
                 );
 
+                set_time_range("sys_cop_title", start, end);
                 kamba_system_cop_chart_chart.hideLoading();
                 kamba_system_cop_chart_chart.setOption(
                     {
@@ -608,12 +920,13 @@ try {
             },
             cache: true,
             success: function (data) {
-                if (!data["status"].includes("正常")) $("#wshp_cop_title").text(`系统综合COP（${data["status"]}）`);
+                if (!data["status"].includes("正常")) $("#wshp_cop_title").text(`水源热泵COP（${data["status"]}）`);
                 kamba_wshp_cop_chart.hideLoading();
                 kamba_wshp_cop_chart.setOption(
                     get_cop_pie_options(data['kamba_wshp_cop'][data['kamba_wshp_cop'].length-1])
                 );
 
+                set_time_range("wp_cop_title", start, end);
                 kamba_wshp_cop_chart_chart.hideLoading();
                 kamba_wshp_cop_chart_chart.setOption(
                     {
@@ -688,7 +1001,7 @@ try {
                                         }
                                     }
                                 },
-                                data: data['kamba_system_cop']
+                                data: data['kamba_wshp_cop']
                             },
                             {
                                 name: 'Target Miniumum',
@@ -770,6 +1083,7 @@ try {
             cache: true,
             success: function (data) {
                 last_week_solar_collector_chart.hideLoading();
+                set_time_range("solar_heat_collector_title", start, end);
                 if (is_large){
                     last_week_solar_collector_chart.setOption(
                         {
@@ -781,7 +1095,7 @@ try {
                             },
                             legend: {
                                 data: ['太阳能集热量'],
-                                left: 'center'
+                                left: 10
                             },
                             toolbox: {
                                 feature: {
@@ -953,6 +1267,10 @@ try {
             },
             cache: true,
             success: function (data) {
+                var ids = ["heat_storage_rep_title", "heat_rep_title", "solar_rep_title"];
+                for(var i=0;i<ids.length;i++){
+                    set_time_range(ids[i], start, end);
+                }
                 last_week_heat_storage_replenishment_chart.hideLoading();
                 last_week_heat_water_replenishment_chart.hideLoading();
                 last_week_solar_side_replenishment_chart.hideLoading();
@@ -967,7 +1285,7 @@ try {
                             },
                             legend: {
                                 data: ['蓄热水池补水量'],
-                                left: 'center'
+                                left: 10
                             },
                             toolbox: {
                                 feature: {
@@ -1199,7 +1517,7 @@ try {
                             },
                             legend: {
                                 data: ['过去一周蓄热水池补水量'],
-                                left: 'center'
+                                left: 10
                             },
                             toolbox: {
                                 feature: {
@@ -1447,8 +1765,9 @@ try {
             },
             cache: true,
             success: function (data) {
+                set_time_range("solar_matrix_title", start, end);
                 solar_matrix_supply_and_return_water_temp_chart.hideLoading();
-                if (is_large) $("#solar_matrix_title").text("太阳能矩阵供回水温度");
+
                 solar_matrix_supply_and_return_water_temp_chart.setOption(
                     {
                         tooltip: {
@@ -1552,8 +1871,10 @@ try {
                 $('#max_load').text(data['max_load'] + 'KW');
                 $('#min_load').text(data['min_load'] + 'KW');
                 load_by_days_chart.hideLoading();
+                set_time_range("load_title", start, end);
                 if (is_large){
-                    $("#load_title").text("负荷量");
+                    set_time_range("solar_matrix_title", start, end);
+                    // $("#load_title").text("负荷量");
                     load_by_days_chart.setOption(
                         {
                             grid: {
@@ -1740,21 +2061,41 @@ try {
             },
             cache: true,
             success: function (data) {
+                var ids = ["re_with_temp_title","sup_with_temp_title","diff_with_temp_title", "diff_temp"];
+                for(var i=0;i<ids.length;i++){
+                    set_time_range(ids[i], start, end);
+                }
+
                 supply_and_return_water_temp_diff_with_temp_chart.hideLoading();
                 supply_and_return_water_temp_diff_with_temp_chart.setOption(
-                    get_water_provider_options(data['end_supply_and_return_water_temp_diff_with_temp'], '末端供回水温差')
+                    get_water_provider_options(
+                        [
+                            data['end_supply_and_return_water_temp_diff_with_temp'],
+                            data['last_end_supply_and_return_water_temp_diff_with_temp']
+                        ], '末端供回水温差', data["hint"]
+                    )
                 );
 
 
                 supply_water_temp_with_temp_chart.hideLoading();
                 supply_water_temp_with_temp_chart.setOption(
-                    get_water_provider_options(data['supply_water_temp_with_temp'], '末端供水温度')
+                    get_water_provider_options(
+                        [
+                            data['supply_water_temp_with_temp'],
+                            data['last_supply_water_temp_with_temp'],
+                        ], '末端供水温度', data["hint"]
+                    )
                 );
 
 
                 return_water_temp_with_temp_chart.hideLoading();
                 return_water_temp_with_temp_chart.setOption(
-                    get_water_provider_options(data['return_water_temp_with_temp'], '末端回水温度')
+                    get_water_provider_options(
+                        [
+                            data['return_water_temp_with_temp'],
+                            data['last_return_water_temp_with_temp']
+                        ], '末端回水温度', data["hint"]
+                    )
                 );
 
                 end_supply_and_return_water_temp_chart.hideLoading();
@@ -1994,23 +2335,146 @@ try {
 try {
     //end_supply_and_return_water_temp for year
 
-    if (is_large){
-        $.ajax(
-            {
-                url: kamba_url,
-                type: "POST",
-                data: {
-                    "key": "api_end_supply_and_return_water_temp",
-                    "start": start,
-                    "end": end,
-                    "by": 'y'
-                },
-                cache: true,
-                success: function (data) {
-                    $('#last_year_supply_return_water_temp_time_delta').text(
-                        '供回水温度温差分析(' + data['last_year_start'] + '——' + data['last_year_end'] + ')'
+    $.ajax(
+        {
+            url: kamba_url,
+            type: "POST",
+            data: {
+                "key": "api_end_supply_and_return_water_temp",
+                "start": start,
+                "end": end,
+                "by": 'y'
+            },
+            cache: true,
+            success: function (data) {
+                $('#last_year_supply_return_water_temp_time_delta').text(
+
+                    '供回水温度温差分析(' + data['last_year_start'] + '——' + data['last_year_end'] + ')'
+                );
+                last_year_supply_return_water_temp_chart.hideLoading();
+                var series_name = ['供水温度', '回水温度', '温差', '去年供水温度', '去年回水温度', '去年温差'];
+                // set_time_range("last_year_supply_return_water_temp_time_delta", start, end);
+                if (is_large){
+
+                    last_year_supply_return_water_temp_chart.setOption(
+                        {
+                            // color: ['red', 'green', 'blue'],
+                            legend: {
+                                left: 50,
+                                top: 18,
+                                data: ['供水温度', '回水温度', '温差', '去年供水温度', '去年回水温度', '去年温差']
+                            },
+                            toolbox: {  //配置工具箱组件
+                                show: true,
+                                right: 50,
+                                top: 18,
+                                feature: {
+                                    mark: { show: true },
+                                    dataZoom: { show: true },
+                                    dataView: { show: true, readOnly: false },
+                                    restore: { show: true },
+                                    saveAsImage: { show: true }
+                                }
+                            },
+                            xAxis: [
+                                {
+                                    type: 'value',
+                                    scale: true
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    type: 'value',
+                                    scale: true
+                                }
+                            ],
+                            tooltip: {
+                                formatter: function(param) {
+                                    if(param.name == '平均值'){
+                                        // console.log(param);
+                                        return series_name[param.seriesIndex] + '平均值：' + param.value + '℃';
+                                    }else if(param.name == '最大值'){
+                                        return series_name[param.seriesIndex] + '最大值：' + param.value + '℃';
+                                    }else if(param.name == '最小值'){
+                                        return series_name[param.seriesIndex] + '最小值：' + param.value + '℃';
+                                    }else{
+                                        return '温度：' + param.value[0] + '℃' + '<br/>' + param.seriesName + '：' + param.value[1] + '℃';
+                                    }
+                                }
+                            },
+                            series: [
+                                {
+                                    name: '供水温度',
+                                    type: 'scatter',
+                                    symbolSize: 8,
+                                    data: data['end_supply_water_temp'],
+                                    markPoint: {
+                                        data: [
+                                            { type: 'max', name: '最大值' },
+                                            { type: 'min', name: '最小值' }
+                                        ]
+                                    },
+                                    markLine: { data: [{ type: 'average', name: '平均值' }] }
+                                },
+                                {   //设置男性数据
+                                    name: '回水温度',
+                                    type: 'scatter',
+                                    symbolSize: 8,
+                                    data: data['end_return_water_temp'],
+                                    markPoint: {
+                                        data: [
+                                            { type: 'max', name: '最大值' },
+                                            { type: 'min', name: '最小值' }
+                                        ]
+                                    },
+                                    markLine: { data: [{ type: 'average', name: '平均值' }] }
+                                },
+                                {
+                                    name: '温差',
+                                    type: 'scatter',
+                                    symbolSize: 8,
+                                    data: data['end_supply_and_return_water_temp_diff'],
+                                    markPoint: { data: [{ type: 'max', name: '最大值' }, { type: 'min', name: '最小值' }]},
+                                    markLine: { data: [{ type: 'average', name: '平均值' }] }
+                                },
+                                {
+                                    name: '去年供水温度',
+                                    type: 'scatter',
+                                    symbolSize: 8,
+                                    data: data['last_end_supply_water_temp'],
+                                    markPoint: {
+                                        data: [
+                                            { type: 'max', name: '最大值' },
+                                            { type: 'min', name: '最小值' }
+                                        ]
+                                    },
+                                    markLine: { data: [{ type: 'average', name: '平均值' }] }
+                                },
+                                {   //设置男性数据
+                                    name: '去年回水温度',
+                                    type: 'scatter',
+                                    symbolSize: 8,
+                                    data: data['last_end_return_water_temp'],
+                                    markPoint: {
+                                        data: [
+                                            { type: 'max', name: '最大值' },
+                                            { type: 'min', name: '最小值' }
+                                        ]
+                                    },
+                                    markLine: { data: [{ type: 'average', name: '平均值' }] }
+                                },
+                                {
+                                    name: '去年温差',
+                                    type: 'scatter',
+                                    symbolSize: 8,
+                                    data: data['last_end_supply_and_return_water_temp_diff'],
+                                    markPoint: { data: [{ type: 'max', name: '最大值' }, { type: 'min', name: '最小值' }]},
+                                    markLine: { data: [{ type: 'average', name: '平均值' }] }
+                                },
+                            ]
+                        }
                     );
-                    last_year_supply_return_water_temp_chart.hideLoading();
+                }else {
                     last_year_supply_return_water_temp_chart.setOption(
                         {
                             color: ['red', 'green', 'blue'],
@@ -2046,11 +2510,12 @@ try {
                             tooltip: {
                                 formatter: function(param) {
                                     if(param.name == '平均值'){
-                                        return '平均值：' + param.value + '℃';
+                                        // console.log(param);
+                                        return series_name[param.seriesIndex] + '平均值：' + param.value + '℃';
                                     }else if(param.name == '最大值'){
-                                        return '最大值：' + param.value + '℃';
+                                        return series_name[param.seriesIndex] + '最大值：' + param.value + '℃';
                                     }else if(param.name == '最小值'){
-                                        return '最小值：' + param.value + '℃';
+                                        return series_name[param.seriesIndex] + '最小值：' + param.value + '℃';
                                     }else{
                                         return '温度：' + param.value[0] + '℃' + '<br/>' + param.seriesName + '：' + param.value[1] + '℃';
                                     }
@@ -2094,121 +2559,14 @@ try {
                             ]
                         }
                     );
-
-                },
-                error: function (xhr) {
-                    console.log("post end_supply_and_return_water_temp error：", xhr);
                 }
-            }
-        );
-    }else {
-        $.ajax(
-            {
-                url: kamba_url,
-                type: "POST",
-                data: {
-                    "key": "api_end_supply_and_return_water_temp",
-                    "start": initDateFormat(Date.parse(end) - 1000*60*60*24*365),
-                    "end": end,
-                    "by": 'y'
-                },
-                cache: true,
-                success: function (data) {
-                    $('#last_year_supply_return_water_temp_time_delta').text(
-                        '过去一年供回水温度温差分析(' + data['last_year_start'] + '——' + data['last_year_end'] + ')'
-                    );
-                    last_year_supply_return_water_temp_chart.hideLoading();
-                    last_year_supply_return_water_temp_chart.setOption(
-                        {
-                            color: ['red', 'green', 'blue'],
-                            legend: {
-                                left: 50,
-                                top: 18,
-                                data: ['供水温度', '回水温度', '温差']
-                            },
-                            toolbox: {  //配置工具箱组件
-                                show: true,
-                                right: 50,
-                                top: 18,
-                                feature: {
-                                    mark: { show: true },
-                                    dataZoom: { show: true },
-                                    dataView: { show: true, readOnly: false },
-                                    restore: { show: true },
-                                    saveAsImage: { show: true }
-                                }
-                            },
-                            xAxis: [
-                                {
-                                    type: 'value',
-                                    scale: true
-                                }
-                            ],
-                            yAxis: [
-                                {
-                                    type: 'value',
-                                    scale: true
-                                }
-                            ],
-                            tooltip: {
-                                formatter: function(param) {
-                                    if(param.name == '平均值'){
-                                        return '平均值：' + param.value + '℃';
-                                    }else if(param.name == '最大值'){
-                                        return '最大值：' + param.value + '℃';
-                                    }else if(param.name == '最小值'){
-                                        return '最小值：' + param.value + '℃';
-                                    }else{
-                                        return '温度：' + param.value[0] + '℃' + '<br/>' + param.seriesName + '：' + param.value[1] + '℃';
-                                    }
-                                }
-                            },
-                            series: [
-                                {
-                                    name: '供水温度',
-                                    type: 'scatter',
-                                    symbolSize: 8,
-                                    data: data['end_supply_water_temp'],
-                                    markPoint: {
-                                        data: [
-                                            { type: 'max', name: '最大值' },
-                                            { type: 'min', name: '最小值' }
-                                        ]
-                                    },
-                                    markLine: { data: [{ type: 'average', name: '平均值' }] }
-                                },
-                                {   //设置男性数据
-                                    name: '回水温度',
-                                    type: 'scatter',
-                                    symbolSize: 8,
-                                    data: data['end_return_water_temp'],
-                                    markPoint: {
-                                        data: [
-                                            { type: 'max', name: '最大值' },
-                                            { type: 'min', name: '最小值' }
-                                        ]
-                                    },
-                                    markLine: { data: [{ type: 'average', name: '平均值' }] }
-                                },
-                                {
-                                    name: '温差',
-                                    type: 'scatter',
-                                    symbolSize: 8,
-                                    data: data['end_supply_and_return_water_temp_diff'],
-                                    markPoint: { data: [{ type: 'max', name: '最大值' }, { type: 'min', name: '最小值' }]},
-                                    markLine: { data: [{ type: 'average', name: '平均值' }] }
-                                }
-                            ]
-                        }
-                    );
 
-                },
-                error: function (xhr) {
-                    console.log("post end_supply_and_return_water_temp error：", xhr);
-                }
+            },
+            error: function (xhr) {
+                console.log("post end_supply_and_return_water_temp error：", xhr);
             }
-        );
-    }
+        }
+    );
 
 
 }catch (e) {
@@ -2222,7 +2580,7 @@ try {
             url: kamba_url,
             type: "POST",
             data: {
-                "key": "api_solar_analysis",
+                "key": "api_solar_heat_supply",
                 "start": start,
                 "end": end,
                 "by": 'd'
@@ -2231,8 +2589,8 @@ try {
             success: function (data) {
 
                 last_week_solar_collector_by_days_chart.hideLoading();
+                set_time_range("solar_analysis_title", start, end);
                 if (is_large){
-                    $("#solar_analysis_title").text("太阳能集热分析");
                     last_week_solar_collector_by_days_chart.setOption(
                         {
                             tooltip: {
@@ -2282,8 +2640,8 @@ try {
                                     var res = params[0].name + '<br/>', val;
                                     res += params[0].marker + " " + params[0].seriesName + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + params[0].value + ' kWh' + '<br/>' +
                                         params[1].marker + " " + params[1].seriesName + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + params[1].value + ' kWh' + '<br/>' +
-                                        params[2].marker + " " + params[2].seriesName + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + params[2].value + ' %' + '<br/>' +
-                                        params[3].marker + " " + params[3].seriesName + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + params[3].value + ' %' + '<br/>'
+                                        params[2].marker + " " + params[2].seriesName + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + params[2].value + ' %' + '<br/>';
+                                        // params[3].marker + " " + params[3].seriesName + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + params[3].value + ' %' + '<br/>'
                                     return res;
                                 }
                             },
@@ -2300,7 +2658,7 @@ try {
                                 }
                             },
                             legend: {
-                                data: ['可用太阳能', '太阳能集热量', '太阳能集热效率', '太阳能供暖保证率']
+                                data: ['供热量', '太阳能集热量', '短期太阳能保证率']
                             },
                             dataZoom: [
                                 {
@@ -2316,14 +2674,14 @@ try {
                                     start: 30,
                                     end: 70,
                                     xAxisIndex: [0, 1]
-                                },
-                                {
-                                    type: 'inside',
-                                    realtime: true,
-                                    start: 30,
-                                    end: 70,
-                                    xAxisIndex: [0, 1]
                                 }
+                                // {
+                                //     type: 'inside',
+                                //     realtime: true,
+                                //     start: 30,
+                                //     end: 70,
+                                //     xAxisIndex: [0, 1]
+                                // }
                             ],
                             xAxis: [
                                 {
@@ -2349,22 +2707,10 @@ try {
                                 },
                                 {
                                     type: 'value',
-                                    name: '集热效率',
+                                    name: '太阳能保证率',
                                     min: 0,
+                                    max: 500,
                                     position: 'right',
-                                    axisLine: {
-                                        show: true
-                                    },
-                                    axisLabel: {
-                                        formatter: '{value} %'
-                                    }
-                                },
-                                {
-                                    type: 'value',
-                                    name: '供暖保证率',
-                                    min: 0,
-                                    position: 'right',
-                                    offset: 80,
                                     axisLine: {
                                         show: true
                                     },
@@ -2372,13 +2718,26 @@ try {
                                         formatter: '{value} %'
                                     }
                                 }
+                                // {
+                                //     type: 'value',
+                                //     name: '供暖保证率',
+                                //     min: 0,
+                                //     position: 'right',
+                                //     offset: 80,
+                                //     axisLine: {
+                                //         show: true
+                                //     },
+                                //     axisLabel: {
+                                //         formatter: '{value} %'
+                                //     }
+                                // }
 
                             ],
                             series: [
                                 {
-                                    name: '可用太阳能',
+                                    name: '供热量',
                                     type: 'bar',
-                                    data: data['available_solar']
+                                    data: data['heat_supply']
                                 },
                                 {
                                     name: '太阳能集热量',
@@ -2386,17 +2745,12 @@ try {
                                     data: data['solar_collector_heat']
                                 },
                                 {
-                                    name: '太阳能集热效率',
+                                    name: '短期太阳能保证率',
                                     type: 'line',
                                     yAxisIndex: 1,
-                                    data: data['solar_collector_efficiency']
-                                },
-                                {
-                                    name: '太阳能供暖保证率',
-                                    type: 'line',
-                                    yAxisIndex: 2,
-                                    data: data['solar_heating_guarantee_rate']
+                                    data: data['rate']
                                 }
+
                             ],
                             grid: {
                                 x: 130,
@@ -2456,14 +2810,11 @@ try {
                                     var res = params[0].name + '<br/>', val;
                                     res += params[0].marker + " " + params[0].seriesName + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + params[0].value + ' kWh' + '<br/>' +
                                         params[1].marker + " " + params[1].seriesName + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + params[1].value + ' kWh' + '<br/>' +
-                                        params[2].marker + " " + params[2].seriesName + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + params[2].value + ' %' + '<br/>' +
-                                        params[3].marker + " " + params[3].seriesName + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + params[3].value + ' %' + '<br/>'
+                                        params[2].marker + " " + params[2].seriesName + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + params[2].value + ' %' + '<br/>';
+                                        // params[3].marker + " " + params[3].seriesName + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + params[3].value + ' %' + '<br/>'
                                     return res;
                                 }
                             },
-//    grid: {
-//        right: '20%'
-//    },
                             toolbox: {
                                 feature: {
                                     dataView: {show: true, readOnly: false},
@@ -2473,7 +2824,7 @@ try {
                                 }
                             },
                             legend: {
-                                data: ['可用太阳能', '太阳能集热量', '太阳能集热效率', '太阳能供暖保证率']
+                                data: ['供热量', '太阳能集热量', '短期太阳能保证率']
                             },
                             xAxis: [
                                 {
@@ -2499,8 +2850,9 @@ try {
                                 },
                                 {
                                     type: 'value',
-                                    name: '集热效率',
+                                    name: '太阳能保证率',
                                     min: 0,
+                                    max: 500,
                                     position: 'right',
                                     axisLine: {
                                         show: true
@@ -2508,13 +2860,192 @@ try {
                                     axisLabel: {
                                         formatter: '{value} %'
                                     }
+                                }
+                                // {
+                                //     type: 'value',
+                                //     name: '供暖保证率',
+                                //     min: 0,
+                                //     position: 'right',
+                                //     offset: 80,
+                                //     axisLine: {
+                                //         show: true
+                                //     },
+                                //     axisLabel: {
+                                //         formatter: '{value} %'
+                                //     }
+                                // }
+
+                            ],
+                            series: [
+                                {
+                                    name: '供热量',
+                                    type: 'bar',
+                                    data: data['heat_supply']
+                                },
+                                {
+                                    name: '太阳能集热量',
+                                    type: 'bar',
+                                    data: data['solar_collector_heat']
+                                },
+                                {
+                                    name: '短期太阳能保证率',
+                                    type: 'line',
+                                    yAxisIndex: 1,
+                                    data: data['rate']
+                                }
+                            ],
+                            grid: {
+                                x: 130,
+                                y: 70,
+                                x2: 150,
+                                y2: 50
+                            }
+                        }
+                    );
+                }
+
+            },
+            error: function (xhr) {
+                console.log("post solar_analysis error：", xhr);
+            }
+        }
+    );
+
+}catch (e) {
+    console.log("ajax solar_analysis error：", e);
+}
+
+try {
+    //solar_analysis
+    $.ajax(
+        {
+            url: kamba_url,
+            type: "POST",
+            data: {
+                "key": "api_heat_supply",
+                "start": start,
+                "end": end,
+                "by": 'd'
+            },
+            cache: true,
+            success: function (data) {
+
+                heat_supply_analysis_chart.hideLoading();
+                set_time_range("heat_supply_analysis_title", start, end);
+                if (is_large){
+                    heat_supply_analysis_chart.setOption(
+                        {
+                            tooltip: {
+                                trigger: 'axis',
+                                zlevel: 0,
+                                z: 60,
+                                show: true,
+                                showContent: true,
+                                triggerOn: 'mousemove|click',
+                                alwaysShowContent: false,
+                                displayMode: 'single',
+                                renderMode: 'auto',
+                                confine: null,
+                                showDelay: 0,
+                                hideLay: 100,
+                                transitionDuration: 0.4,
+                                enterable: false,
+                                backgroundColor: '#F8F8FF',
+                                shadowBlur: 10,
+                                shadowColor: '#fff',
+                                shadowOffsetX: 1,
+                                shadowOffsetY: 2,
+                                boderRadius: 4,
+                                boderWidth: 1,
+                                padding: null,
+                                textStyle: {
+                                    'align': 'left'
+                                },
+                                axisPointer: {
+                                    type: 'cross',
+                                    axis: 'auto',
+                                    animation: 'auto',
+                                    animationDurationUpdate: 200,
+                                    animationEasingUpdate: 'exponentialOut',
+                                    crossStyle:{
+                                        color: '#999',
+                                        width: 1,
+                                        type: 'dashed'
+                                    },
+                                    textStyle: {
+                                        color: '#666',
+                                        fontSize: 14,
+                                        align: 'right'
+                                    },
+                                },
+                                formatter: function(params){
+                                    var res = params[0].name + '<br/>', val;
+                                    res += params[0].marker + " " + params[0].seriesName + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + params[0].value + ' kWh' + '<br/>' +
+                                        params[1].marker + " " + params[1].seriesName + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + params[1].value + ' kWh' + '<br/>' +
+                                        params[2].marker + " " + params[2].seriesName + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + params[2].value + ' %' + '<br/>';
+                                    // params[3].marker + " " + params[3].seriesName + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + params[3].value + ' %' + '<br/>'
+                                    return res;
+                                }
+                            },
+
+                            toolbox: {
+                                feature: {
+                                    dataView: {show: true, readOnly: false},
+                                    restore: {show: true},
+                                    magicType: {show: true, type: ['line', 'bar']},
+                                    saveAsImage: {show: true},
+                                    dataZoom: {
+                                        yAxisIndex: 'none'
+                                    }
+                                }
+                            },
+                            legend: {
+                                data: ['供热量', '水源热泵耗电量', '供热率']
+                            },
+                            dataZoom: [
+                                {
+                                    show: true,
+                                    realtime: true,
+                                    start: 30,
+                                    end: 70,
+                                    xAxisIndex: [0, 1]
+                                },
+                                {
+                                    type: 'inside',
+                                    realtime: true,
+                                    start: 30,
+                                    end: 70,
+                                    xAxisIndex: [0, 1]
+                                }
+
+                            ],
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    axisTick: {
+                                        alignWithLabel: true
+                                    },
+                                    data: data['time_data']
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    type: 'value',
+                                    name: '热量',
+                                    min: 0,
+                                    position: 'left',
+                                    axisLine: {
+                                        show: true
+                                    },
+                                    axisLabel: {
+                                        formatter: '{value} kWh'
+                                    }
                                 },
                                 {
                                     type: 'value',
-                                    name: '供暖保证率',
+                                    name: '供热率',
                                     min: 0,
                                     position: 'right',
-                                    offset: 80,
                                     axisLine: {
                                         show: true
                                     },
@@ -2526,26 +3057,150 @@ try {
                             ],
                             series: [
                                 {
-                                    name: '可用太阳能',
+                                    name: '供热量',
                                     type: 'bar',
-                                    data: data['available_solar']
+                                    data: data['heat_supply']
                                 },
                                 {
-                                    name: '太阳能集热量',
+                                    name: '水源热泵耗电量',
                                     type: 'bar',
-                                    data: data['solar_collector_heat']
+                                    data: data['power_consume']
                                 },
                                 {
-                                    name: '太阳能集热效率',
+                                    name: '供热率',
                                     type: 'line',
                                     yAxisIndex: 1,
-                                    data: data['solar_collector_efficiency']
+                                    data: data['rate']
+                                }
+
+                            ],
+                            grid: {
+                                x: 130,
+                                y: 70,
+                                x2: 150,
+                                y2: 80
+                            }
+                        }
+                    );
+                }else {
+                    heat_supply_analysis_chart.setOption(
+                        {
+                            tooltip: {
+                                trigger: 'axis',
+                                zlevel: 0,
+                                z: 60,
+                                show: true,
+                                showContent: true,
+                                triggerOn: 'mousemove|click',
+                                alwaysShowContent: false,
+                                displayMode: 'single',
+                                renderMode: 'auto',
+                                confine: null,
+                                showDelay: 0,
+                                hideLay: 100,
+                                transitionDuration: 0.4,
+                                enterable: false,
+                                backgroundColor: '#F8F8FF',
+                                shadowBlur: 10,
+                                shadowColor: '#fff',
+                                shadowOffsetX: 1,
+                                shadowOffsetY: 2,
+                                boderRadius: 4,
+                                boderWidth: 1,
+                                padding: null,
+                                textStyle: {
+                                    'align': 'left'
+                                },
+                                axisPointer: {
+                                    type: 'cross',
+                                    axis: 'auto',
+                                    animation: 'auto',
+                                    animationDurationUpdate: 200,
+                                    animationEasingUpdate: 'exponentialOut',
+                                    crossStyle:{
+                                        color: '#999',
+                                        width: 1,
+                                        type: 'dashed'
+                                    },
+                                    textStyle: {
+                                        color: '#666',
+                                        fontSize: 14,
+                                        align: 'right'
+                                    },
+                                },
+                                formatter: function(params){
+                                    var res = params[0].name + '<br/>', val;
+                                    res += params[0].marker + " " + params[0].seriesName + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + params[0].value + ' kWh' + '<br/>' +
+                                        params[1].marker + " " + params[1].seriesName + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + params[1].value + ' kWh' + '<br/>' +
+                                        params[2].marker + " " + params[2].seriesName + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + params[2].value + ' %' + '<br/>';
+                                    // params[3].marker + " " + params[3].seriesName + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + params[3].value + ' %' + '<br/>'
+                                    return res;
+                                }
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataView: {show: true, readOnly: false},
+                                    restore: {show: true},
+                                    magicType: {show: true, type: ['line', 'bar']},
+                                    saveAsImage: {show: true}
+                                }
+                            },
+                            legend: {
+                                data: ['供热量', '水源热泵耗电量', '供热率']
+                            },
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    axisTick: {
+                                        alignWithLabel: true
+                                    },
+                                    data: data['time_data']
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    type: 'value',
+                                    name: '热量',
+                                    min: 0,
+                                    position: 'left',
+                                    axisLine: {
+                                        show: true
+                                    },
+                                    axisLabel: {
+                                        formatter: '{value} kWh'
+                                    }
                                 },
                                 {
-                                    name: '太阳能供暖保证率',
+                                    type: 'value',
+                                    name: '供热率',
+                                    min: 0,
+                                    position: 'right',
+                                    axisLine: {
+                                        show: true
+                                    },
+                                    axisLabel: {
+                                        formatter: '{value} %'
+                                    }
+                                }
+
+
+                            ],
+                            series: [
+                                {
+                                    name: '供热量',
+                                    type: 'bar',
+                                    data: data['heat_supply']
+                                },
+                                {
+                                    name: '水源热泵耗电量',
+                                    type: 'bar',
+                                    data: data['power_consume']
+                                },
+                                {
+                                    name: '供热率',
                                     type: 'line',
-                                    yAxisIndex: 2,
-                                    data: data['solar_heating_guarantee_rate']
+                                    yAxisIndex: 1,
+                                    data: data['rate']
                                 }
                             ],
                             grid: {
@@ -2584,6 +3239,9 @@ try {
             cache: true,
             success: function (data) {
                 calories_by_days_chart.hideLoading();
+                set_time_range("heat_make_title", start, end);
+
+
                 if (is_large){
                     calories_by_days_chart.setOption(
                         {
@@ -2618,14 +3276,14 @@ try {
                                     type: 'slider',
                                     start: 30,
                                     end: 70
-                                },
-                                {
-                                    type: 'inside',
-                                    realtime: true,
-                                    start: 30,
-                                    end: 70,
-                                    xAxisIndex: [0, 1]
-                                },
+                                }
+                                // {
+                                //     type: 'inside',
+                                //     realtime: true,
+                                //     start: 30,
+                                //     end: 70,
+                                //     xAxisIndex: [0, 1]
+                                // },
                             ],
                             xAxis: [
                                 {
@@ -2639,7 +3297,7 @@ try {
                             yAxis: [
                                 {
                                     type: 'value',
-                                    name: '高温板换制热量',
+                                    name: '制热量',
                                     min: 0,
                                     position: 'left',
                                     axisLine: {
@@ -2648,20 +3306,20 @@ try {
                                     axisLabel: {
                                         formatter: '{value} kWh'
                                     }
-                                },
-                                {
-                                    type: 'value',
-                                    name: '水源热泵制热量',
-                                    min: 0,
-                                    position: 'right',
-                                    axisLine: {
-                                        show: true
-                                    },
-
-                                    axisLabel: {
-                                        formatter: '{value} kWh'
-                                    }
                                 }
+                                // {
+                                //     type: 'value',
+                                //     name: '水源热泵制热量',
+                                //     min: 0,
+                                //     position: 'right',
+                                //     axisLine: {
+                                //         show: true
+                                //     },
+                                //
+                                //     axisLabel: {
+                                //         formatter: '{value} kWh'
+                                //     }
+                                // }
                             ],
                             series: [
                                 {
@@ -2672,8 +3330,8 @@ try {
                                 {
                                     name: '水源热泵制热量',
                                     type: 'bar',
-                                    data: data['wshp_heat'],
-                                    yAxisIndex: 1,
+                                    data: data['wshp_heat']
+                                    // yAxisIndex: 1,
                                 }
                             ]
                             ,
@@ -2721,25 +3379,12 @@ try {
                             yAxis: [
                                 {
                                     type: 'value',
-                                    name: '高温板换制热量',
+                                    name: '制热量',
                                     min: 0,
                                     position: 'left',
                                     axisLine: {
                                         show: true
                                     },
-                                    axisLabel: {
-                                        formatter: '{value} kWh'
-                                    }
-                                },
-                                {
-                                    type: 'value',
-                                    name: '水源热泵制热量',
-                                    min: 0,
-                                    position: 'right',
-                                    axisLine: {
-                                        show: true
-                                    },
-
                                     axisLabel: {
                                         formatter: '{value} kWh'
                                     }
@@ -2754,8 +3399,8 @@ try {
                                 {
                                     name: '水源热泵制热量',
                                     type: 'bar',
-                                    data: data['wshp_heat'],
-                                    yAxisIndex: 1,
+                                    data: data['wshp_heat']
+                                    // yAxisIndex: 1,
                                 }
                             ]
                             ,
@@ -2771,6 +3416,7 @@ try {
 
 
                 power_rate_chart.hideLoading();
+                set_time_range("high_power_title", start, end);
                 power_rate_chart.setOption(
                     {
                         tooltip: {
@@ -2872,7 +3518,8 @@ try {
             success: function (data) {
                 $('#cost_saving_sum').text(data['cost_saving_total'] + '万元');
                 cost_saving_chart.hideLoading();
-                if (is_large) $("#cost_saving_title").text("耗电与节省电费情况");
+                set_time_range("cost_saving_title", start, end);
+
                 cost_saving_chart.setOption(
                     {
                         tooltip: {
@@ -2980,12 +3627,14 @@ resize_chart(
         kamba_system_cop_chart_chart,
         kamba_wshp_cop_chart,
         kamba_wshp_cop_chart_chart,
+        pool_temp_chart,
         last_week_solar_collector_chart,
         last_week_heat_storage_replenishment_chart,
         last_week_heat_water_replenishment_chart,
         last_week_solar_side_replenishment_chart,
         solar_matrix_supply_and_return_water_temp_chart,
         last_week_solar_collector_by_days_chart,
+        heat_supply_analysis_chart,
         load_by_days_chart,
         supply_and_return_water_temp_diff_with_temp_chart,
         supply_water_temp_with_temp_chart,
@@ -2997,4 +3646,5 @@ resize_chart(
         cost_saving_chart
     ]
 );
+
 

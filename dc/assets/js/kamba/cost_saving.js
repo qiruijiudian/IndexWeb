@@ -4,6 +4,8 @@ var cost_saving_chart = echarts.init(cost_saving_dom);
 
 loading_all([cost_saving_chart]);
 
+set_time_range("date", start, end);
+
 try {
     //cost_saving
     $.ajax(
@@ -19,9 +21,9 @@ try {
             cache: true,
             success: function (data) {
                 if (is_large){
-                    $('#cost_saving_sum').text('节省供暖费用（总计：' + data['cost_saving_total'] + '万元）');
+                    $('#cost_saving_sum').text('节省供暖费用（电费：0.45元/kWh，节省费用总计：' + data['cost_saving_total'] + '万元）');
                 }else {
-                    $('#cost_saving_sum').text('上月节省供暖费用（总计：' + data['cost_saving_total'] + '万元）');
+                    $('#cost_saving_sum').text('上月节省供暖费用（电费：0.45元/kWh，节省费用总计：' + data['cost_saving_total'] + '万元）');
                 }
 
                 cost_saving_chart.hideLoading();

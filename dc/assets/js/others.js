@@ -63,6 +63,16 @@ function is_large_range(){
 
 }
 
+function set_time_range(id, start, end){
+    var now =$(`#${id}`).text();
+    if (start === null){
+        $(`#${id}`).text(now + "   [" + end.split(" ")[0] + "]");
+    }else{
+        $(`#${id}`).text(now + "   [" + start.split(" ")[0] + "   ——   " + end.split(" ")[0] + "]");
+    }
+
+}
+
 var is_large = is_large_range();
 
 $("#sideNav").click(function(){

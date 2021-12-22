@@ -21,7 +21,8 @@ try {
             },
             cache: true,
             success: function (data) {
-                $('#pool_temperature_heat_date').text('水池温度情况 （' +  data['heat_date'] + '）');
+
+                set_time_range("date", null, end);
 
                 for (var i=0;i<data['pool_temperature'].length;i++){
 

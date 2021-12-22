@@ -13,8 +13,6 @@
     <link href="../assets/css/bootstrap.css" rel="stylesheet"/>
     <!-- FontAwesome Styles-->
     <link href="../assets/css/font-awesome.css" rel="stylesheet"/>
-    <!-- datepicker Styles-->
-    <link rel="stylesheet" href="../assets/css/datepicker.css">
     <!-- Custom Styles-->
     <link href="../assets/css/custom-styles.css" rel="stylesheet"/>
     <!-- Google Fonts-->
@@ -63,7 +61,7 @@
             <ul class="nav" id="main-menu">
 
                 <li>
-                    <a class="active-menu waves-effect waves-dark" href="../cona.html"><i class="fa fa-dashboard"></i>
+                    <a class="active-menu waves-effect waves-dark" href="../kamba.html"><i class="fa fa-dashboard"></i>
                         主页</a>
                 </li>
 
@@ -140,10 +138,6 @@
                     </ul>
                 </li>
 
-                <li>
-                    <a class="waves-effect waves-dark show-modal" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-calendar"></i> 日期选择 </a>
-                </li>
-
 
                 <li>
                     <a href="#" class="waves-effect waves-dark"><i class="fa fa-edit"></i> 其他 </a>
@@ -166,6 +160,7 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Dashboard</a></li>
                 <li class="active">LAST WEEK DATA</li>
+                <li><a id="date"></a></li>
             </ol>
         </div>
         <div id="page-inner">
@@ -228,12 +223,14 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="load_title">上周负荷情况</b>
+                        </div>
+
                         <div class="card-image">
                             <div id="load_by_days" style="width:100%;height:400px"></div>
                         </div>
-                        <div class="card-action">
-                            <b>过去一周负荷值</b>
-                        </div>
+
                     </div>
                 </div>
 
@@ -246,16 +243,20 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="card">
+                                    <div class="card-action chart_title">
+                                        <b id="solar_heat_collector_title">太阳能集热量</b>
+                                    </div>
                                     <div class="card-image donutpad">
                                         <div id="last_week_solar_collector" style="width: 100%;height:300px"></div>
                                     </div>
-                                    <!--                        <div class="card-action">-->
-                                    <!--                            <b>Donut Chart Example</b>-->
-                                    <!--                        </div>-->
+
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="card">
+                                    <div class="card-action chart_title">
+                                        <b id="heat_storage_rep_title">蓄热水池补水情况</b>
+                                    </div>
                                     <div class="card-image donutpad">
                                         <div id="last_week_heat_storage_replenishment" style="width: 100%;height:300px"></div>
                                     </div>
@@ -275,16 +276,20 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="card">
+                                    <div class="card-action chart_title">
+                                        <b id="heat_rep_title">供热端补水情况</b>
+                                    </div>
                                     <div class="card-image donutpad">
                                         <div id="last_week_heat_water_replenishment" style="width: 100%;height:300px"></div>
                                     </div>
-                                    <!--                        <div class="card-action">-->
-                                    <!--                            <b>Donut Chart Example</b>-->
-                                    <!--                        </div>-->
+
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="card">
+                                    <div class="card-action chart_title">
+                                        <b id="solar_rep_title">太阳能侧补水情况</b>
+                                    </div>
                                     <div class="card-image donutpad">
                                         <div id="last_week_solar_side_replenishment" style="width: 100%;height:300px"></div>
                                     </div>
@@ -300,77 +305,57 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="solar_analysis_title">太阳能集热分析</b>
+                        </div>
                         <div class="card-image">
                             <div id="last_week_solar_collector_by_days" style="width:100%;height:400px"></div>
                         </div>
-                        <div class="card-action">
-                            <b>过去一周太阳能集热分析</b>
-                        </div>
+
                     </div>
                 </div>
 
-            </div>
-
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-6">
-                    <div class="card">
-                        <div class="card-image">
-                            <div id="calories_by_days" style="width:100%;height:300px"></div>
-                        </div>
-                        <div class="card-action">
-                            <b>制热量情况</b>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-6">
-                    <div class="card">
-                        <div class="card-image">
-                            <div id="power_rate" style="width:100%;height:300px"></div>
-                        </div>
-                        <div class="card-action">
-                            <b>高温板换制热功率</b>
-                        </div>
-                    </div>
-                </div><!--/.row-->
             </div>
 
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="my_modal">
-                        <div class="modal-dialog modal-l">
-                            <div class="card modal-content">
-                                <div class="card-action">
-                                    日期范围选择
-                                </div>
-                                <div class="card-content">
-                                    <form class="col s12">
-                                        <div class="form-group c-datepicker-date-editor J-datepicker-range" id="date_editor">
-                                            <div class="input-field col s12">
-                                                <i class="material-icons prefix">date_range</i>
-                                                <input id="start_time" type="text" class="validate form-control c-datepicker-data-input">
-                                                <label for="start_time" class="">开始时间</label>
-                                            </div>
-                                            <div class="input-field col s12">
-                                                <i class="material-icons prefix">date_range</i>
-                                                <input id="end_time" type="text" class="validate form-control c-datepicker-data-input">
-                                                <label for="end_time" class="">结束时间</label>
-                                            </div>
+                    <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="heat_supply_analysis_title">供热分析</b>
+                        </div>
+                        <div class="card-image">
+                            <div id="heat_supply_analysis" style="width:100%;height:400px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                                        </div>
-                                        <div class="input-field card-content" id="date_button">
-                                            <a id="cancel_date" class="waves-light btn" data-dismiss="modal" aria-hidden="true">取消</a>
-                                            <a id="confirm_date" class="waves-light btn">确认</a>
-                                        </div>
-                                    </form>
-                                    <div class="clearBoth"></div>
-                                </div>
-                            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <div class="card">
+
+                        <div class="card-action chart_title">
+                            <b id="heat_make_title">制热量情况</b>
+                        </div>
+                        <div class="card-image">
+                            <div id="calories_by_days" style="width:100%;height:300px"></div>
                         </div>
 
                     </div>
                 </div>
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="high_power_title">高温板换制热功率</b>
+                        </div>
+                        <div class="card-image">
+                            <div id="power_rate" style="width:100%;height:300px"></div>
+                        </div>
 
+                    </div>
+                </div><!--/.row-->
             </div>
+
         </div>
         <!-- /. PAGE INNER  -->
     </div>
@@ -385,9 +370,6 @@
 <script src="../assets/materialize/js/materialize.min.js"></script>
 <script src="../assets/js/jquery.metisMenu.js"></script>
 <script src="../assets/js/custom-scripts.js"></script>
-<script src="../assets/js/moment.min.js"></script>
-<script src="../assets/js/datepicker.all.js"></script>
-<script src="../assets/js/date_choose.js"></script>
 <script src="../assets/js/kamba/last_week.js"></script>
 </body>
 

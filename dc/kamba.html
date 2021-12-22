@@ -63,7 +63,7 @@
             <ul class="nav" id="main-menu">
 
                 <li>
-                    <a class="active-menu waves-effect waves-dark" name="cona.html"><i class="fa fa-dashboard"></i>
+                    <a class="active-menu waves-effect waves-dark" name="kamba.html"><i class="fa fa-dashboard"></i>
                         主页</a>
                 </li>
 
@@ -229,11 +229,11 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="card">
+                                <div class="card-action chart_title">
+                                    <b id="pool_available_heat_heat_date">蓄热水池分时可用低温/高温热量</b>
+                                </div>
                                 <div class="card-image donutpad">
                                     <div id="pool_available_heat" style="width:100%;height:400px"></div>
-                                </div>
-                                <div class="card-action">
-                                    <b id="pool_available_heat_heat_date">蓄热水池分时可用低温/高温热量 Loading...</b>
                                 </div>
                             </div>
                         </div>
@@ -244,11 +244,11 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="card">
+                                <div class="card-action chart_title">
+                                    <b id="high_heat_equal_supply_days_heat_date">蓄热水池可用高温热量及电锅炉替换供热天数</b>
+                                </div>
                                 <div class="card-image donutpad">
                                     <div id="high_heat_equal_supply_days" style="width:100%;height:400px"></div>
-                                </div>
-                                <div class="card-action">
-                                    <b id="high_heat_equal_supply_days_heat_date">蓄热水池可用高温热量及电锅炉替换供热天数 Loading...</b>
                                 </div>
                             </div>
                         </div>
@@ -259,21 +259,21 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-4">
                     <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="com_cop_title">系统综合COP</b>
+                        </div>
                         <div class="card-image">
                             <div id="kamba_system_cop_pie" style="width:100%;height:300px"></div>
-                        </div>
-                        <div class="card-action">
-                            <b id="com_cop_title">系统综合COP</b>
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-8">
                     <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="sys_cop_title">系统综合能效比</b>
+                        </div>
                         <div class="card-image">
                             <div id="kamba_system_cop_chart" style="width:100%;height:300px"></div>
-                        </div>
-                        <div class="card-action">
-                            <b>系统综合能效比</b>
                         </div>
                     </div>
                 </div><!--/.row-->
@@ -282,21 +282,21 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-4">
                     <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="wshp_cop_title">水源热泵COP</b>
+                        </div>
                         <div class="card-image">
                             <div id="kamba_wshp_cop_pie" style="width:100%;height:300px"></div>
-                        </div>
-                        <div class="card-action">
-                            <b id="wshp_cop_title">水源热泵COP</b>
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-8">
                     <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="wp_cop_title">水源热泵能效比</b>
+                        </div>
                         <div class="card-image">
                             <div id="kamba_wshp_cop_chart" style="width:100%;height:300px"></div>
-                        </div>
-                        <div class="card-action">
-                            <b>水源热泵能效比</b>
                         </div>
                     </div>
                 </div><!--/.row-->
@@ -307,8 +307,8 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="card">
 
-                        <div class="card-action" id="pool_temp_status">
-                            水池温度情况（{{heat_date}}）
+                        <div class="card-action chart_title" id="pool_temp_status">
+                            水池温度情况
                         </div>
 
                         <div class="card-content">
@@ -342,12 +342,29 @@
             </div>
 
             <div class="row">
+                <div class="col-xs-12">
+                    <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="heat_map_title_of_temp">水池温度热力状况分布</b>
+                        </div>
+                        <div class="card-image">
+                            <div id="heat_map_of_temp" style="width:100%;height:400px"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="cirStats">
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="card">
+                                    <div class="card-action chart_title">
+                                        <b id="solar_heat_collector_title">太阳能集热量</b>
+                                    </div>
                                     <div class="card-image donutpad">
                                         <div id="last_week_solar_collector" style="width: 100%;height:300px"></div>
                                     </div>
@@ -358,6 +375,9 @@
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="card">
+                                    <div class="card-action chart_title">
+                                        <b id="heat_storage_rep_title">蓄热水池补水情况</b>
+                                    </div>
                                     <div class="card-image donutpad">
                                         <div id="last_week_heat_storage_replenishment" style="width: 100%;height:300px"></div>
                                     </div>
@@ -377,6 +397,9 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="card">
+                                    <div class="card-action chart_title">
+                                        <b id="heat_rep_title">供热端补水情况</b>
+                                    </div>
                                     <div class="card-image donutpad">
                                         <div id="last_week_heat_water_replenishment" style="width: 100%;height:300px"></div>
                                     </div>
@@ -387,6 +410,9 @@
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="card">
+                                    <div class="card-action chart_title">
+                                        <b id="solar_rep_title">太阳能侧补水情况</b>
+                                    </div>
                                     <div class="card-image donutpad">
                                         <div id="last_week_solar_side_replenishment" style="width: 100%;height:300px"></div>
                                     </div>
@@ -402,11 +428,11 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="solar_matrix_title">太阳能矩阵供回水温度</b>
+                        </div>
                         <div class="card-image">
                             <div id="solar_matrix_supply_and_return_water_temp" style="width:100%;height:400px"></div>
-                        </div>
-                        <div class="card-action">
-                            <b id="solar_matrix_title">过去一周太阳能矩阵供回水温度</b>
                         </div>
                     </div>
                 </div>
@@ -416,22 +442,23 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-7">
                     <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="load_title">负荷情况</b>
+                        </div>
                         <div class="card-image">
                             <div id="load_by_days" style="width:100%;height:300px"></div>
                         </div>
-                        <div class="card-action">
-                            <b id="load_title">上周负荷情况</b>
-                        </div>
+
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-5">
                     <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="re_with_temp_title">末端供回水温差与气温关系</b>
+                        </div>
                         <div class="card-image">
                             <div id="supply_and_return_water_temp_diff_with_temp" style="width:100%;height:300px"></div>
                         </div>
-                        <div class="card-action">
-                            <b>末端供回水温差与气温关系</b>
-                        </div>
                     </div>
                 </div><!--/.row-->
             </div>
@@ -439,22 +466,23 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-6">
                     <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="sup_with_temp_title">末端供水温度与气温关系</b>
+                        </div>
                         <div class="card-image">
                             <div id="supply_water_temp_with_temp" style="width:100%;height:300px"></div>
                         </div>
-                        <div class="card-action">
-                            <b>末端供水温度与气温关系</b>
-                        </div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6">
                     <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="diff_with_temp_title">末端回水温度与气温关系</b>
+                        </div>
                         <div class="card-image">
                             <div id="return_water_temp_with_temp" style="width:100%;height:300px"></div>
                         </div>
-                        <div class="card-action">
-                            <b>末端回水温度与气温关系</b>
-                        </div>
+
                     </div>
                 </div><!--/.row-->
             </div>
@@ -462,11 +490,24 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="last_year_supply_return_water_temp_time_delta">供回水温度温差对照分析</b>
+                        </div>
                         <div class="card-image">
                             <div id="last_year_supply_return_water_temp" style="width:100%;height:600px"></div>
                         </div>
-                        <div class="card-action">
-                            <b id="last_year_supply_return_water_temp_time_delta">过去一年供回水温度温差分析 Loading...</b>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="solar_analysis_title">太阳能集热分析</b>
+                        </div>
+                        <div class="card-image">
+                            <div id="last_week_solar_collector_by_days" style="width:100%;height:400px"></div>
                         </div>
                     </div>
                 </div>
@@ -475,11 +516,11 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="card">
-                        <div class="card-image">
-                            <div id="last_week_solar_collector_by_days" style="width:100%;height:400px"></div>
+                        <div class="card-action chart_title">
+                            <b id="heat_supply_analysis_title">供热分析</b>
                         </div>
-                        <div class="card-action">
-                            <b id="solar_analysis_title">过去一周太阳能集热分析</b>
+                        <div class="card-image">
+                            <div id="heat_supply_analysis" style="width:100%;height:400px"></div>
                         </div>
                     </div>
                 </div>
@@ -488,21 +529,21 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-6">
                     <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="heat_make_title">制热量情况</b>
+                        </div>
                         <div class="card-image">
                             <div id="calories_by_days" style="width:100%;height:300px"></div>
-                        </div>
-                        <div class="card-action">
-                            <b>制热量情况</b>
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6">
                     <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="high_power_title">高温板换制热功率</b>
+                        </div>
                         <div class="card-image">
                             <div id="power_rate" style="width:100%;height:300px"></div>
-                        </div>
-                        <div class="card-action">
-                            <b>高温板换制热功率</b>
                         </div>
                     </div>
                 </div><!--/.row-->
@@ -511,12 +552,13 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="cost_saving_title">耗电与节省电费情况(电费：0.45元/kWh)</b>
+                        </div>
                         <div class="card-image">
                             <div id="cost_saving" style="width:100%;height:400px"></div>
                         </div>
-                        <div class="card-action">
-                            <b id="cost_saving_title">上月耗电与节省电费情况</b>
-                        </div>
+
                     </div>
                 </div>
 
@@ -525,12 +567,13 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="diff_temp">末端平均供回水温度及温差</b>
+                        </div>
                         <div class="card-image">
                             <div id="end_supply_and_return_water_temp" style="width:100%;height:400px"></div>
                         </div>
-                        <div class="card-action">
-                            <b>末端平均供回水温度及温差</b>
-                        </div>
+
                     </div>
                 </div>
 

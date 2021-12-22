@@ -51,6 +51,8 @@ function get_water_provider_options(data, hint){
     return options
 };
 
+set_time_range("date", start, end);
+
 try {
     //solar_matrix_supply_and_return_water_temperature
     $.ajax(

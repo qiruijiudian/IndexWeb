@@ -90,6 +90,10 @@ function get_cop_pie_options(value){
     return options
 }; //cop数据通用函数
 
+
+set_time_range("date", start, end);
+
+
 try {
     //system_cop
     $.ajax(
@@ -104,6 +108,7 @@ try {
             },
             cache: true,
             success: function (data) {
+
                 if (!data["status"].includes("正常")) $("#com_cop_title").text(`系统综合COP（${data["status"]}）`);
 
 
@@ -269,7 +274,7 @@ try {
             },
             cache: true,
             success: function (data) {
-                if (!data["status"].includes("正常")) $("#wshp_cop_title").text(`系统综合COP（${data["status"]}）`);
+                if (!data["status"].includes("正常")) $("#wshp_cop_title").text(`水源热泵COP（${data["status"]}）`);
                 kamba_wshp_cop_chart.hideLoading();
                 kamba_wshp_cop_chart_chart.hideLoading();
                 kamba_wshp_cop_chart.setOption(
@@ -349,7 +354,7 @@ try {
                                         }
                                     }
                                 },
-                                data: data['kamba_system_cop']
+                                data: data['kamba_wshp_cop']
                             },
                             {
                                 name: 'Target Miniumum',
