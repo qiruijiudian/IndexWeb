@@ -74,7 +74,7 @@ $("#login").click(
                     var cookie_date = new Date();
                     cookie_date.setDate(cookie_date.getDate() + 30);
                     document.cookie = `auth=${data['token']};expires=${cookie_date.toUTCString()}`;
-                    window.location.href = 'cona.html'
+                    window.location.href = 'kamba.html'
                 },
                 error: function (xhr) {
                     console.log("error：", xhr);

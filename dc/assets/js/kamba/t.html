@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../echarts.min.js"></script>
+    <script src="../jquery-1.10.2.js"></script>
+</head>
+<body>
+<div class="card-image">
+    <div id="heat_map_of_temp" style="width:600px;height:400px"></div>
+</div>
+</body>
+<script>
+    function get_common_option(data_values, data_option, data_mapping) {
+        for(let key in data_mapping){
+            let key_data = data_mapping[key];
+            if (key_data["type"] === "arr"){
+                for (let i=0;i<key_data["values"].length;i++){
+                    for (let j=0;j<key_data["obj"].length;j++){
+                        let modify_key = key_data["obj"][j];
+                        key_data["values"][i][modify_key] = data_values[key_data["values"][i][modify_key]]
+                    }
+                }
+
+
+            }else if (key_data["type"] === "obj"){
+                for (let key2 in key_data["obj"]){
+                    for (let j=0;j<key_data["obj"].length;j++){
+                        let modify_key = key_data["obj"][j];
+                        key_data["values"][modify_key] = data_values[key_data["values"][modify_key]]
+                    }
+                }
+            }
+
+            data_option[key] = data_mapping[key]["values"];
+
+        }
+        return data_option;
+    }
+
+
+
+
+
+    // 数据渲染
+    try {
+        $.ajax(
+            {
+                url: "http://127.0.0.1:8000/api/kamba/",
+                type: "POST",
+                data: {
+                    "key": "api_heat_storage_heat",
+                    "start": "2021-12-21 00:00:00",
+                    "end": "2021-12-27 23:59:59",
+                    "by": 'd'
+                },
+                cache: true,
+                success: function (data) {
+
+                    let res = get_common_option(
+                        data,
+                        {
+                            grid: {
+                                left: 110,
+                                right: 80
+                            },
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    type: 'cross',
+                                    crossStyle: {
+                                        color: '#999'
+                                    }
+                                }
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataView: {show: true, readOnly: false},
+                                    magicType: {show: true, type: ['line', 'bar']},
+                                    restore: {show: true},
+                                    saveAsImage: {show: true},
+                                    dataZoom: {
+                                        yAxisIndex: 'none'
+                                    }
+                                }
+                            },
+                            dataZoom: [
+                                {
+                                    show: true,
+                                    realtime: true,
+                                    start: 30,
+                                    end: 70,
+                                    xAxisIndex: [0, 1]
+                                }
+                            ],
+                            legend: {
+                                data: ['低温热量', '高温热量']
+                            },
+                            xAxis: [],
+                            yAxis: [
+                                {
+                                    type: 'value',
+                                    name: '热量(kWh)',
+                                    min: 0
+                                }
+                            ],
+                            series: [
+
+                            ]
+                        },
+                        {
+                            'xAxis': {
+                                "type": "arr",
+                                "obj": ["data"],
+                                "values":[
+                                    {
+                                        type: 'category',
+                                        name: '时间段',
+                                        data: 'time_data',
+                                        axisPointer: {
+                                            type: 'shadow'
+                                        }
+                                    }
+                                ]
+                            },
+                            'series': {
+                                "type": "arr",
+                                "obj": ["data"],
+                                "values":[
+                                    {
+                                        name: '低温热量',
+                                        type: 'bar',
+                                        stack: '可用热量',
+                                        data: 'low_heat_total'
+                                    },
+                                    {
+                                        name: '高温热量',
+                                        type: 'bar',
+                                        stack: '可用热量',
+                                        data: 'high_heat_total'
+                                    }
+                                ]
+                            },
+
+                        }
+                    );
+                    let _dom = document.getElementById("heat_map_of_temp");
+                    let _chart = echarts.init(_dom);
+                    _chart.setOption(res);
+                    console.log(res);
+                },
+                error: function (xhr) {
+                    console.log(xhr);
+                }
+            }
+        );
+    }catch (e) {
+        console.log("ajax pool_temperature error：", e);
+    }
+
+
+</script>
+<!--<script>-->
+
+<!--let _dom = document.getElementById("heat_map_of_temp");-->
+<!--let _chart = echarts.init(_dom);-->
+
+<!--let option =  {-->
+<!--grid: {-->
+<!--right: 110,-->
+<!--left: 80-->
+<!--},-->
+<!--tooltip: {-->
+<!--trigger: 'axis',-->
+<!--axisPointer: {-->
+<!--type: 'cross'-->
+<!--}-->
+<!--},-->
+<!--toolbox: {-->
+<!--feature: {-->
+<!--dataView: {show: true, readOnly: false},-->
+<!--restore: {show: true},-->
+<!--saveAsImage: {show: true},-->
+<!--dataZoom: {-->
+<!--yAxisIndex: 'none'-->
+<!--}-->
+<!--}-->
+<!--},-->
+<!--// dataZoom: [-->
+<!--//     {-->
+<!--//         show: true,-->
+<!--//         realtime: true,-->
+<!--//         start: 30,-->
+<!--//         end: 70,-->
+<!--//         xAxisIndex: [0, 1]-->
+<!--//     }-->
+<!--// ],-->
+<!--legend: {-->
+<!--data: ['co2减排量', '耗电量']-->
+<!--},-->
+<!--xAxis: [-->
+<!--{-->
+<!--type: 'category',-->
+<!--name: '时间段',-->
+<!--data: ["2021-11-27","2021-11-28","2021-11-29","2021-11-30","2021-12-01","2021-12-02","2021-12-03","2021-12-04","2021-12-05","2021-12-06","2021-12-07","2021-12-08","2021-12-09","2021-12-10","2021-12-11","2021-12-12","2021-12-13","2021-12-14","2021-12-15","2021-12-16","2021-12-17","2021-12-18","2021-12-19","2021-12-20","2021-12-21","2021-12-22","2021-12-23","2021-12-24","2021-12-25","2021-12-26"],-->
+<!--axisTick: {-->
+<!--alignWithLabel: true-->
+<!--},-->
+<!--axisPointer: {-->
+<!--type: 'shadow'-->
+<!--},-->
+
+<!--axisLabel: {-->
+<!--interval:0,-->
+<!--rotate:40-->
+<!--}-->
+
+<!--}-->
+<!--],-->
+<!--yAxis: [-->
+<!--{-->
+<!--type: 'value',-->
+<!--name: '减排量',-->
+<!--min: 0,-->
+<!--max: 500000,-->
+<!--position: 'left',-->
+<!--axisLine: {-->
+<!--show: true-->
+
+<!--},-->
+<!--axisLabel: {-->
+<!--formatter: '{value} Kg'-->
+<!--}-->
+<!--},-->
+<!--{-->
+<!--type: 'value',-->
+<!--name: '耗电量',-->
+<!--min: 0,-->
+<!--position: 'right',-->
+<!--axisLine: {-->
+<!--show: true-->
+<!--},-->
+<!--axisLabel: {-->
+<!--formatter: '{value} kWh'-->
+<!--}-->
+<!--}-->
+
+<!--],-->
+<!--series: [-->
+<!--{-->
+<!--name: 'co2减排量',-->
+
+<!--data: [4405.14,9304.34,14213.6,19090.04,23923.57,28805.74,33613.04,38470.63,43390.95,48278.99,53278.71,58289.6,63296.74,68301.02,73052.69,77394.93,81934.44,86410.11,90839.17,95270.09,99690.93,104307.51,108817.49,113557.83,118366.49,122948.09,127782.47,132402.54,136839.8,141400.09],-->
+<!--type: 'line',-->
+<!--smooth: true,-->
+<!--itemStyle:{-->
+<!--normal: {-->
+<!--color: '#7083db',-->
+<!--},-->
+<!--},-->
+<!--areaStyle: {-->
+<!--normal: {-->
+<!--color: '#7083db',-->
+<!--opacity: 0.16,-->
+<!--},-->
+<!--},-->
+<!--},-->
+<!--{-->
+<!--name: '耗电量',-->
+<!--type: 'line',-->
+<!--yAxisIndex: 1,-->
+<!--data: [7544.34,8390.48,8407.7,8351.5,8278.02,8361.32,8233.08,8319.22,8426.64,8371.37,8562.62,8581.77,8575.32,8570.44,8137.82,7436.62,7774.45,7665.13,7585.31,7588.48,7571.23,7906.45,7723.89,8118.41,8235.43,7846.55,8279.46,7912.44,7599.34,7810.06],-->
+<!--itemStyle:{-->
+<!--normal: {-->
+<!--color: '#ff6600',-->
+<!--},-->
+<!--},-->
+<!--}-->
+<!--]-->
+<!--};-->
+
+<!--_chart.setOption(option)-->
+
+
+<!--</script>-->
+
+
+</html>

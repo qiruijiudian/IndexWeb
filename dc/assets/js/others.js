@@ -63,17 +63,20 @@ function is_large_range(){
 
 }
 
-function set_time_range(id, start, end){
-    var now =$(`#${id}`).text();
-    if (start === null){
-        $(`#${id}`).text(now + "   [" + end.split(" ")[0] + "]");
+function set_time_range(id, time_dic){
+    let now =$(`#${id}`).text();
+    if (time_dic.hasOwnProperty("date")){
+        $(`#${id}`).text(now + "   [" + time_dic['date'] + "]");
+    }else if (time_dic.hasOwnProperty("last_start")){
+        $(`#${id}`).text(now + "   [" + time_dic['start'] + "   ——   " + time_dic['end'] + "  对照：  " +  time_dic['last_start'] + '   ——   ' + time_dic['last_end'] + "]");
     }else{
-        $(`#${id}`).text(now + "   [" + start.split(" ")[0] + "   ——   " + end.split(" ")[0] + "]");
+        $(`#${id}`).text(now + "   [" + time_dic['start'] + "   ——   " + time_dic['end'] + "]");
     }
-
 }
 
+
 var is_large = is_large_range();
+
 
 $("#sideNav").click(function(){
     setTimeout(function(){
@@ -166,4 +169,3 @@ $("#logout").click(
         }
     }
 );
-
