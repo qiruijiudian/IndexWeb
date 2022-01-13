@@ -11,8 +11,17 @@ get_pieces(data)
 get_chart(id)
     按id值初始化图表
 
+text_setting(key, data)
+    按照key值设定特定区域文字显示
+
+get_common_option(data_values, data_option, data_mapping)
+    获取供echarts使用的option，option为基础的option配置（不包括数据项），仅包含基础的诸如字体，legend、tooltip等配置，具体的需要添加数据的配置放在data_mapping中，函数会针对data_mapping中的栏目去data_values中取值进行设置并返回
+
+set_option(func, obj_data, obj, obj_option, obj_mapping, dataZoom)
+    渲染数据，生成图表，根据func传入的参数判断执行方式，type为option，则用echarts.setOption调用函数返回的option，type为p_function则直接执行函数，否则按照正常流程调用get_common_option获取option再用echarts渲染
+
 data_render(chart_obj, request_data, option, time_id, request_url=kamba_url, request_type='POST')
-    渲染数据，生成图表
+    设置时间周期文字并调用set_option渲染数据，生成图表
 
 format()
     实现python中format函数的功能
@@ -162,6 +171,7 @@ function get_pieces(data){
 
 function get_chart(id){
     // 初始化图表
+
     // 获取元素
     var tmp_dom = document.getElementById(id);
 
@@ -169,14 +179,18 @@ function get_chart(id){
     return echarts.init(tmp_dom);
 }
 
+
 function isEmptyObject(obj){
+    // 判断字典是否为空
     for (var n in obj) {
         return false
     }
     return true;
 }
 
+
 function text_setting(key, data) {
+    // 特殊板块文字设定（最大负荷、最小负荷、节省供暖费用导航标题）
     if (key.includes("api_load")){
         $('#max_load').text(data['max_load'] + 'KW');
         $('#min_load').text(data['min_load'] + 'KW');
@@ -185,7 +199,9 @@ function text_setting(key, data) {
     }
 }
 
+
 function get_common_option(data_values, data_option, data_mapping) {
+    // 根据data_mapping中的数据，结合data_option内容返回完整的供echarts使用的option配置
     for(let key in data_mapping){
         let key_data = data_mapping[key];
         if (key_data["type"] === "arr"){
@@ -201,21 +217,13 @@ function get_common_option(data_values, data_option, data_mapping) {
         }else if (key_data["type"] === "obj"){
             for (let j=0;j<key_data["obj"].length;j++){
                 let modify_key = key_data["obj"][j];
-                console.log("j：", j, modify_key);
-                console.log(key_data["values"][modify_key]);
-                console.log("更改前", key_data);
-
 
                 if (typeof key_data["values"][modify_key] === 'function'){
-                    console.log("function", key_data["values"][modify_key]);
                     key_data["values"][modify_key] = key_data["values"][modify_key](data_values);
                 }else if (typeof key_data["values"][modify_key] === 'string'){
-                    console.log("string", key_data["values"][modify_key]);
 
                     key_data["values"][modify_key] = data_values[key_data["values"][modify_key]];
                 }
-
-                console.log("更改后", key_data);
 
             }
 
@@ -229,6 +237,7 @@ function get_common_option(data_values, data_option, data_mapping) {
 
 
 function set_option(func, obj_data, obj, obj_option, obj_mapping, dataZoom) {
+    // 渲染图表，根据传入参数选择是根据option渲染数据还是执行函数
 
     if (func){
         if (func["type"] === "option"){
@@ -276,9 +285,6 @@ function data_render(request_data, time_ids, funcs=[false], chart_objs=[false], 
                 data: request_data,
                 cache: true,
                 success: function (data) {
-
-
-
                     // 设置特定文字
                     text_setting(request_data["key"], data);
 
@@ -288,6 +294,9 @@ function data_render(request_data, time_ids, funcs=[false], chart_objs=[false], 
 
                         set_option(funcs[i], data, chart_objs[i], option_datas[i], option_mappings[i], dataZooms[i]);
                     }
+                },
+                error: function (xhr) {
+
                 }
             }
         );
@@ -307,6 +316,181 @@ String.prototype.format = function () {
     }
     return str;
 };
+
+
+function cop_bind(data_chart, pie_chart){
+    data_chart.getZr().on('click', function (params) {
+        var pointInPixel= [params.offsetX, params.offsetY];
+        if (data_chart.containPixel('grid',pointInPixel)) {
+            /*此处添加具体执行代码*/
+
+            var pointInGrid=data_chart.convertFromPixel({seriesIndex:0},pointInPixel);
+            //X轴序号
+            var xIndex=pointInGrid[0];
+
+            //获取当前图表的option
+            var op=data_chart.getOption();
+
+            //获得图表中我们想要的数据
+            var month = op.xAxis[0].data[xIndex];
+            var value = op.series[0].data[xIndex];
+            var tmp_options = get_cop_pie_options(value);
+            pie_chart.setOption(tmp_options);
+
+            console.log(month+"："+value);
+
+        }
+    });
+}
+
+
+class DataChart {
+
+    constructor (request_data, time_ids, funcs=[false], chart_objs=[false], option_datas=[false], option_mappings=[false], dataZooms=[1], request_url=kamba_url, request_type='POST'){
+        this.request_data = request_data;
+        this.time_ids=time_ids;
+        this.funcs=funcs;
+        this.chart_objs=chart_objs;
+        this.option_datas=option_datas;
+        this.option_mappings=option_mappings;
+        this.dataZooms=dataZooms;
+        this.request_url=request_url;
+        this.request_type=request_type;
+        this.obj_data = undefined
+    }
+
+    init_chart(){
+        for(let i=0;i<this.chart_objs.length;i++){
+            if (this.chart_objs[i]){
+                this.chart_objs[i] = echarts.init(document.getElementById(this.chart_objs[i]));
+                this.chart_objs[i].showLoading();
+                charts.push(this.chart_objs[i]);
+            }
+        }
+    }
+
+    get_data(){
+        console.log("执行");
+        let res;
+        $.ajax(
+            {
+                url: this.request_url,
+                type: this.request_type,
+                data: this.request_data,
+                cache: true,
+                async: false,
+                success: function (data) {
+                    res = data;
+                },
+                error: function (xhr) {
+                    console.log("失败", xhr);
+                }
+            }
+        );
+        return res
+    }
+
+    text_setting(){
+        // 特殊板块文字设定（最大负荷、最小负荷、节省供暖费用导航标题）
+        if (this.request_data.key.includes("api_load")){
+            $('#max_load').text(this.data['max_load'] + 'KW');
+            $('#min_load').text(this.data['min_load'] + 'KW');
+        }else if(this.request_data.key.includes("api_cost_saving")){
+            $('#cost_saving_sum').text(data['cost_saving_total'] + '万元');
+        }
+    }
+
+    cop_bind(){
+        this.chart_objs[1].getZr().on('click', function (params) {
+            var pointInPixel= [params.offsetX, params.offsetY];
+            if (this.chart_objs[1].containPixel('grid',pointInPixel)) {
+                /*此处添加具体执行代码*/
+
+                var pointInGrid=this.chart_objs[1].convertFromPixel({seriesIndex:0},pointInPixel);
+                //X轴序号
+                var xIndex=pointInGrid[0];
+
+                //获取当前图表的option
+                var op=this.chart_objs[1].getOption();
+
+                //获得图表中我们想要的数据
+                var month = op.xAxis[0].data[xIndex];
+                var value = op.series[0].data[xIndex];
+                var tmp_options = get_cop_pie_options(value);
+                this.chart_objs[0].setOption(tmp_options);
+
+                console.log(month+"："+value);
+
+            }
+        });
+    }
+
+    data_render(){
+        try {
+            // 初始化图表
+            this.init_chart();
+
+            // 获取数据
+            let a = this.get_data();
+            console.log(a);
+
+            this.obj_data = this.get_data();
+            console.log(this.obj_data);
+            if (this.obj_data){
+                // 特定文字设置
+                this.text_setting();
+
+                for (let i=0;i<this.chart_objs.length;i++){
+                    // 设置时间
+                    set_time_range(this.time_ids[i], this.obj_data);
+
+                    // 渲染数据
+                    if (this.funcs[i]){
+                        if (this.funcs[i].type === "option"){
+                            this.chart_objs[i].hideLoading();
+                            this.chart_objs[i].setOption(this.funcs[i].func(this.obj_data));
+                        }else  if (this.funcs[i].type === "p_function"){
+                            this.funcs[i].func(this.obj_data);
+                        }
+                    }else {
+                        let option = get_common_option(this.obj_data, this.option_datas[i], this.option_mappings[i]);
+                        if (is_large){
+                            if (!option.hasOwnProperty("dataZoom")){
+                                if (this.dataZooms[i] === 1){
+                                    option["dataZoom"] = [{show: true, realtime: true, start: 30, end: 70, xAxisIndex: [0, 1]}];
+                                    option["toolbox"]["feature"]["dataZoom"] = {yAxisIndex: 'none'};
+                                }else if (this.dataZooms[i] === 2){
+                                    option["dataZoom"] = [
+                                        {show: true, realtime: true, start: 30, end: 70, xAxisIndex: [0, 1]},
+                                        {type: 'inside', realtime: true, start: 30, end: 70, xAxisIndex: [0, 1]}
+                                    ];
+
+                                    option["toolbox"]["feature"]["dataZoom"] = {yAxisIndex: 'none'};
+                                }
+                            }
+                        }
+                        this.chart_objs[i].hideLoading();
+                        this.chart_objs[i].setOption(option);
+                    }
+
+                }
+
+                // 针对COP数据饼图绑定数据动态显示
+                if (this.request_data.key.includes("cop")){
+                    this.cop_bind();
+                }
+
+            }else {
+                console.log(this.request_data.key, " - 接口无数据：", this.request_url);
+            }
+        }catch (e) {
+            console.log(this.request_data.key, " - 对象数据渲染出错，访问路由：", this.request_url, "错误详情：", e);
+        }
+    }
+}
+
+
+
 
 // --------------------------完成自定义函数---------------------------------
 
@@ -337,6 +521,10 @@ obj:
  */
 var pool_available_heat_chart = get_chart("pool_available_heat");
 var high_heat_equal_supply_days_chart = get_chart("high_heat_equal_supply_days");
+
+
+
+
 
 // 数据渲染
 data_render(
@@ -528,13 +716,9 @@ obj:
  */
 
 
-// 获取图像元素
-var kamba_system_cop_dom = document.getElementById("kamba_system_cop_pie");
-var kamba_system_cop_chart_dom = document.getElementById("kamba_system_cop_chart");
-
 // 初始化图表
-var kamba_system_cop_chart = echarts.init(kamba_system_cop_dom);
-var kamba_system_cop_chart_chart = echarts.init(kamba_system_cop_chart_dom);
+var kamba_system_cop_chart = get_chart("kamba_system_cop_pie");
+var kamba_system_cop_chart_chart = get_chart("kamba_system_cop_chart");
 
 // 数据渲染
 data_render(
@@ -678,6 +862,9 @@ data_render(
 
 );
 
+
+
+// 绑定饼图与线图，点击事件设置
 kamba_system_cop_chart_chart.getZr().on('click', function (params) {
     var pointInPixel= [params.offsetX, params.offsetY];
     if (kamba_system_cop_chart_chart.containPixel('grid',pointInPixel)) {
@@ -718,8 +905,8 @@ var kamba_wshp_cop_dom = document.getElementById("kamba_wshp_cop_pie");
 var kamba_wshp_cop_chart_dom = document.getElementById("kamba_wshp_cop_chart");
 
 // 初始化图表
-var kamba_wshp_cop_chart = echarts.init(kamba_wshp_cop_dom);
-var kamba_wshp_cop_chart_chart = echarts.init(kamba_wshp_cop_chart_dom);
+var kamba_wshp_cop_chart = get_chart("kamba_wshp_cop_pie");
+var kamba_wshp_cop_chart_chart = get_chart("kamba_wshp_cop_chart");
 
 // 数据渲染
 data_render(
@@ -979,11 +1166,17 @@ obj:
     tbody[id="tbody_pool"]
  */
 
-// 获取图像元素
-var pool_temp_dom = document.getElementById("heat_map_of_temp");
-
 // 初始化图表
-var pool_temp_chart = echarts.init(pool_temp_dom);
+var pool_temp_chart = get_chart("heat_map_of_temp");
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1002,9 +1195,22 @@ data_render(
             left: "10%",
             right: "10%"
         },
+        visualMap: {
+            // min: 0,
+            // max: 10,
+            calculable: true,
+            orient: 'horizontal',
+            left: 'center',
+            bottom: '15%',
+            inRange:{
+                color:[
+                    "#3DC53B", "#D2FD4D", "#F4AE2C", "#F87A2D", "#FC402E"
+                ]
+            }
+        },
         xAxis: {},
         yAxis: {},
-        visualMap: {},
+        // visualMap: {},
         series: []
     }],
     option_mappings=[
@@ -1046,17 +1252,19 @@ data_render(
                     }
                 },
             },
-            visualMap: {
-                'type': 'obj',
-                'obj': ['pieces'],
-                'values': {
-                    pieces: function (data){return get_pieces(data["pieces"]);},
-                    orient: 'horizontal',
-                    left: 'center',
-                    bottom: '10%'
-                }
 
-            },
+
+            // visualMap: {
+            //     'type': 'obj',
+            //     'obj': ['pieces'],
+            //     'values': {
+                    pieces: function (data){return get_pieces(data["pieces"]);},
+            //         orient: 'horizontal',
+            //         left: 'center',
+            //         bottom: '10%'
+            //     }
+            //
+            // },
             series: {
                 "type": "arr",
                 "obj": ["data"],
@@ -1094,11 +1302,9 @@ obj:
     last_week_solar_collector_chart
  */
 
-// 获取图像元素
-var last_week_solar_collector_dom = document.getElementById("last_week_solar_collector");
 
 // 初始化图表
-var last_week_solar_collector_chart = echarts.init(last_week_solar_collector_dom);
+var last_week_solar_collector_chart = get_chart("last_week_solar_collector");
 
 data_render(
     request_data={"key": "api_solar_collector", "start": start, "end": end, "by": 'h'},
@@ -1218,15 +1424,11 @@ obj:
     last_week_solar_side_replenishment_chart
  */
 
-// 获取图像元素
-var last_week_heat_storage_replenishment_dom = document.getElementById("last_week_heat_storage_replenishment");
-var last_week_heat_water_replenishment_dom = document.getElementById("last_week_heat_water_replenishment");
-var last_week_solar_side_replenishment_dom = document.getElementById("last_week_solar_side_replenishment");
 
 // 初始化图表
-var last_week_heat_storage_replenishment_chart = echarts.init(last_week_heat_storage_replenishment_dom);
-var last_week_heat_water_replenishment_chart = echarts.init(last_week_heat_water_replenishment_dom);
-var last_week_solar_side_replenishment_chart = echarts.init(last_week_solar_side_replenishment_dom);
+var last_week_heat_storage_replenishment_chart = get_chart("last_week_heat_storage_replenishment");
+var last_week_heat_water_replenishment_chart = get_chart("last_week_heat_water_replenishment");
+var last_week_solar_side_replenishment_chart = get_chart("last_week_solar_side_replenishment");
 
 data_render(
     request_data={"key": "api_hydration", "start": start, "end": end, "by": 'h'},
@@ -1520,12 +1722,8 @@ obj:
     solar_matrix_supply_and_return_water_temp_chart
  */
 
-
-// 获取图像元素
-var solar_matrix_supply_and_return_water_temp_dom = document.getElementById("solar_matrix_supply_and_return_water_temp");
-
 // 初始化图表
-var solar_matrix_supply_and_return_water_temp_chart = echarts.init(solar_matrix_supply_and_return_water_temp_dom);
+var solar_matrix_supply_and_return_water_temp_chart = get_chart("solar_matrix_supply_and_return_water_temp");
 
 
 data_render(
@@ -1624,7 +1822,6 @@ data_render(
 );
 
 
-
 // ------------------------------------------------------------------------------------------------------------
 
 
@@ -1638,11 +1835,9 @@ obj:
     load_by_days_chart
  */
 
-// 获取图像元素
-var load_by_days_dom = document.getElementById("load_by_days");
 
 // 初始化图表
-var load_by_days_chart = echarts.init(load_by_days_dom);
+var load_by_days_chart = get_chart("load_by_days");
 
 
 data_render(
@@ -1753,20 +1948,11 @@ obj:
     end_supply_and_return_water_temp_chart
  */
 
-
-// 获取图像元素
-var supply_and_return_water_temp_diff_with_temp_dom = document.getElementById("supply_and_return_water_temp_diff_with_temp");
-var supply_water_temp_with_temp_dom = document.getElementById("supply_water_temp_with_temp");
-var return_water_temp_with_temp_dom = document.getElementById("return_water_temp_with_temp");
-
-var end_supply_and_return_water_temp_dom = document.getElementById("end_supply_and_return_water_temp");
-
 // 初始化图表
-var supply_and_return_water_temp_diff_with_temp_chart = echarts.init(supply_and_return_water_temp_diff_with_temp_dom);
-var supply_water_temp_with_temp_chart = echarts.init(supply_water_temp_with_temp_dom);
-var return_water_temp_with_temp_chart = echarts.init(return_water_temp_with_temp_dom);
-
-var end_supply_and_return_water_temp_chart = echarts.init(end_supply_and_return_water_temp_dom);
+var supply_and_return_water_temp_diff_with_temp_chart = get_chart("supply_and_return_water_temp_diff_with_temp");
+var supply_water_temp_with_temp_chart = get_chart("supply_water_temp_with_temp");
+var return_water_temp_with_temp_chart = get_chart("return_water_temp_with_temp");
+var end_supply_and_return_water_temp_chart = get_chart("end_supply_and_return_water_temp");
 
 
 data_render(
@@ -1927,12 +2113,8 @@ obj:
     last_year_supply_return_water_temp_chart
  */
 
-// 获取图像元素
-var last_year_supply_return_water_temp_dom = document.getElementById("last_year_supply_return_water_temp");
-
-
 // 初始化图表
-var last_year_supply_return_water_temp_chart = echarts.init(last_year_supply_return_water_temp_dom);
+var last_year_supply_return_water_temp_chart = get_chart("last_year_supply_return_water_temp");
 
 
 data_render(
@@ -2094,14 +2276,9 @@ obj:
     co2_equal_chart
  */
 
-// 获取图像元素
-var co2_emission_dom= document.getElementById("co2_emission_reduction");
-var co2_equal_dom = document.getElementById("co2_equal_num");
-
-
 // 初始化图表
-var co2_emission_chart= echarts.init(co2_emission_dom);
-var co2_equal_chart = echarts.init(co2_equal_dom);
+var co2_emission_chart= get_chart("co2_emission_reduction");
+var co2_equal_chart = get_chart("co2_equal_num");
 
 
 data_render(
@@ -2371,12 +2548,8 @@ obj:
  */
 
 
-// 获取图像元素
-var last_week_solar_collector_by_days_dom = document.getElementById("last_week_solar_collector_by_days");
-
-
 // 初始化图表
-var last_week_solar_collector_by_days_chart = echarts.init(last_week_solar_collector_by_days_dom);
+var last_week_solar_collector_by_days_chart = get_chart("last_week_solar_collector_by_days");
 
 
 data_render(
@@ -2540,17 +2713,13 @@ obj:
     power_rate_chart
  */
 
-// 获取图像元素
-var heat_supply_analysis_dom = document.getElementById("heat_supply_analysis");
-var power_rate_dom = document.getElementById("power_rate");
-
 // 初始化图表
-var heat_supply_analysis_chart = echarts.init(heat_supply_analysis_dom);
-var power_rate_chart = echarts.init(power_rate_dom);
+var heat_supply_analysis_chart = get_chart("heat_supply_analysis");
+var power_rate_chart = get_chart("power_rate");
 
 data_render(
     request_data={"key": "api_calories", "start": start, "end": end, "by": 'd'},
-    time_ids=["heat_make_title", "high_power_title"],
+    time_ids=["heat_supply_analysis_title", "high_power_title"],
     funcs=undefined,
     chart_objs=[heat_supply_analysis_chart, power_rate_chart],
     option_datas=[
@@ -2730,15 +2899,12 @@ obj:
     calories_by_days_chart
  */
 
-// 获取图像元素
-var calories_by_days_dom = document.getElementById("calories_by_days");
-
 // 初始化图表
-var calories_by_days_chart = echarts.init(calories_by_days_dom);
+var calories_by_days_chart = get_chart("calories_by_days");
 
 data_render(
     request_data={"key": "api_heat_supply", "start": start, "end": end, "by": 'd'},
-    time_ids=["heat_supply_analysis_title"],
+    time_ids=["heat_make_title"],
     funcs=undefined,
     chart_objs=[calories_by_days_chart],
     option_datas=[
@@ -2890,23 +3056,20 @@ data_render(
 /* 节省供暖费用
 
 key:
-    api_heat_supply
+    api_cost_saving
 by:
     d
 obj:
     heat_supply_analysis_chart
  */
 
-// 获取图像元素
-var cost_saving_dom = document.getElementById("cost_saving");
-
 // 初始化图表
 
-var cost_saving_chart = echarts.init(cost_saving_dom);
+var cost_saving_chart = get_chart("cost_saving");
 
 data_render(
     request_data={"key": "api_cost_saving", "start": last_month_date, "end": end, "by": 'd'},
-    time_ids=["heat_make_title", "high_power_title"],
+    time_ids=["cost_saving_title"],
     funcs=undefined,
     chart_objs=[cost_saving_chart],
     option_datas=[

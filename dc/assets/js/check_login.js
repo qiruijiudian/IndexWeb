@@ -8,6 +8,7 @@ var end_limit = "";
 var last_month_date = "";
 var end = "";
 var db = "";
+var charts = [];
 
 if (document.location.href.indexOf('cdqrmi') < 0){
     url = "http://127.0.0.1:8000/api/cona/";
