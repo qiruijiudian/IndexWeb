@@ -13,9 +13,22 @@ new DataChart(
             left: "10%",
             right: "10%"
         },
+        visualMap: {
+            min: 50,
+            max: 70,
+            calculable: true,
+            orient: 'horizontal',
+            left: 'center',
+            bottom: '15%',
+            inRange:{
+                color:[
+                    "#3DC53B", "#D2FD4D", "#F4AE2C", "#F87A2D", "#FC402E"
+                ]
+            }
+        },
         xAxis: {},
         yAxis: {},
-        visualMap: {},
+        // visualMap: {},
         series: []
     }],
     option_mappings=[
@@ -25,14 +38,7 @@ new DataChart(
                 "obj": ["data"],
                 "values": {
                     type: 'category',
-                    // data: data["sizes"],
                     data: "heat_time_period",
-                    axisLine: {
-                        show: false,
-                    },
-                    axisTick: {
-                        show: false,
-                    },
                     splitArea: {
                         show: true,
                     }
@@ -44,27 +50,29 @@ new DataChart(
                 'obj': ['data'],
                 'values': {
                     type: 'category',
-                    // data: data["heat_time_period"],
                     data: "sizes",
-                    axisLine: {
-                        show: false,
-                    },
-                    axisTick: {
-                        show: false,
-                    },
                     splitArea: {
                         show: true,
                     }
                 },
             },
+
+
             visualMap: {
                 'type': 'obj',
-                'obj': ['pieces'],
+                'obj': ['min', 'max'],
                 'values': {
-                    pieces: function (data){return get_pieces(data["pieces"]);},
+                    min: 'min',
+                    max: 'max',
+                    calculable: true,
                     orient: 'horizontal',
                     left: 'center',
-                    bottom: '10%'
+                    bottom: '15%',
+                    inRange:{
+                        color:[
+                            "#3DC53B", "#D2FD4D", "#F4AE2C", "#F87A2D", "#FC402E"
+                        ]
+                    }
                 }
 
             },
@@ -85,10 +93,7 @@ new DataChart(
                         }
                     }
                 },]
-
             }
-
-
         }
     ],
     dataZooms=[false]

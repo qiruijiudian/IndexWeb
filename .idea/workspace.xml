@@ -2,31 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb20b6d7-fe1d-4e0f-ba76-1ced7a29ec7c" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/dc/assets/js/kamba/co2_emission.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dc/assets/js/kamba/tem_provided.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dc/assets/js/kamba/tmp/chart_calories.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dc/assets/js/kamba/tmp/chart_co2_emission.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dc/assets/js/kamba/tmp/chart_cost_saving.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dc/assets/js/kamba/tmp/chart_end_supply_and_return_water_temp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dc/assets/js/kamba/tmp/chart_end_supply_and_return_water_temp_by_year.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dc/assets/js/kamba/tmp/chart_heat_storage_heat.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dc/assets/js/kamba/tmp/chart_heat_supply.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dc/assets/js/kamba/tmp/chart_hydration.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dc/assets/js/kamba/tmp/chart_load.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dc/assets/js/kamba/tmp/chart_pool_temperature_heatmap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dc/assets/js/kamba/tmp/chart_solar_collector.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dc/assets/js/kamba/tmp/chart_solar_heat_supply.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dc/assets/js/kamba/tmp/chart_solar_matrix_supply_and_return_water_temperature.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dc/assets/js/kamba/tmp/chart_system_cop.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dc/assets/js/kamba/tmp/chart_wshp_cop.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dc/assets/js/kamba/tmp/table_pool_temperature.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dc/kamba/co2_emission.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/assets/js/check_login.js" beforeDir="false" afterPath="$PROJECT_DIR$/dc/assets/js/check_login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dc/assets/js/kamba/kamba.js" beforeDir="false" afterPath="$PROJECT_DIR$/dc/assets/js/kamba/kamba.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/assets/js/kamba/t.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/assets/js/kamba/t.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/assets/js/others.js" beforeDir="false" afterPath="$PROJECT_DIR$/dc/assets/js/others.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dc/assets/js/kamba/t.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dc/assets/js/kamba/t2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dc/assets/js/kamba/tem_provided.js" beforeDir="false" afterPath="$PROJECT_DIR$/dc/assets/js/kamba/tem_provided.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dc/assets/js/kamba/tmp/chart_pool_temperature_heatmap.js" beforeDir="false" afterPath="$PROJECT_DIR$/dc/assets/js/kamba/tmp/chart_pool_temperature_heatmap.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dc/kamba.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/kamba.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dc/kamba/co2_emission.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/kamba/co2_emission.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dc/kamba/cost_saving.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/kamba/cost_saving.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dc/kamba/heat_total_and_supply_days.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/kamba/heat_total_and_supply_days.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dc/kamba/kamba_cop.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/kamba/kamba_cop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dc/kamba/last_week.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/kamba/last_week.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dc/kamba/pool_temperature.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/kamba/pool_temperature.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dc/kamba/supply_return_water_temp_diff.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/kamba/supply_return_water_temp_diff.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -42,12 +31,12 @@
     <window id="1">
       <content type="file-editors">
         <state>
-          <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <leaf>
             <file leaf-file-name="kamba.js" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/dc/assets/js/kamba/kamba.js">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="728">
-                    <caret line="1208" column="13" lean-forward="true" selection-start-line="1208" selection-start-column="13" selection-end-line="1208" selection-end-column="13" />
+                  <state relative-caret-position="18060">
+                    <caret line="1164" column="4" lean-forward="true" selection-start-line="1164" selection-start-column="4" selection-end-line="1164" selection-end-column="4" />
                     <folding>
                       <element signature="n#!!doc" expanded="true" />
                       <element signature="e#910#2603#0" />
@@ -78,9 +67,11 @@
                       <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
                       <element signature="n#style#0;n#td#7;n#tr#0;n#!!top" expanded="true" />
                       <element signature="n#style#0;n#td#8;n#tr#0;n#!!top" expanded="true" />
-                      <element signature="e#39347#40632#0" />
-                      <element signature="e#69130#71107#0" />
-                      <element signature="e#71129#76356#0" />
+                      <element signature="e#36460#37086#0" />
+                      <element signature="e#37109#39195#0" />
+                      <element signature="e#38631#39177#0" />
+                      <element signature="e#39752#41037#0" />
+                      <element signature="e#41060#42068#0" />
                       <element signature="e#1#7#0" expanded="true" />
                       <element signature="e#7#13#0" expanded="true" />
                       <element signature="e#13#19#0" expanded="true" />
@@ -129,37 +120,6 @@
                       <element signature="e#147#153#0" expanded="true" />
                       <element signature="e#153#159#0" expanded="true" />
                       <element signature="e#159#165#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="others.js" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/dc/assets/js/others.js">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="320">
-                    <caret line="16" column="43" lean-forward="true" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="kamba.html" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/dc/kamba.html">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="-2635">
-                    <caret line="535" column="18" lean-forward="true" selection-start-line="535" selection-start-column="18" selection-end-line="535" selection-end-column="18" />
-                    <folding>
-                      <element signature="n#nav#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-                      <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                      <element signature="n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                      <element signature="n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                      <element signature="n#div#3;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                      <element signature="n#div#4;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                      <element signature="n#div#5;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                      <element signature="n#div#0;n#div#6;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                      <element signature="n#div#7;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                      <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#12;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                      <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#15;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                     </folding>
                   </state>
                 </provider>
@@ -171,7 +131,103 @@
     </window>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file leaf-file-name="kamba.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dc/kamba.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="637" column="51" selection-start-line="637" selection-start-column="51" selection-end-line="637" selection-end-column="51" />
+              <folding>
+                <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#3;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#4;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#5;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#6;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#7;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#15;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chart_pool_temperature_heatmap.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dc/assets/js/kamba/tmp/chart_pool_temperature_heatmap.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="99" column="16" lean-forward="true" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="16" />
+              <folding>
+                <element signature="e#236#857#0" />
+                <element signature="e#880#2673#0" />
+                <element signature="e#2112#2657#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="co2_emission.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dc/kamba/co2_emission.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="85" column="24" selection-start-line="85" selection-start-column="24" selection-end-line="87" selection-end-column="29" />
+              <folding>
+                <element signature="n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="heat_total_and_supply_days.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dc/kamba/heat_total_and_supply_days.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="88" column="29" selection-start-line="88" selection-start-column="29" selection-end-line="88" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="kamba_cop.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dc/kamba/kamba_cop.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="88" column="29" selection-start-line="88" selection-start-column="29" selection-end-line="88" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="last_week.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dc/kamba/last_week.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="86" column="29" selection-start-line="86" selection-start-column="29" selection-end-line="86" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pool_temperature.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dc/kamba/pool_temperature.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="88" column="29" selection-start-line="88" selection-start-column="29" selection-end-line="88" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="supply_return_water_temp_diff.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dc/kamba/supply_return_water_temp_diff.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="88" column="66" lean-forward="true" selection-start-line="88" selection-start-column="66" selection-end-line="88" selection-end-column="66" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -184,12 +240,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>assets/js/morris/morris-0.4.3.min.css</find>
       <find>cost_saving_chart</find>
       <find>card</find>
       <find>.card</find>
       <find>.card-action</find>
-      <find />
+      <find>.card .card-action</find>
       <find>水池</find>
       <find>pool_temp_</find>
       <find>ids</find>
@@ -213,6 +268,7 @@
       <find>this</find>
       <find>date</find>
       <find>heat_map</find>
+      <find>进击的</find>
       <find>co2</find>
     </findStrings>
   </component>
@@ -222,7 +278,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/dc/cona/geothermal_wells_heat_provide.html" />
         <option value="$PROJECT_DIR$/dc/assets/js/cona/geothermal_wells_heat_provide.js" />
         <option value="$PROJECT_DIR$/dc/cona/cost_saving.html" />
         <option value="$PROJECT_DIR$/dc/assets/js/cona/cost_saving.js" />
@@ -238,12 +293,6 @@
         <option value="$PROJECT_DIR$/dc/assets/js/kamba/supply_return_water_temp_diff.js" />
         <option value="$PROJECT_DIR$/dc/assets/js/kamba/cost_saving.js" />
         <option value="$PROJECT_DIR$/dc/assets/js/kamba/last_week.js" />
-        <option value="$PROJECT_DIR$/dc/kamba/supply_return_water_temp_diff.html" />
-        <option value="$PROJECT_DIR$/dc/kamba/pool_temperature.html" />
-        <option value="$PROJECT_DIR$/dc/kamba/last_week.html" />
-        <option value="$PROJECT_DIR$/dc/kamba/kamba_cop.html" />
-        <option value="$PROJECT_DIR$/dc/kamba/heat_total_and_supply_days.html" />
-        <option value="$PROJECT_DIR$/dc/kamba/cost_saving.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/dc/assets/js/kamba/t.html" />
         <option value="$PROJECT_DIR$/dc/assets/js/check_login.js" />
@@ -266,13 +315,20 @@
         <option value="$PROJECT_DIR$/dc/assets/js/kamba/tmp/chart_heat_supply.js" />
         <option value="$PROJECT_DIR$/dc/assets/js/kamba/tmp/chart_cost_saving.js" />
         <option value="$PROJECT_DIR$/dc/assets/js/kamba/tmp/table_pool_temperature.js" />
-        <option value="$PROJECT_DIR$/dc/assets/js/kamba/tem_provided.js" />
-        <option value="$PROJECT_DIR$/dc/assets/js/kamba/tmp/chart_pool_temperature_heatmap.js" />
-        <option value="$PROJECT_DIR$/dc/kamba.html" />
         <option value="$PROJECT_DIR$/dc/assets/js/kamba/凑.js" />
         <option value="$PROJECT_DIR$/dc/assets/js/kamba/co2_emission.js" />
-        <option value="$PROJECT_DIR$/dc/kamba/co2_emission.html" />
+        <option value="$PROJECT_DIR$/dc/assets/js/kamba/tem_provided.js" />
+        <option value="$PROJECT_DIR$/dc/assets/js/kamba/tmp/t.html" />
         <option value="$PROJECT_DIR$/dc/assets/js/kamba/kamba.js" />
+        <option value="$PROJECT_DIR$/dc/kamba/co2_emission.html" />
+        <option value="$PROJECT_DIR$/dc/kamba/cost_saving.html" />
+        <option value="$PROJECT_DIR$/dc/kamba/heat_total_and_supply_days.html" />
+        <option value="$PROJECT_DIR$/dc/kamba/kamba_cop.html" />
+        <option value="$PROJECT_DIR$/dc/kamba/last_week.html" />
+        <option value="$PROJECT_DIR$/dc/kamba/pool_temperature.html" />
+        <option value="$PROJECT_DIR$/dc/kamba/supply_return_water_temp_diff.html" />
+        <option value="$PROJECT_DIR$/dc/assets/js/kamba/tmp/chart_pool_temperature_heatmap.js" />
+        <option value="$PROJECT_DIR$/dc/kamba.html" />
       </list>
     </option>
   </component>
@@ -282,11 +338,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="561" />
-    <option name="y" value="60" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="2045" />
+    <option name="y" value="-10" />
     <option name="width" value="1936" />
-    <option name="height" value="1016" />
+    <option name="height" value="978" />
   </component>
   <component name="ProjectId" id="1zIvbasZBBSbZNbTV4BuXXzkjFq" />
   <component name="ProjectLevelVcsManager">
@@ -330,6 +386,15 @@
               <item name="assets" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
               <item name="kamba" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="webs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="webs" type="462c0819:PsiDirectoryNode" />
+              <item name="dc" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="kamba" type="462c0819:PsiDirectoryNode" />
+              <item name="tmp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="webs" type="b2602c69:ProjectViewProjectNode" />
@@ -449,27 +514,28 @@
       <workItem from="1641777175756" duration="9891000" />
       <workItem from="1641863002947" duration="4494000" />
       <workItem from="1641956134570" duration="13287000" />
-      <workItem from="1642036475560" duration="15772000" />
+      <workItem from="1642036475560" duration="16682000" />
+      <workItem from="1642122469547" duration="17926000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="276205000" />
+    <option name="totallyTimeSpent" value="295041000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18020834" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.11477152" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -491,20 +557,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dc/cona/cost_saving.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="207" column="71" lean-forward="true" selection-start-line="207" selection-start-column="71" selection-end-line="207" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dc/cona/last_week_data.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="179" column="17" lean-forward="true" selection-start-line="179" selection-start-column="17" selection-end-line="179" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dc/assets/js/cona/core_data.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
@@ -606,34 +658,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dc/kamba/last_week.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="88" column="65" lean-forward="true" selection-start-line="88" selection-start-column="65" selection-end-line="88" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dc/kamba/kamba_cop.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="93" column="42" selection-start-line="93" selection-start-column="37" selection-end-line="93" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dc/kamba/heat_total_and_supply_days.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="93" column="42" selection-start-line="93" selection-start-column="37" selection-end-line="93" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dc/kamba/cost_saving.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="93" column="43" selection-start-line="93" selection-start-column="37" selection-end-line="93" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-763">
@@ -661,13 +685,6 @@
             <element signature="e#435#1767#0" />
             <element signature="e#1789#4265#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dc/assets/js/kamba/t.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -795,52 +812,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="12" column="27" lean-forward="true" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
-          <folding>
-            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#4;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#7;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#8;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#4;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#7;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#8;n#tr#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dc/assets/js/kamba/tem_provided.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="223" column="42" lean-forward="true" selection-start-line="223" selection-start-column="42" selection-end-line="223" selection-end-column="42" />
-          <folding>
-            <element signature="n#!!block;n#get_cop_pie_options#0" />
-            <element signature="n#!!block;n#get_water_provider_options#0" />
-            <element signature="n#!!block;n#get_pieces#0" />
-            <element signature="n#!!block;n#get_common_option#0" />
-            <element signature="e#4960#5157#0" />
-            <element signature="e#8207#8270#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dc/assets/js/kamba/tmp/chart_pool_temperature_heatmap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="93" column="21" lean-forward="true" selection-start-line="93" selection-start-column="21" selection-end-line="93" selection-end-column="21" />
-          <folding>
-            <element signature="e#236#509#0" />
-            <element signature="e#532#2575#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -861,28 +832,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dc/kamba/supply_return_water_temp_diff.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="269" column="31" lean-forward="true" selection-end-line="288" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dc/kamba/pool_temperature.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="93" column="43" selection-start-line="93" selection-start-column="37" selection-end-line="93" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dc/assets/js/kamba/co2_emission.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="251" column="16" lean-forward="true" selection-start-line="251" selection-start-column="16" selection-end-line="251" selection-end-column="16" />
-          <folding>
-            <element signature="e#291#2268#0" />
-            <element signature="e#2290#7517#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -892,20 +845,6 @@
           <caret line="29" column="19" selection-start-line="29" selection-start-column="15" selection-end-line="29" selection-end-column="19" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dc/kamba/co2_emission.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="195" lean-forward="true" selection-start-line="195" selection-end-line="195" />
-          <folding>
-            <element signature="n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -924,30 +863,119 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dc/kamba.html">
+    <entry file="file://$PROJECT_DIR$/dc/assets/js/kamba/tem_provided.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2635">
-          <caret line="535" column="18" lean-forward="true" selection-start-line="535" selection-start-column="18" selection-end-line="535" selection-end-column="18" />
+        <state relative-caret-position="579">
+          <caret line="252" lean-forward="true" selection-start-line="252" selection-end-line="252" />
           <folding>
-            <element signature="n#nav#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#3;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#4;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#5;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#6;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#7;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#12;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#15;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#!!block;n#get_cop_pie_options#0" />
+            <element signature="n#!!block;n#get_water_provider_options#0" />
+            <element signature="n#!!block;n#get_pieces#0" />
+            <element signature="n#!!block;n#get_common_option#0" />
+            <element signature="e#4960#5157#0" />
+            <element signature="n#!!block;n#init_chart#0;n#DataChart#0" />
+            <element signature="n#!!block;n#text_setting#0;n#DataChart#0" />
+            <element signature="n#!!block;n#cop_bind#0;n#DataChart#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dc/assets/js/kamba/tmp/t.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="35" column="27" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="27" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dc/kamba/cost_saving.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="88" column="29" selection-start-line="88" selection-start-column="29" selection-end-line="88" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dc/kamba/co2_emission.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="85" column="24" selection-start-line="85" selection-start-column="24" selection-end-line="87" selection-end-column="29" />
+          <folding>
+            <element signature="n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dc/kamba/heat_total_and_supply_days.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="88" column="29" selection-start-line="88" selection-start-column="29" selection-end-line="88" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dc/kamba/kamba_cop.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="88" column="29" selection-start-line="88" selection-start-column="29" selection-end-line="88" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dc/kamba/last_week.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="86" column="29" selection-start-line="86" selection-start-column="29" selection-end-line="86" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dc/kamba/pool_temperature.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="88" column="29" selection-start-line="88" selection-start-column="29" selection-end-line="88" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dc/kamba/supply_return_water_temp_diff.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="88" column="66" lean-forward="true" selection-start-line="88" selection-start-column="66" selection-end-line="88" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dc/assets/js/kamba/t2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="20" column="10" lean-forward="true" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dc/assets/js/kamba/t.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dc/assets/js/kamba/tmp/chart_pool_temperature_heatmap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="99" column="16" lean-forward="true" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="16" />
+          <folding>
+            <element signature="e#236#857#0" />
+            <element signature="e#880#2673#0" />
+            <element signature="e#2112#2657#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dc/assets/js/kamba/kamba.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="728">
-          <caret line="1208" column="13" lean-forward="true" selection-start-line="1208" selection-start-column="13" selection-end-line="1208" selection-end-column="13" />
+        <state relative-caret-position="18060">
+          <caret line="1164" column="4" lean-forward="true" selection-start-line="1164" selection-start-column="4" selection-end-line="1164" selection-end-column="4" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#910#2603#0" />
@@ -978,9 +1006,11 @@
             <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#7;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#8;n#tr#0;n#!!top" expanded="true" />
-            <element signature="e#39347#40632#0" />
-            <element signature="e#69130#71107#0" />
-            <element signature="e#71129#76356#0" />
+            <element signature="e#36460#37086#0" />
+            <element signature="e#37109#39195#0" />
+            <element signature="e#38631#39177#0" />
+            <element signature="e#39752#41037#0" />
+            <element signature="e#41060#42068#0" />
             <element signature="e#1#7#0" expanded="true" />
             <element signature="e#7#13#0" expanded="true" />
             <element signature="e#13#19#0" expanded="true" />
@@ -1029,6 +1059,24 @@
             <element signature="e#147#153#0" expanded="true" />
             <element signature="e#153#159#0" expanded="true" />
             <element signature="e#159#165#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dc/kamba.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="637" column="51" selection-start-line="637" selection-start-column="51" selection-end-line="637" selection-end-column="51" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#3;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#4;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#5;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#6;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#7;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#15;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

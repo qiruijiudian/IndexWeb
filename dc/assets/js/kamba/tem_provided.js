@@ -175,6 +175,7 @@ function get_common_option(data_values, data_option, data_mapping) {
     return data_option;
 }
 
+
 String.prototype.format = function () {
     // 类似python中的format效果
     var str = this;
@@ -183,6 +184,7 @@ String.prototype.format = function () {
     }
     return str;
 };
+
 
 class DataChart {
 
@@ -303,11 +305,7 @@ class DataChart {
                         }
 
                         // 针对COP数据饼图绑定数据动态显示
-                        if (obj.request_data.key.includes("cop")) {
-                            obj.cop_bind();
-                        }
-
-
+                        if (obj.request_data.key.includes("cop")) obj.cop_bind();
                     },
                     error: function (xhr) {
                         console.log("失败", xhr);
@@ -317,61 +315,5 @@ class DataChart {
         }catch (e) {
             console.log('error', e)
         }
-
-
-        //     // 初始化图表
-        //     this.init_chart();
-        //
-        //     // 获取数据
-        //     this.obj_data = this.get_data();
-        //     if (this.obj_data){
-        //         // 特定文字设置
-        //         this.text_setting();
-        //
-        //         for (let i=0;i<this.chart_objs.length;i++){
-        //             // 设置时间
-        //             set_time_range(this.time_ids[i], this.obj_data);
-        //
-        //             // 渲染数据
-        //             if (this.funcs[i]){
-        //                 if (this.funcs[i].type === "option"){
-        //                     this.chart_objs[i].hideLoading();
-        //                     this.chart_objs[i].setOption(this.funcs[i].func(this.obj_data));
-        //                 }else  if (this.funcs[i].type === "p_function"){
-        //                     this.funcs[i].func(this.obj_data);
-        //                 }
-        //             }else {
-        //                 let option = get_common_option(this.obj_data, this.option_datas[i], this.option_mappings[i]);
-        //                 if (is_large){
-        //                     if (!option.hasOwnProperty("dataZoom")){
-        //                         if (this.dataZooms[i] === 1){
-        //                             option["dataZoom"] = [{show: true, realtime: true, start: 30, end: 70, xAxisIndex: [0, 1]}];
-        //                             option["toolbox"]["feature"]["dataZoom"] = {yAxisIndex: 'none'};
-        //                         }else if (this.dataZooms[i] === 2){
-        //                             option["dataZoom"] = [
-        //                                 {show: true, realtime: true, start: 30, end: 70, xAxisIndex: [0, 1]},
-        //                                 {type: 'inside', realtime: true, start: 30, end: 70, xAxisIndex: [0, 1]}
-        //                             ];
-        //
-        //                             option["toolbox"]["feature"]["dataZoom"] = {yAxisIndex: 'none'};
-        //                         }
-        //                     }
-        //                 }
-        //                 this.chart_objs[i].hideLoading();
-        //                 this.chart_objs[i].setOption(option);
-        //             }
-        //         }
-        //
-        //         // 针对COP数据饼图绑定数据动态显示
-        //         if (this.request_data.key.includes("cop")){
-        //             this.cop_bind();
-        //         }
-        //
-        //     }else {
-        //         console.log(this.request_data.key, " - 接口无数据：", this.request_url);
-        //     }
-        // }catch (e) {
-        //     console.log(this.request_data.key, " - 对象数据渲染出错，访问路由：", this.request_url, "错误详情：", e);
-        // }
     }
 }

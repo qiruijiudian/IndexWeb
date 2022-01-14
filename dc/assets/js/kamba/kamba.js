@@ -1169,17 +1169,6 @@ obj:
 // 初始化图表
 var pool_temp_chart = get_chart("heat_map_of_temp");
 
-
-
-
-
-
-
-
-
-
-
-
 data_render(
     request_data={"key": "api_pool_temperature", "start": start, "end": end, "by": 'h', "heat_map": true},
     time_ids=["heat_map_title_of_temp"],
@@ -1196,8 +1185,8 @@ data_render(
             right: "10%"
         },
         visualMap: {
-            // min: 0,
-            // max: 10,
+            min: 50,
+            max: 70,
             calculable: true,
             orient: 'horizontal',
             left: 'center',
@@ -1220,14 +1209,7 @@ data_render(
                 "obj": ["data"],
                 "values": {
                     type: 'category',
-                    // data: data["sizes"],
                     data: "heat_time_period",
-                    axisLine: {
-                        show: false,
-                    },
-                    axisTick: {
-                        show: false,
-                    },
                     splitArea: {
                         show: true,
                     }
@@ -1239,14 +1221,7 @@ data_render(
                 'obj': ['data'],
                 'values': {
                     type: 'category',
-                    // data: data["heat_time_period"],
                     data: "sizes",
-                    axisLine: {
-                        show: false,
-                    },
-                    axisTick: {
-                        show: false,
-                    },
                     splitArea: {
                         show: true,
                     }
@@ -1254,17 +1229,24 @@ data_render(
             },
 
 
-            // visualMap: {
-            //     'type': 'obj',
-            //     'obj': ['pieces'],
-            //     'values': {
-                    pieces: function (data){return get_pieces(data["pieces"]);},
-            //         orient: 'horizontal',
-            //         left: 'center',
-            //         bottom: '10%'
-            //     }
-            //
-            // },
+            visualMap: {
+                'type': 'obj',
+                'obj': ['min', 'max'],
+                'values': {
+                    min: 'min',
+                    max: 'max',
+                    calculable: true,
+                    orient: 'horizontal',
+                    left: 'center',
+                    bottom: '15%',
+                    inRange:{
+                        color:[
+                            "#3DC53B", "#D2FD4D", "#F4AE2C", "#F87A2D", "#FC402E"
+                        ]
+                    }
+                }
+
+            },
             series: {
                 "type": "arr",
                 "obj": ["data"],
@@ -1282,10 +1264,7 @@ data_render(
                         }
                     }
                 },]
-
             }
-
-
         }
     ],
     dataZooms=[false]

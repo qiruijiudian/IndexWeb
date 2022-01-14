@@ -87,6 +87,9 @@
                             <a href="kamba/kamba_cop.html">系统COP与能效</a>
                         </li>
                         <li>
+                            <a href="kamba/co2_emission.html">CO2减排量</a>
+                        </li>
+                        <li>
                             <a href="kamba/supply_return_water_temp_diff.html">供回水温度与温差</a>
                         </li>
                         <li>
@@ -504,38 +507,6 @@
             </div>
 
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-6">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="card">
-                                <div class="card-action chart_title">
-                                    <b id="co2_emission_reduction_title">CO2减排量与耗电量</b>
-                                </div>
-                                <div class="card-image donutpad">
-                                    <div id="co2_emission_reduction" style="width:100%;height:400px"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--/.row-->
-
-                <div class="col-xs-12 col-sm-12 col-md-6">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="card">
-                                <div class="card-action chart_title">
-                                    <b id="co2_equal_num_title">CO2减排量等效种植树木数量</b>
-                                </div>
-                                <div class="card-image donutpad">
-                                    <div id="co2_equal_num" style="width:100%;height:400px"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--/.row-->
-            </div>
-
-            <div class="row">
                 <div class="col-xs-12">
                     <div class="card">
                         <div class="card-action chart_title">
@@ -670,39 +641,37 @@
 <script src="assets/js/moment.min.js"></script>
 <script src="assets/js/datepicker.all.js"></script>
 <script src="assets/js/date_choose.js"></script>
-<script src="assets/js/kamba/kamba.js"></script>
+
+<script src="assets/js/kamba/tem_provided.js"></script>
 
 
-<!--<script src="assets/js/kamba/tem_provided.js"></script>-->
+<!--引入单个图表设置-->
+<script src="assets/js/kamba/tmp/chart_heat_storage_heat.js"></script>
+<script src="assets/js/kamba/tmp/chart_system_cop.js"></script>
+<script src="assets/js/kamba/tmp/chart_wshp_cop.js"></script>
+<script src="assets/js/kamba/tmp/table_pool_temperature.js"></script>
+<script src="assets/js/kamba/tmp/chart_pool_temperature_heatmap.js"></script>
+<script src="assets/js/kamba/tmp/chart_pool_temperature_heatmap.js"></script>
+<script src="assets/js/kamba/tmp/chart_solar_collector.js"></script>
+<script src="assets/js/kamba/tmp/chart_hydration.js"></script>
+<script src="assets/js/kamba/tmp/chart_solar_matrix_supply_and_return_water_temperature.js"></script>
+<script src="assets/js/kamba/tmp/chart_load.js"></script>
+<script src="assets/js/kamba/tmp/chart_end_supply_and_return_water_temp.js"></script>
+<script src="assets/js/kamba/tmp/chart_end_supply_and_return_water_temp_by_year.js"></script>
+<script src="assets/js/kamba/tmp/chart_solar_heat_supply.js"></script>
+<script src="assets/js/kamba/tmp/chart_calories.js"></script>
+<script src="assets/js/kamba/tmp/chart_heat_supply.js"></script>
+<script src="assets/js/kamba/tmp/chart_cost_saving.js"></script>
 
 
-<!--&lt;!&ndash;引入单个图表设置&ndash;&gt;-->
-<!--<script src="assets/js/kamba/tmp/chart_heat_storage_heat.js"></script>-->
-<!--<script src="assets/js/kamba/tmp/chart_system_cop.js"></script>-->
-<!--<script src="assets/js/kamba/tmp/chart_wshp_cop.js"></script>-->
-<!--<script src="assets/js/kamba/tmp/table_pool_temperature.js"></script>-->
-<!--<script src="assets/js/kamba/tmp/chart_pool_temperature_heatmap.js"></script>-->
-<!--<script src="assets/js/kamba/tmp/chart_solar_collector.js"></script>-->
-<!--<script src="assets/js/kamba/tmp/chart_hydration.js"></script>-->
-<!--<script src="assets/js/kamba/tmp/chart_solar_matrix_supply_and_return_water_temperature.js"></script>-->
-<!--<script src="assets/js/kamba/tmp/chart_load.js"></script>-->
-<!--<script src="assets/js/kamba/tmp/chart_end_supply_and_return_water_temp.js"></script>-->
-<!--<script src="assets/js/kamba/tmp/chart_end_supply_and_return_water_temp_by_year.js"></script>-->
-<!--<script src="assets/js/kamba/tmp/chart_co2_emission.js"></script>-->
-<!--<script src="assets/js/kamba/tmp/chart_solar_heat_supply.js"></script>-->
-<!--<script src="assets/js/kamba/tmp/chart_calories.js"></script>-->
-<!--<script src="assets/js/kamba/tmp/chart_heat_supply.js"></script>-->
-<!--<script src="assets/js/kamba/tmp/chart_cost_saving.js"></script>-->
+<script>
+    window.onresize = function (){
+        for (var i=0;i<charts.length;i++){
+            charts[i].resize();
+        }
+    };
 
-
-<!--<script>-->
-    <!--window.onresize = function (){-->
-        <!--for (var i=0;i<charts.length;i++){-->
-            <!--charts[i].resize();-->
-        <!--}-->
-    <!--};-->
-
-<!--</script>-->
+</script>
 </body>
 
 </html>
