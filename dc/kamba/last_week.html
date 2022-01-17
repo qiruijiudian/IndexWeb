@@ -324,10 +324,10 @@
                 <div class="col-xs-12">
                     <div class="card">
                         <div class="card-action chart_title">
-                            <b id="heat_supply_analysis_title">供热分析</b>
+                            <b id="heat_make_title">供热分析</b>
                         </div>
                         <div class="card-image">
-                            <div id="heat_supply_analysis" style="width:100%;height:400px"></div>
+                            <div id="calories_by_days" style="width:100%;height:400px"></div>
                         </div>
                     </div>
                 </div>
@@ -338,10 +338,10 @@
                     <div class="card">
 
                         <div class="card-action chart_title">
-                            <b id="heat_make_title">制热量情况</b>
+                            <b id="heat_supply_analysis_title">制热量情况</b>
                         </div>
                         <div class="card-image">
-                            <div id="calories_by_days" style="width:100%;height:300px"></div>
+                            <div id="heat_supply_analysis" style="width:100%;height:300px"></div>
                         </div>
 
                     </div>
@@ -373,7 +373,25 @@
 <script src="../assets/materialize/js/materialize.min.js"></script>
 <script src="../assets/js/jquery.metisMenu.js"></script>
 <script src="../assets/js/custom-scripts.js"></script>
-<script src="../assets/js/kamba/last_week.js"></script>
+
+<script src="../assets/js/kamba/tem_provided.js"></script>
+<script src="../assets/js/kamba/tmp/chart_load.js"></script>
+<script src="../assets/js/kamba/tmp/chart_solar_collector.js"></script>
+<script src="../assets/js/kamba/tmp/chart_hydration.js"></script>
+<script src="../assets/js/kamba/tmp/chart_solar_heat_supply.js"></script>
+<script src="../assets/js/kamba/tmp/chart_heat_supply.js"></script>
+<script src="../assets/js/kamba/tmp/chart_calories.js"></script>
+<script>
+    window.onresize = function (){
+        for (var i=0;i<charts.length;i++){
+            charts[i].resize();
+        }
+    };
+
+</script>
+
+
+
 </body>
 
 </html>

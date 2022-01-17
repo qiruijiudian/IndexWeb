@@ -207,6 +207,7 @@ class DataChart {
                 this.chart_objs[i] = echarts.init(document.getElementById(this.chart_objs[i]));
                 this.chart_objs[i].showLoading();
                 charts.push(this.chart_objs[i]);
+                console.log(this.chart_objs[i]);
             }
         }
     }
@@ -216,29 +217,36 @@ class DataChart {
         if (this.request_data.key.includes("api_load")){
             $('#max_load').text(data['max_load'] + 'KW');
             $('#min_load').text(data['min_load'] + 'KW');
+            if ($("#avg_load")) $('#avg_load').text(data['avg_load'] + 'KW');
         }else if(this.request_data.key.includes("api_cost_saving")){
             $('#cost_saving_sum').text(data['cost_saving_total'] + '万元');
+            for (let i=0;i<this.chart_objs.length;i++){
+                let now =$(`#${this.time_ids[i]}`).text().trim().slice(0, -1);
+                now = now + `，节省费用总计：${data['cost_saving_total']}万元)`;
+                $(`#${this.time_ids[i]}`).text(now);
+            }
         }
     }
 
     cop_bind(){
+        let _ = this;
         this.chart_objs[1].getZr().on('click', function (params) {
             var pointInPixel= [params.offsetX, params.offsetY];
-            if (this.chart_objs[1].containPixel('grid',pointInPixel)) {
+            console.log(_);
+            if (_.chart_objs[1].containPixel('grid',pointInPixel)) {
 
-                var pointInGrid=this.chart_objs[1].convertFromPixel({seriesIndex:0},pointInPixel);
+                var pointInGrid=_.chart_objs[1].convertFromPixel({seriesIndex:0},pointInPixel);
                 //X轴序号
                 var xIndex=pointInGrid[0];
 
                 //获取当前图表的option
-                var op=this.chart_objs[1].getOption();
+                var op=_.chart_objs[1].getOption();
 
                 //获得图表中我们想要的数据
                 var month = op.xAxis[0].data[xIndex];
                 var value = op.series[0].data[xIndex];
                 var tmp_options = get_cop_pie_options(value);
-                this.chart_objs[0].setOption(tmp_options);
-
+                _.chart_objs[0].setOption(tmp_options);
                 console.log(month+"："+value);
 
             }
@@ -247,8 +255,8 @@ class DataChart {
 
     data_render(){
         try {
-            console.log("before ajax: ", this);
             this.init_chart();
+
 
 
             let obj = this;
@@ -259,7 +267,6 @@ class DataChart {
                     data: this.request_data,
                     cache: true,
                     success: function (data) {
-                        console.log("after ajax: ", this);
 
                         // 特定文字设置
                         obj.text_setting(data);
@@ -305,7 +312,9 @@ class DataChart {
                         }
 
                         // 针对COP数据饼图绑定数据动态显示
+                        console.log(obj.chart_objs);
                         if (obj.request_data.key.includes("cop")) obj.cop_bind();
+
                     },
                     error: function (xhr) {
                         console.log("失败", xhr);
