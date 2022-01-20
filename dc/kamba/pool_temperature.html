@@ -177,7 +177,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="card">
 
-                        <div class="card-action" id="pool_temperature_heat_date">
+                        <div class="card-action" id="pool_temp_status">
                             水池温度情况
                         </div>
 
@@ -201,7 +201,7 @@
                                     </tr>
                                     </thead>
 
-                                    <tbody id="pool_temperature_tbody">
+                                    <tbody id="tbody_pool">
                                     </tbody>
                                 </table>
                             </div>
@@ -264,8 +264,11 @@
 <script src="../assets/js/moment.min.js"></script>
 <script src="../assets/js/datepicker.all.js"></script>
 <script src="../assets/js/date_choose.js"></script>
-<script src="../assets/js/kamba/pool_temperature.js"></script>
-
+<script src="../assets/js/tools.js"></script>
+<script src="../assets/js/kamba/table_pool_temperature.js"></script>
+<script>
+    window.onresize = function (){for (let i=0;i<charts.length;i++){charts[i].resize();}};
+</script>
 
 </body>
 

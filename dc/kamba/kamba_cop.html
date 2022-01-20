@@ -188,7 +188,7 @@
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="card-action" id="com_cop_title">
+                        <div class="card-action" id="sys_cop_title">
                             系统综合能效比
                         </div>
                         <div class="card-content">
@@ -209,7 +209,7 @@
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="card-action" id="wshp_cop_title">
+                        <div class="card-action" id="wp_cop_title">
                             水源热泵能效比
                         </div>
                         <div class="card-content">
@@ -276,8 +276,13 @@
 <script src="../assets/js/moment.min.js"></script>
 <script src="../assets/js/datepicker.all.js"></script>
 <script src="../assets/js/date_choose.js"></script>
-<script src="../assets/js/kamba/tem_provided.js"></script>
-<script src="../assets/js/kamba/kamba_cop.js"></script>
+<script src="../assets/js/tools.js"></script>
+<script src="../assets/js/kamba/chart_system_cop.js"></script>
+<script src="../assets/js/kamba/chart_wshp_cop.js"></script>
+<script>
+    window.onresize = function (){for (let i=0;i<charts.length;i++){charts[i].resize();}};
+</script>
+
 </body>
 
 </html>

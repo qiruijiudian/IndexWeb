@@ -164,16 +164,11 @@ function get_water_provider_options(data, hint){
     return options
 };
 
-function get_heat_provide_options(data, hint, title_text){
+function get_heat_provide_options(data, hint){
     var options = {
         grid:{
             x:75,
             x2:90,
-        },
-        title: {
-            text: title_text,
-            left: 'center',
-            top: 0
         },
         toolbox: {
             feature: {
@@ -527,7 +522,6 @@ try {
                         }
                     );
                 }
-
             },
             error: function (xhr) {
                 console.log("post geothermal_wells_heat_provide error：", xhr);

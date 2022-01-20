@@ -178,7 +178,7 @@
     <div id="page-wrapper" style="min-height: 1000px">
         <div class="header">
             <h1 id="gwt_title" class="page-header">
-                {{title}}
+                Loading...
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#">Home</a></li>
@@ -191,12 +191,12 @@
                 <div class="col-md-12">
                     <!-- Advanced Tables -->
                     <div class="card">
-                        <div class="card-action">
+                        <div class="card-action week_title">
                             过去一周数据
                         </div>
                         <div class="card-content">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                     <tr>
                                         <th>地热井名称</th>
@@ -205,7 +205,7 @@
                                         <th>最小值(℃)</th>
                                     </tr>
                                     </thead>
-                                    <tbody id="tbody_week">
+                                    <tbody class="tbody_week">
 
                                     </tbody>
                                 </table>
@@ -221,8 +221,8 @@
                 <div class="col-md-12">
                     <!-- Advanced Tables -->
                     <div class="card">
-                        <div class="card-action">
-                            过去一年数据（不包含过去一周）
+                        <div class="card-action year_title">
+                            过去一年数据
                         </div>
                         <div class="card-content">
                             <div class="table-responsive">
@@ -235,7 +235,7 @@
                                         <th>最小值(℃)</th>
                                     </tr>
                                     </thead>
-                                    <tbody id="tbody_year">
+                                    <tbody class="tbody_year">
 
                                     </tbody>
                                 </table>
@@ -261,7 +261,9 @@
 <script src="../assets/js/easypiechart-data.js"></script>
 <script src="../assets/js/Lightweight-Chart/jquery.chart.js"></script>
 <script src="../assets/js/custom-scripts.js"></script>
-<script src="../assets/js/cona/geothermal_well_temperature.js"></script>
+<script src="../assets/js/tools.js"></script>
+<script src="../assets/js/cona/tmp/table_outlet_water_temperature.js"></script>
+
 </body>
 
 </html>

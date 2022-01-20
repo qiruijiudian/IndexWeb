@@ -195,42 +195,42 @@
 
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="card-action">
-                            日热力井供热与气温关系
+                        <div class="card-action chart_title" id="heat_well_heating_chart_title">
+                            热力井供热与气温关系
                         </div>
                         <div class="card-content">
-                            <div id="days_heat_well_heating" style="height: 400px;width:100%"></div>
+                            <div id="heat_well_heating_chart" style="height: 400px;width:100%"></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="card-action">
-                            日热力管网供热与气温关系
+                        <div class="card-action chart_title" id="heat_pipe_network_heating_chart_title">
+                            热力管网供热与气温关系
                         </div>
                         <div class="card-content">
-                            <div id="days_heat_pipe_network_heating" style="height: 400px;width:100%"></div>
+                            <div id="heat_pipe_network_heating_chart" style="height: 400px;width:100%"></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="card-action">
-                            日水源热泵制热量与气温关系
+                        <div class="card-action chart_title" id="water_heat_pump_heat_production_chart_title">
+                            水源热泵制热量与气温关系
                         </div>
                         <div class="card-content">
-                            <div id="days_water_heat_pump_heat_production" style="height: 400px;width:100%"></div>
+                            <div id="water_heat_pump_heat_production_chart" style="height: 400px;width:100%"></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="card-action">
-                            日高温板换制热量与气温关系
+                        <div class="card-action chart_title" id="high_temp_plate_exchange_heat_production_chart_title">
+                            高温板换制热量与气温关系
 
                         </div>
                         <div class="card-content">
-                            <div id="high_temp_plate_exchange_heat_production" style="height: 400px;width:100%"></div>
+                            <div id="high_temp_plate_exchange_heat_production_chart" style="height: 400px;width:100%"></div>
                         </div>
                     </div>
                 </div>
@@ -291,7 +291,9 @@
 <script src="../assets/js/moment.min.js"></script>
 <script src="../assets/js/datepicker.all.js"></script>
 <script src="../assets/js/date_choose.js"></script>
-<script src="../assets/js/cona/heat_supply_with_temperature.js"></script>
+<script src="../assets/js/tools.js"></script>
+<script src="../assets/js/cona/tmp/chart_heat_with_temp.js"></script>
+<script>window.onresize = function (){for (let i=0;i<charts.length;i++){charts[i].resize();}};</script>
 </body>
 
 </html>

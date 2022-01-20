@@ -210,8 +210,11 @@
 <script src="../assets/materialize/js/materialize.min.js"></script>
 <script src="../assets/js/jquery.metisMenu.js"></script>
 <script src="../assets/js/custom-scripts.js"></script>
-<script src="../assets/js/kamba/tem_provided.js"></script>
+<script src="../assets/js/tools.js"></script>
 <script src="../assets/js/kamba/chart_co2_emission.js"></script>
+<script>
+    window.onresize = function (){for (let i=0;i<charts.length;i++){charts[i].resize();}};
+</script>
 </body>
 
 </html>

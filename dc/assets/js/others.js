@@ -91,11 +91,7 @@ if (document.location.href.indexOf('.html')){
     if (window.location.href.includes("start_time") && window.location.href.includes("end_time")){
         start = getQueryVariable("start_time").replace("%20", " ").replace("+", " ");
         end = getQueryVariable("end_time").replace("%20", " ").replace("+", " ");
-        console.log("设定上月");
-        console.log(last_month_date);
         last_month_date = start;
-        console.log(last_month_date);
-        // console.log(start, end);
         try {
             //latest_time
             $.ajax(

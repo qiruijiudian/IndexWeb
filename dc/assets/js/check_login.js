@@ -1,4 +1,4 @@
-var url = "http://cdqrmi.com:8000/api/cona/";
+var cona_url = "http://cdqrmi.com:8000/api/cona/";
 var kamba_url = "http://cdqrmi.com:8000/api/kamba/";
 var common_url = "http://cdqrmi.com:8000/api/common/";
 var login_url = 'http://cdqrmi.com/dc/login.html';
@@ -11,7 +11,7 @@ var db = "";
 var charts = [];
 
 if (document.location.href.indexOf('cdqrmi') < 0){
-    url = "http://127.0.0.1:8000/api/cona/";
+    cona_url = "http://127.0.0.1:8000/api/cona/";
     kamba_url = "http://127.0.0.1:8000/api/kamba/";
     common_url = "http://127.0.0.1:8000/api/common/";
     now_href = document.location.href;

@@ -374,23 +374,16 @@
 <script src="../assets/js/jquery.metisMenu.js"></script>
 <script src="../assets/js/custom-scripts.js"></script>
 
-<script src="../assets/js/kamba/tem_provided.js"></script>
-<script src="../assets/js/kamba/tmp/chart_load.js"></script>
-<script src="../assets/js/kamba/tmp/chart_solar_collector.js"></script>
-<script src="../assets/js/kamba/tmp/chart_hydration.js"></script>
-<script src="../assets/js/kamba/tmp/chart_solar_heat_supply.js"></script>
-<script src="../assets/js/kamba/tmp/chart_heat_supply.js"></script>
-<script src="../assets/js/kamba/tmp/chart_calories.js"></script>
+<script src="../assets/js/tools.js"></script>
+<script src="../assets/js/kamba/chart_load.js"></script>
+<script src="../assets/js/kamba/chart_solar_collector.js"></script>
+<script src="../assets/js/kamba/chart_hydration.js"></script>
+<script src="../assets/js/kamba/chart_solar_heat_supply.js"></script>
+<script src="../assets/js/kamba/chart_heat_supply.js"></script>
+<script src="../assets/js/kamba/chart_calories.js"></script>
 <script>
-    window.onresize = function (){
-        for (var i=0;i<charts.length;i++){
-            charts[i].resize();
-        }
-    };
-
+    window.onresize = function (){for (let i=0;i<charts.length;i++){charts[i].resize();}};
 </script>
-
-
 
 </body>
 

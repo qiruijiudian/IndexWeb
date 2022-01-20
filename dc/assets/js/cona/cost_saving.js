@@ -1,4 +1,12 @@
-﻿//***************获取元素*************************
+﻿// 节省供暖费用
+
+DataChart(
+
+).data_render()
+
+
+
+//***************获取元素*************************
 var cost_saving_dom = document.getElementById("cost_saving");
 var cost_saving_high_low_pie_dom = document.getElementById("cost_saving_high_low_pie");
 

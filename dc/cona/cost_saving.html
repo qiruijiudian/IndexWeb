@@ -195,7 +195,7 @@
             <div class="row">
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="card-action" id="charge_sum_title">
+                        <div class="card-action" id="cost_saving_title">
                             每日节省供暖费用
                         </div>
                         <div class="card-content">
@@ -270,7 +270,11 @@
 <script src="../assets/js/moment.min.js"></script>
 <script src="../assets/js/datepicker.all.js"></script>
 <script src="../assets/js/date_choose.js"></script>
-<script src="../assets/js/cona/cost_saving.js"></script>
+<script src="../assets/js/tools.js"></script>
+<script src="../assets/js/cona/tmp/chart_cost_saving.js"></script>
+<script>
+    window.onresize = function (){for (let i=0;i<charts.length;i++){charts[i].resize();}};
+</script>
 </body>
 
 </html>

@@ -194,12 +194,13 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="geothermal_wells_heat_provide_title">地热井可提供（高/低温）热量图示</b>
+                        </div>
                         <div class="card-image">
                             <div id="geothermal_wells_heat_provide" style="width:100%;height:700px"></div>
                         </div>
-                        <div class="card-action">
-                            <b>地热井可提供（高/低温）热量图示</b>
-                        </div>
+
                     </div>
                 </div>
 
@@ -258,6 +259,11 @@
 <script src="../assets/js/moment.min.js"></script>
 <script src="../assets/js/datepicker.all.js"></script>
 <script src="../assets/js/date_choose.js"></script>
-<script src="../assets/js/cona/geothermal_wells_heat_provide.js"></script></body>
+<script src="../assets/js/tools.js"></script>
+<script src="../assets/js/cona/tmp/chart_geothermal_wells_heat_provide.js"></script>
+<script>
+    window.onresize = function (){for (let i=0;i<charts.length;i++){charts[i].resize();}};
+</script>
+</body>
 
 </html>

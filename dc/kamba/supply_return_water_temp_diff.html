@@ -176,44 +176,49 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-7">
                     <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="solar_matrix_title">过去一周太阳能矩阵供回水温度</b>
+                        </div>
                         <div class="card-image">
                             <div id="solar_matrix_supply_and_return_water_temp" style="width:100%;height:400px"></div>
                         </div>
-                        <div class="card-action">
-                            <b id="solar_matrix_title">过去一周太阳能矩阵供回水温度</b>
-                        </div>
+
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-5">
                     <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="diff_with_temp_title">末端供回水温差与气温关系</b>
+                        </div>
                         <div class="card-image">
                             <div id="supply_and_return_water_temp_diff_with_temp" style="width:100%;height:400px"></div>
                         </div>
-                        <div class="card-action">
-                            <b>末端供回水温差与气温关系</b>
-                        </div>
+
                     </div>
                 </div><!--/.row-->
             </div>
+
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-6">
                     <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="sup_with_temp_title">末端供水温度与气温关系</b>
+                        </div>
                         <div class="card-image">
                             <div id="supply_water_temp_with_temp" style="width:100%;height:300px"></div>
                         </div>
-                        <div class="card-action">
-                            <b>末端供水温度与气温关系</b>
-                        </div>
+
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6">
                     <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="re_with_temp_title">末端回水温度与气温关系</b>
+                        </div>
                         <div class="card-image">
                             <div id="return_water_temp_with_temp" style="width:100%;height:300px"></div>
                         </div>
-                        <div class="card-action">
-                            <b>末端回水温度与气温关系</b>
-                        </div>
+
                     </div>
                 </div><!--/.row-->
             </div>
@@ -221,12 +226,13 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="diff_temp">末端平均供回水温度及温差</b>
+                        </div>
                         <div class="card-image">
                             <div id="end_supply_and_return_water_temp" style="width:100%;height:400px"></div>
                         </div>
-                        <div class="card-action">
-                            <b>末端平均供回水温度及温差</b>
-                        </div>
+
                     </div>
                 </div>
 
@@ -286,7 +292,12 @@
 <script src="../assets/js/moment.min.js"></script>
 <script src="../assets/js/datepicker.all.js"></script>
 <script src="../assets/js/date_choose.js"></script>
-<script src="../assets/js/kamba/supply_return_water_temp_diff.js"></script>
+<script src="../assets/js/tools.js"></script>
+<script src="../assets/js/kamba/chart_solar_matrix_supply_and_return_water_temperature.js"></script>
+<script src="../assets/js/kamba/chart_end_supply_and_return_water_temp.js"></script>
+<script>
+    window.onresize = function (){for (let i=0;i<charts.length;i++){charts[i].resize();}};
+</script>
 </body>
 
 </html>

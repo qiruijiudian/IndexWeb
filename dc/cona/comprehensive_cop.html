@@ -198,7 +198,7 @@
 
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="card-action" id="com_cop_2">
+                        <div class="card-action" id="com_cop_pie_2">
                             2号机房综合COP
                         </div>
                         <div class="card-content">
@@ -208,7 +208,7 @@
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="card-action">
+                        <div class="card-action" id="f2_cop_chart_title">
                             2号机房能效比
                         </div>
                         <div class="card-content">
@@ -219,7 +219,7 @@
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="card-action" id="com_cop_3">
+                        <div class="card-action" id="com_cop_pie_3">
                             3号机房综合COP
                         </div>
                         <div class="card-content">
@@ -229,7 +229,7 @@
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="card-action">
+                        <div class="card-action" id="f3_cop_chart_title">
                             3号机房能效比
                         </div>
                         <div class="card-content">
@@ -239,7 +239,7 @@
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="card-action" id="com_cop_4">
+                        <div class="card-action" id="com_cop_pie_4">
                             4号机房综合COP
                         </div>
                         <div class="card-content">
@@ -249,7 +249,7 @@
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="card-action">
+                        <div class="card-action" id="f4_cop_chart_title">
                             4号机房能效比
                         </div>
                         <div class="card-content">
@@ -259,7 +259,7 @@
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="card-action" id="com_cop_5">
+                        <div class="card-action" id="com_cop_pie_5">
                             5号机房综合COP
                         </div>
                         <div class="card-content">
@@ -269,7 +269,7 @@
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="card-action">
+                        <div class="card-action" id="f5_cop_chart_title">
                             5号机房能效比
                         </div>
                         <div class="card-content">
@@ -335,7 +335,11 @@
 <script src="../assets/js/moment.min.js"></script>
 <script src="../assets/js/datepicker.all.js"></script>
 <script src="../assets/js/date_choose.js"></script>
+<script src="../assets/js/tools.js"></script>
 <script src="../assets/js/cona/comprehensive_cop_charts.js"></script>
-</body>
 
+<script>
+    window.onresize = function (){for (let i=0;i<charts.length;i++){charts[i].resize();}};
+</script>
+</body>
 </html>

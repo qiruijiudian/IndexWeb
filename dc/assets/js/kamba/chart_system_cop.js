@@ -1,14 +1,14 @@
 new DataChart(
-    request_data={"key": "api_wshp_cop", "start": start, "end": end, "by": 'h'},
-    time_ids=["wshp_cop_title", "wp_cop_title"],
+    request_data={"key": "api_system_cop", "start": start, "end": end, "by": 'h'},
+    time_ids=["com_cop_pie_title", "sys_cop_title"],
     funcs=[
         {
-            'type': 'option',
-            'func': function (data) {return get_cop_pie_options(data['kamba_wshp_cop'][data['kamba_wshp_cop'].length-1])}
+            "type": "option",
+            "func": function (data) {return get_cop_pie_options(data['kamba_system_cop'][data['kamba_system_cop'].length-1], "kamba")}
         },
         false
     ],
-    chart_objs=["kamba_wshp_cop_pie", "kamba_wshp_cop_chart"],
+    chart_objs=["kamba_system_cop_pie", "kamba_system_cop_chart"],
     option_datas=[
         false,
         {
@@ -90,7 +90,7 @@ new DataChart(
                                 }
                             }
                         },
-                        data: 'kamba_wshp_cop'
+                        data: 'kamba_system_cop'
                     },
                     {
                         name: 'Target Miniumum',
@@ -135,5 +135,5 @@ new DataChart(
             }
         }
     ],
-    dataZooms=[1, 1]
+    dataZooms=[false, 1]
 ).data_render();

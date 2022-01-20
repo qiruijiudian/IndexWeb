@@ -1,5 +1,5 @@
 new DataChart(
-    request_data={"key": "co2_emission", "start": start_limit, "end": end_limit, "by": 'd'},
+    request_data={"key": "co2_emission", "start": last_month_date, "end": end, "by": 'd'},
     time_ids=["co2_emission_reduction_title", "co2_equal_num_title"],
     funcs=[false, false],
     chart_objs=["co2_emission_reduction", "co2_equal_num"],
