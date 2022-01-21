@@ -154,7 +154,7 @@ function get_heat_provide_options(data, name, hint, delta_hint){
 
             formatter: function(param) {
                 let value = param.value;
-                return '温度：' + value[0] + '℃' + '<br/>' + name + hint + '：' + value[1] + 'kWh' + '<br/>' + delta_hint + hint + '：' + value[2] + 'kWh';
+                return '温度：' + value[0] + '℃' + '<br/>' + param.seriesName + '：' + value[1] + 'kWh';
             }
         },
         series: [
@@ -558,6 +558,15 @@ class DataChart {
             }
         }else {
             this.request_url =  kamba_url;
+            let titles = ['max_load_title', 'min_load_title', 'kamba_cost_saving_title', 'avg_load_title', 'solar_matrix_title'];
+            if (is_large){
+                for (let i=0;i<titles.length;i++){
+                    let tmp = $(`#${titles[i]}`).text().trim();
+                    if (tmp.includes("去年") || tmp.includes("上周") || tmp.includes("上月")){
+                        $(`#${titles[i]}`).text(tmp.replace("去年", "").replace("上周", "").replace("上月", ""));
+                    }
+                }
+            }
         }
     }
 
