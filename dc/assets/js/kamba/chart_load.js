@@ -34,7 +34,6 @@ new DataChart(
                 {
                     type: 'value',
                     name: '负荷量（kW）',
-//            min: 0,
                     axisLabel: {
                         formatter: '{value} kW'
                     }
@@ -52,7 +51,7 @@ new DataChart(
                 "values": [{
                     type: 'category',
                     name: '日期',
-                    boundaryGap: false,
+                    boundaryGap: true,
                     axisLine: {onZero: true},
                     data: 'time_data'
                 }],

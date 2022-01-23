@@ -1,8 +1,13 @@
+/**
+ * @function get_cop_pie_options
+ * @desc 获取cop数据仪表盘option配置字典
+ * @param {object} value 用于设置option的数据字典
+ * @param {string} c_type 类型，cona或者kamba，根据不同板块在颜色以及分块区域上有稍微不同
+ * @returns {object} option配置字典
+ */
 function get_cop_pie_options(value, c_type){
     let line_style = {width: 20,color: [[0.08, '#fd666d'],[0.12, '#FFD700'],[1, '#7FFF00']]};
     if (c_type.includes("cona")) line_style["color"] = [[0.2, '#fd666d'],[0.3, '#FFD700'],[1, '#7FFF00']];
-
-    // 按照传入的value进行数据设置，返回设置好的option配置字典
     let options = {
         series: [{
             type: 'gauge',
@@ -59,9 +64,16 @@ function get_cop_pie_options(value, c_type){
         }]
     };
     return options
-} //cop数据通用函数
+}
 
-
+/**
+ * @function get_water_provider_options
+ * @desc 获取供回水温度与气温数据option配置字典
+ * @param {object}  data 用于设置option的数据字典
+ * @param {string}  hint  用户设置y轴名称的提示文字，如供水温度
+ * @param {string}  delta_hint 用于设置图例中周期的提示文字，如上月/去年
+ * @returns {object} option配置字典
+ */
 function get_water_provider_options(data, hint, delta_hint){
     // 按照传入的data进行数据设置，返回设置好的option配置字典，hint项为提示文字
     let common = "";
@@ -122,6 +134,15 @@ function get_water_provider_options(data, hint, delta_hint){
     return options
 }
 
+/**
+ * @function get_heat_provide_options
+ * @desc 获取供热与气温数据option配置字典
+ * @param {object}  data 用于设置option的数据字典
+ * @param {object}  name 用于设置option的数据字典
+ * @param {string}  hint  用户设置y轴名称的提示文字，如供热量
+ * @param {string}  delta_hint 用于设置图例中周期的提示文字，如上月/去年
+ * @returns {object} option配置字典
+ */
 function get_heat_provide_options(data, name, hint, delta_hint){
 
     let options = {
@@ -175,6 +196,12 @@ function get_heat_provide_options(data, name, hint, delta_hint){
     return options
 }
 
+/**
+ * @function get_cona_com_cop_chart_options
+ * @desc 获取cop序列图数据的option配置
+ * @param {object}  data 用于设置option的数据字典
+ * @returns {object} option配置字典
+ */
 function get_cona_com_cop_chart_options(data) {
     return {
         color: ['#32CD32', '#0000FF', '#FF0000'],
@@ -282,6 +309,13 @@ function get_cona_com_cop_chart_options(data) {
     };
 }
 
+/**
+ * @function get_cona_sub_cop_chart_option
+ * @desc 获取cop子页面数据的option配置
+ * @param {object}  data 用于设置option的数据字典
+ * @param {object}  name 针对不同机房的cop返回数据名称，如cop_f2_value
+ * @returns {object} option配置字典
+ */
 function get_cona_sub_cop_chart_option(data, name) {
     return {
         color: ['#32CD32', '#0000FF', '#FF0000'],
@@ -388,19 +422,13 @@ function get_cona_sub_cop_chart_option(data, name) {
     }
 }
 
-function get_pieces(data){
-    // 返回供热力图使用的颜色分组数据列表配置
-    let res = [];
-    for(let i=0;i<data.length;i++){
-        if (typeof (data[i]["lt"]) === "string"){
-            res.push({gte: data[i]["gte"], color: data[i]["color"]});
-        }else {
-            res.push({gte: data[i]["gte"], lt: data[i]["lt"], color: data[i]["color"]});
-        }
-    }
-    return res;
-}
-
+/**
+ * @function get_outlet_water_temperature_tr_html
+ * @desc 生成出水温度的tr标签html代码
+ * @param {object}  data 用于设置option的数据字典
+ * @param {object}  name 针对不同板块数据的区分字段，high_week_result(高温_周数据)、low_week_result(低温_周)
+ * @returns {object} tr标签代码组成的数组
+ */
 function get_outlet_water_temperature_tr_html(data, name) {
     let res = [];
     for (let i=0;i<data[name].length;i++){
@@ -429,17 +457,14 @@ function get_outlet_water_temperature_tr_html(data, name) {
     return res
 }
 
+/**
+ * @function set_outlet_water_temperature
+ * @desc 设置出水温度表格数据
+ * @param {object}  data 用于设置option的数据字典
+ * @param {object}  level 用于设置数据的等级区分字段，如all(全部)、high(高温)、low(低温)
+ * @param {object}  ids 表格tbody标签的id值，按照先高后低，先周后年的顺序
+ */
 function set_outlet_water_temperature(data, level, ids) {
-    /* 按照level设置出水温度表格数据
-    level:
-        high    高温
-        low     低温
-        all     全部
-     data：
-        json数据
-     ids:
-        表格对象的id数组,按照先高后低，先周后年的顺序
-     */
     if (level === "high"){
         let high_week = get_outlet_water_temperature_tr_html(data, "high_week_result");
 
@@ -473,6 +498,12 @@ function set_outlet_water_temperature(data, level, ids) {
     }
 }
 
+/**
+ * @function set_outlet_water_temp_time_range
+ * @desc 设置出水温度表格数据的时间周期
+ * @param {object}  data 用于设置时间周期的数据字典(包含start、end字段数据)
+ * @param {object}  titles 用于设置时间周期的id值组成的数组
+ */
 function set_outlet_water_temp_time_range(data, titles) {
     for (let i=0;i<titles.length;i++){
         if (titles[i].includes("week")) {
@@ -484,8 +515,16 @@ function set_outlet_water_temp_time_range(data, titles) {
     }
 }
 
+/**
+ * @function get_common_option
+ * @desc 获取完整的option配置字典，根据data_mapping中的数据，结合data_option内容返回完整的供echarts使用的option配置
+ * @param {object}  data_values ajax请求返回的data数据(包含该图表设置所需数据块即可)
+ * @param {object}  data_option 基础option配置(除却数据项的数据，如legend、style等，axis、series等需要数据配合的项按照需要设置为空数字或者空字典)
+ * @param {object}  data_mapping 用于映射数据的字典，字典中的项对应data_option中需要设置数据的项，将data_values中的数据对应填充
+ * @returns {object}  data_option 用于设置数据option配置字典
+ */
 function get_common_option(data_values, data_option, data_mapping) {
-    // 根据data_mapping中的数据，结合data_option内容返回完整的供echarts使用的option配置
+    //
     for(let key in data_mapping){
         let key_data = data_mapping[key];
         if (key_data["type"] === "arr"){
@@ -519,18 +558,40 @@ function get_common_option(data_values, data_option, data_mapping) {
     return data_option;
 }
 
-
+/**
+ * @function format
+ * @desc 自定义类似于python中format的字符串格式化函数
+ * @returns {string}  str 格式化完成后的字符串
+ */
 String.prototype.format = function () {
     // 类似python中的format效果
-    var str = this;
-    for(var i = 0;i < arguments.length;i++){
-        var str = str.replace(new RegExp('\\{' + i + '\\}', 'g'), arguments[i]);
+    let str = this;
+    for(let i = 0;i < arguments.length;i++){
+        str = str.replace(new RegExp('\\{' + i + '\\}', 'g'), arguments[i]);
     }
     return str;
 };
 
 
+/**
+ * @class DataChart
+ * @classdesc DataChart类中对大部分相同操作进行了整合，公共流程概述为：初始化图表 -> 发送ajax请求 -> 设置特殊文字 -> 设置时间周期 -> 渲染数据，针对个别特殊的图表设置了funcs字段可以通过自定义函数进行设定
+ * @desc 构造函数中针对大部分数据都有默认值设置，为了适用于多图表同请求参数的情况，以数组形式定义每个字段
+ */
 class DataChart {
+
+    /**
+     * @method constructor
+     * @desc 构造函数，初始化字段以及部分特殊操作(针对大周期数据修改页面文字显示)
+     * @param request_data  请求参数，如{"start": "", "end": "", "by": ""}
+     * @param time_ids  需要设置时间周期的dom元素id值数组
+     * @param funcs 需要执行的函数数组
+     * @param chart_objs  图表id值数组，会以此id初始化echarts对象
+     * @param option_datas  option基础配置字典(不包含数据项)
+     * @param option_mappings   option映射字典(包含数据项)
+     * @param dataZooms option配置中的dataZoom，控制图表缩放
+     * @param request_type  ajax请求类型
+     */
 
     constructor (request_data, time_ids, funcs=[false], chart_objs=[false], option_datas=[false], option_mappings=[false], dataZooms=[1], request_type='POST'){
         this.request_data = request_data;
@@ -570,6 +631,10 @@ class DataChart {
         }
     }
 
+    /**
+     * @method init_chart
+     * @desc 以dom元素为对象初始化echarts对象，dom元素由chart_objs中的id值获取
+     */
     init_chart(){
         for(let i=0;i<this.chart_objs.length;i++){
             if (this.chart_objs[i]){
@@ -580,6 +645,11 @@ class DataChart {
         }
     }
 
+    /**
+     * @method text_setting
+     * @desc 设置特殊文字
+     * @param data  ajax请求返回的data数据
+     */
     text_setting(data){
         // 特殊板块文字设定（最大负荷、最小负荷、节省供暖费用导航标题）
         if (this.request_data.key.includes("api_load")){
@@ -608,6 +678,10 @@ class DataChart {
         }
     }
 
+    /**
+     * @method  cop_bind
+     * @desc    为cop图表绑定数据，将序列图与仪表盘图表以点击事件关联
+     */
     cop_bind(){
         for (let i=0;i<this.chart_objs.length;i+=2){
             let _ = this;
@@ -634,6 +708,10 @@ class DataChart {
 
     }
 
+    /**
+     * @method  data_render
+     * @desc    主要执行函数，包含渲染图表的整个过程，初始化图表 -> 发送ajax请求 -> 设置特殊文字 -> 设置时间周期 -> 渲染数据(有func参数则执行其中函数，否则按照常规流程获取option进行设置)
+     */
     data_render(){
         try {
             this.init_chart();
@@ -651,7 +729,6 @@ class DataChart {
                         obj.text_setting(data);
 
                         for (let i = 0; i < obj.chart_objs.length; i++) {
-                            console.log("时间设定", i, obj.time_ids[i]);
                             // 设置时间
                             if (obj.time_ids[i]){
                                 if (obj.request_data.key.includes("cop") && obj.time_ids[i].includes("pie")){

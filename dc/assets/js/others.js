@@ -1,39 +1,42 @@
-
-function loading_all(charts) {
-    for (var i=0;i<charts.length;i++){
-        charts[i].showLoading();
-    }
+/**
+ * @function resize_chart
+ * @desc 针对_charts内的所有图表设置图表跟随页面缩放
+ * @param _charts 图表数组
+ */
+function resize_chart(_charts) {
+    window.onresize = function (){for (let i=0;i<_charts.length;i++){_charts[i].resize();}};
 }
 
-function resize_chart(charts) {
-    window.onresize = function (){
-        for (var i=0;i<charts.length;i++){
-            charts[i].resize();
-        }
-    };
-}
-
+/**
+ * @function delete_cookie
+ * @desc 删除cookie
+ */
 function delete_cookie() {
-    // console.log('删除前', document.cookie);
-    var cookie_date = new Date();
+    let cookie_date = new Date();
     cookie_date.setDate(cookie_date.getDate() - 30);
     document.cookie = `auth=;expires=${cookie_date.toUTCString()}`;
-    // console.log('删除后', document.cookie);
-
-
 }
 
+/**
+ * @function getQueryVariable
+ * @desc 根据传入的变量名称获取url中？后访问参数中对应变量的值，如果不存在则返回false
+ * @param variable 变量名
+ */
 function getQueryVariable(variable) {
-    var query = window.location.search.substring(1);
-    var vars = query.split("&");
-    for (var i=0;i<vars.length;i++) {
-        var pair = vars[i].split("=");
-        if(pair[0] == variable){return pair[1];}
+    let query = window.location.search.substring(1);
+    let vars = query.split("&");
+    for (let i=0;i<vars.length;i++) {
+        let pair = vars[i].split("=");
+        if(pair[0] === variable){return pair[1];}
     }
     return(false);
 }
 
-
+/**
+ * @function getCookie
+ * @desc 根据传入的name名称获取cookie中设置的值，如果不存在则返回null
+ * @param name 查询的名称
+ */
 function getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
@@ -44,11 +47,15 @@ function getCookie(name) {
     return null;
 }
 
+/**
+ * @function is_large_range
+ * @desc 判断现有时间周期是否为大周期(start与end的间隔大于7天)
+ */
 function is_large_range(){
-    var link = document.location.search;
+    let link = document.location.search;
     try {
         if (link.includes('start_time') && link.includes('end_time')){
-            var time_range = Date.parse(getQueryVariable("end_time").replace("%20", " ").replace("+", " ")) - Date.parse(getQueryVariable("start_time").replace("%20", " ").replace("+", " "));
+            let time_range = Date.parse(getQueryVariable("end_time").replace("%20", " ").replace("+", " ")) - Date.parse(getQueryVariable("start_time").replace("%20", " ").replace("+", " "));
             if (time_range > 1000 * 60 * 60 * 24 * 7){
                 return true;
             } else {
@@ -63,6 +70,12 @@ function is_large_range(){
 
 }
 
+/**
+ * @function set_time_range
+ * @desc 根据传入的id值获取dom元素，并将其下的文字设置为time_dic中提供的时间周期
+ * @param id dom元素id值
+ * @param time_dic 包含时间值的字典
+ */
 function set_time_range(id, time_dic){
     let now =$(`#${id}`).text();
     if (time_dic.hasOwnProperty("date")){
