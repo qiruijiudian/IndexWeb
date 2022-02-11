@@ -1,3 +1,5 @@
+// 末端供回水温度
+
 new DataChart(
     request_data={"key": "api_end_supply_and_return_water_temp", "start": start, "end": end, "by": 'd'},
     time_ids=["re_with_temp_title", "sup_with_temp_title", "diff_with_temp_title", "diff_temp"],

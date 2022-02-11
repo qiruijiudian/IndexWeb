@@ -1,3 +1,4 @@
+// COP
 new DataChart(
     request_data={"key": "api_system_cop", "start": start, "end": end, "by": 'h'},
     time_ids=["com_cop_pie_title", "sys_cop_title"],

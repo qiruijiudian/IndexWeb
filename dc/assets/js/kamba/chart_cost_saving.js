@@ -1,3 +1,4 @@
+// 节省供暖费用
 new DataChart(
     request_data={"key": "api_cost_saving", "start": last_month_date, "end": end, "by": 'd'},
     time_ids=["cost_saving_title"],

@@ -1,3 +1,5 @@
+// 蓄热水池热量
+
 new DataChart(
     request_data={"key": "api_heat_storage_heat", "start": start, "end": end, "by": 'd'},
     time_ids=["pool_available_heat_heat_date", "high_heat_equal_supply_days_heat_date"],

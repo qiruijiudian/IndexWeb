@@ -1,3 +1,4 @@
+// 太阳能集热
 new DataChart(
     request_data={"key": "api_solar_collector", "start": start, "end": end, "by": 'h'},
     time_ids=["solar_heat_collector_title"],

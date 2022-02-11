@@ -733,20 +733,15 @@ class DataChart {
                             if (obj.time_ids[i]){
                                 if (obj.request_data.key.includes("cop") && obj.time_ids[i].includes("pie")){
                                     let tmp_id = obj.time_ids[i];
-                                    console.log("id, ", tmp_id);
                                     let tmp_text = $(`#${tmp_id}`).text();
-                                    console.log(data['status'], obj.request_data.key);
                                     if (obj.request_data.key.includes("sub") && obj.request_url.includes("cona")){
-
                                         if (!data['status'][i].includes("正常")) $(`#${tmp_id}`).text(tmp_text + '(' + data["status"][i] + ')');
                                     }else {
                                         if (!data['status'].includes("正常")) $(`#${tmp_id}`).text(tmp_text + '(' + data["status"] + ')');
                                     }
-
                                 }else {
                                     set_time_range(obj.time_ids[i], data);
                                 }
-
                             }
 
                             // 渲染数据

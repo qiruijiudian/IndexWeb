@@ -1,4 +1,4 @@
-// 系统COP
+// 子页面COP
 
 new DataChart(
     request_data={"key": "api_sub_com_cop", "start": start, "end": end},

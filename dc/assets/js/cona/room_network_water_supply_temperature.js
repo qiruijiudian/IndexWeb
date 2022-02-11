@@ -1,5 +1,3 @@
-// 机房管网供水温度与气温关系
-
 // 供水温度与气温
 new DataChart(
     request_data={"key": "api_room_network_water_supply_temperature", "start": start, "end": end, "by": 'd'},

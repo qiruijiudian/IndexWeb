@@ -1,3 +1,4 @@
+// 太阳能矩阵共回水温度温差
 new DataChart(
     request_data={"key": "api_solar_matrix_supply_and_return_water_temperature", "start": start, "end": end, "by": 'h'},
     time_ids=["solar_matrix_title"],

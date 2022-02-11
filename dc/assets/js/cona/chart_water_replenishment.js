@@ -1,4 +1,4 @@
-// 负荷
+// 补水
 new DataChart(
     request_data={"key": "api_water_replenishment", "start": start, "end": end, "by": 'h'},
     time_ids=["water_replenishment_title"],

@@ -1,7 +1,5 @@
 // 供热量与平均温度
 
-// 地热井出水温度
-
 new DataChart(
     request_data={"key": "api_heat_supply", "start": start, "end": end, "by": "d"},
     time_ids=["avg_temp_with_heat_title"],

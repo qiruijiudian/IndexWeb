@@ -1,4 +1,5 @@
 // 负荷
+
 new DataChart(
     request_data={"key": "api_load", "start": start, "end": end, "by": 'd'},
     time_ids=["load_title", false],

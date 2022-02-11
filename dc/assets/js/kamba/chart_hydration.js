@@ -1,3 +1,5 @@
+// 补水量
+
 new DataChart(
     request_data={"key": "api_hydration", "start": start, "end": end, "by": 'h'},
     time_ids=["heat_storage_rep_title", "heat_rep_title", "solar_rep_title"],
