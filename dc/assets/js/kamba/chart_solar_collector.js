@@ -100,5 +100,5 @@ new DataChart(
 
 
         }
-    ],
+    ]
 ).data_render();

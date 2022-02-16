@@ -1,3 +1,4 @@
+// 综合COP
 new DataChart(
     request_data={"key": "api_com_cop", "start": start, "end": end, "by": 'h'},
     time_ids=["com_cop_pie_title", "com_cop_chart_title"],

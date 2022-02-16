@@ -1,4 +1,4 @@
-// 制热量
+// 供热分析
 new DataChart(
     request_data={"key": "api_calories", "start": start, "end": end, "by": 'd'},
     time_ids=["heat_supply_analysis_title", "high_power_title"],

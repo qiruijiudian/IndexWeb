@@ -1,3 +1,5 @@
+// 太阳能集热分析
+
 new DataChart(
     request_data={"key": "api_solar_heat_supply", "start": start, "end": end, "by": 'd'},
     time_ids=["solar_analysis_title"],

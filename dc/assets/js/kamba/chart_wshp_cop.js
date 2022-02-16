@@ -1,3 +1,5 @@
+// 水源热泵COP
+
 new DataChart(
     request_data={"key": "api_wshp_cop", "start": start, "end": end, "by": 'h'},
     time_ids=["wshp_cop_pie_title", "wp_cop_title"],
