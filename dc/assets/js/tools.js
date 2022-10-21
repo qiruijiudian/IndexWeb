@@ -3469,7 +3469,7 @@ class DataChart {
     data_render(){
         try {
             this.init_chart();
-            console.log(this.request_data.key);
+            // console.log(this.request_data.key);
 
             let obj = this;
             $.ajax(
@@ -3504,7 +3504,46 @@ class DataChart {
                                 if (obj.funcs[i].type === "option") {
                                     obj.chart_objs[i].hideLoading();
                                     obj.chart_objs[i].setOption(obj.funcs[i].func(data));
+
+
+
+                                    console.log("****************************************************************************");
+                                    let t_id = obj.time_ids[i];
+                                    let t_text = $(`#${t_id}`).text();
+
+                                    if (t_text){
+                                        console.log(t_text);
+                                    }else{
+                                        console.log("木有");
+                                    }
+
+
+                                    console.log(obj.funcs[i].func(data));
+                                    console.log("****************************************************************************");
+
+
+
                                 } else if (obj.funcs[i].type === "p_function") {
+
+                                    console.log("表格");
+                                    console.log();
+
+                                    console.log("****************************************************************************");
+
+                                    let t_id = obj.time_ids[i];
+                                    let t_text = $(`#${t_id}`).text();
+
+                                    if (t_text){
+                                        console.log(t_text);
+                                    }else{
+                                        console.log("木有");
+                                    }
+
+
+                                    console.log(obj.funcs[i]);
+                                    console.log("****************************************************************************");
+
+
                                     obj.funcs[i].func(data);
                                 }
                             } else {
@@ -3531,6 +3570,22 @@ class DataChart {
                                     }
                                 }
                                 obj.chart_objs[i].hideLoading();
+
+                                console.log("****************************************************************************");
+
+                                let t_id = obj.time_ids[i];
+                                let t_text = $(`#${t_id}`).text();
+
+                                if (t_text){
+                                    console.log(t_text);
+                                }else{
+                                    console.log("木有");
+                                }
+
+
+                                // console.log($(`#${obj.time_ids[i].id}`).text());
+                                console.log(option);
+                                console.log("****************************************************************************");
                                 obj.chart_objs[i].setOption(option);
                             }
                         }
@@ -3568,6 +3623,8 @@ function run(d_type) {
         new DataChart(conf[key]).data_render();
     }
 }
+
+
 
 
 export {run};

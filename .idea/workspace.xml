@@ -2,23 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb20b6d7-fe1d-4e0f-ba76-1ced7a29ec7c" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/dc/assets/js/cona/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dc/assets/js/config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dc/assets/js/kamba/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/assets/js/cona/chart_com_cop.js" beforeDir="false" afterPath="$PROJECT_DIR$/dc/assets/js/cona/chart_com_cop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/assets/js/cona/table_outlet_water_temperature.js" beforeDir="false" afterPath="$PROJECT_DIR$/dc/assets/js/cona/table_outlet_water_temperature.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/assets/js/kamba/chart_calories.js" beforeDir="false" afterPath="$PROJECT_DIR$/dc/assets/js/kamba/chart_calories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/assets/js/kamba/chart_end_supply_and_return_water_temp_by_year.js" beforeDir="false" afterPath="$PROJECT_DIR$/dc/assets/js/kamba/chart_end_supply_and_return_water_temp_by_year.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/assets/js/kamba/chart_heat_supply.js" beforeDir="false" afterPath="$PROJECT_DIR$/dc/assets/js/kamba/chart_heat_supply.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/assets/js/kamba/chart_load.js" beforeDir="false" afterPath="$PROJECT_DIR$/dc/assets/js/kamba/chart_load.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/assets/js/kamba/chart_solar_collector.js" beforeDir="false" afterPath="$PROJECT_DIR$/dc/assets/js/kamba/chart_solar_collector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/assets/js/kamba/chart_solar_heat_supply.js" beforeDir="false" afterPath="$PROJECT_DIR$/dc/assets/js/kamba/chart_solar_heat_supply.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/assets/js/kamba/chart_wshp_cop.js" beforeDir="false" afterPath="$PROJECT_DIR$/dc/assets/js/kamba/chart_wshp_cop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dc/assets/js/config.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dc/assets/js/others.js" beforeDir="false" afterPath="$PROJECT_DIR$/dc/assets/js/others.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dc/assets/js/tools.js" beforeDir="false" afterPath="$PROJECT_DIR$/dc/assets/js/tools.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/cona.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/cona.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dc/kamba.html" beforeDir="false" afterPath="$PROJECT_DIR$/dc/kamba.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/detail.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,167 +20,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-            <file leaf-file-name="kamba.html" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/dc/kamba.html">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="491">
-                    <caret line="650" column="80" lean-forward="true" selection-start-line="650" selection-start-column="80" selection-end-line="650" selection-end-column="80" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="chart_heat_supply.js" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/dc/assets/js/kamba/chart_heat_supply.js">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="60">
-                    <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="148" selection-end-column="5" />
-                    <folding>
-                      <element signature="e#218#3853#0" />
-                      <element signature="e#3875#4966#0" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="chart_cost_saving.js" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/dc/assets/js/kamba/chart_cost_saving.js">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="40">
-                    <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="106" selection-end-column="5" />
-                    <folding>
-                      <element signature="e#225#1952#0" />
-                      <element signature="e#1974#3018#0" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="tools.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/dc/assets/js/tools.js">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="911">
-              <caret line="3572" column="13" lean-forward="true" selection-start-line="3572" selection-start-column="13" selection-end-line="3572" selection-end-column="13" />
-              <folding>
-                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#4;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#7;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#8;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#4;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#7;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#8;n#tr#0;n#!!top" expanded="true" />
-                <element signature="e#1#7#0" expanded="true" />
-                <element signature="e#7#13#0" expanded="true" />
-                <element signature="e#13#19#0" expanded="true" />
-                <element signature="e#19#25#0" expanded="true" />
-                <element signature="e#25#31#0" expanded="true" />
-                <element signature="e#31#37#0" expanded="true" />
-                <element signature="e#37#43#0" expanded="true" />
-                <element signature="e#43#49#0" expanded="true" />
-                <element signature="e#59#65#0" expanded="true" />
-                <element signature="e#65#71#0" expanded="true" />
-                <element signature="e#71#77#0" expanded="true" />
-                <element signature="e#77#83#0" expanded="true" />
-                <element signature="e#83#89#0" expanded="true" />
-                <element signature="e#89#95#0" expanded="true" />
-                <element signature="e#95#101#0" expanded="true" />
-                <element signature="e#101#107#0" expanded="true" />
-                <element signature="e#117#123#0" expanded="true" />
-                <element signature="e#123#129#0" expanded="true" />
-                <element signature="e#129#135#0" expanded="true" />
-                <element signature="e#135#141#0" expanded="true" />
-                <element signature="e#141#147#0" expanded="true" />
-                <element signature="e#147#153#0" expanded="true" />
-                <element signature="e#153#159#0" expanded="true" />
-                <element signature="e#159#165#0" expanded="true" />
-                <element signature="e#1#7#0" expanded="true" />
-                <element signature="e#7#13#0" expanded="true" />
-                <element signature="e#13#19#0" expanded="true" />
-                <element signature="e#19#25#0" expanded="true" />
-                <element signature="e#25#31#0" expanded="true" />
-                <element signature="e#31#37#0" expanded="true" />
-                <element signature="e#37#43#0" expanded="true" />
-                <element signature="e#43#49#0" expanded="true" />
-                <element signature="e#59#65#0" expanded="true" />
-                <element signature="e#65#71#0" expanded="true" />
-                <element signature="e#71#77#0" expanded="true" />
-                <element signature="e#77#83#0" expanded="true" />
-                <element signature="e#83#89#0" expanded="true" />
-                <element signature="e#89#95#0" expanded="true" />
-                <element signature="e#95#101#0" expanded="true" />
-                <element signature="e#101#107#0" expanded="true" />
-                <element signature="e#117#123#0" expanded="true" />
-                <element signature="e#123#129#0" expanded="true" />
-                <element signature="e#129#135#0" expanded="true" />
-                <element signature="e#135#141#0" expanded="true" />
-                <element signature="e#141#147#0" expanded="true" />
-                <element signature="e#147#153#0" expanded="true" />
-                <element signature="e#153#159#0" expanded="true" />
-                <element signature="e#159#165#0" expanded="true" />
-                <element signature="e#93317#94560#0" />
-                <element signature="e#94612#98039#0" />
-                <element signature="n#!!block;n#get_cop_pie_options#0" />
-                <element signature="n#!!block;n#get_water_provider_options#0" />
-                <element signature="n#!!block;n#get_heat_provide_options#0" />
-                <element signature="n#!!block;n#get_cona_com_cop_chart_options#0" />
-                <element signature="n#!!block;n#get_cona_sub_cop_chart_option#0" />
-                <element signature="n#!!block;n#get_outlet_water_temperature_tr_html#0" />
-                <element signature="n#!!block;n#set_outlet_water_temperature#0" />
-                <element signature="n#!!block;n#set_outlet_water_temp_time_range#0" />
-                <element signature="n#!!block;n#get_common_option#0" />
-                <element signature="n#!!block;n#constructor#0;n#DataChart#0" />
-                <element signature="n#!!block;n#text_setting#0;n#DataChart#0" />
-                <element signature="n#!!block;n#cop_bind#0;n#DataChart#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dc/assets/js/cona/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="2" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dc/assets/js/kamba/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="2" column="13" lean-forward="true" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cona.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dc/cona.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13680">
-              <caret line="684" column="48" selection-start-line="684" selection-start-column="48" selection-end-line="684" selection-end-column="48" />
+            <state relative-caret-position="353">
+              <caret line="1543" column="38" lean-forward="true" selection-start-line="1543" selection-start-column="38" selection-end-line="1543" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -208,12 +44,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>power_rate</find>
-      <find>heat_supply_analysis_title</find>
-      <find>数据渲染</find>
-      <find>format</find>
-      <find>热力</find>
-      <find>this</find>
       <find>date</find>
       <find>heat_map</find>
       <find>进击的</find>
@@ -238,6 +68,12 @@
       <find>echarts</find>
       <find>request_data</find>
       <find>=</find>
+      <find>num</find>
+      <find>ajax</find>
+      <find>dataZooms</find>
+      <find>api_cost_saving</find>
+      <find>format</find>
+      <find>formatter</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -246,9 +82,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/dc/assets/js/cona/geothermal_well_temperature.js" />
-        <option value="$PROJECT_DIR$/dc/assets/js/cona/tmp/table_outlet_water_temperature.js" />
-        <option value="$PROJECT_DIR$/dc/cona/geothermal_well_temperature.html" />
         <option value="$PROJECT_DIR$/dc/assets/js/cona/tmp/chart_heat_with_temp.js" />
         <option value="$PROJECT_DIR$/dc/assets/js/cona/tmp/room_network_water_supply_temperature.js" />
         <option value="$PROJECT_DIR$/dc/cona/water_heat_pump.html" />
@@ -282,7 +115,6 @@
         <option value="$PROJECT_DIR$/dc/assets/js/config.js" />
         <option value="$PROJECT_DIR$/dc/assets/js/cona/chart_geothermal_wells_heat_provide.js" />
         <option value="$PROJECT_DIR$/dc/assets/js/cona/chart_com_cop.js" />
-        <option value="$PROJECT_DIR$/dc/assets/js/others.js" />
         <option value="$PROJECT_DIR$/dc/assets/js/cona/table_outlet_water_temperature.js" />
         <option value="$PROJECT_DIR$/dc/cona/index.js" />
         <option value="$PROJECT_DIR$/dc/cona.html" />
@@ -296,7 +128,11 @@
         <option value="$PROJECT_DIR$/dc/assets/js/kamba/chart_calories.js" />
         <option value="$PROJECT_DIR$/dc/kamba/index.js" />
         <option value="$PROJECT_DIR$/dc/kamba.html" />
+        <option value="$PROJECT_DIR$/js/detail.js" />
+        <option value="$PROJECT_DIR$/dc/assets/js/others.js" />
         <option value="$PROJECT_DIR$/dc/assets/js/tools.js" />
+        <option value="$PROJECT_DIR$/test.js" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -327,44 +163,6 @@
             <path>
               <item name="webs" type="b2602c69:ProjectViewProjectNode" />
               <item name="webs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webs" type="462c0819:PsiDirectoryNode" />
-              <item name="dc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webs" type="462c0819:PsiDirectoryNode" />
-              <item name="dc" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webs" type="462c0819:PsiDirectoryNode" />
-              <item name="dc" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webs" type="462c0819:PsiDirectoryNode" />
-              <item name="dc" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="cona" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webs" type="462c0819:PsiDirectoryNode" />
-              <item name="dc" type="462c0819:PsiDirectoryNode" />
-              <item name="cona" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webs" type="462c0819:PsiDirectoryNode" />
-              <item name="dc" type="462c0819:PsiDirectoryNode" />
-              <item name="kamba" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -510,27 +308,51 @@
       <workItem from="1644546863315" duration="10373000" />
       <workItem from="1644803529225" duration="224000" />
       <workItem from="1644905546728" duration="11991000" />
-      <workItem from="1644974185383" duration="4056000" />
+      <workItem from="1644974185383" duration="5267000" />
+      <workItem from="1645064610822" duration="5608000" />
+      <workItem from="1645149309072" duration="1807000" />
+      <workItem from="1645515109498" duration="1287000" />
+      <workItem from="1645579193023" duration="2116000" />
+      <workItem from="1645585472141" duration="592000" />
+      <workItem from="1645593398485" duration="1747000" />
+      <workItem from="1645664587530" duration="343000" />
+      <workItem from="1645679292154" duration="588000" />
+      <workItem from="1645772381665" duration="4541000" />
+      <workItem from="1646029588947" duration="2030000" />
+      <workItem from="1646378907855" duration="3819000" />
+      <workItem from="1646615588938" duration="7599000" />
+      <workItem from="1646709300190" duration="6385000" />
+      <workItem from="1646788348388" duration="4907000" />
+      <workItem from="1647398296262" duration="608000" />
+      <workItem from="1647479351751" duration="5600000" />
+      <workItem from="1647565864523" duration="2953000" />
+      <workItem from="1650786912035" duration="2286000" />
+      <workItem from="1653014706774" duration="6261000" />
+      <workItem from="1653363246899" duration="173000" />
+      <workItem from="1653873386763" duration="48000" />
+      <workItem from="1654659100714" duration="156000" />
+      <workItem from="1655091225423" duration="3493000" />
+      <workItem from="1666318432146" duration="528000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="425651000" />
+    <option name="totallyTimeSpent" value="492337000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2328125" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23234984" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.11477152" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -567,66 +389,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="11" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dc/cona/last_week_data.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="410" column="58" selection-start-line="410" selection-start-column="58" selection-end-line="410" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dc/cona/heat_supply_with_temperature.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="282" lean-forward="true" selection-start-line="282" selection-end-line="282" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dc/cona/geothermal_wells_heat_provide.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="248" column="29" lean-forward="true" selection-start-line="248" selection-start-column="29" selection-end-line="248" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dc/cona/geothermal_well_temperature.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="244" column="26" lean-forward="true" selection-start-line="244" selection-start-column="26" selection-end-line="244" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dc/cona/cost_saving.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="791">
-          <caret line="275" column="7" selection-start-line="275" selection-start-column="7" selection-end-line="275" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dc/cona/core_data.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="429" column="54" lean-forward="true" selection-start-line="429" selection-start-column="54" selection-end-line="429" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dc/cona/comprehensive_cop.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="330" column="53" lean-forward="true" selection-start-line="330" selection-start-column="53" selection-end-line="330" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dc/kamba/supply_return_water_temp_diff.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="288" column="67" lean-forward="true" selection-start-line="288" selection-start-column="67" selection-end-line="288" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dc/kamba/pool_temperature.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="431">
@@ -702,13 +468,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dc/assets/js/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="2" lean-forward="true" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dc/assets/js/cona/chart_water_provide_temperature.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -776,16 +535,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="5" column="39" lean-forward="true" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dc/assets/js/others.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="123" column="1" selection-start-line="123" selection-start-column="1" selection-end-line="123" selection-end-column="1" />
-          <folding>
-            <element signature="e#2856#5193#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -877,24 +626,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="106" selection-end-column="5" />
-          <folding>
-            <element signature="e#225#1952#0" />
-            <element signature="e#1974#3018#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dc/assets/js/cona/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dc/cona.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13680">
-          <caret line="684" column="48" selection-start-line="684" selection-start-column="48" selection-end-line="684" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -909,32 +640,107 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="148" selection-end-column="5" />
-          <folding>
-            <element signature="e#218#3853#0" />
-            <element signature="e#3875#4966#0" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dc/kamba.html">
+    <entry file="file://$PROJECT_DIR$/dc/assets/js/config.js" />
+    <entry file="file://$PROJECT_DIR$/detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="650" column="80" lean-forward="true" selection-start-line="650" selection-start-column="80" selection-end-line="650" selection-end-column="80" />
+        <state relative-caret-position="4560">
+          <caret line="228" column="19" selection-start-line="228" selection-start-column="19" selection-end-line="228" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dc/assets/js/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/detail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/files/work files/code/backup/DC/static/assets/js/kamba.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1200">
+          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/files/work files/code/backup/DC/static/assets/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="307" column="19" lean-forward="true" selection-start-line="307" selection-start-column="19" selection-end-line="307" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../github/data_center_platform/webs/js/tools.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="676" column="65" lean-forward="true" selection-start-line="676" selection-start-column="65" selection-end-line="676" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dc/assets/js/others.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1580">
+          <caret line="79" column="14" selection-start-line="79" selection-start-column="14" selection-end-line="79" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="852">
+          <caret line="63" column="23" selection-start-line="63" selection-start-column="23" selection-end-line="63" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dc/assets/js/cona/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="25" selection-start-column="25" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dc/assets/js/kamba/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="13" lean-forward="true" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state>
+          <caret column="26" selection-start-column="26" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dc/kamba.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="671">
+          <caret line="661" column="46" selection-start-line="661" selection-start-column="46" selection-end-line="661" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dc/assets/js/tools.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="911">
-          <caret line="3572" column="13" lean-forward="true" selection-start-line="3572" selection-start-column="13" selection-end-line="3572" selection-end-column="13" />
+        <state relative-caret-position="380">
+          <caret line="1221" column="24" selection-start-line="1221" selection-start-column="24" selection-end-line="1221" selection-end-column="24" />
           <folding>
+            <element signature="e#66#24478#0" />
+            <element signature="e#125#626#0" />
+            <element signature="e#4668#5194#0" />
+            <element signature="e#5239#8165#0" />
+            <element signature="e#6671#8159#0" />
+            <element signature="e#8212#9647#0" />
+            <element signature="e#9705#15454#0" />
+            <element signature="e#15506#17278#0" />
+            <element signature="e#17312#21142#0" />
+            <element signature="e#21192#24476#0" />
+            <element signature="e#24547#30306#0" />
+            <element signature="e#30849#32373#0" />
+            <element signature="e#32402#35184#0" />
+            <element signature="e#35266#40124#0" />
+            <element signature="e#40172#44026#0" />
             <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
@@ -1011,11 +817,24 @@
             <element signature="n#!!block;n#get_outlet_water_temperature_tr_html#0" />
             <element signature="n#!!block;n#set_outlet_water_temperature#0" />
             <element signature="n#!!block;n#set_outlet_water_temp_time_range#0" />
-            <element signature="n#!!block;n#get_common_option#0" />
-            <element signature="n#!!block;n#constructor#0;n#DataChart#0" />
+            <element signature="n#!!block;n#init_chart#0;n#DataChart#0" />
             <element signature="n#!!block;n#text_setting#0;n#DataChart#0" />
             <element signature="n#!!block;n#cop_bind#0;n#DataChart#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dc/cona.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="568">
+          <caret line="691" column="66" selection-start-line="691" selection-start-column="66" selection-end-line="691" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="1543" column="38" lean-forward="true" selection-start-line="1543" selection-start-column="38" selection-end-line="1543" selection-end-column="38" />
         </state>
       </provider>
     </entry>

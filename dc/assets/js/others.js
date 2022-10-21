@@ -77,7 +77,7 @@ function is_large_range(){
  * @param time_dic 包含时间值的字典
  */
 function set_time_range(id, time_dic){
-    let now =$(`#${id}`).text();
+    let now = $(`#${id}`).text();
     if (time_dic.hasOwnProperty("date")){
         $(`#${id}`).text(now + "   [" + time_dic['date'] + "]");
     }else if (time_dic.hasOwnProperty("last_start")){
