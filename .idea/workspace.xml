@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb20b6d7-fe1d-4e0f-ba76-1ced7a29ec7c" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -19,8 +20,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="760" column="46" lean-forward="true" selection-start-line="760" selection-start-column="46" selection-end-line="760" selection-end-column="46" />
+            <state relative-caret-position="289">
+              <caret line="1005" column="114" lean-forward="true" selection-start-line="1005" selection-start-column="102" selection-end-line="1005" selection-end-column="114" />
             </state>
           </provider>
         </entry>
@@ -326,12 +327,14 @@
       <workItem from="1653873386763" duration="48000" />
       <workItem from="1654659100714" duration="156000" />
       <workItem from="1655091225423" duration="3493000" />
-      <workItem from="1666318432146" duration="892000" />
+      <workItem from="1666318432146" duration="1029000" />
+      <workItem from="1666577860425" duration="19000" />
+      <workItem from="1666839539933" duration="49000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="492701000" />
+    <option name="totallyTimeSpent" value="492906000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
@@ -341,12 +344,12 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.106471814" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.20041753" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -659,20 +662,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/files/work files/code/backup/DC/static/assets/js/kamba.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/files/work files/code/backup/DC/static/assets/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="307" column="19" lean-forward="true" selection-start-line="307" selection-start-column="19" selection-end-line="307" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://D:/files/work files/code/backup/DC/static/assets/js/kamba.js" />
+    <entry file="file://D:/files/work files/code/backup/DC/static/assets/js/index.js" />
     <entry file="file://$PROJECT_DIR$/../../github/data_center_platform/webs/js/tools.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="377">
@@ -719,102 +710,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="1221" column="24" selection-start-line="1221" selection-start-column="24" selection-end-line="1221" selection-end-column="24" />
-          <folding>
-            <element signature="e#66#24478#0" />
-            <element signature="e#125#626#0" />
-            <element signature="e#4668#5194#0" />
-            <element signature="e#5239#8165#0" />
-            <element signature="e#6671#8159#0" />
-            <element signature="e#8212#9647#0" />
-            <element signature="e#9705#15454#0" />
-            <element signature="e#15506#17278#0" />
-            <element signature="e#17312#21142#0" />
-            <element signature="e#21192#24476#0" />
-            <element signature="e#24547#30306#0" />
-            <element signature="e#30849#32373#0" />
-            <element signature="e#32402#35184#0" />
-            <element signature="e#35266#40124#0" />
-            <element signature="e#40172#44026#0" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#4;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#7;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#8;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#2;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#4;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#5;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#6;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#7;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#8;n#tr#0;n#!!top" expanded="true" />
-            <element signature="e#1#7#0" expanded="true" />
-            <element signature="e#7#13#0" expanded="true" />
-            <element signature="e#13#19#0" expanded="true" />
-            <element signature="e#19#25#0" expanded="true" />
-            <element signature="e#25#31#0" expanded="true" />
-            <element signature="e#31#37#0" expanded="true" />
-            <element signature="e#37#43#0" expanded="true" />
-            <element signature="e#43#49#0" expanded="true" />
-            <element signature="e#59#65#0" expanded="true" />
-            <element signature="e#65#71#0" expanded="true" />
-            <element signature="e#71#77#0" expanded="true" />
-            <element signature="e#77#83#0" expanded="true" />
-            <element signature="e#83#89#0" expanded="true" />
-            <element signature="e#89#95#0" expanded="true" />
-            <element signature="e#95#101#0" expanded="true" />
-            <element signature="e#101#107#0" expanded="true" />
-            <element signature="e#117#123#0" expanded="true" />
-            <element signature="e#123#129#0" expanded="true" />
-            <element signature="e#129#135#0" expanded="true" />
-            <element signature="e#135#141#0" expanded="true" />
-            <element signature="e#141#147#0" expanded="true" />
-            <element signature="e#147#153#0" expanded="true" />
-            <element signature="e#153#159#0" expanded="true" />
-            <element signature="e#159#165#0" expanded="true" />
-            <element signature="e#1#7#0" expanded="true" />
-            <element signature="e#7#13#0" expanded="true" />
-            <element signature="e#13#19#0" expanded="true" />
-            <element signature="e#19#25#0" expanded="true" />
-            <element signature="e#25#31#0" expanded="true" />
-            <element signature="e#31#37#0" expanded="true" />
-            <element signature="e#37#43#0" expanded="true" />
-            <element signature="e#43#49#0" expanded="true" />
-            <element signature="e#59#65#0" expanded="true" />
-            <element signature="e#65#71#0" expanded="true" />
-            <element signature="e#71#77#0" expanded="true" />
-            <element signature="e#77#83#0" expanded="true" />
-            <element signature="e#83#89#0" expanded="true" />
-            <element signature="e#89#95#0" expanded="true" />
-            <element signature="e#95#101#0" expanded="true" />
-            <element signature="e#101#107#0" expanded="true" />
-            <element signature="e#117#123#0" expanded="true" />
-            <element signature="e#123#129#0" expanded="true" />
-            <element signature="e#129#135#0" expanded="true" />
-            <element signature="e#135#141#0" expanded="true" />
-            <element signature="e#141#147#0" expanded="true" />
-            <element signature="e#147#153#0" expanded="true" />
-            <element signature="e#153#159#0" expanded="true" />
-            <element signature="e#159#165#0" expanded="true" />
-            <element signature="e#93317#94560#0" />
-            <element signature="e#94612#98039#0" />
-            <element signature="n#!!block;n#get_cop_pie_options#0" />
-            <element signature="n#!!block;n#get_water_provider_options#0" />
-            <element signature="n#!!block;n#get_heat_provide_options#0" />
-            <element signature="n#!!block;n#get_cona_com_cop_chart_options#0" />
-            <element signature="n#!!block;n#get_cona_sub_cop_chart_option#0" />
-            <element signature="n#!!block;n#get_outlet_water_temperature_tr_html#0" />
-            <element signature="n#!!block;n#set_outlet_water_temperature#0" />
-            <element signature="n#!!block;n#set_outlet_water_temp_time_range#0" />
-            <element signature="n#!!block;n#init_chart#0;n#DataChart#0" />
-            <element signature="n#!!block;n#text_setting#0;n#DataChart#0" />
-            <element signature="n#!!block;n#cop_bind#0;n#DataChart#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -827,8 +722,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="760" column="46" lean-forward="true" selection-start-line="760" selection-start-column="46" selection-end-line="760" selection-end-column="46" />
+        <state relative-caret-position="289">
+          <caret line="1005" column="114" lean-forward="true" selection-start-line="1005" selection-start-column="102" selection-end-line="1005" selection-end-column="114" />
         </state>
       </provider>
     </entry>
