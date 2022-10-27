@@ -20,8 +20,12 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="1005" column="114" lean-forward="true" selection-start-line="1005" selection-start-column="102" selection-end-line="1005" selection-end-column="114" />
+            <state relative-caret-position="320">
+              <caret line="1059" column="46" lean-forward="true" selection-start-line="1059" selection-start-column="46" selection-end-line="1059" selection-end-column="46" />
+              <folding>
+                <element signature="e#42149#42155#0" expanded="true" />
+                <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -39,7 +43,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>date</find>
       <find>heat_map</find>
       <find>进击的</find>
       <find>co2</find>
@@ -69,6 +72,7 @@
       <find>api_cost_saving</find>
       <find>format</find>
       <find>formatter</find>
+      <find>100%</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -138,7 +142,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1912" />
+    <option name="x" value="-194" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1096" />
@@ -329,15 +333,15 @@
       <workItem from="1655091225423" duration="3493000" />
       <workItem from="1666318432146" duration="1029000" />
       <workItem from="1666577860425" duration="19000" />
-      <workItem from="1666839539933" duration="49000" />
+      <workItem from="1666839539933" duration="2822000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="492906000" />
+    <option name="totallyTimeSpent" value="495679000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23234984" />
@@ -347,7 +351,7 @@
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.20041753" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.20915033" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -722,8 +726,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="1005" column="114" lean-forward="true" selection-start-line="1005" selection-start-column="102" selection-end-line="1005" selection-end-column="114" />
+        <state relative-caret-position="320">
+          <caret line="1059" column="46" lean-forward="true" selection-start-line="1059" selection-start-column="46" selection-end-line="1059" selection-end-column="46" />
+          <folding>
+            <element signature="e#42149#42155#0" expanded="true" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>
