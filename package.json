@@ -1,0 +1,26 @@
+{
+  "name": "webs",
+  "version": "1.0.0",
+  "description": "maps",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qiruijiudian/IndexWeb.git"
+  },
+  "keywords": [
+    "indexWeb"
+  ],
+  "author": "cdqr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qiruijiudian/IndexWeb/issues"
+  },
+  "homepage": "https://github.com/qiruijiudian/IndexWeb#readme",
+  "dependencies": {
+    "scss": "^0.2.4",
+    "vue": "^3.3.8"
+  }
+}

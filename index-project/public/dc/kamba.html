@@ -1,0 +1,667 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script>
+
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>栖睿数据</title>
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <script src="assets/js/check_login.js"></script>
+    <link href="assets/css/css1.css" rel="stylesheet">
+    <link rel="shortcut icon" href="#"/>
+    <link rel="stylesheet" href="assets/materialize/css/materialize.min.css" media="screen,projection"/>
+    <!-- Bootstrap Styles-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet"/>
+    <!-- FontAwesome Styles-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet"/>
+    <!-- datepicker Styles-->
+    <link rel="stylesheet" href="assets/css/datepicker.css">
+    <!-- Custom Styles-->
+    <link href="assets/css/custom-styles.css" rel="stylesheet"/>
+    <!-- Google Fonts-->
+    <link href="assets/css/css3.css" rel="stylesheet" type="text/css"/>
+
+</head>
+
+<body>
+<div id="wrapper">
+    <nav class="navbar navbar-default top-navbar" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle waves-effect waves-dark" data-toggle="collapse"
+                    data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand waves-effect waves-dark" href="http://cdqrmi.com"><i class="large material-icons">track_changes</i>
+                <strong>栖睿机电</strong></a>
+
+            <div id="sideNav" href=""><i class="material-icons dp48">toc</i></div>
+        </div>
+
+        <ul class="nav navbar-top-links navbar-right">
+            <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown4"><i
+                    class="fa fa-envelope fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown3"><i
+                    class="fa fa-tasks fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown2"><i
+                    class="fa fa-bell fa-fw"></i> <i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i
+                    class="fa fa-user fa-fw"></i> <b id="u_name">Anonymous</b> <i class="material-icons right">arrow_drop_down</i></a>
+            </li>
+        </ul>
+    </nav>
+    <!-- Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="#"><i class="fa fa-user fa-fw"></i> 用户中心 </a></li>
+        <li><a href="#"><i class="fa fa-gear fa-fw"></i> 设置 </a></li>
+        <li><a id="logout"><i class="fa fa-sign-out fa-fw"></i> 登出 </a></li>
+    </ul>
+
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+
+                <li>
+                    <a class="active-menu waves-effect waves-dark" name="kamba.html" href="kamba.html"><i class="fa fa-dashboard"></i>
+                        主页</a>
+                </li>
+
+                <li>
+                    <a href="#" class="waves-effect waves-dark">
+                        <i class="fa fa-bar-chart-o"></i> 数据面板<span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+
+
+                        <li>
+                            <a href="kamba/heat_total_and_supply_days.html">蓄热水池可用热量</a>
+                        </li>
+                        <li>
+                            <a href="kamba/pool_temperature.html">水池温度</a>
+                        </li>
+                        <li>
+                            <a href="kamba/kamba_cop.html">系统COP与能效</a>
+                        </li>
+                        <li>
+                            <a href="kamba/co2_emission.html">CO2减排量</a>
+                        </li>
+                        <li>
+                            <a href="kamba/supply_return_water_temp_diff.html">供回水温度与温差</a>
+                        </li>
+                        <li>
+                            <a href="kamba/cost_saving.html">节省供暖费用</a>
+                        </li>
+                        <li>
+                            <a href="kamba/last_week.html">上周数据一览</a>
+                        </li>
+                        <li>
+                            <a href="#">其他数据</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-table"></i>表格数据<span class="fa arrow"></span></a>
+                    <ul class="nav nav-third-level">
+
+                        <li>
+                            <a href="#">地热井出水温度[错那]<span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li>
+                                    <a href="cona/geothermal_well_temperature.html?high">高温地热井出水温度</a>
+                                </li>
+                                <li>
+                                    <a href="cona/geothermal_well_temperature.html?low">低温地热井出水温度</a>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li>
+                            <a href="kamba/pool_temperature.html">水池温度[岗巴]</a>
+                        </li>
+
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#" class="waves-effect waves-dark">
+                        <i class="fa fa-qrcode"></i> 平台切换<span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-third-level">
+                        <li>
+                            <a href="cona.html">错那</a>
+                        </li>
+                        <li>
+                            <a href="kamba.html">岗巴</a>
+                        </li>
+
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a class="waves-effect waves-dark show-modal" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-calendar"></i> 日期选择 </a>
+                </li>
+
+
+                <li>
+                    <a href="#" class="waves-effect waves-dark"><i class="fa fa-edit"></i> 其他 </a>
+                </li>
+
+
+            </ul>
+
+        </div>
+
+    </nav>
+    <!-- /. NAV SIDE  -->
+
+    <div id="page-wrapper">
+        <div class="header">
+            <h1 class="page-header">
+                整体数据一览
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Dashboard</a></li>
+                <li class="active">Kamba</li>
+            </ol>
+        </div>
+        <div id="page-inner">
+            <div class="dashboard-cards">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+
+                        <div class="card horizontal cardIcon waves-effect waves-dark">
+                            <div class="card-image orange">
+                                <i class="material-icons dp48">equalizerkWh</i>
+                            </div>
+                            <div class="card-stacked orange">
+                                <div class="card-content">
+                                    <h3 id="max_load">Loading...</h3>
+                                </div>
+                                <div class="card-action">
+                                    <strong id="max_load_title">上周最大负荷</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+
+                        <div class="card horizontal cardIcon waves-effect waves-dark">
+                            <div class="card-image green">
+                                <i class="material-icons dp48">equalizer</i>
+                            </div>
+                            <div class="card-stacked green">
+                                <div class="card-content">
+                                    <h3 id="min_load">Loading...</h3>
+                                </div>
+                                <div class="card-action">
+                                    <strong id="min_load_title">上周最小负荷</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+
+                        <div class="card horizontal cardIcon waves-effect waves-dark">
+                            <div class="card-image blue">
+                                <i class="material-icons dp48">equalizer</i>
+                            </div>
+                            <div class="card-stacked blue">
+                                <div class="card-content">
+                                    <h3 id="cost_saving_sum">Loading...</h3>
+                                </div>
+                                <div class="card-action">
+                                    <strong id="kamba_cost_saving_title">上月节省供暖总费用</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="card">
+                                <div class="card-action chart_title">
+                                    <b id="pool_available_heat_heat_date">蓄热水池分时可用低温/高温热量</b>
+                                </div>
+                                <div class="card-image donutpad">
+                                    <div id="pool_available_heat" style="width:100%;height:400px"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.row-->
+
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="card">
+                                <div class="card-action chart_title">
+                                    <b id="high_heat_equal_supply_days_heat_date">蓄热水池可用高温热量及电锅炉替换供热天数</b>
+                                </div>
+                                <div class="card-image donutpad">
+                                    <div id="high_heat_equal_supply_days" style="width:100%;height:400px"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.row-->
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-4">
+                    <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="com_cop_pie_title">系统综合COP</b>
+                        </div>
+                        <div class="card-image">
+                            <div id="kamba_system_cop_pie" style="width:100%;height:300px"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-8">
+                    <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="sys_cop_title">系统综合能效比</b>
+                        </div>
+                        <div class="card-image">
+                            <div id="kamba_system_cop_chart" style="width:100%;height:300px"></div>
+                        </div>
+                    </div>
+                </div><!--/.row-->
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-4">
+                    <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="wshp_cop_pie_title">水源热泵COP</b>
+                        </div>
+                        <div class="card-image">
+                            <div id="kamba_wshp_cop_pie" style="width:100%;height:300px"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-8">
+                    <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="wp_cop_title">水源热泵能效比</b>
+                        </div>
+                        <div class="card-image">
+                            <div id="kamba_wshp_cop_chart" style="width:100%;height:300px"></div>
+                        </div>
+                    </div>
+                </div><!--/.row-->
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="card">
+
+                        <div class="card-action chart_title" id="pool_temp_status">
+                            水池温度情况
+                        </div>
+
+                        <div class="card-content">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th style="text-align:center;vertical-align:middle;" rowspan="2">NO</th>
+                                        <th style="text-align:center;vertical-align:middle;" rowspan="2">深度（m）</th>
+                                        <th style="text-align:center;vertical-align:middle;" rowspan="2">体积（m³）</th>
+                                        <th style="text-align:center;vertical-align:middle;" colspan="6">水池温度（℃）</th>
+                                    </tr>
+                                    <tr>
+                                        <th style="text-align:center;vertical-align:middle;">0-4时</th>
+                                        <th style="text-align:center;vertical-align:middle;">4-8时</th>
+                                        <th style="text-align:center;vertical-align:middle;">8-12时</th>
+                                        <th style="text-align:center;vertical-align:middle;">12-16时</th>
+                                        <th style="text-align:center;vertical-align:middle;">16-20时</th>
+                                        <th style="text-align:center;vertical-align:middle;">20-24时</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody id="tbody_pool">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="heat_map_title_of_temp">水池温度热力状况分布</b>
+                        </div>
+                        <div class="card-image">
+                            <div id="heat_map_of_temp" style="width:100%;height:700px"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="cirStats">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="card">
+                                    <div class="card-action chart_title">
+                                        <b id="solar_heat_collector_title">太阳能集热量</b>
+                                    </div>
+                                    <div class="card-image donutpad">
+                                        <div id="last_week_solar_collector" style="width: 100%;height:300px"></div>
+                                    </div>
+                                    <!--                        <div class="card-action">-->
+                                    <!--                            <b>Donut Chart Example</b>-->
+                                    <!--                        </div>-->
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="card">
+                                    <div class="card-action chart_title">
+                                        <b id="heat_storage_rep_title">蓄热水池补水情况</b>
+                                    </div>
+                                    <div class="card-image donutpad">
+                                        <div id="last_week_heat_storage_replenishment" style="width: 100%;height:300px"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div><!--/.row-->
+            </div>
+
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="cirStats">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="card">
+                                    <div class="card-action chart_title">
+                                        <b id="heat_rep_title">供热端补水情况</b>
+                                    </div>
+                                    <div class="card-image donutpad">
+                                        <div id="last_week_heat_water_replenishment" style="width: 100%;height:300px"></div>
+                                    </div>
+                                    <!--                        <div class="card-action">-->
+                                    <!--                            <b>Donut Chart Example</b>-->
+                                    <!--                        </div>-->
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="card">
+                                    <div class="card-action chart_title">
+                                        <b id="solar_rep_title">太阳能侧补水情况</b>
+                                    </div>
+                                    <div class="card-image donutpad">
+                                        <div id="last_week_solar_side_replenishment" style="width: 100%;height:300px"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div><!--/.row-->
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="solar_matrix_title">太阳能矩阵供回水温度</b>
+                        </div>
+                        <div class="card-image">
+                            <div id="solar_matrix_supply_and_return_water_temp" style="width:100%;height:400px"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-7">
+                    <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="load_title">负荷情况</b>
+                        </div>
+                        <div class="card-image">
+                            <div id="load_by_days" style="width:100%;height:300px"></div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-5">
+                    <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="re_with_temp_title">末端供回水温差与气温关系</b>
+                        </div>
+                        <div class="card-image">
+                            <div id="supply_and_return_water_temp_diff_with_temp" style="width:100%;height:300px"></div>
+                        </div>
+                    </div>
+                </div><!--/.row-->
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="sup_with_temp_title">末端供水温度与气温关系</b>
+                        </div>
+                        <div class="card-image">
+                            <div id="supply_water_temp_with_temp" style="width:100%;height:300px"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="diff_with_temp_title">末端回水温度与气温关系</b>
+                        </div>
+                        <div class="card-image">
+                            <div id="return_water_temp_with_temp" style="width:100%;height:300px"></div>
+                        </div>
+
+                    </div>
+                </div><!--/.row-->
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="last_year_supply_return_water_temp_time_delta">供回水温度温差对照分析</b>
+                        </div>
+                        <div class="card-image">
+                            <div id="last_year_supply_return_water_temp" style="width:100%;height:600px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="solar_analysis_title">太阳能集热分析</b>
+                        </div>
+                        <div class="card-image">
+                            <div id="last_week_solar_collector_by_days" style="width:100%;height:400px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="heat_supply_analysis_title">供热分析</b>
+                        </div>
+                        <div class="card-image">
+                            <div id="heat_supply_analysis" style="width:100%;height:400px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="heat_make_title">制热量情况</b>
+                        </div>
+                        <div class="card-image">
+                            <div id="calories_by_days" style="width:100%;height:300px"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="high_power_title">高温板换制热功率</b>
+                        </div>
+                        <div class="card-image">
+                            <div id="power_rate" style="width:100%;height:300px"></div>
+                        </div>
+                    </div>
+                </div><!--/.row-->
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="cost_saving_title">耗电与节省电费情况(电费：0.45元/kWh)</b>
+                        </div>
+                        <div class="card-image">
+                            <div id="cost_saving" style="width:100%;height:400px"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="card">
+                        <div class="card-action chart_title">
+                            <b id="diff_temp">末端平均供回水温度及温差</b>
+                        </div>
+                        <div class="card-image">
+                            <div id="end_supply_and_return_water_temp" style="width:100%;height:400px"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="my_modal">
+                        <div class="modal-dialog modal-l">
+                            <div class="card modal-content">
+                                <div class="card-action">
+                                    日期范围选择
+                                </div>
+                                <div class="card-content">
+                                    <form class="col s12">
+                                        <div class="form-group c-datepicker-date-editor J-datepicker-range" id="date_editor">
+                                            <div class="input-field col s12">
+                                                <i class="material-icons prefix">date_range</i>
+                                                <input id="start_time" type="text" class="validate form-control c-datepicker-data-input">
+                                                <label for="start_time" class="">开始时间</label>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <i class="material-icons prefix">date_range</i>
+                                                <input id="end_time" type="text" class="validate form-control c-datepicker-data-input">
+                                                <label for="end_time" class="">结束时间</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="input-field card-content" id="date_button">
+                                            <a id="cancel_date" class="waves-light btn" data-dismiss="modal" aria-hidden="true">取消</a>
+                                            <a id="confirm_date" class="waves-light btn">确认</a>
+                                        </div>
+                                    </form>
+                                    <div class="clearBoth"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- /. ROW  -->
+        </div>
+        <!-- /. PAGE INNER  -->
+    </div>
+    <!-- /. PAGE WRAPPER  -->
+</div>
+<!-- /. WRAPPER  -->
+
+
+<script src="assets/js/others.js"></script>
+<script src="assets/js/echarts.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/materialize/js/materialize.min.js"></script>
+<script src="assets/js/jquery.metisMenu.js"></script>
+<script src="assets/js/custom-scripts.js"></script>
+<script src="assets/js/moment.min.js"></script>
+<script src="assets/js/datepicker.all.js"></script>
+<script src="assets/js/date_choose.js"></script>
+<!--<script src="assets/js/tools.js"></script>-->
+
+<!--引入单个图表设置-->
+<!--<script src="assets/js/kamba/chart_heat_storage_heat.js"></script>-->
+<!--<script src="assets/js/kamba/chart_system_cop.js"></script>-->
+<!--<script src="assets/js/kamba/chart_wshp_cop.js"></script>-->
+<!--<script src="assets/js/kamba/table_pool_temperature.js"></script>-->
+<!--<script src="assets/js/kamba/chart_pool_temperature_heatmap.js"></script>-->
+<!--<script src="assets/js/kamba/chart_solar_collector.js"></script>-->
+<!--<script src="assets/js/kamba/chart_hydration.js"></script>-->
+<!--<script src="assets/js/kamba/chart_solar_matrix_supply_and_return_water_temperature.js"></script>-->
+<!--<script src="assets/js/kamba/chart_load.js"></script>-->
+<!--<script src="assets/js/kamba/chart_end_supply_and_return_water_temp.js"></script>-->
+<!--<script src="assets/js/kamba/chart_end_supply_and_return_water_temp_by_year.js"></script>-->
+<!--<script src="assets/js/kamba/chart_solar_heat_supply.js"></script>-->
+<!--<script src="assets/js/kamba/chart_calories.js"></script>-->
+<!--<script src="assets/js/kamba/chart_heat_supply.js"></script>-->
+<!--<script src="assets/js/kamba/chart_cost_saving.js"></script>-->
+<script type="module" src="assets/js/kamba/index.js"></script>
+
+<script>resize_chart(charts)</script>
+</body>
+
+</html>
