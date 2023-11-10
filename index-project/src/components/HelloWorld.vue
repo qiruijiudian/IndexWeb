@@ -121,7 +121,8 @@ export default {
           url: this.form.uri,
           avg_load: this.form.avg_load,
           co2: this.form.co2,
-          cost: this.form.cost
+          cost: this.form.cost,
+          name: 'kamba'
         })
         // 添加自定义覆盖物
         map.addOverlay(Text_Kamba_Town)
@@ -138,7 +139,8 @@ export default {
           url: this.form.uri,
           avg_load: this.form.avg_load,
           co2: this.form.co2,
-          cost: this.form.cost
+          cost: this.form.cost,
+          name: 'Cona'
         })
         // 添加自定义覆盖物
         map.addOverlay(Text_Cona_Xian)

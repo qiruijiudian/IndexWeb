@@ -39,6 +39,7 @@ class TextCentent extends BMap.Overlay {
     if (Object.keys(propertie).length === 0) {
       this.properties = {
         title: '热管与聚光式太阳能集热器效率测试实验(2018年)',
+        name: '',
         text: '太阳能集热器实际效率与工作寿命，是主动式太阳能采暖系统的关键设计参数，本次研究主要对比新型聚光式与常规真空热管式的热效率区别，并为日喀则地区岗巴县太阳能设计提供关键设计参数。'
       }
     } else {
@@ -95,9 +96,11 @@ class TextCentent extends BMap.Overlay {
       div_Fragment.appendChild(img)
     }
 
+    var ul_id = 'data-list'+ this.properties.name
+
     const template =
     `<div class="scroll-container" @mouseover="pauseScroll" @mouseout="resumeScroll">
-      <ul id = "data-list" class = "data_list">
+      <ul id = "${ul_id}" class = "data_list">
         <a href="${'url' in this.properties ? this.properties.url : 'http://data.cdqrmi.com/#/panel/index'}" target="_blank"><li>平均负荷：${this.properties.avg_load}</li></a>
         <a href="${'url' in this.properties ? this.properties.url : 'http://data.cdqrmi.com/#/panel/index'}" target="_blank"><li>累计CO2减少量：${this.properties.co2}</li></a>
         <a href="${'url' in this.properties ? this.properties.url : 'http://data.cdqrmi.com/#/panel/index'}" target="_blank"><li>累计节省费用：${this.properties.cost}</li></a>
@@ -107,12 +110,12 @@ class TextCentent extends BMap.Overlay {
     const _div = divFragment.querySelectorAll('.scroll-container')[0]
 
     _div.onmouseover = () => {
-      var _list = document.getElementById('data-list')
+      var _list = document.getElementById(ul_id)
       _list.style.animationPlayState = 'paused'
     }
 
     _div.onmouseout = () => {
-      var _list = document.getElementById('data-list')
+      var _list = document.getElementById(ul_id)
       _list.style.animationPlayState = 'running'
     }
 
