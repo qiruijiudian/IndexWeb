@@ -7,6 +7,7 @@ module.exports = defineConfig({
     });
   },
   devServer: {
+    disableHostCheck: true,
     port: 8082
   }
 })
