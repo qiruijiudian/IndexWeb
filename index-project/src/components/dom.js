@@ -32,6 +32,36 @@ class RadarOverlay extends BMap.Overlay {
   }
 }
 
+class MapCircleOverlay extends BMap.Overlay {
+  constructor(point, size) {
+    super()
+    this.point = point
+    this.size = size
+  }
+
+  initialize(map) {
+    this._map = map
+    const template = `<div class="map-circle">
+        <div class = 'circle_text'>  
+          <p>岗巴县项目</p>
+          <p>2个</p>
+        </div>
+      </div>`
+    const divFragment = document.createRange().createContextualFragment(template)
+    const div = divFragment.querySelectorAll('.map-circle')[0]
+    map.getPanes().markerPane.appendChild(div)
+    this._div = div
+    return div
+  }
+
+  draw() {
+    // 根据地理坐标转换为像素坐标，并设置给容器
+    const position = this._map.pointToOverlayPixel(this.point)
+    this._div.style.left = `${position.x - this.size / 2}px`
+    this._div.style.top = `${position.y - this.size / 2}px`
+  }
+}
+
 class TextCentent extends BMap.Overlay {
   constructor(point, propertie = {}) {
     super()
@@ -50,6 +80,7 @@ class TextCentent extends BMap.Overlay {
   initialize(map) {
     this._map = map
     var div = document.createElement('div')
+    div.id = 'layer'+ this.properties.name
     div.style.position = 'absolute'
     div.style.zIndex = BMap.Overlay.getZIndex(this.point.lat)
     div.style.backgroundColor = '#fff'
@@ -66,6 +97,8 @@ class TextCentent extends BMap.Overlay {
     div.style.justifyContent = 'center'
     div.style.alignItems = 'center'
     div.style.flexDirection = 'column'
+
+    var layer_id = 'layer'+ this.properties.name
 
     var title = document.createElement('div')
     title.style.display = 'block'
@@ -108,7 +141,7 @@ class TextCentent extends BMap.Overlay {
     </div>`
     const divFragment = document.createRange().createContextualFragment(template)
     const _div = divFragment.querySelectorAll('.scroll-container')[0]
-
+      
     _div.onmouseover = () => {
       var _list = document.getElementById(ul_id)
       _list.style.animationPlayState = 'paused'
@@ -133,20 +166,16 @@ class TextCentent extends BMap.Overlay {
     arrow.style.overflow = 'hidden'
     div.appendChild(arrow)
 
-    // div.onmouseover = () => {
-    //   div.style.backgroundColor = 'skyblue'
-    //   div.style.color = '#fff'
-    //   span.style.color = '#fff'
-    //   arrow.style.top = '266px'
-    //   arrow.style.borderColor = 'skyblue transparent transparent transparent'
-    // }
+    div.onmouseover = () => {
+      var that = this
+      var _layer = document.getElementById(layer_id)
+      _layer.style.zIndex = that.getHighestZIndex() + 1
+      console.log('z-index: ', that.getHighestZIndex())
+    }
 
     // div.onmouseout = () => {
-    //   div.style.backgroundColor = '#fff'
-    //   div.style.color = '#333'
-    //   span.style.color = '#333'
-    //   arrow.style.borderColor = 'white transparent transparent transparent'
     // }
+
     map.getPanes().markerPane.appendChild(div)
     this._div = div
     return div
@@ -161,9 +190,26 @@ class TextCentent extends BMap.Overlay {
     this._div.style.left = `${position.x - (extractedNumber_width / 2)}px`
     this._div.style.top = `${position.y - extractedNumber_height - 10}px`
   }
+
+getHighestZIndex() {
+  var elements = document.getElementsByTagName('*');
+  var highestZIndex = Number.MIN_SAFE_INTEGER;
+
+  for (var i = 0; i < elements.length; i++) {
+    var zIndex = parseInt(window.getComputedStyle(elements[i]).getPropertyValue('z-index'));
+
+    if (zIndex > highestZIndex && zIndex !== 'auto') {
+      highestZIndex = zIndex;
+    }
+  }
+
+  return highestZIndex;
+}
+
 }
 
 export {
   RadarOverlay,
-  TextCentent
+  TextCentent,
+  MapCircleOverlay
 }

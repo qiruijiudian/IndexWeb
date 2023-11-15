@@ -8,12 +8,14 @@
 // import 'echarts/extension/bmap/bmap'
 // import { MP } from './map'
 import BMap from 'BMap'
-import {RadarOverlay, TextCentent} from './dom'
+import {RadarOverlay, TextCentent, MapCircleOverlay } from './dom'
 // import './server'
 export default {
   data() {
     return {
-      form: {}
+      form: {},
+      overlays: [],
+      layer_exists: true
     }
   },
   // created(){
@@ -92,28 +94,48 @@ export default {
             BMAP_HYBRID_MAP
           ]
         }))
-        const radar = new RadarOverlay(point, 20)
-        // 添加自定义覆盖物
-        map.addOverlay(radar)
+        this.CreateOverlay(map, point)
+        map.addEventListener("zoomend", () => {
+          var that = this
+          var zoom = map.getZoom()
+          if (zoom < 12 && that.layer_exists) {
+            map.clearOverlays(that.overlays)
+            that.createMapCircleOverlay(map)
+            that.layer_exists = false
+          }
+          if (zoom >= 12 && !that.layer_exists) {
+            that.CreateOverlay(map, point) 
+            that.layer_exists = true
+          }
+        })
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    CreateOverlay(map, point) { 
+      const radar = new RadarOverlay(point, 20)
+      // 添加自定义覆盖物
+      map.addOverlay(radar)
 
-        const Text_Kamba_Xian = new TextCentent(point,
+      const Text_Kamba_Xian = new TextCentent(point,
         {
           title: '热管与聚光式太阳能集热器效率测试实验',
           text: '太阳能集热器实际效率与工作寿命，是主动式太阳能采暖系统的关键设计参数，本次研究主要对比新型聚光式与常规真空热管式的热效率区别，并为日喀则地区岗巴县太阳能设计提供关键设计参数。',
-          imgSrc : "http://cdqrmi.com/DataCenter/kamba.jpg",
+          imgSrc: "http://cdqrmi.com/DataCenter/kamba.jpg",
           url: this.form.uri,
-          avg_load : this.form.avg_load,
-          co2 : this.form.co2,
-          cost : this.form.cost
+          avg_load: this.form.avg_load,
+          co2: this.form.co2,
+          cost: this.form.cost,
+          name: 'kamba_Xian'
         })
-        // 添加自定义覆盖物
-        map.addOverlay(Text_Kamba_Xian)
+      // 添加自定义覆盖物
+      map.addOverlay(Text_Kamba_Xian)
 
-        var point_Kamba_Town = new BMap.Point(88.480673, 28.224317)
-        const radar_Kamba_Town = new RadarOverlay(point_Kamba_Town, 20)
-        // 添加自定义覆盖物
-        map.addOverlay(radar_Kamba_Town)
-        const Text_Kamba_Town = new TextCentent(point_Kamba_Town,
+      var point_Kamba_Town = new BMap.Point(88.480673, 28.224317)
+      const radar_Kamba_Town = new RadarOverlay(point_Kamba_Town, 20)
+      // 添加自定义覆盖物
+      map.addOverlay(radar_Kamba_Town)
+      const Text_Kamba_Town = new TextCentent(point_Kamba_Town,
         {
           title: '岗巴县孔玛乡被动式采暖试点工程(2017年)',
           text: '被动式太阳能+电暖片组合式系统采暖，系统简单可靠，建筑同寿命；每户耗电6元/月，基本实现“零能耗”供暖。',
@@ -124,14 +146,14 @@ export default {
           cost: this.form.cost,
           name: 'kamba'
         })
-        // 添加自定义覆盖物
-        map.addOverlay(Text_Kamba_Town)
+      // 添加自定义覆盖物
+      map.addOverlay(Text_Kamba_Town)
 
-        var point_Cona_Xian = new BMap.Point(91.963748, 27.996766)
-        const radar_Cona_Xian = new RadarOverlay(point_Cona_Xian, 20)
-        // 添加自定义覆盖物
-        map.addOverlay(radar_Cona_Xian)
-        const Text_Cona_Xian = new TextCentent(point_Cona_Xian,
+      var point_Cona_Xian = new BMap.Point(91.963748, 27.996766)
+      const radar_Cona_Xian = new RadarOverlay(point_Cona_Xian, 20)
+      // 添加自定义覆盖物
+      map.addOverlay(radar_Cona_Xian)
+      const Text_Cona_Xian = new TextCentent(point_Cona_Xian,
         {
           title: '错那县城地热供暖施工（2015-2017年）',
           text: '采用丰富的地热资源+水源热泵机组，末端采用风机盘管及地盘管，商铺采用电采暖。',
@@ -142,16 +164,15 @@ export default {
           cost: this.form.cost,
           name: 'Cona'
         })
-        // 添加自定义覆盖物
-        map.addOverlay(Text_Cona_Xian)
-
-      } catch (error) {
-        console.log(error)
-      }
+      // 添加自定义覆盖物
+      map.addOverlay(Text_Cona_Xian)
+      this.overlays.push(radar, radar_Kamba_Town, radar_Cona_Xian, Text_Cona_Xian, Text_Kamba_Town, Text_Kamba_Xian)
     },
-    Overlay(properties, point) { 
-      const overlay = new TextCentent(point,properties)
-      return overlay
+    createMapCircleOverlay(map) { 
+      var point_Kamba_Town = new BMap.Point(88.480673, 28.224317)
+      const MapCircle_Kamba_Town = new MapCircleOverlay(point_Kamba_Town, 20)
+      // 添加自定义覆盖物
+      map.addOverlay(MapCircle_Kamba_Town)
     }
   }
 }
@@ -162,6 +183,32 @@ export default {
   height: 1100px;
 }
 
+.map-circle {
+    position: absolute;
+    height: 99px;
+    width: 99px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 13px;
+    text-align: center;
+    color: #fff;
+    background: rgba(43, 160, 43, .9);
+    margin-top: -33px;
+    margin-left: -33px;
+
+  .circle_text {
+
+    p {
+      margin: 15px 0 0 0;
+      color: #ffffff;
+    }
+  }
+}
+.map-circle:hover {
+    background: #EE5D5B;
+    z-index: 99;
+}
 .radar-box {
   position: absolute;
 
