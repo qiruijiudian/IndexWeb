@@ -1,6 +1,5 @@
 // import { BaiduMap as BMap } from 'vue-baidu-map'
 import BMap from 'BMap'
-console.log('baiduMap:  ', BMap)
 class RadarOverlay extends BMap.Overlay {
   constructor(point, size) {
     super()
@@ -33,27 +32,36 @@ class RadarOverlay extends BMap.Overlay {
 }
 
 class MapCircleOverlay extends BMap.Overlay {
-  constructor(point, size) {
+  constructor(point, size, propertie = {}) {
     super()
     this.point = point
     this.size = size
+    this.properties = propertie
   }
 
   initialize(map) {
     this._map = map
+    var that = this
     const template = `<div class="map-circle">
         <div class = 'circle_text'>  
-          <p>岗巴县项目</p>
-          <p>2个</p>
+          <p>${that.properties.projectName}</p>
+          <p>${that.properties.projectNum}个</p>
         </div>
       </div>`
     const divFragment = document.createRange().createContextualFragment(template)
     const div = divFragment.querySelectorAll('.map-circle')[0]
     map.getPanes().markerPane.appendChild(div)
     this._div = div
+    // 添加鼠标悬停事件监听器
+    div.addEventListener('click', () => {
+      that.handleClick()
+    })
     return div
   }
-
+  handleClick() {
+    // 处理鼠标悬停事件的逻辑
+    this._map.centerAndZoom(this.properties.clickPoint, 14)
+  }
   draw() {
     // 根据地理坐标转换为像素坐标，并设置给容器
     const position = this._map.pointToOverlayPixel(this.point)

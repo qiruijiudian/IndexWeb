@@ -15,7 +15,8 @@ export default {
     return {
       form: {},
       overlays: [],
-      layer_exists: true
+      layer_exists: true,
+      circle_text_overlay:[]
     }
   },
   // created(){
@@ -104,7 +105,10 @@ export default {
             that.layer_exists = false
           }
           if (zoom >= 12 && !that.layer_exists) {
-            that.CreateOverlay(map, point) 
+            if (that.circle_text_overlay) {
+              map.clearOverlays(that.circle_text_overlay)
+            }
+            that.CreateOverlay(map, point)
             that.layer_exists = true
           }
         })
@@ -170,9 +174,37 @@ export default {
     },
     createMapCircleOverlay(map) { 
       var point_Kamba_Town = new BMap.Point(88.480673, 28.224317)
-      const MapCircle_Kamba_Town = new MapCircleOverlay(point_Kamba_Town, 20)
-      // 添加自定义覆盖物
-      map.addOverlay(MapCircle_Kamba_Town)
+      var point_Cona_Xian = new BMap.Point(91.963748, 27.996766)
+      var point_Tianjin_City = new BMap.Point(117.206489, 39.106812)
+      var point_Lasa_city = new BMap.Point(91.146321, 29.660194)
+      var circleLayerList = []
+      const MapCircle_Kamba_Town = new MapCircleOverlay(point_Kamba_Town, 20, {
+        clickPoint: new BMap.Point(88.522129, 28.277643),
+        projectName: '岗巴县项目',
+        projectNum: 2
+      })
+      const MapCircle_Cona_Town = new MapCircleOverlay(point_Cona_Xian, 20, {
+        clickPoint: point_Cona_Xian,
+        projectName: '错那市项目',
+        projectNum: 2
+      })
+      const MapCircle_Tianjin_City = new MapCircleOverlay(point_Tianjin_City, 20, {
+        clickPoint: new BMap.Point(117.206489, 39.106812),
+        projectName: '天津市项目',
+        projectNum: 1
+      })
+      const MapCircle_Lasa_city = new MapCircleOverlay(point_Lasa_city, 20, {
+        clickPoint: new BMap.Point(91.146321, 29.660194),
+        projectName: '拉萨市项目',
+        projectNum: 3
+      })
+
+      circleLayerList.push(MapCircle_Kamba_Town, MapCircle_Cona_Town, MapCircle_Tianjin_City, MapCircle_Lasa_city)
+      console.log('circleLayerList ', circleLayerList)
+      circleLayerList.forEach((item) => { 
+        map.addOverlay(item)
+      })
+      this.circle_text_overlay.push(MapCircle_Kamba_Town)
     }
   }
 }
@@ -292,4 +324,77 @@ export default {
   100% {
     transform: translateY(calc(-100% + 50px));
   }
-}</style>
+}
+
+#triangle-down {
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-top: 100px solid red;
+}
+
+#star-six {
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 100px solid red;
+  position: relative;
+}
+#star-six:after {
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-top: 100px solid red;
+  position: absolute;
+  content: "";
+  top: 30px;
+  left: -50px;
+}
+
+#burst-8 {
+  background: red;
+  width: 80px;
+  height: 80px;
+  position: relative;
+  text-align: center;
+  transform: rotate(20deg);
+}
+#burst-8:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 80px;
+  width: 80px;
+  background: red;
+  transform: rotate(135deg);
+}
+
+#burst-12 {
+  background: red;
+  width: 80px;
+  height: 80px;
+  position: relative;
+  text-align: center;
+}
+#burst-12:before,
+#burst-12:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 80px;
+  width: 80px;
+  background: red;
+}
+#burst-12:before {
+  transform: rotate(30deg);
+}
+#burst-12:after {
+  transform: rotate(60deg);
+}
+
+</style>
