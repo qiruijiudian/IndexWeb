@@ -136,7 +136,7 @@ export default {
           var zoom = map.getZoom()
           if (zoom < 12 && that.layer_exists) {
             map.clearOverlays(that.overlays)
-            that.createMapCircleOverlay(map, )
+            that.createMapCircleOverlay(map)
             that.layer_exists = false
           }
           if (zoom >= 12 && !that.layer_exists) {
