@@ -8,6 +8,9 @@ module.exports = defineConfig({
   },
   devServer: {
     port: 8082,
-    allowedHosts: "all"
+    allowedHosts: "all",
+    client: {
+      overlay: false
+    }
   }
 })

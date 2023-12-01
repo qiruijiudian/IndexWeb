@@ -1,0 +1,365 @@
+[
+    {
+        "title": "岗巴跨集热太阳能供暖施工(2019-2020)",
+        "text": "[项目特色]大规模主动式太阳能供暖。[项目规模]采暖设计面积约19.6万平方米。[系统形式]采用建筑保温+太阳能+水源热泵，包括太阳能集中供暖热源厂、蓄热装置（含辅助热源）、供热管网和现有建筑物户内供暖设施建设。",
+        "point": [
+            88.51907,
+            28.277166
+        ],
+        "imgSrc": "http://cdqrmi.com/DataCenter/kamba.jpg",
+        "name": "kamba-1",
+        "location": "kamba",
+        "level": "town",
+        "sort": "build"
+    },
+    {
+        "title": "错那县城地热供暖施工(2016-2018)",
+        "text": "[项目特色]中温地热资源供暖。[项目规模]1期、 2期采暖设计面积共约28.4万平方米。[系统形式]采用丰富的地热资源+水源热泵机组，末端采用风机盘管及地盘管，商铺采用电采暖。",
+        "point": [
+            91.962275,
+            27.997164
+        ],
+        "imgSrc": "http://cdqrmi.com/DataCenter/kamba.jpg",
+        "name": "Cona-1",
+        "location": "Cona",
+        "level": "city",
+        "sort": "build"
+    },
+    {
+        "title": "武警西藏总队医院采暖工程(2015)",
+        "text": "[项目特色]中温地热资源供暖。[项目规模]1期、 2期采暖设计面积共约28.4万平方米。[系统形式]采用丰富的地热资源+水源热泵机组，末端采用风机盘管及地盘管，商铺采用电采暖。",
+        "point": [
+            91.1398,
+            29.678836
+        ],
+        "imgSrc": "http://cdqrmi.com/DataCenter/kamba.jpg",
+        "name": "Lhasa—1",
+        "location": "Lhasa",
+        "level": "unit",
+        "sort": "build"
+    },
+    {
+        "title": "武警西藏总队第一支队采暖工程(2016)",
+        "text": "",
+        "point": [
+            91.1398,
+            29.678836
+        ],
+        "name": "Lhasa—2",
+        "location": "arm",
+        "level": "unit",
+        "sort": "build"
+    },
+    {
+        "title": "西藏军区林芝、山南边防部队供暖工程(2015)",
+        "text": "",
+        "point": [
+            91.1398,
+            29.678836
+        ],
+        "name": "Lhasa—3",
+        "location": "arm",
+        "level": "unit",
+        "sort": "build"
+    },
+    {
+        "title": "西藏自治区武警区域训练基地办公区电地暖工程(2015)",
+        "text": "",
+        "point": [
+            91.1398,
+            29.678836
+        ],
+        "name": "Lhasa—4",
+        "location": "arm",
+        "level": "unit",
+        "sort": "build"
+    },
+    {
+        "title": "西藏自治区人民政府党政会议中心(2015)",
+        "text": "热源形式：高大空间供暖",
+        "point": [
+            91.124244,
+            29.654996
+        ],
+        "name": "Lhasa—5",
+        "location": "Lhasa",
+        "level": "plot",
+        "sort": "build"
+    },
+    {
+        "title": "拉萨市党政会议楼供暖系统整改工程(2015)",
+        "text": "热源形式：空气源热泵",
+        "point": [
+            91.139258,
+            29.644321
+        ],
+        "name": "Lhasa—6",
+        "location": "Lhasa",
+        "level": "plot",
+        "sort": "build"
+    },
+    {
+        "title": "拉萨市人民政府供暖系统整改工程(2015)",
+        "text": "热源形式：水源热泵+空气源热泵",
+        "point": [
+            91.178454,
+            29.659504
+        ],
+        "name": "Lhasa—7",
+        "location": "Lhasa",
+        "level": "unit",
+        "sort": "build"
+    },
+    {
+        "title": "西藏自治区公安厅礼堂供暖施工(2013-2015)",
+        "text": "热源形式：高大空间供暖",
+        "point": [
+            91.147142,
+            29.655266
+        ],
+        "name": "Lhasa—8",
+        "location": "Lhasa",
+        "level": "plot",
+        "sort": "build"
+    },
+    {
+        "title": "西藏自治区地方海事局（交通运输厅）供暖施工(2013-2015)",
+        "text": "热源形式：燃气锅炉",
+        "point": [
+            91.136589,
+            29.67089
+        ],
+        "name": "Lhasa—9",
+        "location": "Lhasa",
+        "level": "plot",
+        "sort": "build"
+    },
+    {
+        "title": "西藏自治区林业调查研究院供暖施工(2013-2015)",
+        "text": "热源形式：燃气锅炉",
+        "point": [
+            91.076125,
+            29.650212
+        ],
+        "name": "Lhasa—10",
+        "location": "Lhasa",
+        "level": "plot",
+        "sort": "build"
+    },
+    {
+        "title": "西藏自治区会展中心音乐喷泉配电系统安装(2014)",
+        "text": "热源形式：配电工程",
+        "point": [
+            91.194639,
+            29.659784
+        ],
+        "name": "Lhasa—11",
+        "location": "Lhasa",
+        "level": "plot",
+        "sort": "build"
+    },
+    {
+        "title": "西藏自治区人民医院供暖施工(2013-2015)",
+        "text": "热源形式：电采暖",
+        "point": [
+            91.134289,
+            29.661759
+        ],
+        "name": "Lhasa—12",
+        "location": "Lhasa",
+        "level": "plot",
+        "sort": "build"
+    },
+    {
+        "title": "拉萨市市民服务中心采暖工程(2014)",
+        "text": "热源形式：空气源热泵",
+        "point": [
+            91.177502,
+            29.660364
+        ],
+        "name": "Lhasa—13",
+        "location": "Lhasa",
+        "level": "plot",
+        "sort": "build"
+    },
+    {
+        "title": "西藏自治区人工影响天气中心供暖工程(2014)",
+        "text": "热源形式：电采暖",
+        "point": [
+            91.162419,
+            29.670711
+        ],
+        "name": "Lhasa—14",
+        "location": "Lhasa",
+        "level": "plot",
+        "sort": "build"
+    },
+    {
+        "title": "武警西藏区域训练基地生活区供暖工程(2014)",
+        "text": "",
+        "point": [
+            91.1398,
+            29.678836
+        ],
+        "name": "Lhasa—15",
+        "location": "arm",
+        "level": "unit",
+        "sort": "build"
+    },
+    {
+        "title": "西藏自治区纪委监察厅办公用房电地暖工程(2013)",
+        "text": "热源形式：电采暖",
+        "point": [
+            91.129437,
+            29.655805
+        ],
+        "name": "Lhasa—16",
+        "location": "Lhasa",
+        "level": "plot",
+        "sort": "build"
+    },
+    {
+        "title": "拉萨市城关区人民检察院技侦楼碳纤维采暖试点工程(2013)",
+        "text": "热源形式：电采暖",
+        "point": [
+            91.182568,
+            29.643984
+        ],
+        "name": "Lhasa—17",
+        "location": "Lhasa",
+        "level": "plot",
+        "sort": "build"
+    },
+    {
+        "title": "西藏自治区纪检委采暖工程(2013)",
+        "text": "热源形式：水源热泵",
+        "point": [
+            91.129365,
+            29.655742
+        ],
+        "name": "Lhasa—18",
+        "location": "Lhasa",
+        "level": "unit",
+        "sort": "build"
+    },
+    {
+        "title": "西藏自治区武警边防医院采暖工程(2013)",
+        "text": "热源形式：水源热泵",
+        "point": [
+            91.115966,
+            29.670087
+        ],
+        "name": "Lhasa—19",
+        "location": "Lhasa",
+        "level": "unit",
+        "sort": "build"
+    },
+    {
+        "title": "西藏自治区中国移动高海拔营业厅采暖工程(31个县)(2012-2013)",
+        "text": "热源形式：燃煤锅炉采暖（自然循环及机械循环）",
+        "point": [
+            90.750313,
+            29.356135
+        ],
+        "name": "Lhasa—20",
+        "location": "Lhasa",
+        "level": "town",
+        "sort": "build"
+    },
+    {
+        "title": "西藏军区77629部队太阳能供暖乙二醇改水系统工程(2009)",
+        "text": "",
+        "point": [
+            91.1398,
+            29.678836
+        ],
+        "name": "Lhasa—21",
+        "location": "arm",
+        "level": "unit",
+        "sort": "build"
+    },
+    {
+        "title": "二炮西北某训练中心太阳能系统安装工程(2009)",
+        "text": "",
+        "point": [
+            91.1398,
+            29.678836
+        ],
+        "name": "Lhasa—22",
+        "location": "arm",
+        "level": "unit",
+        "sort": "build"
+    },
+    {
+        "title": "中央警卫局0312水源热泵系统机房安装工程(2009)",
+        "text": "",
+        "point": [
+            91.1398,
+            29.678836
+        ],
+        "name": "Lhasa—23",
+        "location": "arm",
+        "level": "unit",
+        "sort": "build"
+    },
+    {
+        "title": "西藏军区后勤部水源热泵供暖系统工程(2008)",
+        "text": "",
+        "point": [
+            91.1398,
+            29.678836
+        ],
+        "name": "Lhasa—24",
+        "location": "arm",
+        "level": "unit",
+        "sort": "build"
+    },
+    {
+        "title": "西部战区78011部队水源热泵采暖工程(2003)",
+        "text": "",
+        "point": [
+            91.1398,
+            29.678836
+        ],
+        "name": "Lhasa—25",
+        "location": "arm",
+        "level": "unit",
+        "sort": "build"
+    },
+    {
+        "title": "西藏军区工兵十五团舟桥营(2003)",
+        "text": "",
+        "point": [
+            91.1398,
+            29.678836
+        ],
+        "name": "Lhasa—26",
+        "location": "arm",
+        "level": "unit",
+        "sort": "build"
+    },
+    {
+        "title": "西藏军区山南生产团乃东生产营(2003)",
+        "text": "",
+        "point": [
+            91.1398,
+            29.678836
+        ],
+        "name": "Lhasa—27",
+        "location": "arm",
+        "level": "unit",
+        "sort": "build"
+    },
+    {
+        "title": "西藏军区拉萨警备区生产团(2003)",
+        "text": "",
+        "point": [
+            91.1398,
+            29.678836
+        ],
+        "name": "Lhasa—28",
+        "location": "arm",
+        "level": "unit",
+        "sort": "build"
+    }
+]

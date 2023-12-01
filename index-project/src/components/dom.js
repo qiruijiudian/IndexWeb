@@ -53,9 +53,11 @@ class MapCircleOverlay extends BMap.Overlay {
     map.getPanes().markerPane.appendChild(div)
     this._div = div
     // 添加鼠标悬停事件监听器
-    div.addEventListener('click', () => {
+    if (this.properties.projectName != '军区相关项目') {
+      div.addEventListener('click', () => {
       that.handleClick()
     })
+    }
     return div
   }
   handleClick() {
@@ -130,7 +132,7 @@ class TextCentent extends BMap.Overlay {
     const div_Fragment = _Fragment.querySelectorAll('.div_box')[0]
     div.appendChild(div_Fragment)
 
-    if ('imgSrc' in this.properties) {
+    if ('imgSrc' in this.properties && this.properties.imgSrc) {
       var img = document.createElement('img')
       img.style.width = '120px'
       img.src = this.properties.imgSrc
@@ -178,7 +180,6 @@ class TextCentent extends BMap.Overlay {
       var that = this
       var _layer = document.getElementById(layer_id)
       _layer.style.zIndex = that.getHighestZIndex() + 1
-      console.log('z-index: ', that.getHighestZIndex())
     }
 
     // div.onmouseout = () => {

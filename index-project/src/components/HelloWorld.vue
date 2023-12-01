@@ -1,5 +1,11 @@
 <template>
-  <div class="map" id="container"></div>
+  <div>
+    <div class="map" id="container"></div>
+    <ul class="btn-wrap" style="z-index: 99;">
+        <li class = "btn" @click = "getDesignInfo()">查看设计项目</li>
+        <li class = "btn" @click = "getBuildInfo()">查看施工项目</li>
+    </ul>
+  </div>
 </template>
 
 
@@ -8,6 +14,8 @@
 // import 'echarts/extension/bmap/bmap'
 // import { MP } from './map'
 import BMap from 'BMap'
+import Design_Property from './design_properties.json'
+import Build_Property from './build_properties.json'
 import {RadarOverlay, TextCentent, MapCircleOverlay } from './dom'
 // import './server'
 export default {
@@ -16,15 +24,21 @@ export default {
       form: {},
       overlays: [],
       layer_exists: true,
-      circle_text_overlay:[]
+      circle_text_overlay: [],
+      design_project_num: {},
+      build_project_num: {},
+      map: {},
+      type: 'design'
     }
   },
-  // created(){
+  // created() {
+  //   this.CreateOverlayLarge()
   // },
   mounted() {
     const script = document.createElement('script')
     script.src = 'http://api.map.baidu.com/api?v=3.0&ak=93ryhHn98fcRjKhVmVAYQEiY6ovVcC5x'
-    script.onload = this.createMysqlCon
+    this.map = new BMap.Map('container', { enableMapClick: false })
+    script.onload = this.createMysqlCon(this.map)
     document.head.appendChild(script)
     // MP().then(BMap => this.createMysqlCon(BMap))
     // eslint-disable-next-line no-undef
@@ -36,6 +50,24 @@ export default {
     }
   },
   methods: {
+    getlocNum() { 
+      this.design_project_num = {}
+      this.build_project_num = {}
+      Design_Property.forEach((item) => {
+        if (item.location in this.design_project_num) {
+          this.design_project_num[item.location] += 1
+        } else {
+          this.design_project_num[item.location] = 1
+        }
+      })
+      Build_Property.forEach((item) => {
+        if (item.location in this.build_project_num) {
+          this.build_project_num[item.location] += 1
+        } else {
+          this.build_project_num[item.location] = 1
+        }
+      })
+    },
     getShortUrl() {
       // a30c5ea5-0b50-11ee-8d2b-c7382613edaf
       // loadGenerate('22c9d630-5dc4-11ee-9f07-9745522ba61e').then(res => {
@@ -67,21 +99,23 @@ export default {
           this.form.avg_load = data.avg_load
           this.form.co2 = data.co2
           this.form.cost = data.cost
-          this.initializeMap()
+          this.initializeMap(this.map)
         })
         .catch(error => {
           console.error('Error fetching data: ', error)
           this.form.avg_load = '1377kW'
           this.form.co2 = '22158吨'
           this.form.cost = '886万元'
-          this.initializeMap()
+          this.initializeMap(this.map)
         })
     },
-    initializeMap() {
+    initializeMap(map, Property = Design_Property) {
       try {
+        this.getlocNum()
         this.form.uri = 'http://data.cdqrmi.com/#/delink?link=wiIQsbbnOcRrvXdKNpiR51lgdIQuXw73PnK211Ym7BYd2KSmO85R9l7zHRHPUS7b6YDNlEGLSgqeSxg3JLjiAw&user=uHNsqts9HzrQ%2BlCtonkCoXK9B0hy2x57cBcoo3DnNBwAcsx7haa3wxCxe5AKuOiGCnzx8XHa5uGpsew748KZzA'
-        const map = new BMap.Map('container', { enableMapClick: false })
+        // const map = new BMap.Map('container', { enableMapClick: false })
         const point = new BMap.Point(88.522129, 28.277643)
+        
         map.centerAndZoom(point, 14)
         map.enableScrollWheelZoom(true)
 
@@ -95,20 +129,22 @@ export default {
             BMAP_HYBRID_MAP
           ]
         }))
-        this.CreateOverlay(map, point)
+        // this.CreateOverlay(map, point)
+        this.CreateOverlayLarge(map, Property)
         map.addEventListener("zoomend", () => {
           var that = this
           var zoom = map.getZoom()
           if (zoom < 12 && that.layer_exists) {
             map.clearOverlays(that.overlays)
-            that.createMapCircleOverlay(map)
+            that.createMapCircleOverlay(map, )
             that.layer_exists = false
           }
           if (zoom >= 12 && !that.layer_exists) {
             if (that.circle_text_overlay) {
               map.clearOverlays(that.circle_text_overlay)
             }
-            that.CreateOverlay(map, point)
+            // that.CreateOverlay(map, point)
+            that.CreateOverlayLarge(map, Property)
             that.layer_exists = true
           }
         })
@@ -172,39 +208,101 @@ export default {
       map.addOverlay(Text_Cona_Xian)
       this.overlays.push(radar, radar_Kamba_Town, radar_Cona_Xian, Text_Cona_Xian, Text_Kamba_Town, Text_Kamba_Xian)
     },
-    createMapCircleOverlay(map) { 
+    CreateOverlayLarge(map, Property = Design_Property) {
+      // var that = this
+      // project_num = {}
+      const text_layer = []
+      const rader_layer = []
+      Property.forEach((item) => {
+        var Map_point = new BMap.Point(item["point"][0], item["point"][1])
+        if (item.text != "") {
+          text_layer.push(
+            new TextCentent(Map_point,
+              {
+                title: item.title,
+                text: item.text,
+                imgSrc: item.imgSrc || '',
+                url: this.form.uri,
+                avg_load: this.form.avg_load,
+                co2: this.form.co2,
+                cost: this.form.cost,
+                name: item.name
+              })
+          )
+          rader_layer.push(new RadarOverlay(Map_point, 20))
+        }
+      })
+      for (let index = 0; index < rader_layer.length; index++) {
+        map.addOverlay(rader_layer[index])
+      }
+      for (let index = 0; index < text_layer.length; index++) {
+        map.addOverlay(text_layer[index])
+      }
+    },
+    createMapCircleOverlay(map) {
+      var that = this
+      var project_num = that.design_project_num
+      if (that.type == 'build') { 
+        project_num = that.build_project_num
+      }else{ 
+        project_num = that.design_project_num
+      }
+      console.log('that ', project_num)
       var point_Kamba_Town = new BMap.Point(88.480673, 28.224317)
       var point_Cona_Xian = new BMap.Point(91.963748, 27.996766)
-      var point_Tianjin_City = new BMap.Point(117.206489, 39.106812)
+      // var point_Tianjin_City = new BMap.Point(117.206489, 39.106812)
       var point_Lasa_city = new BMap.Point(91.146321, 29.660194)
+      var point_Shannan_city = new BMap.Point(91.767756, 29.251851)
+      var point_arm_project = new BMap.Point(93.505387, 28.448879)
+      
       var circleLayerList = []
       const MapCircle_Kamba_Town = new MapCircleOverlay(point_Kamba_Town, 20, {
         clickPoint: new BMap.Point(88.522129, 28.277643),
         projectName: '岗巴县项目',
-        projectNum: 2
+        projectNum: project_num['Rikaze'] || 1
       })
       const MapCircle_Cona_Town = new MapCircleOverlay(point_Cona_Xian, 20, {
         clickPoint: point_Cona_Xian,
         projectName: '错那市项目',
-        projectNum: 2
+        projectNum: project_num['Cona'] || 1
       })
-      const MapCircle_Tianjin_City = new MapCircleOverlay(point_Tianjin_City, 20, {
-        clickPoint: new BMap.Point(117.206489, 39.106812),
-        projectName: '天津市项目',
-        projectNum: 1
-      })
+      // const MapCircle_Tianjin_City = new MapCircleOverlay(point_Tianjin_City, 20, {
+      //   clickPoint: new BMap.Point(117.206489, 39.106812),
+      //   projectName: '天津市项目',
+      //   projectNum: project_num['TianJing'] || 1
+      // })
       const MapCircle_Lasa_city = new MapCircleOverlay(point_Lasa_city, 20, {
         clickPoint: new BMap.Point(91.146321, 29.660194),
         projectName: '拉萨市项目',
-        projectNum: 3
+        projectNum: project_num['Lhasa'] || 1
+      })
+      const MapCircle_Shannan_city = new MapCircleOverlay(point_Shannan_city, 20, {
+        clickPoint: new BMap.Point(91.349078, 29.255213),
+        projectName: '山南市项目',
+        projectNum: project_num['Shannan'] || 1
+      })
+      const MapCircle_arm_project = new MapCircleOverlay(point_arm_project, 20, {
+        clickPoint: new BMap.Point(91.349078, 29.255213),
+        projectName: '军区相关项目',
+        projectNum: project_num['arm'] || 1
       })
 
-      circleLayerList.push(MapCircle_Kamba_Town, MapCircle_Cona_Town, MapCircle_Tianjin_City, MapCircle_Lasa_city)
+      circleLayerList.push(MapCircle_Kamba_Town, MapCircle_Cona_Town, MapCircle_Lasa_city, MapCircle_Shannan_city, MapCircle_arm_project)
       console.log('circleLayerList ', circleLayerList)
       circleLayerList.forEach((item) => { 
         map.addOverlay(item)
       })
-      this.circle_text_overlay.push(MapCircle_Kamba_Town)
+      // this.circle_text_overlay.push(MapCircle_Kamba_Town)
+    },
+    getDesignInfo() {
+      this.map.clearOverlays()
+      this.type = 'design'
+      this.initializeMap(this.map, Design_Property)
+    },
+    getBuildInfo() {
+      this.map.clearOverlays()
+      this.type = 'build'
+      this.initializeMap(this.map, Build_Property)
     }
   }
 }
@@ -217,8 +315,8 @@ export default {
 
 .map-circle {
     position: absolute;
-    height: 99px;
-    width: 99px;
+    height: 110px;
+    width: 110px;
     -webkit-border-radius: 50%;
     border-radius: 50%;
     cursor: pointer;
@@ -232,7 +330,7 @@ export default {
   .circle_text {
 
     p {
-      margin: 15px 0 0 0;
+      margin: 20px 0 -5px 0;
       color: #ffffff;
     }
   }
@@ -324,6 +422,39 @@ export default {
   100% {
     transform: translateY(calc(-100% + 50px));
   }
+}
+
+ul li {
+    list-style: none;
+}
+.btn-wrap {
+    z-index: 999;
+    position: relative;
+    bottom: 4rem;
+    margin-left: 0rem;
+    // padding: 1rem 1rem;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    box-shadow: 0 2px 6px 0 rgba(27, 142, 236, 0.5);
+    height: 60px;
+    width: max-content;
+    padding: 6px 0px 0px 0px;
+}
+.btn {
+    cursor: pointer;
+    float: left;
+    background-color: #fff;
+    color: rgba(27, 142, 236, 1);
+    font-size: 14px;
+    border:1px solid rgba(27, 142, 236, 1);
+    border-radius: 5px;
+    margin: 0 5px;
+    text-align: center;
+    line-height: 30px;
+}
+.btn:hover {
+    background-color: rgba(27, 142, 236, 0.8);
+    color: #fff;
 }
 
 #triangle-down {
