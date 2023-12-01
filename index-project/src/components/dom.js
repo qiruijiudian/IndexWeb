@@ -137,32 +137,32 @@ class TextCentent extends BMap.Overlay {
       img.style.width = '120px'
       img.src = this.properties.imgSrc
       div_Fragment.appendChild(img)
+
+      var ul_id = 'data-list'+ this.properties.name
+
+      const template =
+      `<div class="scroll-container" @mouseover="pauseScroll" @mouseout="resumeScroll">
+        <ul id = "${ul_id}" class = "data_list">
+          <a href="${'url' in this.properties ? this.properties.url : 'http://data.cdqrmi.com/#/panel/index'}" target="_blank"><li>平均负荷：${this.properties.avg_load}</li></a>
+          <a href="${'url' in this.properties ? this.properties.url : 'http://data.cdqrmi.com/#/panel/index'}" target="_blank"><li>累计CO2减少量：${this.properties.co2}</li></a>
+          <a href="${'url' in this.properties ? this.properties.url : 'http://data.cdqrmi.com/#/panel/index'}" target="_blank"><li>累计节省费用：${this.properties.cost}</li></a>
+        </ul>
+      </div>`
+      const divFragment = document.createRange().createContextualFragment(template)
+      const _div = divFragment.querySelectorAll('.scroll-container')[0]
+        
+      _div.onmouseover = () => {
+        var _list = document.getElementById(ul_id)
+        _list.style.animationPlayState = 'paused'
+      }
+
+      _div.onmouseout = () => {
+        var _list = document.getElementById(ul_id)
+        _list.style.animationPlayState = 'running'
+      }
+
+      div_Fragment.appendChild(_div)
     }
-
-    var ul_id = 'data-list'+ this.properties.name
-
-    const template =
-    `<div class="scroll-container" @mouseover="pauseScroll" @mouseout="resumeScroll">
-      <ul id = "${ul_id}" class = "data_list">
-        <a href="${'url' in this.properties ? this.properties.url : 'http://data.cdqrmi.com/#/panel/index'}" target="_blank"><li>平均负荷：${this.properties.avg_load}</li></a>
-        <a href="${'url' in this.properties ? this.properties.url : 'http://data.cdqrmi.com/#/panel/index'}" target="_blank"><li>累计CO2减少量：${this.properties.co2}</li></a>
-        <a href="${'url' in this.properties ? this.properties.url : 'http://data.cdqrmi.com/#/panel/index'}" target="_blank"><li>累计节省费用：${this.properties.cost}</li></a>
-      </ul>
-    </div>`
-    const divFragment = document.createRange().createContextualFragment(template)
-    const _div = divFragment.querySelectorAll('.scroll-container')[0]
-      
-    _div.onmouseover = () => {
-      var _list = document.getElementById(ul_id)
-      _list.style.animationPlayState = 'paused'
-    }
-
-    _div.onmouseout = () => {
-      var _list = document.getElementById(ul_id)
-      _list.style.animationPlayState = 'running'
-    }
-
-    div_Fragment.appendChild(_div)
 
     var arrow = document.createElement('div')
     arrow.style.position = 'inherit'

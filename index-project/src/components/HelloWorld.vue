@@ -296,12 +296,16 @@ export default {
     },
     getDesignInfo() {
       this.map.clearOverlays()
+      this.map.removeEventListener("zoomend")
       this.type = 'design'
+      this.layer_exists = true
       this.initializeMap(this.map, Design_Property)
     },
     getBuildInfo() {
       this.map.clearOverlays()
+      this.map.removeEventListener("zoomend")
       this.type = 'build'
+      this.layer_exists = true
       this.initializeMap(this.map, Build_Property)
     }
   }
