@@ -6,7 +6,7 @@
             91.963748,
             27.996766
         ],
-        "imgSrc": "http://cdqrmi.com/DataCenter/kamba.jpg",
+        "imgSrc": "http://cdqrmi.com/DataCenter/project_imgs/cona_1.jpg",
         "name": "Cona_1",
         "location": "Cona",
         "level": "city",
@@ -19,7 +19,7 @@
             88.480673,
             28.224317
         ],
-        "imgSrc": "http://cdqrmi.com/DataCenter/kamba.jpg",
+        "imgSrc": "http://cdqrmi.com/DataCenter/project_imgs/kamba_2.jpg",
         "name": "kamba_1",
         "location": "Rikaze",
         "level": "city",
@@ -32,7 +32,7 @@
             88.522129,
             28.277643
         ],
-        "imgSrc": "http://cdqrmi.com/DataCenter/kamba.jpg",
+        "imgSrc": "http://cdqrmi.com/DataCenter/project_imgs/kamba_3.jpg",
         "name": "kamba_2",
         "location": "Rikaze",
         "level": "city",
@@ -45,7 +45,7 @@
             91.349078,
             29.255213
         ],
-        "imgSrc": "http://cdqrmi.com/DataCenter/kamba.jpg",
+        "imgSrc": "http://cdqrmi.com/DataCenter/project_imgs/shannan_1.jpg",
         "name": "shannan_1",
         "location": "Shannan",
         "level": "unit",
@@ -58,7 +58,7 @@
             91.141069,
             29.664118
         ],
-        "imgSrc": "http://cdqrmi.com/DataCenter/kamba.jpg",
+        "imgSrc": "http://cdqrmi.com/DataCenter/project_imgs/Lhasa_1.jpg",
         "name": "Lhasa_1",
         "location": "Lhasa",
         "level": "city",
@@ -81,8 +81,8 @@
         "title": "柳梧公共服务楼供暖系统节能调试工程",
         "text": "被动式太阳能+电暖片组合式系统采暖，系统简单可靠，建筑同寿命；每户耗电6元/月，基本实现“零能耗”供暖.",
         "point": [
-            43,
-            43.2
+            91.091706,
+            29.632182
         ],
         "name": "Lhasa_2",
         "location": "Lhasa",
@@ -90,13 +90,13 @@
     },
     {
         "title": "西藏自治区武警森林总队太阳能供暖系统整改工程",
+        "text": "",
         "point": [
             43,
             43.2
         ],
-        "text": "西藏自治区武警森林总队太阳能供暖系统整改工程",
         "name": "XiZangZiZhiQu_1",
-        "location": "Lhasa",
+        "location": "arm",
         "level": "city"
     }
 ]

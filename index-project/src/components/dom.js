@@ -101,7 +101,6 @@ class TextCentent extends BMap.Overlay {
     } else { 
       div.style.height = '100px'
       div.style.width = '330px'
-      console.log('x')
     }
 
     div.style.padding = '2px'
