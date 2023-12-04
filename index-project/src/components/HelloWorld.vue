@@ -248,6 +248,7 @@ export default {
       // var point_Tianjin_City = new BMap.Point(117.206489, 39.106812)
       var point_Lasa_city = new BMap.Point(91.146321, 29.660194)
       var point_Shannan_city = new BMap.Point(91.767756, 29.251851)
+      var point_Nyingchi_city = new BMap.Point(94.369491, 29.661575)
       var point_arm_project = new BMap.Point(93.505387, 28.448879)
       
       var circleLayerList = []
@@ -276,13 +277,18 @@ export default {
         projectName: '山南市项目',
         projectNum: project_num['Shannan'] || 1
       })
+      const MapCircle_Nyingchi_project = new MapCircleOverlay(point_Nyingchi_city, 20, {
+        clickPoint: new BMap.Point(93.084753, 29.05176),
+        projectName: '林芝市项目',
+        projectNum: project_num['Nyingchi'] || 1
+      })
       const MapCircle_arm_project = new MapCircleOverlay(point_arm_project, 20, {
         clickPoint: new BMap.Point(91.349078, 29.255213),
         projectName: '军区相关项目',
         projectNum: project_num['arm'] || 1
       })
 
-      circleLayerList.push(MapCircle_Kamba_Town, MapCircle_Cona_Town, MapCircle_Lasa_city, MapCircle_Shannan_city, MapCircle_arm_project)
+      circleLayerList.push(MapCircle_Kamba_Town, MapCircle_Cona_Town, MapCircle_Lasa_city, MapCircle_Shannan_city, MapCircle_arm_project, MapCircle_Nyingchi_project)
       console.log('circleLayerList ', circleLayerList)
       circleLayerList.forEach((item) => { 
         map.addOverlay(item)

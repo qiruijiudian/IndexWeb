@@ -98,5 +98,126 @@
         "name": "XiZangZiZhiQu_1",
         "location": "arm",
         "level": "city"
+    },
+    {
+        "title": "错那355部队供暖工程",
+        "text": "",
+        "point": [
+            43,
+            43.2
+        ],
+        "name": "XiZangZiZhiQu_2",
+        "location": "arm",
+        "level": "unit"
+    },
+    {
+        "title": "登木乡政府供暖工程(2019)",
+        "text": "热源形式：水源热泵。供暖面积：7500 ㎡",
+        "point": [
+            92.834124,
+            28.886496
+        ],
+        "name": "Nyingchi_1",
+        "location": "Nyingchi",
+        "level": "town"
+    },
+    {
+        "title": "朗县中学供暖工程(2019)",
+        "text": "热源形式：空气源热泵。供暖面积：1.4万 ㎡",
+        "point": [
+            93.084753,
+            29.05176
+        ],
+        "name": "Nyingchi_2",
+        "location": "Nyingchi",
+        "level": "town"
+    },
+    {
+        "title": "朗县金东乡供暖工程(2019)",
+        "text": "热源形式：空气源热泵。供暖面积：4300 ㎡",
+        "point": [
+            93.388676,
+            28.971603
+        ],
+        "name": "Nyingchi_3",
+        "location": "Nyingchi",
+        "level": "town"
+    },
+    {
+        "title": "朗县拉多乡供暖工程(2019)",
+        "text": "热源形式：空气源热泵。供暖面积：4100 ㎡",
+        "point": [
+            93.063249,
+            28.937826
+        ],
+        "name": "Nyingchi_4",
+        "location": "Nyingchi",
+        "level": "town"
+    },
+    {
+        "title": "扎朗县敬老院供暖工程(2018)",
+        "text": "热源形式：水源热泵。供暖面积：7900 ㎡",
+        "point": [
+            91.342146,
+            29.247775
+        ],
+        "name": "shannan_2",
+        "location": "Shannan",
+        "level": "town"
+    },
+    {
+        "title": "扎朗县桑耶小学供暖工程(2022)",
+        "text": "热源形式：空气源热泵。供暖面积：5400 ㎡",
+        "point": [
+            91.52091,
+            29.327233
+        ],
+        "name": "shannan_3",
+        "location": "Shannan",
+        "level": "town"
+    },
+    {
+        "title": "扎朗县雪拉小学供暖工程(2020)",
+        "text": "热源形式：空气源热泵。供暖面积：3900 ㎡",
+        "point": [
+            91.311441,
+            29.073437
+        ],
+        "name": "shannan_4",
+        "location": "Shannan",
+        "level": "town"
+    },
+    {
+        "title": "扎朗县吉汝小学供暖工程(2020)",
+        "text": "热源形式：空气源热泵。供暖面积：4100 ㎡",
+        "point": [
+            91.343359,
+            29.072002
+        ],
+        "name": "shannan_5",
+        "location": "Shannan",
+        "level": "town"
+    },
+    {
+        "title": "岗巴铁布公村村民家供暖工程(2023)",
+        "text": "热源形式：光电。供暖面积：40 ㎡",
+        "point": [
+            88.239468,
+            28.201098
+        ],
+        "name": "kamba_3",
+        "location": "Rikaze",
+        "level": "plot"
+    },
+    {
+        "title": "岗巴县城供水工程(2023)",
+        "text": "供水面积：21万 ㎡",
+        "point": [
+            88.512584,
+            28.267352
+        ],
+        "name": "kamba_4",
+        "location": "Rikaze",
+        "level": "city"
     }
 ]
