@@ -16,7 +16,11 @@
 import BMap from 'BMap'
 import Design_Property from './design_properties.json'
 import Build_Property from './build_properties.json'
-import {RadarOverlay, TextCentent, MapCircleOverlay } from './dom'
+import { RadarOverlay, TextCentent, MapCircleOverlay } from './dom'
+
+const controller = new AbortController()
+// const signal = controller.signal
+
 // import './server'
 export default {
   data() {
@@ -40,7 +44,6 @@ export default {
     this.map = new BMap.Map('container', { enableMapClick: false })
     script.onload = this.createMysqlCon(this.map)
     document.head.appendChild(script)
-    // MP().then(BMap => this.createMysqlCon(BMap))
     // eslint-disable-next-line no-undef
     // this.createMysqlCon()
   },
@@ -99,23 +102,24 @@ export default {
           this.form.avg_load = data.avg_load
           this.form.co2 = data.co2
           this.form.cost = data.cost
-          this.initializeMap(this.map)
+          this.initializeMap(this.map, Design_Property)
         })
         .catch(error => {
           console.error('Error fetching data: ', error)
           this.form.avg_load = '1377kW'
           this.form.co2 = '22158吨'
           this.form.cost = '886万元'
-          this.initializeMap(this.map)
+          this.initializeMap(this.map, Design_Property)
         })
     },
-    initializeMap(map, Property = Design_Property) {
+    initializeMap(map, Property) {
       try {
+        var that = this
         this.getlocNum()
         this.form.uri = 'http://data.cdqrmi.com/#/delink?link=wiIQsbbnOcRrvXdKNpiR51lgdIQuXw73PnK211Ym7BYd2KSmO85R9l7zHRHPUS7b6YDNlEGLSgqeSxg3JLjiAw&user=uHNsqts9HzrQ%2BlCtonkCoXK9B0hy2x57cBcoo3DnNBwAcsx7haa3wxCxe5AKuOiGCnzx8XHa5uGpsew748KZzA'
         // const map = new BMap.Map('container', { enableMapClick: false })
         const point = new BMap.Point(88.522129, 28.277643)
-        
+
         map.centerAndZoom(point, 14)
         map.enableScrollWheelZoom(true)
 
@@ -131,23 +135,14 @@ export default {
         }))
         // this.CreateOverlay(map, point)
         this.CreateOverlayLarge(map, Property)
+
         map.addEventListener("zoomend", () => {
-          var that = this
-          var zoom = map.getZoom()
-          if (zoom < 12 && that.layer_exists) {
-            map.clearOverlays(that.overlays)
-            that.createMapCircleOverlay(map)
-            that.layer_exists = false
+          var _Property = Design_Property
+          if (that.type == 'build') {
+            _Property = Build_Property
           }
-          if (zoom >= 12 && !that.layer_exists) {
-            if (that.circle_text_overlay) {
-              map.clearOverlays(that.circle_text_overlay)
-            }
-            // that.CreateOverlay(map, point)
-            that.CreateOverlayLarge(map, Property)
-            that.layer_exists = true
-          }
-        })
+          this.handleCallback(map, _Property)
+        }, { signal: controller.signal })
       } catch (error) {
         console.log(error)
       }
@@ -294,19 +289,31 @@ export default {
       })
       // this.circle_text_overlay.push(MapCircle_Kamba_Town)
     },
+    handleCallback(map, Property) {
+      var that = this
+      var zoom = map.getZoom()
+      if (zoom < 12) {
+        map.clearOverlays()
+        that.createMapCircleOverlay(map)
+        that.layer_exists = false
+      }
+      if (zoom >= 12) {
+        if (that.circle_text_overlay) {
+          map.clearOverlays()
+        }
+        that.CreateOverlayLarge(map, Property)
+        that.layer_exists = true
+      }
+    },
     getDesignInfo() {
       this.map.clearOverlays()
-      this.map.removeEventListener("zoomend")
       this.type = 'design'
-      this.layer_exists = true
-      this.initializeMap(this.map, Design_Property)
+      this.handleCallback(this.map, Design_Property)
     },
     getBuildInfo() {
       this.map.clearOverlays()
-      this.map.removeEventListener("zoomend")
       this.type = 'build'
-      this.layer_exists = true
-      this.initializeMap(this.map, Build_Property)
+      this.handleCallback(this.map, Build_Property)
     }
   }
 }

@@ -95,11 +95,18 @@ class TextCentent extends BMap.Overlay {
     div.style.zIndex = BMap.Overlay.getZIndex(this.point.lat)
     div.style.backgroundColor = '#fff'
     div.style.color = '#333'
-    div.style.height = '260px'
-    div.style.width = '330px'
+    if ('imgSrc' in this.properties && this.properties.imgSrc) {
+      div.style.height = '260px'
+      div.style.width = '330px'
+    } else { 
+      div.style.height = '100px'
+      div.style.width = '330px'
+      console.log('x')
+    }
+
     div.style.padding = '2px'
     div.style.lineHeight = '50px'
-    div.style.whiteSpace = 'nowrap'
+    div.style.whiteSpace = 'normal'
     div.style.MozUserSelect = 'none'
     div.style.fontSize = '12px'
     div.style.borderRadius = '10px'
@@ -138,10 +145,10 @@ class TextCentent extends BMap.Overlay {
       img.src = this.properties.imgSrc
       div_Fragment.appendChild(img)
 
-      var ul_id = 'data-list'+ this.properties.name
+      var ul_id = 'data-list' + this.properties.name
 
       const template =
-      `<div class="scroll-container" @mouseover="pauseScroll" @mouseout="resumeScroll">
+        `<div class="scroll-container" @mouseover="pauseScroll" @mouseout="resumeScroll">
         <ul id = "${ul_id}" class = "data_list">
           <a href="${'url' in this.properties ? this.properties.url : 'http://data.cdqrmi.com/#/panel/index'}" target="_blank"><li>平均负荷：${this.properties.avg_load}</li></a>
           <a href="${'url' in this.properties ? this.properties.url : 'http://data.cdqrmi.com/#/panel/index'}" target="_blank"><li>累计CO2减少量：${this.properties.co2}</li></a>
@@ -164,9 +171,15 @@ class TextCentent extends BMap.Overlay {
       div_Fragment.appendChild(_div)
     }
 
+
     var arrow = document.createElement('div')
     arrow.style.position = 'inherit'
-    arrow.style.top = '266px'
+    if ('imgSrc' in this.properties && this.properties.imgSrc) {
+      arrow.style.top = '266px'
+    } else { 
+      arrow.style.top = '106px'
+    }
+    // arrow.style.top = '266px'
     arrow.style.left = '155px'
     arrow.style.width = '0'
     arrow.style.height = '0'
