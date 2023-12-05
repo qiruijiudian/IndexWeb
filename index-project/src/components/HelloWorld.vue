@@ -284,7 +284,7 @@ export default {
       })
       const MapCircle_arm_project = new MapCircleOverlay(point_arm_project, 20, {
         clickPoint: new BMap.Point(91.349078, 29.255213),
-        projectName: '军区相关项目',
+        projectName: '第一系列相关项目',
         projectNum: project_num['arm'] || 1
       })
 
