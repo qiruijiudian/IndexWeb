@@ -1,11 +1,13 @@
 <template>
-  <div>
     <div class="map" id="container"></div>
     <ul class="btn-wrap" style="z-index: 99;">
         <li class = "btn" @click = "getDesignInfo()">查看设计项目</li>
         <li class = "btn" @click = "getBuildInfo()">查看施工项目</li>
+        <li class = "btn" @click = "getOverviewInfo()">概览</li>
     </ul>
-  </div>
+    <div class = "legend" v-show="showLegend">
+      <img class="legend-img" src = "./legend.png" />
+    </div>
 </template>
 
 
@@ -16,7 +18,8 @@
 import BMap from 'BMap'
 import Design_Property from './design_properties.json'
 import Build_Property from './build_properties.json'
-import { RadarOverlay, TextCentent, MapCircleOverlay } from './dom'
+import Overview_Property from './overview_properties.json'
+import { RadarOverlay, TextCentent, MapCircleOverlay, MutiShapeOverlay } from './dom'
 
 const controller = new AbortController()
 // const signal = controller.signal
@@ -31,8 +34,10 @@ export default {
       circle_text_overlay: [],
       design_project_num: {},
       build_project_num: {},
+      dels:[],
       map: {},
-      type: 'design'
+      type: 'overview',
+      showLegend: true
     }
   },
   // created() {
@@ -102,14 +107,14 @@ export default {
           this.form.avg_load = data.avg_load
           this.form.co2 = data.co2
           this.form.cost = data.cost
-          this.initializeMap(this.map, Design_Property)
+          this.initializeMap(this.map, Overview_Property)
         })
         .catch(error => {
           console.error('Error fetching data: ', error)
           this.form.avg_load = '1377kW'
           this.form.co2 = '22158吨'
           this.form.cost = '886万元'
-          this.initializeMap(this.map, Design_Property)
+          this.initializeMap(this.map, Overview_Property)
         })
     },
     initializeMap(map, Property) {
@@ -118,9 +123,12 @@ export default {
         this.getlocNum()
         this.form.uri = 'http://data.cdqrmi.com/#/delink?link=wiIQsbbnOcRrvXdKNpiR51lgdIQuXw73PnK211Ym7BYd2KSmO85R9l7zHRHPUS7b6YDNlEGLSgqeSxg3JLjiAw&user=uHNsqts9HzrQ%2BlCtonkCoXK9B0hy2x57cBcoo3DnNBwAcsx7haa3wxCxe5AKuOiGCnzx8XHa5uGpsew748KZzA'
         // const map = new BMap.Map('container', { enableMapClick: false })
-        const point = new BMap.Point(88.522129, 28.277643)
 
-        map.centerAndZoom(point, 14)
+        // const point = new BMap.Point(88.522129, 28.277643)
+
+        // map.centerAndZoom(point, 14)
+        map.centerAndZoom(new BMap.Point(91.110223, 29.657166), 9)
+
         map.enableScrollWheelZoom(true)
 
         // eslint-disable-next-line no-undef
@@ -137,9 +145,20 @@ export default {
         this.CreateOverlayLarge(map, Property)
 
         map.addEventListener("zoomend", () => {
-          var _Property = Design_Property
-          if (that.type == 'build') {
-            _Property = Build_Property
+          var _Property = {}
+          switch (that.type) {
+            case 'build':
+              _Property = Build_Property
+              break
+            case 'design':
+              _Property = Design_Property
+              break
+            case 'overview':
+              _Property = Overview_Property
+              break
+            default:
+              _Property = Overview_Property
+              break
           }
           this.handleCallback(map, _Property)
         }, { signal: controller.signal })
@@ -208,30 +227,31 @@ export default {
       // project_num = {}
       const text_layer = []
       const rader_layer = []
+      const muti_layer = []
       Property.forEach((item) => {
         var Map_point = new BMap.Point(item["point"][0], item["point"][1])
+        var Properties = item
         if (item.text != "") {
           text_layer.push(
             new TextCentent(Map_point,
-              {
-                title: item.title,
-                text: item.text,
-                imgSrc: item.imgSrc || '',
-                url: this.form.uri,
-                avg_load: this.form.avg_load,
-                co2: this.form.co2,
-                cost: this.form.cost,
-                name: item.name
-              })
+              Properties)
           )
           rader_layer.push(new RadarOverlay(Map_point, 20))
+          muti_layer.push(new MutiShapeOverlay(Map_point, Properties))
         }
       })
-      for (let index = 0; index < rader_layer.length; index++) {
-        map.addOverlay(rader_layer[index])
-      }
-      for (let index = 0; index < text_layer.length; index++) {
-        map.addOverlay(text_layer[index])
+      
+      if (this.type != 'overview') {
+        for (let index = 0; index < text_layer.length; index++) {
+          map.addOverlay(text_layer[index])
+        }
+        for (let index = 0; index < rader_layer.length; index++) {
+          map.addOverlay(rader_layer[index])
+        }
+      } else { 
+        for (let index = 0; index < muti_layer.length; index++) {
+          map.addOverlay(muti_layer[index])
+        }
       }
     },
     createMapCircleOverlay(map) {
@@ -287,17 +307,18 @@ export default {
         projectName: '第一系列相关项目',
         projectNum: project_num['arm'] || 1
       })
-
+      that.dels = MapCircle_Kamba_Town
       circleLayerList.push(MapCircle_Kamba_Town, MapCircle_Cona_Town, MapCircle_Lasa_city, MapCircle_Shannan_city, MapCircle_arm_project, MapCircle_Nyingchi_project)
-      console.log('circleLayerList ', circleLayerList)
       circleLayerList.forEach((item) => { 
         map.addOverlay(item)
       })
-      // this.circle_text_overlay.push(MapCircle_Kamba_Town)
     },
     handleCallback(map, Property) {
       var that = this
       var zoom = map.getZoom()
+      if (that.type == 'overview') { 
+        return
+      }
       if (zoom < 12) {
         map.clearOverlays()
         that.createMapCircleOverlay(map)
@@ -311,15 +332,32 @@ export default {
         that.layer_exists = true
       }
     },
+    handleOverviewButton(map, Property) { 
+      this.CreateOverlayLarge(map, Property)
+      // this.map.removeOverlay(this.circle_text_overlay[0])
+      // that.map.removeOverlay(that.dels)
+      // let temp = that.map.getOverlays()
+      // console.log('sd',temp)
+    },
     getDesignInfo() {
       this.map.clearOverlays()
       this.type = 'design'
+      this.showLegend = false
       this.handleCallback(this.map, Design_Property)
     },
     getBuildInfo() {
       this.map.clearOverlays()
       this.type = 'build'
+      this.showLegend = false
       this.handleCallback(this.map, Build_Property)
+    },
+    getOverviewInfo() {
+      var that = this
+      that.showLegend = true
+      that.map.centerAndZoom(new BMap.Point(91.110223, 29.657166), 9)
+      that.map.clearOverlays()
+      this.type = 'overview'
+      this.handleOverviewButton(that.map, Overview_Property)
     }
   }
 }
@@ -358,6 +396,23 @@ export default {
 }
 .radar-box {
   position: absolute;
+
+  .city_width {
+    cursor: pointer;
+    width: 40px;
+  }
+  .town_width {
+    cursor: pointer;
+    width: 30px;
+  }
+  .unit_width {
+    cursor: pointer;
+    width: 25px;
+  }
+  .plot_width {
+    cursor: pointer;
+    width: 15px;
+  }
 
   .radar {
     width: 20px;
@@ -474,75 +529,93 @@ ul li {
     color: #fff;
 }
 
-#triangle-down {
+.triangle-down {
   width: 0;
   height: 0;
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
-  border-top: 100px solid red;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 16px solid rgb(73, 109, 15);
+  position: absolute;
 }
 
-#star-six {
+.star-six {
   width: 0;
   height: 0;
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
-  border-bottom: 100px solid red;
-  position: relative;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid rgb(23, 14, 145);
+  position: absolute;
 }
-#star-six:after {
+.star-six:after {
   width: 0;
   height: 0;
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
-  border-top: 100px solid red;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 20px solid rgb(23, 14, 145);
   position: absolute;
   content: "";
-  top: 30px;
-  left: -50px;
+  top: 6px;
+  left: -10px;
 }
 
-#burst-8 {
-  background: red;
-  width: 80px;
-  height: 80px;
-  position: relative;
+.burst-8 {
+  background: rgb(180, 3, 3);
+  width: 20px;
+  height: 20px;
+  position: absolute;
   text-align: center;
   transform: rotate(20deg);
 }
-#burst-8:before {
+.burst-8:before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
-  height: 80px;
-  width: 80px;
-  background: red;
+  height: 20px;
+  width: 20px;
+  background: rgb(180, 3, 3);
   transform: rotate(135deg);
 }
 
-#burst-12 {
+.burst-12 {
   background: red;
-  width: 80px;
-  height: 80px;
-  position: relative;
+  width: 30px;
+  height: 30px;
+  position: absolute;
   text-align: center;
 }
-#burst-12:before,
-#burst-12:after {
+.burst-12:before,
+.burst-12:after {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
-  height: 80px;
-  width: 80px;
-  background: red;
-}
-#burst-12:before {
+  height: 30px;
+  width: 30px;
+  background: rgb(255, 0, 0);
+  }
+.burst-12:before {
   transform: rotate(30deg);
 }
-#burst-12:after {
+.burst-12:after {
   transform: rotate(60deg);
 }
+
+.legend {
+    z-index: 999;
+    position: relative;
+    bottom: 71rem;
+    left :87%;
+    // padding: 1rem 1rem;
+    border-radius: 0.25rem;
+    height: 60px;
+    width: max-content;
+    padding: 6px 0px 0px 0px;
+
+  .legend-img{
+    width: 300px;
+  }
+}
+
 
 </style>

@@ -1,5 +1,130 @@
 // import { BaiduMap as BMap } from 'vue-baidu-map'
 import BMap from 'BMap'
+
+class MutiShapeOverlay extends BMap.Overlay {
+  constructor(point, propertie = {}) {
+    super()
+    this.point = point
+    this.size = 20
+    switch (propertie.level) {
+      case 'city':
+        this.size = 20
+        this.imgClass = 'city_width'
+        break;
+      case 'town':
+        this.size = 15
+        this.imgClass = 'town_width'
+        break;
+      case 'unit':
+        this.size = 12.5
+        this.imgClass = 'unit_width'
+        break;
+      case 'plot':
+        this.size = 7.5
+        this.imgClass = 'plot_width'
+        break;
+      default:
+        break;
+    }
+    this.properties = propertie
+  }
+
+  initialize(map) {
+    this._map = map
+    let template = ``
+    let selector = '.radar-box'
+
+    switch (this.properties.sort) {
+      case 'build':
+        template = `<div class="radar-box" id = ${this.properties.name}>
+                      <img class = "${this.imgClass}" src = "http://cdqrmi.com/DataCenter/project_imgs/build.png"/>
+                    </div>`
+        break;
+      case 'design':
+        template = `<div class="radar-box" id = ${this.properties.name}>
+                      <img class = "${this.imgClass}" src = "http://cdqrmi.com/DataCenter/project_imgs/design.png"/>
+                    </div>`
+        // selector = '.burst-8'
+        break;
+      case 'maintenance':
+        template = `<div class="radar-box" id = ${this.properties.name}>
+                      <img class = "${this.imgClass}" src = "http://cdqrmi.com/DataCenter/project_imgs/maintenance.png"/>
+                    </div>`
+        break;
+      default:
+        template = `<div class="radar-box" id = ${this.properties.name}>
+                      <img class = "${this.imgClass}" src = "http://cdqrmi.com/DataCenter/project_imgs/build.png"/>
+                    </div>`
+        break;
+    }
+    if (this.properties.level == 'city') { 
+      template = `<div class="radar-box">
+                      <img class = "${this.imgClass}" src = "http://cdqrmi.com/DataCenter/project_imgs/five_angle.png"/>
+                    </div>`
+    }
+    console.log('selector', this.properties)
+    const divFragment = document.createRange().createContextualFragment(template)
+    const div = divFragment.querySelectorAll(selector)[0]
+    map.getPanes().markerPane.appendChild(div)
+    this._div = div
+    div.onmouseover = () => {
+      this.showPopover()
+    }
+    return div
+  }
+
+  showPopover() {
+    const content = this.properties.text;
+    // 创建一个弹出框元素
+    const popover = document.createElement('div')
+    const title = document.createElement('div')
+    title.className = 'popover-title'
+    title.innerHTML = this.properties.title
+
+    popover.className = 'popover'
+    popover.style.backgroundColor = '#ffffff'
+    popover.style.border = '1px solid #cccccc'
+    popover.style.boxShadow = ' 0 2px 4px rgba(0, 0, 0, 0.1)'
+    popover.style.padding = '10px'
+    popover.style.borderRadius= '4px'
+    popover.style.fontFamily = 'Arial, sans-serif'
+    popover.style.fontSize = '14px'
+    popover.style.width = '200px'
+    popover.style.color = '#333333'
+
+    popover.appendChild(title)
+    popover.innerHTML += content
+
+    // 根据标题的长度调整弹出框的宽度
+    // const titleWidth = title.offsetWidth
+    // popover.style.width = titleWidth + 'px'
+
+    // 设置弹出框的位置
+    const position = this._map.pointToOverlayPixel(this.point)
+    popover.style.left = position.x + 'px';
+    popover.style.top = position.y - 20 + 'px'
+
+    // 将弹出框添加到地图容器中
+    this._map.getPanes().floatPane.appendChild(popover)
+
+    // 鼠标移出覆盖物时，隐藏弹出框
+    this._div.onmouseout = () => {
+      this.hidePopover(popover)
+    }
+  }
+
+  hidePopover(popover) {
+    // 从地图容器中移除弹出框
+    this._map.getPanes().floatPane.removeChild(popover);
+  }
+
+  draw() {
+    // 根据地理坐标转换为像素坐标，并设置给容器
+    const position = this._map.pointToOverlayPixel(this.point)
+    this._div.style.left = `${position.x - this.size / 2}px`
+    this._div.style.top = `${position.y - this.size / 2}px`
+  }
+}
 class RadarOverlay extends BMap.Overlay {
   constructor(point, size) {
     super()
@@ -232,5 +357,6 @@ getHighestZIndex() {
 export {
   RadarOverlay,
   TextCentent,
-  MapCircleOverlay
+  MapCircleOverlay,
+  MutiShapeOverlay
 }

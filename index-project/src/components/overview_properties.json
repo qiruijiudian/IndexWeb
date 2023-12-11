@@ -1,0 +1,417 @@
+[
+    {
+        "title": "岗巴县孔玛乡被动式采暖试点工程(2017年)",
+        "text": "被动式太阳能+电暖片组合式系统采暖，系统简单可靠，建筑同寿命；每户耗电6元/月，基本实现“零能耗”供暖。",
+        "point": [
+            88.480673,
+            28.224317
+        ],
+        "imgSrc": "http://cdqrmi.com/DataCenter/project_imgs/kamba_2.jpg",
+        "name": "kamba_1",
+        "location": "Rikaze",
+        "level": "city",
+        "sort": "design"
+    },
+    {
+        "title": "日喀则市岗巴县城供暖工程(2018-2019年)",
+        "text": "采用建筑保温+太阳能+水源热泵，包括太阳能集中供暖热源厂、蓄热装置（含辅助热源）、供热管网和现有建筑物户内供暖设施建设。",
+        "point": [
+            88.522129,
+            28.277643
+        ],
+        "imgSrc": "http://cdqrmi.com/DataCenter/project_imgs/kamba_3.jpg",
+        "name": "kamba_2",
+        "location": "Rikaze",
+        "level": "city",
+        "sort": "design"
+    },
+    {
+        "title": "扎囊福利院集中供暖工程(2016年)",
+        "text": "浅层地热能资源利用,采暖设计面积约0.54万平方米。系统形式采用了浅表地下水+水源热泵+风机盘管/地盘管",
+        "point": [
+            91.349078,
+            29.255213
+        ],
+        "imgSrc": "http://cdqrmi.com/DataCenter/project_imgs/shannan_1.jpg",
+        "name": "shannan_1",
+        "location": "Shannan",
+        "level": "unit",
+        "sort": "design"
+    },
+    {
+        "title": "拉萨市政供暖设计工程(2012-2016年)",
+        "text": "[项目特色]拉萨市全城增设供暖工程，对所有采暖工程进行采暖设计。[项目规模]设计采暖面积约800万平方米，占整个拉萨市政供暖设计的五分之三。[系统形式]采暖系统（包括太阳能、水源热泵、燃气锅炉、壁挂炉、电采暖等各种热源形式）。",
+        "point": [
+            91.141069,
+            29.664118
+        ],
+        "imgSrc": "http://cdqrmi.com/DataCenter/project_imgs/Lhasa_1.jpg",
+        "name": "Lhasa_1",
+        "location": "Lhasa",
+        "level": "city",
+        "sort": "design"
+    },
+    {
+        "title": "拉萨市既有建筑围护结构节能改造(2015年)",
+        "text": "[项目特色]作为拉萨市供暖的配套规划，对整个城市的建筑进行节能整改规划及可研性研究报告的调研及撰写。[项目规模]整个拉萨市。",
+        "point": [
+            91.130002,
+            29.677424
+        ],
+        "imgSrc": "http://cdqrmi.com/DataCenter/kamba.jpg",
+        "name": "Lhasa_3",
+        "location": "Lhasa",
+        "level": "city",
+        "sort": "design"
+    },
+    {
+        "title": "柳梧公共服务楼供暖系统节能调试工程",
+        "text": "被动式太阳能+电暖片组合式系统采暖，系统简单可靠，建筑同寿命；每户耗电6元/月，基本实现“零能耗”供暖.",
+        "point": [
+            91.091706,
+            29.632182
+        ],
+        "name": "Lhasa_2",
+        "location": "Lhasa",
+        "level": "unit",
+        "sort": "maintenance"
+    },
+    {
+        "title": "登木乡政府供暖工程(2019)",
+        "text": "热源形式：水源热泵。供暖面积：7500 ㎡",
+        "point": [
+            92.834124,
+            28.886496
+        ],
+        "name": "Nyingchi_1",
+        "location": "Nyingchi",
+        "level": "town",
+        "sort": "build"
+    },
+    {
+        "title": "朗县中学供暖工程(2019)",
+        "text": "热源形式：空气源热泵。供暖面积：1.4万 ㎡",
+        "point": [
+            93.084753,
+            29.05176
+        ],
+        "name": "Nyingchi_2",
+        "location": "Nyingchi",
+        "level": "town"
+    },
+    {
+        "title": "朗县金东乡供暖工程(2019)",
+        "text": "热源形式：空气源热泵。供暖面积：4300 ㎡",
+        "point": [
+            93.388676,
+            28.971603
+        ],
+        "name": "Nyingchi_3",
+        "location": "Nyingchi",
+        "level": "town",
+        "sort": "build"
+    },
+    {
+        "title": "朗县拉多乡供暖工程(2019)",
+        "text": "热源形式：空气源热泵。供暖面积：4100 ㎡",
+        "point": [
+            93.063249,
+            28.937826
+        ],
+        "name": "Nyingchi_4",
+        "location": "Nyingchi",
+        "level": "town",
+        "sort": "build"
+    },
+    {
+        "title": "扎朗县敬老院供暖工程(2018)",
+        "text": "热源形式：水源热泵。供暖面积：7900 ㎡",
+        "point": [
+            91.342146,
+            29.247775
+        ],
+        "name": "shannan_2",
+        "location": "Shannan",
+        "level": "town",
+        "sort": "build"
+    },
+    {
+        "title": "扎朗县桑耶小学供暖工程(2022)",
+        "text": "热源形式：空气源热泵。供暖面积：5400 ㎡",
+        "point": [
+            91.52091,
+            29.327233
+        ],
+        "name": "shannan_3",
+        "location": "Shannan",
+        "level": "town",
+        "sort": "build"
+    },
+    {
+        "title": "扎朗县雪拉小学供暖工程(2020)",
+        "text": "热源形式：空气源热泵。供暖面积：3900 ㎡",
+        "point": [
+            91.311441,
+            29.073437
+        ],
+        "name": "shannan_4",
+        "location": "Shannan",
+        "level": "town",
+        "sort": "build"
+    },
+    {
+        "title": "扎朗县吉汝小学供暖工程(2020)",
+        "text": "热源形式：空气源热泵。供暖面积：4100 ㎡",
+        "point": [
+            91.343359,
+            29.072002
+        ],
+        "name": "shannan_5",
+        "location": "Shannan",
+        "level": "town",
+        "sort": "build"
+    },
+    {
+        "title": "岗巴铁布公村村民家供暖工程(2023)",
+        "text": "热源形式：光电。供暖面积：40 ㎡",
+        "point": [
+            88.239468,
+            28.201098
+        ],
+        "name": "kamba_3",
+        "location": "Rikaze",
+        "level": "plot",
+        "sort": "build"
+    },
+    {
+        "title": "岗巴县城供水工程(2023)",
+        "text": "供水面积：21万 ㎡",
+        "point": [
+            88.512584,
+            28.267352
+        ],
+        "name": "kamba_4",
+        "location": "Rikaze",
+        "level": "town",
+        "sort": "maintenance"
+    },
+    {
+        "title": "岗巴跨集热太阳能供暖施工(2019-2020)",
+        "text": "[项目特色]大规模主动式太阳能供暖。[项目规模]采暖设计面积约19.6万平方米。[系统形式]采用建筑保温+太阳能+水源热泵，包括太阳能集中供暖热源厂、蓄热装置（含辅助热源）、供热管网和现有建筑物户内供暖设施建设。",
+        "point": [
+            88.51907,
+            28.277166
+        ],
+        "imgSrc": "http://cdqrmi.com/DataCenter/project_imgs/kamba-1.jpg",
+        "name": "kamba-1",
+        "location": "kamba",
+        "level": "town",
+        "sort": "build"
+    },
+    {
+        "title": "错那县城地热供暖施工(2016-2018)",
+        "text": "[项目特色]中温地热资源供暖。[项目规模]1期、 2期采暖设计面积共约28.4万平方米。[系统形式]采用丰富的地热资源+水源热泵机组，末端采用风机盘管及地盘管，商铺采用电采暖。",
+        "point": [
+            91.962275,
+            27.997164
+        ],
+        "imgSrc": "http://cdqrmi.com/DataCenter/project_imgs/cona-1.jpg",
+        "name": "Cona-1",
+        "location": "Cona",
+        "level": "city",
+        "sort": "build"
+    },
+    {
+        "title": "武警西藏总队医院采暖工程(2015)",
+        "text": "[项目特色]中温地热资源供暖。[项目规模]1期、 2期采暖设计面积共约28.4万平方米。[系统形式]采用丰富的地热资源+水源热泵机组，末端采用风机盘管及地盘管，商铺采用电采暖。",
+        "point": [
+            91.1398,
+            29.678836
+        ],
+        "imgSrc": "http://cdqrmi.com/DataCenter/project_imgs/Lhasa-1.jpg",
+        "name": "Lhasa—1",
+        "location": "Lhasa",
+        "level": "unit",
+        "sort": "build"
+    },
+    {
+        "title": "西藏自治区人民政府党政会议中心(2015)",
+        "text": "热源形式：高大空间供暖",
+        "point": [
+            91.124244,
+            29.654996
+        ],
+        "name": "Lhasa—5",
+        "location": "Lhasa",
+        "level": "plot",
+        "sort": "build"
+    },
+    {
+        "title": "拉萨市党政会议楼供暖系统整改工程(2015)",
+        "text": "热源形式：空气源热泵",
+        "point": [
+            91.139258,
+            29.644321
+        ],
+        "name": "Lhasa—6",
+        "location": "Lhasa",
+        "level": "plot",
+        "sort": "build"
+    },
+    {
+        "title": "拉萨市人民政府供暖系统整改工程(2015)",
+        "text": "热源形式：水源热泵+空气源热泵",
+        "point": [
+            91.178454,
+            29.659504
+        ],
+        "name": "Lhasa—7",
+        "location": "Lhasa",
+        "level": "unit",
+        "sort": "build"
+    },
+    {
+        "title": "西藏自治区公安厅礼堂供暖施工(2013-2015)",
+        "text": "热源形式：高大空间供暖",
+        "point": [
+            91.147142,
+            29.655266
+        ],
+        "name": "Lhasa—8",
+        "location": "Lhasa",
+        "level": "plot",
+        "sort": "build"
+    },
+    {
+        "title": "西藏自治区地方海事局（交通运输厅）供暖施工(2013-2015)",
+        "text": "热源形式：燃气锅炉",
+        "point": [
+            91.136589,
+            29.67089
+        ],
+        "name": "Lhasa—9",
+        "location": "Lhasa",
+        "level": "plot",
+        "sort": "build"
+    },
+    {
+        "title": "西藏自治区林业调查研究院供暖施工(2013-2015)",
+        "text": "热源形式：燃气锅炉",
+        "point": [
+            91.076125,
+            29.650212
+        ],
+        "name": "Lhasa—10",
+        "location": "Lhasa",
+        "level": "plot",
+        "sort": "build"
+    },
+    {
+        "title": "西藏自治区会展中心音乐喷泉配电系统安装(2014)",
+        "text": "热源形式：配电工程",
+        "point": [
+            91.194639,
+            29.659784
+        ],
+        "name": "Lhasa—11",
+        "location": "Lhasa",
+        "level": "plot",
+        "sort": "build"
+    },
+    {
+        "title": "西藏自治区人民医院供暖施工(2013-2015)",
+        "text": "热源形式：电采暖",
+        "point": [
+            91.134289,
+            29.661759
+        ],
+        "name": "Lhasa—12",
+        "location": "Lhasa",
+        "level": "plot",
+        "sort": "build"
+    },
+    {
+        "title": "拉萨市市民服务中心采暖工程(2014)",
+        "text": "热源形式：空气源热泵",
+        "point": [
+            91.177502,
+            29.660364
+        ],
+        "name": "Lhasa—13",
+        "location": "Lhasa",
+        "level": "plot",
+        "sort": "build"
+    },
+    {
+        "title": "西藏自治区人工影响天气中心供暖工程(2014)",
+        "text": "热源形式：电采暖",
+        "point": [
+            91.162419,
+            29.670711
+        ],
+        "name": "Lhasa—14",
+        "location": "Lhasa",
+        "level": "plot",
+        "sort": "build"
+    },
+    {
+        "title": "西藏自治区纪委监察厅办公用房电地暖工程(2013)",
+        "text": "热源形式：电采暖",
+        "point": [
+            91.129437,
+            29.655805
+        ],
+        "name": "Lhasa—16",
+        "location": "Lhasa",
+        "level": "plot",
+        "sort": "build"
+    },
+    {
+        "title": "拉萨市城关区人民检察院技侦楼碳纤维采暖试点工程(2013)",
+        "text": "热源形式：电采暖",
+        "point": [
+            91.182568,
+            29.643984
+        ],
+        "name": "Lhasa—17",
+        "location": "Lhasa",
+        "level": "plot",
+        "sort": "build"
+    },
+    {
+        "title": "西藏自治区纪检委采暖工程(2013)",
+        "text": "热源形式：水源热泵",
+        "point": [
+            91.129365,
+            29.655742
+        ],
+        "name": "Lhasa—18",
+        "location": "Lhasa",
+        "level": "unit",
+        "sort": "build"
+    },
+    {
+        "title": "西藏自治区武警边防医院采暖工程(2013)",
+        "text": "热源形式：水源热泵",
+        "point": [
+            91.115966,
+            29.670087
+        ],
+        "name": "Lhasa—19",
+        "location": "Lhasa",
+        "level": "unit",
+        "sort": "build"
+    },
+    {
+        "title": "西藏自治区中国移动高海拔营业厅采暖工程(31个县)(2012-2013)",
+        "text": "热源形式：燃煤锅炉采暖（自然循环及机械循环）",
+        "point": [
+            90.750313,
+            29.356135
+        ],
+        "name": "Lhasa—20",
+        "location": "Lhasa",
+        "level": "town",
+        "sort": "build"
+    }
+]
