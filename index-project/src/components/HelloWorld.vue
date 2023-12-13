@@ -131,6 +131,52 @@ export default {
         map.centerAndZoom(new BMap.Point(91.110223, 29.657166), 9)
         map.setDefaultCursor('default')
         map.enableScrollWheelZoom(true)
+        map.setMinZoom(5)
+        // 禁用双击放大地图
+        map.disableDoubleClickZoom()
+
+        
+        // 自定义地图样式
+        var mapStyle = [
+          {
+            "featureType": "road",
+            "elementType": "labels",
+            "stylers": {
+              "visibility": "on"
+            }
+          },
+          {
+            "featureType": "road",
+            "elementType": "labels.text.stroke",
+            "stylers": {
+              "visibility": "off"
+            }
+          },
+          {
+            "featureType": "road",
+            "elementType": "labels.text.fill",
+            "stylers": {
+              "visibility": "off"
+            }
+          },
+          {
+            "featureType": "road",
+            "elementType": "labels.icon",
+            "stylers": {
+              "visibility": "off"
+            }
+          },
+          {
+            "featureType": "poi",
+            "elementType": "labels",
+            "stylers": {
+              "visibility": "off"
+            }
+          },
+          // 可以根据需要添加更多样式规则
+        ]
+
+        map.setMapStyle({ styleJson: mapStyle })
 
         // eslint-disable-next-line no-undef
         map.setMapType(BMAP_NORMAL_MAP)
