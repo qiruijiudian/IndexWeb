@@ -4,9 +4,10 @@
         <li class = "btn" @click = "getDesignInfo()">查看设计项目</li>
         <li class = "btn" @click = "getBuildInfo()">查看施工项目</li>
         <li class = "btn" @click = "getOverviewInfo()">概览</li>
+        <!-- <li class = "btn" @click = "getOverviewInfo_2()">概览2</li> -->
     </ul>
     <div class = "legend" v-show="showLegend">
-      <img class="legend-img" src = "./legend.png" />
+      <img class="legend-img" src = "./legend_2.png" />
     </div>
 </template>
 
@@ -19,7 +20,7 @@ import BMap from 'BMap'
 import Design_Property from './design_properties.json'
 import Build_Property from './build_properties.json'
 import Overview_Property from './overview_properties.json'
-import { RadarOverlay, TextCentent, MapCircleOverlay, MutiShapeOverlay } from './dom'
+import { RadarOverlay, TextCentent, MapCircleOverlay, MutiShapeOverlay, MutiShapeOverlay_2 } from './dom'
 
 const controller = new AbortController()
 // const signal = controller.signal
@@ -128,7 +129,7 @@ export default {
 
         // map.centerAndZoom(point, 14)
         map.centerAndZoom(new BMap.Point(91.110223, 29.657166), 9)
-
+        map.setDefaultCursor('default')
         map.enableScrollWheelZoom(true)
 
         // eslint-disable-next-line no-undef
@@ -237,7 +238,7 @@ export default {
               Properties)
           )
           rader_layer.push(new RadarOverlay(Map_point, 20))
-          muti_layer.push(new MutiShapeOverlay(Map_point, Properties))
+          muti_layer.push(new MutiShapeOverlay_2(Map_point, Properties))
         }
       })
       
@@ -249,6 +250,38 @@ export default {
           map.addOverlay(rader_layer[index])
         }
       } else { 
+        for (let index = 0; index < muti_layer.length; index++) {
+          map.addOverlay(muti_layer[index])
+        }
+      }
+    },
+    CreateOverlayLarge_bak(map, Property = Design_Property) {
+      // var that = this
+      // project_num = {}
+      const text_layer = []
+      const rader_layer = []
+      const muti_layer = []
+      Property.forEach((item) => {
+        var Map_point = new BMap.Point(item["point"][0], item["point"][1])
+        var Properties = item
+        if (item.text != "") {
+          text_layer.push(
+            new TextCentent(Map_point,
+              Properties)
+          )
+          rader_layer.push(new RadarOverlay(Map_point, 20))
+          muti_layer.push(new MutiShapeOverlay(Map_point, Properties))
+        }
+      })
+
+      if (this.type != 'overview') {
+        for (let index = 0; index < text_layer.length; index++) {
+          map.addOverlay(text_layer[index])
+        }
+        for (let index = 0; index < rader_layer.length; index++) {
+          map.addOverlay(rader_layer[index])
+        }
+      } else {
         for (let index = 0; index < muti_layer.length; index++) {
           map.addOverlay(muti_layer[index])
         }
@@ -316,7 +349,7 @@ export default {
     handleCallback(map, Property) {
       var that = this
       var zoom = map.getZoom()
-      if (that.type == 'overview') { 
+      if (['overview', 'overview2'].includes(that.type)) { 
         return
       }
       if (zoom < 12) {
@@ -333,11 +366,16 @@ export default {
       }
     },
     handleOverviewButton(map, Property) { 
-      this.CreateOverlayLarge(map, Property)
-      // this.map.removeOverlay(this.circle_text_overlay[0])
-      // that.map.removeOverlay(that.dels)
-      // let temp = that.map.getOverlays()
-      // console.log('sd',temp)
+      switch (this.type) {
+        case 'overview':
+          this.CreateOverlayLarge(map, Property)
+          break
+        case 'overview2':
+          this.CreateOverlayLarge_bak(map, Property)
+          break
+        default:
+          break;
+      }
     },
     getDesignInfo() {
       this.map.clearOverlays()
@@ -357,6 +395,14 @@ export default {
       that.map.centerAndZoom(new BMap.Point(91.110223, 29.657166), 9)
       that.map.clearOverlays()
       this.type = 'overview'
+      this.handleOverviewButton(that.map, Overview_Property)
+    },
+    getOverviewInfo_2() { 
+      var that = this
+      that.showLegend = true
+      that.map.centerAndZoom(new BMap.Point(91.110223, 29.657166), 9)
+      that.map.clearOverlays()
+      this.type = 'overview2'
       this.handleOverviewButton(that.map, Overview_Property)
     }
   }
@@ -394,24 +440,50 @@ export default {
     background: #EE5D5B;
     z-index: 99;
 }
+
+.MutiShapeOverlay-div{
+  position: absolute;
+  cursor: pointer;
+  .city_width {
+    width: 40px;
+    opacity: 0.7;
+  }
+  .town_width {
+    width: 30px;
+    opacity: 0.7;
+  }
+  .unit_width {
+    width: 30px;
+    opacity: 0.7;
+  }
+  .plot_width {
+    width: 30px;
+    opacity: 0.7;
+  }
+}
+
 .radar-box {
   position: absolute;
 
   .city_width {
     cursor: pointer;
-    width: 40px;
+    width: 30px;
+    opacity: 0.8;
   }
   .town_width {
     cursor: pointer;
     width: 30px;
+    opacity: 0.8;
   }
   .unit_width {
     cursor: pointer;
-    width: 25px;
+    width: 30px;
+    opacity: 0.8;
   }
   .plot_width {
     cursor: pointer;
-    width: 15px;
+    width: 30px;
+    opacity: 0.8;
   }
 
   .radar {
@@ -604,17 +676,17 @@ ul li {
 .legend {
     z-index: 999;
     position: relative;
-    bottom: 71rem;
-    left :87%;
+    bottom: 10rem;
+    left :16%;
     // padding: 1rem 1rem;
     border-radius: 0.25rem;
     height: 60px;
     width: max-content;
     padding: 6px 0px 0px 0px;
 
-  .legend-img{
-    width: 300px;
-  }
+  // .legend-img{
+    
+  // }
 }
 
 
