@@ -1,0 +1,113 @@
+[
+    {
+        "id": "id_1",
+        "point": [
+            88.522129,
+            28.277643
+        ],
+        "projectName": "岗巴县",
+        "kind": {
+            "build": 5,
+            "design": 2,
+            "maintenance": 1
+        }
+    },
+    {
+        "id": "id_2",
+        "point": [
+            91.963748,
+            27.996766
+        ],
+        "projectName": "错那市",
+        "kind": {
+            "build": 2,
+            "design": 2,
+            "maintenance": 1
+        }
+    },
+    {
+        "id": "id_3",
+        "point": [
+            91.146321,
+            29.660194
+        ],
+        "projectName": "拉萨市",
+        "kind": {
+            "build": 28,
+            "design": 47,
+            "maintenance": 10
+        }
+    },
+    {
+        "id": "id_4",
+        "point": [
+            91.767756,
+            29.251851
+        ],
+        "projectName": "山南市",
+        "kind": {
+            "build": 4,
+            "design": 5
+        }
+    },
+    {
+        "id": "id_5",
+        "point": [
+            94.369491,
+            29.661575
+        ],
+        "projectName": "林芝市",
+        "kind": {
+            "build": 4,
+            "design": 4
+        }
+    },
+    {
+        "id": "id_6",
+        "point": [
+            88.024823,
+            28.907714
+        ],
+        "projectName": "萨迦县",
+        "kind": {
+            "build": 2,
+            "design": 2
+        }
+    },
+    {
+        "id": "id_7",
+        "point": [
+            87.646519,
+            29.087764
+        ],
+        "projectName": "拉孜县",
+        "kind": {
+            "build": 4,
+            "design": 4
+        }
+    },
+    {
+        "id": "id_8",
+        "point": [
+            88.264759,
+            29.4394
+        ],
+        "projectName": "谢通门县",
+        "kind": {
+            "build": 3,
+            "design": 3
+        }
+    },
+    {
+        "id": "id_9",
+        "point": [
+            88.915744,
+            27.491879
+        ],
+        "projectName": "亚东县",
+        "kind": {
+            "build": 4,
+            "design": 4
+        }
+    }
+]

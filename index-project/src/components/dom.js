@@ -1,85 +1,120 @@
 // import { BaiduMap as BMap } from 'vue-baidu-map'
 import BMap from 'BMap'
 
-class MutiShapeOverlay extends BMap.Overlay {
+class PieOverlay extends BMap.Overlay {
   constructor(point, propertie = {}) {
     super()
     this.point = point
-    this.size = 20
-    switch (propertie.level) {
-      case 'city':
-        this.size = 20
-        this.imgClass = 'city_width'
-        break;
-      case 'town':
-        this.size = 15
-        this.imgClass = 'town_width'
-        break;
-      case 'unit':
-        this.size = 12.5
-        this.imgClass = 'unit_width'
-        break;
-      case 'plot':
-        this.size = 7.5
-        this.imgClass = 'plot_width'
-        break;
-      default:
-        break;
-    }
+    this.size = 100
     this.properties = propertie
   }
 
   initialize(map) {
-    this._map = map
-    let template = ``
-    let selector = '.radar-box'
+    this._map = map;
+    var container = document.createElement("div")
+    container.style.position = "absolute"
+    container.id = this.properties.id
+    container.style.width = `${this.size}px`
+    container.style.height = `${this.size}px`
+    map.getPanes().labelPane.appendChild(container)
+    this._container = container
 
-    switch (this.properties.sort) {
-      case 'build':
-        template = `<div class="radar-box" id = ${this.properties.name}>
-                      <img class = "${this.imgClass}" src = "http://cdqrmi.com/DataCenter/project_imgs/circle_city.png"/>
-                    </div>`
-        break;
-      case 'design':
-        template = `<div class="radar-box" id = ${this.properties.name}>
-                      <img class = "${this.imgClass}" src = "http://cdqrmi.com/DataCenter/project_imgs/design.png"/>
-                    </div>`
-        // selector = '.burst-8'
-        break;
-      case 'maintenance':
-        template = `<div class="radar-box" id = ${this.properties.name}>
-                      <img class = "${this.imgClass}" src = "http://cdqrmi.com/DataCenter/project_imgs/maintenance.png"/>
-                    </div>`
-        break;
-      default:
-        template = `<div class="radar-box" id = ${this.properties.name}>
-                      <img class = "${this.imgClass}" src = "http://cdqrmi.com/DataCenter/project_imgs/build.png"/>
-                    </div>`
-        break;
-    }
-    if (this.properties.level == 'city') { 
-      template = `<div class="radar-box">
-                      <img class = "${this.imgClass}" src = "http://cdqrmi.com/DataCenter/project_imgs/five_angle.png"/>
-                    </div>`
-    }
-    // console.log('selector', this.properties)
-    const divFragment = document.createRange().createContextualFragment(template)
-    const div = divFragment.querySelectorAll(selector)[0]
-    map.getPanes().markerPane.appendChild(div)
-    this._div = div
-    div.onmouseover = () => {
+    var canvas = document.createElement("canvas")
+    canvas.width = this.size
+    canvas.height = this.size
+    container.appendChild(canvas)
+    this._canvas = canvas
+
+    container.onmouseover = () => {
+      var that = this
+      var _layer = document.getElementById(container.id)
+      _layer.style.zIndex = that.getHighestZIndex() + 1
       this.showPopover()
     }
-    return div
+    this._createPie();
+    return container;
+  }
+
+  _createPie() { 
+    var total = 0
+    var kinds = 0
+    for (const key in this.properties.kind) {
+      console.log(key + ': ' + this.properties.kind[key])
+      total += this.properties.kind[key]
+      kinds += 1
+    }
+    
+    var startAngle = 0
+    var colors = ["rgba(242, 200, 15, 0.6)", "rgba(55, 70, 73, 0.6)", "rgba(166, 105, 153, 0.6)", "#ffff00", "#ff00ff", "#00ffff"] // 颜色数组，可根据需要自定义
+    var i = 0
+
+    
+    var ctx = this._canvas.getContext("2d");
+    var centerX = this.size / 2;
+    var centerY = this.size / 2;
+    var radius = this.size / 2;
+
+    for (const _key in this.properties.kind) {
+      var angle = (1 / kinds) * Math.PI * 2;
+      var endAngle = startAngle + angle;
+      console.log('color : ', colors[i % colors.length], 'totol', total, _key)
+      ctx.beginPath();
+      ctx.moveTo(centerX, centerY);
+      ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+      ctx.closePath();
+      ctx.fillStyle = colors[i % colors.length];
+      ctx.fill();
+      // 添加边框颜色
+      ctx.strokeStyle = "rgb(179, 137, 0)"; // 边框颜色，可根据需要自定义
+      ctx.lineWidth = 1; // 边框宽度，可根据需要自定义
+      ctx.stroke();
+
+      // 绘制区块文本
+      var text = this.properties.kind[_key];
+      ctx.font = "12px Arial"; // 区块文本字体样式，可根据需要自定义
+      ctx.fillStyle = "#000000"; // 区块文本颜色，可根据需要自定义
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      var textAngle = startAngle + angle / 2;
+      var textX = centerX + Math.cos(textAngle) * radius * 0.6;
+      var textY = centerY + Math.sin(textAngle) * radius * 0.6;
+      ctx.fillText(text, textX, textY);
+
+      startAngle = endAngle;
+      i += 1;
+    }
+
+    // 绘制标题文本
+    var title = this.properties.projectName;
+    ctx.font = "bold 18px Arial"; // 标题字体样式，可根据需要自定义
+    ctx.fillStyle = "#000000"; // 标题颜色，可根据需要自定义
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(title, centerX, centerY)
+  }
+
+  getHighestZIndex() {
+    var elements = document.getElementsByTagName('*');
+    var highestZIndex = Number.MIN_SAFE_INTEGER;
+
+    for (var i = 0; i < elements.length; i++) {
+      var zIndex = parseInt(window.getComputedStyle(elements[i]).getPropertyValue('z-index'));
+
+      if (zIndex > highestZIndex && zIndex !== 'auto') {
+        highestZIndex = zIndex;
+      }
+    }
+
+    return highestZIndex;
   }
 
   showPopover() {
-    const content = this.properties.text;
+    // const content = JSON.stringify(this.properties.kind);
     // 创建一个弹出框元素
     const popover = document.createElement('div')
     const title = document.createElement('div')
     title.className = 'popover-title'
-    title.innerHTML = this.properties.title
+    title.innerHTML = this.properties.projectName
 
     popover.className = 'popover'
     popover.style.backgroundColor = '#ffffff'
@@ -93,7 +128,19 @@ class MutiShapeOverlay extends BMap.Overlay {
     popover.style.color = '#333333'
 
     popover.appendChild(title)
-    popover.innerHTML += content
+    
+    var key_map = {"build" : "施工", "design": "设计", "maintenance":"维护"}
+    // var temp_dom = []
+
+    for (const _key in this.properties.kind) { 
+      const p1 = document.createElement('div')
+      p1.className = 'p1'
+      p1.innerHTML = `${key_map[_key]}项目数: ` + this.properties.kind[_key]
+      popover.appendChild(p1)
+    }
+
+
+    // popover.innerHTML += content
 
     // 根据标题的长度调整弹出框的宽度
     // const titleWidth = title.offsetWidth
@@ -108,7 +155,7 @@ class MutiShapeOverlay extends BMap.Overlay {
     this._map.getPanes().floatPane.appendChild(popover)
 
     // 鼠标移出覆盖物时，隐藏弹出框
-    this._div.onmouseout = () => {
+    this._container.onmouseout = () => {
       this.hidePopover(popover)
     }
   }
@@ -121,8 +168,8 @@ class MutiShapeOverlay extends BMap.Overlay {
   draw() {
     // 根据地理坐标转换为像素坐标，并设置给容器
     const position = this._map.pointToOverlayPixel(this.point)
-    this._div.style.left = `${position.x - this.size / 2}px`
-    this._div.style.top = `${position.y - this.size / 2}px`
+    this._container.style.left = `${position.x - this.size / 2}px`
+    this._container.style.top = `${position.y - this.size / 2}px`
   }
 }
 
@@ -407,9 +454,9 @@ class TextCentent extends BMap.Overlay {
       const template =
         `<div class="scroll-container" @mouseover="pauseScroll" @mouseout="resumeScroll">
         <ul id = "${ul_id}" class = "data_list">
-          <a href="${'url' in this.properties ? this.properties.url : 'http://data.cdqrmi.com/#/panel/index'}" target="_blank"><li>平均负荷：${this.properties.avg_load}</li></a>
-          <a href="${'url' in this.properties ? this.properties.url : 'http://data.cdqrmi.com/#/panel/index'}" target="_blank"><li>累计CO2减少量：${this.properties.co2}</li></a>
-          <a href="${'url' in this.properties ? this.properties.url : 'http://data.cdqrmi.com/#/panel/index'}" target="_blank"><li>累计节省费用：${this.properties.cost}</li></a>
+          <a href="${'url' in this.properties ? this.properties.url : 'http://data.cdqrmi.com/#/panel/index'}" target="_blank"><li>平均负荷：${'avg_load' in this.properties? this.properties.avg_load :'1377kW'}</li></a>
+          <a href="${'url' in this.properties ? this.properties.url : 'http://data.cdqrmi.com/#/panel/index'}" target="_blank"><li>累计CO2减少量：${'co2' in this.properties? this.properties.co2 : '22158吨'}</li></a>
+          <a href="${'url' in this.properties ? this.properties.url : 'http://data.cdqrmi.com/#/panel/index'}" target="_blank"><li>累计节省费用：${'cost' in this.properties? this.properties.cost : '886万元'}</li></a>
         </ul>
       </div>`
       const divFragment = document.createRange().createContextualFragment(template)
@@ -470,20 +517,20 @@ class TextCentent extends BMap.Overlay {
     this._div.style.top = `${position.y - extractedNumber_height - 10}px`
   }
 
-getHighestZIndex() {
-  var elements = document.getElementsByTagName('*');
-  var highestZIndex = Number.MIN_SAFE_INTEGER;
+  getHighestZIndex() {
+    var elements = document.getElementsByTagName('*');
+    var highestZIndex = Number.MIN_SAFE_INTEGER;
 
-  for (var i = 0; i < elements.length; i++) {
-    var zIndex = parseInt(window.getComputedStyle(elements[i]).getPropertyValue('z-index'));
+    for (var i = 0; i < elements.length; i++) {
+      var zIndex = parseInt(window.getComputedStyle(elements[i]).getPropertyValue('z-index'));
 
-    if (zIndex > highestZIndex && zIndex !== 'auto') {
-      highestZIndex = zIndex;
+      if (zIndex > highestZIndex && zIndex !== 'auto') {
+        highestZIndex = zIndex;
+      }
     }
-  }
 
-  return highestZIndex;
-}
+    return highestZIndex;
+  }
 
 }
 
@@ -491,6 +538,6 @@ export {
   RadarOverlay,
   TextCentent,
   MapCircleOverlay,
-  MutiShapeOverlay,
+  PieOverlay,
   MutiShapeOverlay_2
 }
