@@ -7,8 +7,8 @@
         ],
         "projectName": "岗巴县",
         "kind": {
-            "build": 5,
-            "design": 2,
+            "build": 4,
+            "design": 1,
             "maintenance": 1
         }
     },
@@ -18,7 +18,7 @@
             91.963748,
             27.996766
         ],
-        "projectName": "错那市",
+        "projectName": "错那县",
         "kind": {
             "build": 2,
             "design": 2,
@@ -35,16 +35,16 @@
         "kind": {
             "build": 28,
             "design": 47,
-            "maintenance": 10
+            "maintenance": 9
         }
     },
     {
         "id": "id_4",
         "point": [
-            91.767756,
-            29.251851
+            91.345193,
+            29.251347
         ],
-        "projectName": "山南市",
+        "projectName": "扎囊县",
         "kind": {
             "build": 4,
             "design": 5
@@ -53,13 +53,13 @@
     {
         "id": "id_5",
         "point": [
-            94.369491,
-            29.661575
+            93.081366,
+            29.052155
         ],
-        "projectName": "林芝市",
+        "projectName": "朗县",
         "kind": {
-            "build": 4,
-            "design": 4
+            "build": 3,
+            "design": 3
         }
     },
     {
@@ -108,6 +108,111 @@
         "kind": {
             "build": 4,
             "design": 4
+        }
+    },
+    {
+        "id": "id_10",
+        "point": [
+            92.842259,
+            28.890136
+        ],
+        "projectName": "登木乡",
+        "kind": {
+            "build": 1,
+            "design": 1
+        }
+    },
+    {
+        "id": "id_11",
+        "point": [
+            105.703995,
+            28.594183
+        ],
+        "projectName": "遵义市",
+        "kind": {
+            "maintenance": 1
+        }
+    },
+    {
+        "id": "id_12",
+        "point": [
+            104.006659,
+            30.591381
+        ],
+        "projectName": "成都市",
+        "kind": {
+            "maintenance": 1
+        }
+    },
+    {
+        "id": "id_13",
+        "point": [
+            88.643709,
+            28.488271
+        ],
+        "projectName": "孔玛乡",
+        "kind": {
+            "build": 1,
+            "design": 1
+        }
+    },
+    {
+        "id": "id_14",
+        "point": [
+            94.376103,
+            29.656804
+        ],
+        "projectName": "林芝市",
+        "kind": {
+            "build": 2,
+            "design": 1
+        }
+    },
+    {
+        "id": "id_15",
+        "point": [
+            91.782703,
+            29.257901
+        ],
+        "projectName": "山南市",
+        "kind": {
+            "build": 2,
+            "design": 1
+        }
+    },
+    {
+        "id": "id_16",
+        "point": [
+            91.037055,
+            29.568727
+        ],
+        "projectName": "柳梧乡",
+        "kind": {
+            "maintenance": 1
+        }
+    },
+    {
+        "id": "id_17",
+        "point": [
+            89.685366,
+            28.562714
+        ],
+        "projectName": "康马县",
+        "kind": {
+            "build": 1,
+            "design": 1
+        }
+    },
+    {
+        "id": "id_18",
+        "point": [
+            89.614311,
+            28.917382
+        ],
+        "projectName": "江孜县",
+        "kind": {
+            "build": 1,
+            "design": 1
         }
     }
 ]

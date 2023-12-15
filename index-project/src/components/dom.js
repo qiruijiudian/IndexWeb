@@ -5,7 +5,7 @@ class PieOverlay extends BMap.Overlay {
   constructor(point, propertie = {}) {
     super()
     this.point = point
-    this.size = 100
+    this.size = 80
     this.properties = propertie
   }
 
@@ -45,7 +45,8 @@ class PieOverlay extends BMap.Overlay {
     }
     
     var startAngle = 0
-    var colors = ["rgba(242, 200, 15, 0.6)", "rgba(55, 70, 73, 0.6)", "rgba(166, 105, 153, 0.6)", "#ffff00", "#ff00ff", "#00ffff"] // 颜色数组，可根据需要自定义
+    // var colors = ["rgba(242, 200, 15, 0.6)", "rgba(55, 70, 73, 0.6)", "rgba(166, 105, 153, 0.6)", "rgba(253, 98, 94, 0.6)", "rgba(1, 184, 170, 0.6)", "rgba(14,147,46, 0.6)"] // 颜色数组，可根据需要自定义
+    var colors = {"build":"rgba(253, 98, 94, 0.6)", "design":"rgba(1, 184, 170, 0.6)", "maintenance":"rgba(14, 147, 46, 0.6)"}
     var i = 0
 
     
@@ -62,7 +63,7 @@ class PieOverlay extends BMap.Overlay {
       ctx.moveTo(centerX, centerY);
       ctx.arc(centerX, centerY, radius, startAngle, endAngle);
       ctx.closePath();
-      ctx.fillStyle = colors[i % colors.length];
+      ctx.fillStyle = colors[_key]
       ctx.fill();
       // 添加边框颜色
       ctx.strokeStyle = "rgb(179, 137, 0)"; // 边框颜色，可根据需要自定义
@@ -71,7 +72,7 @@ class PieOverlay extends BMap.Overlay {
 
       // 绘制区块文本
       var text = this.properties.kind[_key];
-      ctx.font = "12px Arial"; // 区块文本字体样式，可根据需要自定义
+      ctx.font = "bold 16px Arial"; // 区块文本字体样式，可根据需要自定义
       ctx.fillStyle = "#000000"; // 区块文本颜色，可根据需要自定义
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
@@ -84,13 +85,13 @@ class PieOverlay extends BMap.Overlay {
       i += 1;
     }
 
-    // 绘制标题文本
-    var title = this.properties.projectName;
-    ctx.font = "bold 18px Arial"; // 标题字体样式，可根据需要自定义
-    ctx.fillStyle = "#000000"; // 标题颜色，可根据需要自定义
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillText(title, centerX, centerY)
+    // // 绘制标题文本
+    // var title = this.properties.projectName;
+    // ctx.font = "bold 14px Arial"; // 标题字体样式，可根据需要自定义
+    // ctx.fillStyle = "#000000"; // 标题颜色，可根据需要自定义
+    // ctx.textAlign = "center";
+    // ctx.textBaseline = "middle";
+    // ctx.fillText(title, centerX, centerY)
   }
 
   getHighestZIndex() {
