@@ -6,6 +6,9 @@ class PieOverlay extends BMap.Overlay {
     super()
     this.point = point
     this.size = 80
+    if (propertie.projectName == "拉萨市") {
+      this.size = 100
+    }
     this.properties = propertie
   }
 
