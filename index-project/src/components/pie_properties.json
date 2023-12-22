@@ -7,8 +7,8 @@
         ],
         "projectName": "岗巴县",
         "kind": {
-            "build": 4,
-            "design": 1,
+            "build": 22,
+            "design": 19,
             "maintenance": 1
         }
     },
@@ -70,8 +70,8 @@
         ],
         "projectName": "萨迦县",
         "kind": {
-            "build": 2,
-            "design": 2
+            "build": 40,
+            "design": 40
         }
     },
     {
@@ -83,7 +83,7 @@
         "projectName": "拉孜县",
         "kind": {
             "build": 4,
-            "design": 4
+            "design": 45
         }
     },
     {
@@ -106,8 +106,8 @@
         ],
         "projectName": "亚东县",
         "kind": {
-            "build": 4,
-            "design": 4
+            "build": 15,
+            "design": 15
         }
     },
     {

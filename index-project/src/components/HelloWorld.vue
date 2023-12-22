@@ -15,7 +15,7 @@
 </template>
 
 
-<!-- <script src="http://api.map.baidu.com/api?v=3.0&ak=93ryhHn98fcRjKhVmVAYQEiY6ovVcC5x"></script> -->
+<!-- <script src="http://api.map.baidu.com/api?v=3.0&ak=ITp69pBwII5AzB6YPeeBZIYQT2dHTjPd"></script> -->
 <script>
 // import 'echarts/extension/bmap/bmap'
 // import { MP } from './map'
@@ -51,7 +51,7 @@ export default {
   // },
   mounted() {
     const script = document.createElement('script')
-    script.src = 'http://api.map.baidu.com/api?v=3.0&ak=93ryhHn98fcRjKhVmVAYQEiY6ovVcC5x'
+    script.src = 'http://api.map.baidu.com/api?v=3.0&ak=qlUGdMFseFZdsLfMXuxLr8ylr4GcwhVA'
     this.map = new BMap.Map('container', { enableMapClick: false })
     script.onload = this.createMysqlCon(this.map)
     document.head.appendChild(script)
