@@ -617,6 +617,99 @@ pre code {
   padding-left: 15px;
 }
 
+.button-group{
+  display: flex;
+  justify-content: center;
+}
+
+.dropdown-toggle-x{
+  border: aliceblue;
+    display: inline-block;
+    margin-right: 0.1875rem;
+    margin-bottom: 0.5rem;
+    margin-left: 0.1875rem;
+    padding: 0.3125rem 1.375rem 0.25rem 1.375rem;
+    border-radius: 0.25rem;
+    background-color: #f1f4f7;
+    color: #7b7e85;
+    font: 700 0.75rem / 1.25rem "Montserrat", sans-serif;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dropdown-toggle-x::after {
+  display: inline-block;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+}
+
+
+/* 弹窗优化样式 */
+.lightbox-basic {
+  background: #fff;
+  padding: 30px;
+  max-width: 1200px;
+  margin: 40px auto;
+  position: relative;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 400px;
+}
+
+.swiper-slide {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.project-meta {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.project-meta i {
+  color: #47d3e5;
+  margin-right: 8px;
+}
+
+.project-details h4 {
+  color: #333;
+  border-bottom: 2px solid #47d3e5;
+  padding-bottom: 10px;
+  margin: 20px 0;
+}
+
+.swiper-button-next, 
+.swiper-button-prev {
+  background: rgba(255,255,255,0.8);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.swiper-button-next:after, 
+.swiper-button-prev:after {
+  font-size: 24px;
+  color: #333;
+}
+
 .col {
   -ms-flex-preferred-size: 0;
   flex-basis: 0;
@@ -1221,6 +1314,8 @@ pre code {
     -ms-flex: 0 0 66.666667%;
     flex: 0 0 66.666667%;
     max-width: 66.666667%;
+    display: flex;
+    align-items: center;
   }
   .col-lg-9 {
     -ms-flex: 0 0 75%;
@@ -3259,7 +3354,9 @@ input[type="button"].btn-block {
 }
 
 .dropdown-menu.show {
-  display: block;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .dropdown-header {
