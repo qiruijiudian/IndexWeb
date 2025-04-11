@@ -750,16 +750,33 @@
         <li class="nav-item">
           <a class="nav-link page-scroll" href="#services">公司业务</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link page-scroll" href="#callMe">工程设计咨询</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link page-scroll" href="#app">项目图景</a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link page-scroll" href="#projects">项目简介</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link page-scroll" href="#app">项目图景</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle page-scroll" href="#about" id="navbarDropdown" role="button"
+            aria-haspopup="true" aria-expanded="false">信息化数据管理</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="http://cdqrmi.com/DataCenter/kamba.html"><span
+                class="item-text">工程运行数据分析报告</span></a>
+            <div class="dropdown-items-divide-hr"></div>
+            <a class="dropdown-item" href="http://data.cdqrmi.com/" target="_blank"><span
+                class="item-text">自定义数据分析平台</span></a>
+            <div class="dropdown-items-divide-hr"></div>
+            <a class="dropdown-item" href="http://order.cdqrmi.com/" target="_blank"><span
+                class="item-text">工单系统</span></a>
+            <div class="dropdown-items-divide-hr"></div>
+            <a class="dropdown-item" href="http://jee.cdqrmi.com:8081/jeewms/l" target="_blank"><span
+                class="item-text">仓库管理系统</span></a>
+          </div>
+        </li>
+        <!-- <li class="nav-item">
           <a class="nav-link page-scroll" href="http://cdqrmi.com/DataCenter/kamba.html">工程运行数据分析报告</a>
         </li>
         <li class="nav-item">
@@ -770,7 +787,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link page-scroll" href="http://jee.cdqrmi.com:8081/jeewms/" target="_blank">仓库管理系统</a>
-        </li>
+        </li> -->
 
         <!-- Dropdown Menu -->
         <li class="nav-item dropdown">
@@ -955,9 +972,9 @@
               </ul>
               <!--                            <p class="price">Starting at <span>$199</span></p>-->
             </div>
-            <div class="button-container">
+            <!-- <div class="button-container">
               <a class="btn-solid-reg page-scroll" href="#callMe">更多</a>
-            </div>
+            </div> -->
             <!-- end of button-container -->
           </div>
           <!-- end of card -->
@@ -984,9 +1001,9 @@
               </ul>
               <!--                            <p class="price">Starting at <span>$299</span></p>-->
             </div>
-            <div class="button-container">
+            <!-- <div class="button-container">
               <a class="btn-solid-reg page-scroll" href="#callMe">更多</a>
-            </div>
+            </div> -->
             <!-- end of button-container -->
           </div>
           <!-- end of card -->
@@ -994,7 +1011,8 @@
           <!-- Card -->
           <div class="card">
             <div class="card-image">
-              <img class="img-fluid" src="images/services-3.jpg" alt="alternative" />
+              <img class="img-fluid" style="height: 192.55px;
+              width: 334px;" src="images/services-3.jpg" alt="alternative" />
             </div>
             <div class="card-body">
               <h3 class="card-title">系统维护保养</h3>
@@ -1013,9 +1031,9 @@
               </ul>
               <!--                            <p class="price">Starting at <span>$299</span></p>-->
             </div>
-            <div class="button-container">
+            <!-- <div class="button-container">
               <a class="btn-solid-reg page-scroll" href="#callMe">更多</a>
-            </div>
+            </div> -->
             <!-- end of button-container -->
           </div>
           <!-- end of card -->
@@ -1030,7 +1048,7 @@
   <!-- end of services -->
 
   <!-- Details 1 -->
-  <div id="details" class="accordion">
+  <div id="details" class="accordion" style="display: flex;">
     <div class="area-1"></div>
     <div class="area-2">
       <!-- Accordion -->
@@ -1038,8 +1056,7 @@
         <h2>技术创造价值</h2>
         <div class="item">
           <div id="headingOne">
-            <span data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
-              role="button">
+            <span data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne">
               <span class="circle-numbering">1</span><span class="accordion-title">雄厚的团队实力</span>
             </span>
           </div>
@@ -1053,12 +1070,11 @@
 
         <div class="item">
           <div id="headingTwo">
-            <span class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-              aria-controls="collapseTwo" role="button">
+            <span class="collapsed" data-toggle="collapse" aria-expanded="false" aria-controls="collapseTwo">
               <span class="circle-numbering">2</span><span class="accordion-title">专业领域技术</span>
             </span>
           </div>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionOne">
+          <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionOne">
             <div class="accordion-body">
               太阳能、热管、供暖供水等各领域技术专利、CCTV报道优质企业、百余项优秀项目成果
             </div>
@@ -1068,12 +1084,11 @@
 
         <div class="item">
           <div id="headingThree">
-            <span class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
-              aria-controls="collapseThree" role="button">
+            <span class="collapsed" data-toggle="collapse" aria-expanded="false" aria-controls="collapseThree">
               <span class="circle-numbering">3</span><span class="accordion-title">技、艺双精工程</span>
             </span>
           </div>
-          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionOne">
+          <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionOne">
             <div class="accordion-body">
               不仅仅执着于项目验收，过程中的设计、舒适程度才是更为令人看重的
             </div>
@@ -1090,7 +1105,7 @@
   <!-- end of details 1 -->
 
   <!-- Details 2 -->
-  <div class="tabs">
+  <div class="tabs" style="display: flex; justify-content: flex-end;">
     <div class="area-1">
       <div class="tabs-container">
         <!-- Tabs Links -->
@@ -1240,101 +1255,12 @@
   <!-- end of tabs -->
   <!-- end of details 2 -->
 
-  <!-- Call Me -->
-  <div id="callMe" class="form-1">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="text-container">
-            <div class="section-title">联系我们</div>
-            <h2 class="white">让我们通过表格了解到您的需求</h2>
-            <p class="white">如果对表格信息有任何疑问可以致电咨询</p>
-            <ul class="list-unstyled li-space-lg white">
-              <li class="media">
-                <i class="fas fa-square"></i>
-                <div class="media-body">
-                  只需填写表格并将其发送给我们，我们就会立即给您回电，以帮助您确定哪种服务包有效。
-                </div>
-              </li>
-              <li class="media">
-                <i class="fas fa-square"></i>
-                <div class="media-body">
-                  在通话期间，我们需要有关公司的一些信息
-                </div>
-              </li>
-              <li class="media">
-                <i class="fas fa-square"></i>
-                <div class="media-body">
-                  如有任何疑问，请随时给我们发送电子邮件
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- end of col -->
-        <div class="col-lg-6">
-          <!-- Call Me Form -->
-          <form id="callMeForm" data-toggle="validator" data-focus="false">
-            <div class="form-group">
-              <input type="text" class="form-control-input" id="lname" name="lname" required />
-              <label class="label-control" for="lname">用户名</label>
-              <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control-input" id="lphone" name="lphone" required />
-              <label class="label-control" for="lphone">电话</label>
-              <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group">
-              <input type="email" class="form-control-input" id="lemail" name="lemail" required />
-              <label class="label-control" for="lemail">邮箱</label>
-              <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group">
-              <select class="form-control-select" id="lselect" required>
-                <option class="select-option" value="" disabled selected>
-                  感兴趣于...
-                </option>
-                <option class="select-option" value="Off The Ground">
-                  供暖系统
-                </option>
-                <option class="select-option" value="Accelerated Growth">
-                  通风系统
-                </option>
-                <option class="select-option" value="Market Domination">
-                  其他
-                </option>
-              </select>
-              <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group checkbox white">
-              <input type="checkbox" id="lterms" value="Agreed-to-Terms" name="lterms" required />我同意栖睿声明的隐私政策以及条款和条件
-              <div class="help-block with-errors"></div>
-            </div>
-            <div class="form-group">
-              <button type="submit" class="form-control-submit-button">
-                提交
-              </button>
-            </div>
-            <div class="form-message">
-              <div id="lmsgSubmit" class="h3 text-center hidden"></div>
-            </div>
-          </form>
-          <!-- end of call me form -->
-        </div>
-        <!-- end of col -->
-      </div>
-      <!-- end of row -->
-    </div>
-    <!-- end of container -->
-  </div>
   <!-- end of form-1 -->
   <!-- end of call me -->
 
   <!-- Projects -->
-  <div id="app" class="filter">
-    <!-- end of container -->
-  </div>
+  <!-- <div id="app" class="filter"> -->
+  <!-- </div> -->
   <!-- end of filter -->
   <!-- end of projects -->
 
@@ -1424,10 +1350,10 @@
                 <div class="col-lg-12">
                   <div class="text-container">
                     <h2 class="p-title">
-                      错那县地热尾水回灌示踪剂实验研究
+                      可再生能源采暖系统现场测试研究（太阳能、水源热泵、空气源热泵）
                     </h2>
                     <p class="testimonial-text">
-                      对主动式太阳能采暖技术、水源热泵采暖技术与空气源热泵采暖技术这三种可再生热源的测试及分析，更科学、系统的得出了不同热源的节能比较
+                      对主动式太阳能采暖技术、水源热泵采暖技术与空气源热泵采暖技术这三种可再生热源的测试及分析，更科学、系统地得出了不同热源的节能比较。
                     </p>
                     <div class="testimonial-author">
                       <a href="#project-2" class="p-a open-modal">了解详情</a>
@@ -1509,8 +1435,7 @@
 
             <!--    供水项目                    -->
 
-
-            <div class="container box6 p-hidden imp water-design water-construction">
+            <div class="container box6 p-hidden water-design water-construction">
               <div class="row">
                 <div class="col-lg-12">
                   <div class="text-container">
@@ -1532,7 +1457,52 @@
             </div>
             <!-- end of container -->
 
-            <div class="container box6 development water-design">
+            <!--    供暖项目                    -->
+            <div class="container box6 seo heat-construction imp">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="text-container">
+                    <h2 class="p-title">
+                      岗巴县若木新村基础设施提升工程EPC+O&M总承包（2024年）
+                    </h2>
+                    <p class="testimonial-text">
+                      供暖采用太阳能光伏+空气源热泵+蓄热水箱的热源方案，包括建设蓄热系统、供暖系统
+                    </p>
+                    <div class="testimonial-author">
+                      <a href="#project-15" class="p-a open-modal">了解详情</a>
+                    </div>
+                  </div>
+                  <!-- end of text-container -->
+                </div>
+                <!-- end of col -->
+              </div>
+              <!-- end of row -->
+            </div>
+            <!-- end of container -->
+
+            <div class="container box6 seo heat-design p-hidden">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="text-container">
+                    <h2 class="p-title">
+                      岗巴县若木新村基础设施提升工程EPC+O&M总承包（2024年）
+                    </h2>
+                    <p class="testimonial-text">
+                      供暖采用太阳能光伏+空气源热泵+蓄热水箱的热源方案，包括建设蓄热系统、供暖系统
+                    </p>
+                    <div class="testimonial-author">
+                      <a href="#project-31" class="p-a open-modal">了解详情</a>
+                    </div>
+                  </div>
+                  <!-- end of text-container -->
+                </div>
+                <!-- end of col -->
+              </div>
+              <!-- end of row -->
+            </div>
+            <!-- end of container -->
+
+            <div class="container box6 development p-hidden water-design">
               <div class="row">
                 <div class="col-lg-12">
                   <div class="text-container">
@@ -1554,7 +1524,7 @@
             </div>
             <!-- end of container -->
 
-            <div class="container box6 p-hidden water-construction">
+            <div class="container box6 imp water-construction">
               <div class="row">
                 <div class="col-lg-12">
                   <div class="text-container">
@@ -1694,30 +1664,7 @@
               </div>
             </div>
 
-            <!--    供暖项目                    -->
-            <div class="container box6 seo heat-construction heat-design">
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="text-container">
-                    <h2 class="p-title">
-                      岗巴县若木新村基础设施提升工程EPC+O&M总承包（2024年）
-                    </h2>
-                    <p class="testimonial-text">
-                      供暖采用太阳能光伏+空气源热泵+蓄热水箱的热源方案，包括建设蓄热系统、供暖系统
-                    </p>
-                    <div class="testimonial-author">
-                      <a href="#project-15" class="p-a open-modal">了解详情</a>
-                    </div>
-                  </div>
-                  <!-- end of text-container -->
-                </div>
-                <!-- end of col -->
-              </div>
-              <!-- end of row -->
-            </div>
-            <!-- end of container -->
-
-            <div class="container box6 seo imp heat-construction heat-design">
+            <div class="container box6 seo imp">
               <div class="row">
                 <div class="col-lg-12">
                   <div class="text-container">
@@ -1729,6 +1676,42 @@
                     </p>
                     <div class="testimonial-author">
                       <a href="#project-19" class="p-a open-modal">了解详情</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="container box6 p-hidden heat-design">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="text-container">
+                    <h2 class="p-title">
+                      西藏日喀则市萨迦县城供暖工程（2023年）
+                    </h2>
+                    <p class="testimonial-text">
+                      采用建筑保温+地热+高温板换+水源热泵梯级，包括地热田热源井、地热田换热站、地热中继换热站、县城供热站、18km地热输送干线、县城供热管网及现有建筑物户内供暖设施建设
+                    </p>
+                    <div class="testimonial-author">
+                      <a href="#project-32" class="p-a open-modal">了解详情</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="container box6 p-hidden heat-construction">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="text-container">
+                    <h2 class="p-title">
+                      西藏日喀则市萨迦县城供暖工程（2023年）
+                    </h2>
+                    <p class="testimonial-text">
+                      采用建筑保温+地热+高温板换+水源热泵梯级，包括地热田热源井、地热田换热站、地热中继换热站、县城供热站、18km地热输送干线、县城供热管网及现有建筑物户内供暖设施建设
+                    </p>
+                    <div class="testimonial-author">
+                      <a href="#project-33" class="p-a open-modal">了解详情</a>
                     </div>
                   </div>
                 </div>
@@ -1757,7 +1740,7 @@
             </div>
             <!-- end of container -->
 
-            <div class="container box6 seo imp heat-design">
+            <div class="container box6 seo p-hidden heat-design">
               <div class="row">
                 <div class="col-lg-12">
                   <div class="text-container">
@@ -1775,7 +1758,7 @@
               </div>
             </div>
 
-            <div class="container box6 p-hidden imp heat-construction">
+            <!-- <div class="container box6 p-hidden heat-construction">
               <div class="row">
                 <div class="col-lg-12">
                   <div class="text-container">
@@ -1789,15 +1772,11 @@
                       <a href="#project-14" class="p-a open-modal">了解详情</a>
                     </div>
                   </div>
-                  <!-- end of text-container -->
                 </div>
-                <!-- end of col -->
               </div>
-              <!-- end of row -->
-            </div>
-            <!-- end of container -->
+            </div> -->
 
-            <div class="container box6 p-hidden heat-construction">
+            <div class="container box6 heat-construction imp">
               <div class="row">
                 <div class="col-lg-12">
                   <div class="text-container">
@@ -1831,6 +1810,28 @@
                     </p>
                     <div class="testimonial-author">
                       <a href="#project-10" class="p-a open-modal">了解详情</a>
+                    </div>
+                  </div>
+                  <!-- end of text-container -->
+                </div>
+                <!-- end of col -->
+              </div>
+              <!-- end of row -->
+            </div>
+            <!-- end of container -->
+
+            <div class="container box6 heat-construction imp">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="text-container">
+                    <h2 class="p-title">
+                      错那县城地热供暖施工（2016-2018年）
+                    </h2>
+                    <p class="testimonial-text">
+                      采用丰富的地热资源+水源热泵机组，末端采用风机盘管及地盘管，商铺采用电采暖。
+                    </p>
+                    <div class="testimonial-author">
+                      <a href="#project-30" class="p-a open-modal">了解详情</a>
                     </div>
                   </div>
                   <!-- end of text-container -->
@@ -1937,37 +1938,9 @@
   <!-- end of filter -->
   <!-- end of projects -->
 
-  <!-- Lightbox -->
-  <!-- <div id="project-13" class="lightbox-basic zoom-anim-dialog mfp-hide">
-    <div class="row">
-      <button title="Close (Esc)" type="button" class="mfp-close x-button">
-        ×
-      </button>
-      <div class="col-lg-8">
-        <img class="img-fluid" src="images/供水-2.jpg" alt="alternative" />
-      </div>
-      <div class="col-lg-4">
-        <div class="top_div">
-          <h3>错那城市供水系统诊断与改造</h3>
-          <hr class="line-heading" />
-          <h6>2016年</h6>
-          <p>
-            &nbsp;&nbsp;&nbsp;&nbsp;<strong>项目规模：</strong>西藏错那整个县城供水系统。
-          </p>
-          <p>
-            &nbsp;&nbsp;&nbsp;&nbsp;<strong>项目特色：</strong>解决错那县城无法正常供水问题
-          </p>
-          <p>
-            &nbsp;&nbsp;&nbsp;&nbsp;<strong>系统形式：</strong>对错那城市供水系统故障诊断与改造设计。
-          </p>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  <!-- end of lightbox-basic -->
-  <!-- end of lightbox -->
+  <div id="app" class="filter">
+  </div>
 
-  <!-- end of project lightboxes -->
 
   <!-- Contact -->
   <div id="contact" class="form-2">
@@ -2005,6 +1978,11 @@
             <div class="form-group">
               <input type="email" class="form-control-input" id="cemail" required />
               <label class="label-control" for="cemail">邮箱</label>
+              <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control-input" id="lphone" name="lphone" required />
+              <label class="label-control" for="lphone">电话</label>
               <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
@@ -2118,26 +2096,6 @@
   <div id="project-15" class="lightbox-basic zoom-anim-dialog mfp-hide">
     <div class="row">
       <button title="关闭" type="button" class="mfp-close x-button">×</button>
-      <div class="col-lg-8">
-        <div class="swiper-container">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img src="images/details/project15-1.png" class="img-fluid" alt="项目现场照片">
-            </div>
-            <div class="swiper-slide">
-              <img src="images/details/project15-2.png" class="img-fluid" alt="施工细节">
-            </div>
-            <div class="swiper-slide">
-              <img src="images/details/project15-3.png" class="img-fluid" alt="施工3">
-            </div>
-            <div class="swiper-slide">
-              <img src="images/details/project15-4.png" class="img-fluid" alt="施工4">
-            </div>
-          </div>
-          <!-- 添加导航按钮 -->
-          <div class="swiper-pagination"></div>
-        </div>
-      </div>
       <div class="col-lg-4">
         <h3>岗巴县若木新村基础设施提升工程EPC+O&M总承包</h3>
         <div class="project-meta">
@@ -2153,12 +2111,88 @@
           <p>供暖采用太阳能光伏+空气源热泵+蓄热水箱的热源方案，包括建设蓄热系统、供暖系统</p>
         </div>
       </div>
+      <div class="col-lg-8">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="images/details/project15-1.png" class="img-fluid" alt="项目现场照片">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/details/project15-3.png" class="img-fluid" alt="施工3">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/details/project15-4.png" class="img-fluid" alt="施工4">
+            </div>
+          </div>
+          <!-- 添加导航按钮 -->
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- 项目31弹窗 -->
+  <div id="project-31" class="lightbox-basic zoom-anim-dialog mfp-hide">
+    <div class="row">
+      <button title="关闭" type="button" class="mfp-close x-button">×</button>
+      <div class="col-lg-4">
+        <h3>岗巴县若木新村基础设施提升工程EPC+O&M总承包</h3>
+        <div class="project-meta">
+          <p><i class="fas fa-calendar-alt"></i> 服务时间：2024年</p>
+          <p><i class="fas fa-map-marker"></i> 项目地点：西藏岗巴县若木新村</p>
+        </div>
+        <div class="project-details">
+          <h4>项目特色</h4>
+          <p>太阳能光伏供给所有系统用电，并采用空气源热泵+短期蓄热水箱供暖，实现近零碳运行</p>
+          <h4>项目规模</h4>
+          <p>供暖建筑面积5604㎡</p>
+          <h4>系统形式</h4>
+          <p>供暖采用太阳能光伏+空气源热泵+蓄热水箱的热源方案，包括建设蓄热系统、供暖系统</p>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="images/details/project31-1.png" class="img-fluid" alt="项目现场照片">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/details/project31-2.png" class="img-fluid" alt="施工3">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/details/project31-3.png" class="img-fluid" alt="施工4">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/details/project31-4.png" class="img-fluid" alt="施工4">
+            </div>
+          </div>
+          <!-- 添加导航按钮 -->
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- 项目14弹窗 -->
   <div id="project-14" class="lightbox-basic zoom-anim-dialog mfp-hide">
     <div class="row">
       <button title="关闭" type="button" class="mfp-close x-button">×</button>
+      <div class="col-lg-4">
+        <h3>萨迦县城水源热泵供暖施工工程</h3>
+        <div class="project-meta">
+          <p><i class="fas fa-calendar-alt"></i> 服务时间：2023年</p>
+          <p><i class="fas fa-map-marker"></i> 项目地点：西藏萨迦县城</p>
+        </div>
+        <div class="project-details">
+          <h4>项目亮点</h4>
+          <ul>
+            <li>地热资源利用+水源热泵供暖</li>
+          </ul>
+          <p>供暖面积约21万㎡；建设地热供水井、地热回灌井，地热田换热站一座、地热中继换热站两座、县城供热站一座，其中高温板换28台、低温板换6台、水源热泵6台（每台1.5MW制热量）</p>
+          <h4>系统形式</h4>
+          <p>采用丰富的地热资源+高温板换+水源热泵梯级供暖，末端采用风机盘管。</p>
+        </div>
+      </div>
       <div class="col-lg-8">
         <div class="swiper-container">
           <div class="swiper-wrapper">
@@ -2179,28 +2213,28 @@
           <div class="swiper-pagination"></div>
         </div>
       </div>
-      <div class="col-lg-4">
-        <h3>萨迦县城水源热泵供暖施工工程</h3>
-        <div class="project-meta">
-          <p><i class="fas fa-calendar-alt"></i> 服务时间：2023年</p>
-          <p><i class="fas fa-map-marker"></i> 项目地点：西藏萨迦县城</p>
-        </div>
-        <div class="project-details">
-          <h4>项目亮点</h4>
-          <ul>
-            <li>地热资源利用+水源热泵供暖</li>
-          </ul>
-          <p>供暖面积约21万㎡；建设地热供水井、地热回灌井，地热田换热站一座、地热中继换热站两座、县城供热站一座，其中高温板换28台、低温板换6台、水源热泵6台（每台1.5MW制热量）</p>
-          <h4>系统形式</h4>
-          <p>采用丰富的地热资源+高温板换+水源热泵梯级供暖，末端采用风机盘管。</p>
-        </div>
-      </div>
     </div>
   </div>
   <!-- 项目11弹窗 -->
   <div id="project-11" class="lightbox-basic zoom-anim-dialog mfp-hide">
     <div class="row">
       <button title="关闭" type="button" class="mfp-close x-button">×</button>
+      <div class="col-lg-4">
+        <h3>拉孜县拉孜高级中学供暖施工工程</h3>
+        <div class="project-meta">
+          <p><i class="fas fa-calendar-alt"></i> 服务时间：2023年</p>
+          <p><i class="fas fa-map-marker"></i> 项目地点：西藏拉孜县城</p>
+        </div>
+        <div class="project-details">
+          <h4>项目亮点</h4>
+          <ul>
+            <li>水源热泵供暖</li>
+            <li>供暖施工面积约4.3万平方米</li>
+          </ul>
+          <h4>系统形式</h4>
+          <p>采用地下水源热泵系统，包括地下水源井、供热机房、供热管网及现有建筑物户内供暖设施建设。</p>
+        </div>
+      </div>
       <div class="col-lg-8">
         <div class="swiper-container">
           <div class="swiper-wrapper">
@@ -2221,22 +2255,6 @@
           <div class="swiper-pagination"></div>
         </div>
       </div>
-      <div class="col-lg-4">
-        <h3>拉孜县拉孜高级中学供暖施工工程</h3>
-        <div class="project-meta">
-          <p><i class="fas fa-calendar-alt"></i> 服务时间：2023年</p>
-          <p><i class="fas fa-map-marker"></i> 项目地点：西藏拉孜县城</p>
-        </div>
-        <div class="project-details">
-          <h4>项目亮点</h4>
-          <ul>
-            <li>水源热泵供暖</li>
-            <li>供暖施工面积约4.3万平方米</li>
-          </ul>
-          <h4>系统形式</h4>
-          <p>采用地下水源热泵系统，包括地下水源井、供热机房、供热管网及现有建筑物户内供暖设施建设。</p>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -2244,6 +2262,24 @@
   <div id="project-10" class="lightbox-basic zoom-anim-dialog mfp-hide">
     <div class="row">
       <button title="关闭" type="button" class="mfp-close x-button">×</button>
+      <div class="col-lg-4">
+        <h3>岗巴县城太阳能跨季节蓄热供暖施工</h3>
+        <div class="project-meta">
+          <p><i class="fas fa-calendar-alt"></i> 服务时间：2019-2020年</p>
+          <p><i class="fas fa-map-marker"></i> 项目地点：西藏岗巴县城</p>
+        </div>
+        <div class="project-details">
+          <h4>项目亮点</h4>
+          <ul>
+            <li>主动式太阳能跨季节蓄热供暖</li>
+          </ul>
+          <p>
+            一期供暖面积9.74万㎡；太能能集热面积3.5万㎡；蓄水池7万立方米；水源热泵6台（每台1MW制热量）；自控系统为西门子PLC系统；项目采用EPCC-O&M全过程模式（设计、施工、量化调试、优化运行及后期运行维护管理）
+          </p>
+          <h4>系统形式</h4>
+          <p>采用丰富的太能资源+跨季节水池+水源热泵机组，末端采用风机盘管</p>
+        </div>
+      </div>
       <div class="col-lg-8">
         <div class="swiper-container">
           <div class="swiper-wrapper">
@@ -2264,24 +2300,6 @@
           <div class="swiper-pagination"></div>
         </div>
       </div>
-      <div class="col-lg-4">
-        <h3>岗巴县城太阳能跨季节蓄热供暖施工</h3>
-        <div class="project-meta">
-          <p><i class="fas fa-calendar-alt"></i> 服务时间：2019-2020年</p>
-          <p><i class="fas fa-map-marker"></i> 项目地点：西藏岗巴县城</p>
-        </div>
-        <div class="project-details">
-          <h4>项目亮点</h4>
-          <ul>
-            <li>主动式太阳能跨季节蓄热供暖</li>
-          </ul>
-          <p>
-            一期供暖面积9.74万㎡；太能能集热面积3.5万㎡；蓄水池7万立方米；水源热泵6台（每台1MW制热量）；自控系统为西门子PLC系统；项目采用EPCC-O&M全过程模式（设计、施工、量化调试、优化运行及后期运行维护管理）
-          </p>
-          <h4>系统形式</h4>
-          <p>采用丰富的太能资源+跨季节水池+水源热泵机组，末端采用风机盘管</p>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -2289,6 +2307,22 @@
   <div id="project-9" class="lightbox-basic zoom-anim-dialog mfp-hide">
     <div class="row">
       <button title="关闭" type="button" class="mfp-close x-button">×</button>
+      <div class="col-lg-4">
+        <h3>西藏日喀则市岗巴县城供水工程</h3>
+        <div class="project-meta">
+          <p><i class="fas fa-calendar-alt"></i> 服务时间：2023年-至今</p>
+          <p><i class="fas fa-map-marker"></i> 项目地点：西藏岗巴县城</p>
+        </div>
+        <div class="project-details">
+          <h4>项目亮点</h4>
+          <ul>
+            <li>采用“泉水+地表水”的水源形式</li>
+          </ul>
+          <p>设计供水规模为3000m3/d，服务人口约6600人</p>
+          <h4>系统形式</h4>
+          <p>采用双水源设计。泉水供水：利用泉水取水构筑物取水，经水厂消毒后采用重力供水至县城，设计供水量1500m³/d；地表水供水：采用沉淀+过滤+消毒的水处理工艺，采用重力供水至县城，设计供水量1500m³/d</p>
+        </div>
+      </div>
       <div class="col-lg-8">
         <div class="swiper-container">
           <div class="swiper-wrapper">
@@ -2309,22 +2343,6 @@
           <div class="swiper-pagination"></div>
         </div>
       </div>
-      <div class="col-lg-4">
-        <h3>西藏日喀则市岗巴县城供水工程</h3>
-        <div class="project-meta">
-          <p><i class="fas fa-calendar-alt"></i> 服务时间：2023年-至今</p>
-          <p><i class="fas fa-map-marker"></i> 项目地点：西藏岗巴县城</p>
-        </div>
-        <div class="project-details">
-          <h4>项目亮点</h4>
-          <ul>
-            <li>采用“泉水+地表水”的水源形式</li>
-          </ul>
-          <p>设计供水规模为3000m3/d，服务人口约6600人</p>
-          <h4>系统形式</h4>
-          <p>采用双水源设计。泉水供水：利用泉水取水构筑物取水，经水厂消毒后采用重力供水至县城，设计供水量1500m³/d；地表水供水：采用沉淀+过滤+消毒的水处理工艺，采用重力供水至县城，设计供水量1500m³/d</p>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -2332,6 +2350,22 @@
   <div id="project-8" class="lightbox-basic zoom-anim-dialog mfp-hide">
     <div class="row">
       <button title="关闭" type="button" class="mfp-close x-button">×</button>
+      <div class="col-lg-4">
+        <h3>西藏自治区山南市错那县城供水工程</h3>
+        <div class="project-meta">
+          <p><i class="fas fa-calendar-alt"></i> 服务时间：2019年-至今</p>
+          <p><i class="fas fa-map-marker"></i> 项目地点：西藏错那县城</p>
+        </div>
+        <div class="project-details">
+          <h4>项目亮点</h4>
+          <ul>
+            <li>采用“地表水+深井”的水源形式</li>
+          </ul>
+          <p>远期供水规模为5000m³/d，解决了错那长期以来自来水冰冻问题，打造成为西藏第一个实现智能化的供水县城</p>
+          <h4>系统形式</h4>
+          <p>整改结巴村和亚玛荣水源水厂，新建沉砂池、清水池优化改造，新增变频水泵。更换所有末端用户管网，非采暖房间管路做保温措施，做到水源侧和用户侧双重整改</p>
+        </div>
+      </div>
       <div class="col-lg-8">
         <div class="swiper-container">
           <div class="swiper-wrapper">
@@ -2352,22 +2386,6 @@
           <div class="swiper-pagination"></div>
         </div>
       </div>
-      <div class="col-lg-4">
-        <h3>西藏自治区山南市错那县城供水工程</h3>
-        <div class="project-meta">
-          <p><i class="fas fa-calendar-alt"></i> 服务时间：2019年-至今</p>
-          <p><i class="fas fa-map-marker"></i> 项目地点：西藏错那县城</p>
-        </div>
-        <div class="project-details">
-          <h4>项目亮点</h4>
-          <ul>
-            <li>采用“地表水+深井”的水源形式</li>
-          </ul>
-          <p>远期供水规模为5000m³/d，解决了错那长期以来自来水冰冻问题，打造成为西藏第一个实现智能化的供水县城</p>
-          <h4>系统形式</h4>
-          <p>整改结巴村和亚玛荣水源水厂，新建沉砂池、清水池优化改造，新增变频水泵。更换所有末端用户管网，非采暖房间管路做保温措施，做到水源侧和用户侧双重整改</p>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -2375,6 +2393,19 @@
   <div id="project-1" class="lightbox-basic zoom-anim-dialog mfp-hide">
     <div class="row">
       <button title="关闭" type="button" class="mfp-close x-button">×</button>
+      <div class="col-lg-4">
+        <h3>热管与聚光式太阳能集热器效率测试实验</h3>
+        <div class="project-meta">
+          <p><i class="fas fa-calendar-alt"></i> 服务时间：2018年</p>
+          <p><i class="fas fa-map-marker"></i> 项目地点：西藏拉萨市</p>
+        </div>
+        <div class="project-details">
+          <h4>项目特色</h4>
+          <p>太阳能集热器实际效率与工作寿命，是主动式太阳能采暖系统的关键设计参数，本次研究主要对比新型聚光式与常规真空热管式的热效率区别，并为日喀则地区岗巴县太阳能设计提供关键设计参数</p>
+          <h4>系统形式</h4>
+          <p>真空热管式太阳能集热器，非追踪聚光式太阳能集热器</p>
+        </div>
+      </div>
       <div class="col-lg-8">
         <div class="swiper-container">
           <div class="swiper-wrapper">
@@ -2389,19 +2420,6 @@
           <div class="swiper-pagination"></div>
         </div>
       </div>
-      <div class="col-lg-4">
-        <h3>热管与聚光式太阳能集热器效率测试实验</h3>
-        <div class="project-meta">
-          <p><i class="fas fa-calendar-alt"></i> 服务时间：2018年</p>
-          <p><i class="fas fa-map-marker"></i> 项目地点：西藏拉萨市</p>
-        </div>
-        <div class="project-details">
-          <h4>项目特色</h4>
-          <p>太阳能集热器实际效率与工作寿命，是主动式太阳能采暖系统的关键设计参数，本次研究主要对比新型聚光式与常规真空热管式的热效率区别，并为日喀则地区岗巴县太阳能设计提供关键设计参数</p>
-          <h4>系统形式</h4>
-          <p>真空热管式太阳能集热器，非追踪聚光式太阳能集热器</p>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -2409,6 +2427,18 @@
   <div id="project-2" class="lightbox-basic zoom-anim-dialog mfp-hide">
     <div class="row">
       <button title="关闭" type="button" class="mfp-close x-button">×</button>
+      <div class="col-lg-4">
+        <h3>可再生能源采暖系统现场测试研究</h3>
+        <div class="project-meta">
+          <p><i class="fas fa-map-marker"></i> 项目地点：西藏拉萨市</p>
+        </div>
+        <div class="project-details">
+          <h4>项目特色</h4>
+          <p>对主动式太阳能采暖技术、水源热泵采暖技术与空气源热泵采暖技术这三种可再生热源的测试及分析，更科学、系统地得出了不同热源的节能比较</p>
+          <h4>项目规模</h4>
+          <p>整个拉萨市</p>
+        </div>
+      </div>
       <div class="col-lg-8">
         <div class="swiper-container">
           <div class="swiper-wrapper">
@@ -2418,22 +2448,15 @@
             <div class="swiper-slide">
               <img src="images/details/project2-2.png" class="img-fluid" alt="项目2">
             </div>
+            <div class="swiper-slide">
+              <img src="images/details/project2-3.png" class="img-fluid" alt="项目1">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/details/project2-4.png" class="img-fluid" alt="项目2">
+            </div>
           </div>
           <!-- 添加导航按钮 -->
           <div class="swiper-pagination"></div>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <h3>错那县地热尾水回灌示踪剂实验研究</h3>
-        <div class="project-meta">
-          <p><i class="fas fa-calendar-alt"></i> 服务时间：2017年</p>
-          <p><i class="fas fa-map-marker"></i> 项目地点：西藏错那县</p>
-        </div>
-        <div class="project-details">
-          <h4>项目特色</h4>
-          <p>地热资源可持续开发研究，错那县城供热</p>
-          <h4>系统形式</h4>
-          <p>地热+水源热泵阶梯利用</p>
         </div>
       </div>
     </div>
@@ -2443,6 +2466,18 @@
   <div id="project-3" class="lightbox-basic zoom-anim-dialog mfp-hide">
     <div class="row">
       <button title="关闭" type="button" class="mfp-close x-button">×</button>
+      <div class="col-lg-4">
+        <h3>岗巴县孔玛乡“零采暖能耗建筑”运行效果现场测试</h3>
+        <div class="project-meta">
+          <p><i class="fas fa-map-marker"></i> 项目地点：岗巴县孔玛乡</p>
+        </div>
+        <div class="project-details">
+          <h4>项目特色</h4>
+          <p>测试“零采暖能耗建筑”运行效果</p>
+          <h4>系统形式</h4>
+          <p>被动式太阳能</p>
+        </div>
+      </div>
       <div class="col-lg-8">
         <div class="swiper-container">
           <div class="swiper-wrapper">
@@ -2463,18 +2498,6 @@
           <div class="swiper-pagination"></div>
         </div>
       </div>
-      <div class="col-lg-4">
-        <h3>岗巴县孔玛乡“零采暖能耗建筑”运行效果现场测试</h3>
-        <div class="project-meta">
-          <p><i class="fas fa-map-marker"></i> 项目地点：岗巴县孔玛乡</p>
-        </div>
-        <div class="project-details">
-          <h4>项目特色</h4>
-          <p>测试“零采暖能耗建筑”运行效果</p>
-          <h4>系统形式</h4>
-          <p>被动式太阳能</p>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -2482,6 +2505,17 @@
   <div id="project-4" class="lightbox-basic zoom-anim-dialog mfp-hide">
     <div class="row">
       <button title="关闭" type="button" class="mfp-close x-button">×</button>
+      <div class="col-lg-4">
+        <h3>双流国际机场T2航站楼暖通空调系统节能调试工程</h3>
+        <div class="project-meta">
+          <p><i class="fas fa-calendar-alt"></i> 项目规模 30万平方米</p>
+          <p><i class="fas fa-map-marker"></i> 项目地点：成都双流机场</p>
+        </div>
+        <div class="project-details">
+          <h4>系统形式</h4>
+          <p>水冷机组+吸收式机组+风系统</p>
+        </div>
+      </div>
       <div class="col-lg-8">
         <div class="swiper-container">
           <div class="swiper-wrapper">
@@ -2496,17 +2530,6 @@
           <div class="swiper-pagination"></div>
         </div>
       </div>
-      <div class="col-lg-4">
-        <h3>双流国际机场T2航站楼暖通空调系统节能调试工程</h3>
-        <div class="project-meta">
-          <p><i class="fas fa-calendar-alt"></i> 项目规模 30万平方米</p>
-          <p><i class="fas fa-map-marker"></i> 项目地点：成都双流机场</p>
-        </div>
-        <div class="project-details">
-          <h4>系统形式</h4>
-          <p>水冷机组+吸收式机组+风系统</p>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -2514,6 +2537,17 @@
   <div id="project-5" class="lightbox-basic zoom-anim-dialog mfp-hide">
     <div class="row">
       <button title="关闭" type="button" class="mfp-close x-button">×</button>
+      <div class="col-lg-4">
+        <h3>典型供热系统运行效率及能耗指标现场测试</h3>
+        <div class="project-meta">
+          <p><i class="fas fa-calendar-alt"></i> [项目规模] 整个拉萨市</p>
+          <p><i class="fas fa-map-marker"></i> 项目地点：西藏错那县</p>
+        </div>
+        <div class="project-details">
+          <h4>项目特色</h4>
+          <p>对拉萨市不同供暖形式的典型建筑包括集中燃气锅炉系统、风冷热泵系统、水源热泵系统、太阳能采暖系统进行了测试和分析</p>
+        </div>
+      </div>
       <div class="col-lg-8">
         <div class="swiper-container">
           <div class="swiper-wrapper">
@@ -2534,17 +2568,6 @@
           <div class="swiper-pagination"></div>
         </div>
       </div>
-      <div class="col-lg-4">
-        <h3>典型供热系统运行效率及能耗指标现场测试</h3>
-        <div class="project-meta">
-          <p><i class="fas fa-calendar-alt"></i> [项目规模] 整个拉萨市</p>
-          <p><i class="fas fa-map-marker"></i> 项目地点：西藏错那县</p>
-        </div>
-        <div class="project-details">
-          <h4>项目特色</h4>
-          <p>对拉萨市不同供暖形式的典型建筑包括集中燃气锅炉系统、风冷热泵系统、水源热泵系统、太阳能采暖系统进行了测试和分析</p>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -2552,6 +2575,21 @@
   <div id="project-16" class="lightbox-basic zoom-anim-dialog mfp-hide">
     <div class="row">
       <button title="关闭" type="button" class="mfp-close x-button">×</button>
+      <div class="col-lg-4">
+        <h3>岗巴县若木新村基础设施提升工程EPC+O&M总承包</h3>
+        <div class="project-meta">
+          <p><i class="fas fa-calendar-alt"></i> 服务时间：2024年-至今</p>
+          <p><i class="fas fa-map-marker"></i> 项目地点：西藏岗巴县若木新村</p>
+        </div>
+        <div class="project-details">
+          <h4>项目特色</h4>
+          <p>采用“深井”水源形式</p>
+          <h4>项目规模</h4>
+          <p>给水规模28m³/d，排水规模20m³/d</p>
+          <h4>系统形式</h4>
+          <p>给排水系统建设包括地下井水净水处理设施、一体化污水处理设施、室外给水管网及终端入户、排水管网等</p>
+        </div>
+      </div>
       <div class="col-lg-8">
         <div class="swiper-container">
           <div class="swiper-wrapper">
@@ -2572,21 +2610,6 @@
           <div class="swiper-pagination"></div>
         </div>
       </div>
-      <div class="col-lg-4">
-        <h3>岗巴县若木新村基础设施提升工程EPC+O&M总承包</h3>
-        <div class="project-meta">
-          <p><i class="fas fa-calendar-alt"></i> 服务时间：2024年-至今</p>
-          <p><i class="fas fa-map-marker"></i> 项目地点：西藏岗巴县若木新村</p>
-        </div>
-        <div class="project-details">
-          <h4>项目特色</h4>
-          <p>采用“深井”水源形式</p>
-          <h4>项目规模</h4>
-          <p>给水规模28m³/d，排水规模20m³/d</p>
-          <h4>系统形式</h4>
-          <p>给排水系统建设包括地下井水净水处理设施、一体化污水处理设施、室外给水管网及终端入户、排水管网等</p>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -2594,6 +2617,21 @@
   <div id="project-17" class="lightbox-basic zoom-anim-dialog mfp-hide">
     <div class="row">
       <button title="关闭" type="button" class="mfp-close x-button">×</button>
+      <div class="col-lg-4">
+        <h3>西藏日喀则市岗巴县城供水施工工程</h3>
+        <div class="project-meta">
+          <p><i class="fas fa-calendar-alt"></i> 服务时间：2023年-至今</p>
+          <p><i class="fas fa-map-marker"></i> 项目地点：西藏日喀则市岗巴县城</p>
+        </div>
+        <div class="project-details">
+          <h4>项目特色</h4>
+          <p>采用“泉水+地表水”的水源形式</p>
+          <h4>项目规模</h4>
+          <p>设计供水规模为3000m³/d，服务人口约6600人</p>
+          <h4>系统形式</h4>
+          <p>采用双水源设计，包括地表水、地下泉水；新建供水厂一座，包含水源过滤、净化、储存功能，以及室外输配水管网、室内给水系统建设</p>
+        </div>
+      </div>
       <div class="col-lg-8">
         <div class="swiper-container">
           <div class="swiper-wrapper">
@@ -2620,21 +2658,6 @@
           <div class="swiper-pagination"></div>
         </div>
       </div>
-      <div class="col-lg-4">
-        <h3>西藏日喀则市岗巴县城供水施工工程</h3>
-        <div class="project-meta">
-          <p><i class="fas fa-calendar-alt"></i> 服务时间：2023年-至今</p>
-          <p><i class="fas fa-map-marker"></i> 项目地点：西藏日喀则市岗巴县城</p>
-        </div>
-        <div class="project-details">
-          <h4>项目特色</h4>
-          <p>采用“泉水+地表水”的水源形式</p>
-          <h4>项目规模</h4>
-          <p>设计供水规模为3000m³/d，服务人口约6600人</p>
-          <h4>系统形式</h4>
-          <p>采用双水源设计，包括地表水、地下泉水；新建供水厂一座，包含水源过滤、净化、储存功能，以及室外输配水管网、室内给水系统建设</p>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -2642,6 +2665,21 @@
   <div id="project-18" class="lightbox-basic zoom-anim-dialog mfp-hide">
     <div class="row">
       <button title="关闭" type="button" class="mfp-close x-button">×</button>
+      <div class="col-lg-4">
+        <h3>日喀则市岗巴县吉汝村供水改造工程</h3>
+        <div class="project-meta">
+          <p><i class="fas fa-calendar-alt"></i> 服务时间：2022年</p>
+          <p><i class="fas fa-map-marker"></i> 项目地点：西藏岗巴县吉汝村</p>
+        </div>
+        <div class="project-details">
+          <h4>项目特色</h4>
+          <p>利用原有水源，增加机井作为备用水源</p>
+          <h4>项目规模</h4>
+          <p>改造总户数为108户、供水管道总长3481米，埋深2.0米</p>
+          <h4>系统形式</h4>
+          <p>新建给水管道，采用防冻水龙头作为末端，以聚氨酯发泡剂作为保温层，实现吉汝村全年全天候任何天气情况下24小时可靠供水</p>
+        </div>
+      </div>
       <div class="col-lg-8">
         <div class="swiper-container">
           <div class="swiper-wrapper">
@@ -2660,21 +2698,6 @@
           </div>
           <!-- 添加导航按钮 -->
           <div class="swiper-pagination"></div>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <h3>日喀则市岗巴县吉汝村供水改造工程</h3>
-        <div class="project-meta">
-          <p><i class="fas fa-calendar-alt"></i> 服务时间：2022年</p>
-          <p><i class="fas fa-map-marker"></i> 项目地点：西藏岗巴县吉汝村</p>
-        </div>
-        <div class="project-details">
-          <h4>项目特色</h4>
-          <p>利用原有水源，增加机井作为备用水源</p>
-          <h4>项目规模</h4>
-          <p>改造总户数为108户、供水管道总长3481米，埋深2.0米</p>
-          <h4>系统形式</h4>
-          <p>新建给水管道，采用防冻水龙头作为末端，以聚氨酯发泡剂作为保温层，实现吉汝村全年全天候任何天气情况下24小时可靠供水</p>
         </div>
       </div>
     </div>
@@ -2711,6 +2734,12 @@
             <div class="swiper-slide">
               <img src="images/details/project19-3.png" class="img-fluid" alt="项目1">
             </div>
+            <div class="swiper-slide">
+              <img src="images/details/project19-4.png" class="img-fluid" alt="项目1">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/details/project19-5.png" class="img-fluid" alt="项目1">
+            </div>
           </div>
           <!-- 添加导航按钮 -->
           <div class="swiper-pagination"></div>
@@ -2718,6 +2747,82 @@
       </div>
     </div>
   </div>
+
+  <!-- 项目32弹窗 -->
+  <div id="project-32" class="lightbox-basic zoom-anim-dialog mfp-hide">
+    <div class="row">
+      <button title="关闭" type="button" class="mfp-close x-button">×</button>
+      <div class="col-lg-4">
+        <h3>西藏日喀则市萨迦县城供暖工程</h3>
+        <div class="project-meta">
+          <p><i class="fas fa-calendar-alt"></i> 服务时间：2023年</p>
+          <p><i class="fas fa-map-marker"></i> 项目地点：日喀则市萨迦县城</p>
+        </div>
+        <div class="project-details">
+          <h4>项目特色</h4>
+          <p>地热资源利用+水源热泵采暖</p>
+          <h4>项目规模</h4>
+          <p>采暖设计面积约21万平方米</p>
+          <h4>系统形式</h4>
+          <p>采用建筑保温+地热+高温板换+水源热泵梯级，包括地热田热源井、地热田换热站、地热中继换热站、县城供热站、18km地热输送干线、县城供热管网及现有建筑物户内供暖设施建设</p>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="images/details/project19-1.png" class="img-fluid" alt="项目1">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/details/project19-2.png" class="img-fluid" alt="项目1">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/details/project19-3.png" class="img-fluid" alt="项目1">
+            </div>
+          </div>
+          <!-- 添加导航按钮 -->
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 项目33弹窗 -->
+  <div id="project-33" class="lightbox-basic zoom-anim-dialog mfp-hide">
+    <div class="row">
+      <button title="关闭" type="button" class="mfp-close x-button">×</button>
+      <div class="col-lg-4">
+        <h3>西藏日喀则市萨迦县城供暖工程</h3>
+        <div class="project-meta">
+          <p><i class="fas fa-calendar-alt"></i> 服务时间：2023年</p>
+          <p><i class="fas fa-map-marker"></i> 项目地点：日喀则市萨迦县城</p>
+        </div>
+        <div class="project-details">
+          <h4>项目特色</h4>
+          <p>地热资源利用+水源热泵采暖</p>
+          <h4>项目规模</h4>
+          <p>采暖设计面积约21万平方米</p>
+          <h4>系统形式</h4>
+          <p>采用建筑保温+地热+高温板换+水源热泵梯级，包括地热田热源井、地热田换热站、地热中继换热站、县城供热站、18km地热输送干线、县城供热管网及现有建筑物户内供暖设施建设</p>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="images/details/project19-4.png" class="img-fluid" alt="项目1">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/details/project19-5.png" class="img-fluid" alt="项目1">
+            </div>
+          </div>
+          <!-- 添加导航按钮 -->
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- 项目20弹窗 -->
   <div id="project-20" class="lightbox-basic zoom-anim-dialog mfp-hide">
     <div class="row">
@@ -2898,6 +3003,12 @@
             </div>
             <div class="swiper-slide">
               <img src="images/details/project24-3.png" class="img-fluid" alt="项目1">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/details/project24-5.png" class="img-fluid" alt="项目1">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/details/project24-4.png" class="img-fluid" alt="项目1">
             </div>
           </div>
           <!-- 添加导航按钮 -->
@@ -3116,6 +3227,47 @@
     </div>
   </div>
 
+  <!-- 项目30弹窗 -->
+  <div id="project-30" class="lightbox-basic zoom-anim-dialog mfp-hide">
+    <div class="row">
+      <button title="关闭" type="button" class="mfp-close x-button">×</button>
+      <div class="col-lg-4">
+        <h3>错那县城地热供暖施工</h3>
+        <div class="project-meta">
+          <p><i class="fas fa-calendar-alt"></i> 服务时间：2016-2018 年</p>
+          <p><i class="fas fa-map-marker"></i> 项目地点：西藏萨迦县</p>
+        </div>
+        <div class="project-details">
+          <h4>项目特色</h4>
+          <p>中温地热资源供暖</p>
+          <h4>项目规模</h4>
+          <p>1期、 2期采暖设计面积共约28.4万平方米</p>
+          <h4>系统形式</h4>
+          <p>采用丰富的地热资源+水源热泵机组，末端采用风机盘管及地盘管，商铺采用电采暖。</p>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="images/details/project30-1.png" class="img-fluid" alt="项目1">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/details/project30-2.png" class="img-fluid" alt="项目1">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/details/project30-3.png" class="img-fluid" alt="项目1">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/details/project30-4.png" class="img-fluid" alt="项目1">
+            </div>
+          </div>
+          <!-- 添加导航按钮 -->
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- pop-box end -->
 

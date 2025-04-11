@@ -2333,7 +2333,7 @@ a:hover.back-to-top {
 	/* Details 2 */
 	.tabs .tabs-container {
 		max-width: 28rem;
-		margin-right: 5rem;
+		/* margin-right: 5rem; */
 		margin-left: auto;
 	}
 
